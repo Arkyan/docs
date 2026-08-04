@@ -1,0 +1,76 @@
+---
+title: VTC Support Tickets
+description: Let members contact your VTC or VBC staff directly, and manage incoming tickets from the management panel.
+version: 1.0.0
+lastUpdated: 2026-07-23
+---
+
+VTC Support gives your members a direct line to staff — separate from [TrucklineMP's own support system](/guides/account/support-tickets/), which is for platform-level issues.
+
+## For members: submitting a ticket
+
+1. Go to your VTC or VBC's profile
+2. Open `/vtc/@handle/support` (or `/vbc/@handle/support`)
+3. Pick a category, write a subject and message, and submit
+
+Staff are notified and can reply directly in the ticket thread.
+
+---
+
+## For staff: managing tickets
+
+1. Open your **Manage** panel
+2. Select **Support**
+
+### Tickets tab
+
+- Filter by status (**Open**, **In Progress**, **Waiting on User**, **Resolved**, **Closed**), category, priority, assignment, or search
+- Claim unassigned tickets or filter to **Assigned to me**
+- Reply, change status, and set priority from the ticket thread
+
+At-a-glance metrics show open tickets, tickets waiting on the user, tickets assigned to you, unassigned tickets, and average satisfaction rating.
+
+### Settings tab
+
+Staff with the **Support Settings** permission can configure:
+
+- **Categories** — custom ticket categories with colors
+- **Canned reply templates** — reusable responses for common questions
+
+---
+
+## Permissions
+
+| Permission | What it grants |
+|------------|-----------------|
+| `support.view` | View tickets |
+| `support.reply` | Reply to tickets |
+| `support.assign` | Assign tickets to staff |
+| `support.close` | Resolve and close tickets |
+| `support.manage` | Full ticket workflow control |
+| `support.settings` | Configure categories and templates |
+
+Assign these from the **Permissions** tab in [Roles & Permissions](/guides/vtc/roles-permissions/). Support must also be enabled for your company before the tab appears to members.
+
+---
+
+## Troubleshooting
+
+### "Members can't find the support page"
+
+Confirm VTC Support is enabled for your company, and share the direct link: `/vtc/@handle/support`.
+
+### "I can't see the Support tab in Manage"
+
+You need at least `support.view` (or `management.vtc.edit`, which always grants access).
+
+### "I can't edit categories or templates"
+
+Editing configuration requires `support.settings`, which is separate from ticket-handling permissions.
+
+---
+
+## Related guides
+
+- [Support Tickets (TrucklineMP)](/guides/account/support-tickets/) — platform-level support, not VTC-specific
+- [Roles & Permissions](/guides/vtc/roles-permissions/)

@@ -241,3 +241,19 @@
 	line-height: 1.6;
 }
 
+.home-statement-section {
+	padding: 2.5rem 1.5rem;
+	background: linear-gradient(90deg, rgba(200, 255, 0, 0.03) 0%, transparent 100%);
+	border-left: 2px solid var(--sl-color-accent);
+	margin-block: 2.5rem;
+}
+
+.home-statement-text {
+	font-size: var(--sl-text-lg);
+	line-height: 1.7;
+	color: var(--sl-color-gray-2);
+	max-width: 48rem;
+	margin: 0;
+}
+
+

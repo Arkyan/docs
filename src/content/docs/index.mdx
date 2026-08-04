@@ -1,262 +1,72 @@
 ---
 title: TrucklineMP Documentation
-description: Official documentation for TrucklineMP. VTC programs, management guides, account settings, Discord, and developers.
-version: 1.2.0
-lastUpdated: 2026-07-08
+description: Official documentation and guides for TrucklineMP. VTC/VBC management, account security, Discord integration, and developer tools.
+version: 1.3.0
+lastUpdated: 2026-07-20
 template: splash
 hero:
-  tagline: The multiplayer platform built for the hardcore trucking community.
+  tagline: The multiplayer platform built for the virtual trucking and coach community.
   image:
     file: ../../assets/truckline_large_no_shadow.svg
     alt: TrucklineMP
   actions:
-    - text: VTC Guides
-      link: /guides/vtc-general-settings/
-      icon: right-arrow
-      variant: primary
-    - text: Account Guides
-      link: /guides/profile-settings/
-      icon: setting
-      variant: minimal
-    - text: Contributors
-      link: /guides/contributors/
+    - text: Browse the Guides
+      link: /guides/vtc/creating/
       icon: open-book
+      variant: primary
+    - text: Developer Tools
+      link: /guides/developers/overview/
+      icon: setting
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import HomeSection from '../../components/HomeSection.astro';
 import QuickLinks from '../../components/QuickLinks.astro';
+import ContributorAvatars from '../../components/ContributorAvatars.astro';
 
-<QuickLinks links={[
-  { label: 'VTC Programs', href: '#vtc-programs' },
-  { label: 'VTC Guides', href: '#vtc-guides' },
-  { label: 'Discord Bot', href: '#discord-bot' },
-  { label: 'Developers', href: '#developers' },
-  { label: 'Account', href: '#account-guides' },
-  { label: 'Contribute', href: '#contribute' },
-]} />
+<div class="home-statement-section">
+	<p class="home-statement-text">
+		We build TrucklineMP because we believe multiplayer trucking and coach logistics should be seamless, competitive, and community driven. The platform is designed from the ground up to give Virtual Trucking Companies and Virtual Bus Companies the tools they need to operate professional fleets, organize large-scale convoys, and connect their drivers under a single hub.
+	</p>
+</div>
 
 <HomeSection
-  id="vtc-programs"
-  title="VTC Programs"
-  description="Official programs, eligibility rules, and design guidelines for Virtual Trucking Companies on TrucklineMP."
-  icon="check-circle"
+	id="features"
+	title="Built for You"
+	description="Everything you need to run, scale, and automate your virtual trucking or coach organization."
+	icon="rocket"
 >
-  <CardGrid stagger>
-    <Card title="Verified VTC Program" icon="check-circle">
-      Learn how to apply for Verified status, meet the requirements, and maintain your VTC's verification.
-      [Read the rules →](/guides/verified-vtc-program/)
-    </Card>
-    <Card title="Verified VTC Discord Role" icon="discord">
-      Request the Verified VTC Manager/Owner role on the main TrucklineMP Discord after verification.
-      [Read the guide →](/guides/verified-vtc-discord-role/)
-    </Card>
-    <Card title="Partnered VTC Program" icon="star">
-      Discover the benefits of becoming a Partnered VTC and the eligibility criteria for this elite status.
-      [Learn more →](/guides/partnered-vtc-program/)
-    </Card>
-    <Card title="VTC Livery Guidelines" icon="document">
-      Design rules and approval process for custom in-game truck liveries available to Partnered VTCs.
-      [Read the guidelines →](/guides/vtc-livery-guidelines/)
-    </Card>
-  </CardGrid>
+	<CardGrid stagger>
+		<Card title="Fleet Management" icon="user">
+			Recruit drivers, assign custom roles, design application forms, and manage your roster with precision.
+		</Card>
+		<Card title="Convoy Logistics" icon="calendar">
+			Schedule events on the global calendar, allocate slots, track attendance, and keep your convoy details organized.
+		</Card>
+		<Card title="Discord Integration" icon="discord">
+			Connect your server to sync ranks automatically, verify ownership, and broadcast real-time webhook updates.
+		</Card>
+		<Card title="Developer Ecosystem" icon="setting">
+			Integrate your own tools using the TypeScript SDK, receive real-time webhooks, and query public statistics.
+		</Card>
+	</CardGrid>
 </HomeSection>
 
-<HomeSection
-  id="vtc-guides"
-  title="VTC Guides"
-  description="Step-by-step guides for creating, managing, and growing your VTC on TrucklineMP."
-  icon="setting"
->
-  <CardGrid stagger>
-    <Card title="Creating a VTC" icon="rocket">
-      Eligibility, the creation wizard, and what happens after launch.
-      [Read the guide →](/guides/vtc-creating/)
-    </Card>
-    <Card title="VTC Directory" icon="eye">
-      Browse, search, and filter companies on the public directory.
-      [Read the guide →](/guides/vtc-directory/)
-    </Card>
-    <Card title="General Settings" icon="setting">
-      Configure your VTC's identity, social links, recruitment requirements, and core settings.
-      [Read the guide →](/guides/vtc-general-settings/)
-    </Card>
-    <Card title="Roles & Permissions" icon="user">
-      Create roles, assign permissions, and build your VTC's hierarchy.
-      [Read the guide →](/guides/vtc-roles-permissions/)
-    </Card>
-    <Card title="Member Management" icon="user">
-      Manage your member roster, assign roles, add staff notes, and handle member actions.
-      [Read the guide →](/guides/vtc-member-management/)
-    </Card>
-    <Card title="Recruitment" icon="document">
-      Configure application forms, custom questions, and manage how users apply to your VTC.
-      [Read the guide →](/guides/vtc-recruitment/)
-    </Card>
-    <Card title="Events" icon="external">
-      Schedule convoys, RSVPs, slots, attendance, and the global events calendar.
-      [Read the guide →](/guides/vtc-events/)
-    </Card>
-    <Card title="News" icon="document">
-      Publish posts on your VTC profile and manage your news feed.
-      [Read the guide →](/guides/vtc-news/)
-    </Card>
-    <Card title="Announcements" icon="external">
-      Send Discord webhook notifications when members join, applications arrive, events change, and more.
-      [Read the guide →](/guides/vtc-announcements/)
-    </Card>
-    <Card title="Discord Verification" icon="external">
-      Link and verify your VTC's Discord server to display it on your public profile.
-      [Read the guide →](/guides/vtc-discord-verification/)
-    </Card>
-    <Card title="Visibility" icon="eye">
-      Control who can find and view your VTC: public, unlisted, and private visibility explained.
-      [Read the guide →](/guides/vtc-visibility/)
-    </Card>
-    <Card title="Activity Log" icon="document">
-      Review audit history for member actions and settings changes.
-      [Read the guide →](/guides/vtc-activity-log/)
-    </Card>
-    <Card title="Disbanding a VTC" icon="warning">
-      Permanently close your VTC and understand what happens to members.
-      [Read the guide →](/guides/vtc-disbanding/)
-    </Card>
-  </CardGrid>
-</HomeSection>
+<ContributorAvatars />
 
 <HomeSection
-  id="discord-bot"
-  title="Discord"
-  description="Link Discord to your account, verify VTC servers, and use Linked Roles on your community server."
-  icon="external"
+	id="quick-start"
+	title="Quick Navigation"
+	description="Jump directly to the main sections of our documentation and platform guides."
+	icon="document"
 >
-  <CardGrid stagger>
-    <Card title="Connection Flows" icon="information">
-      How TrucklineMP uses Discord: linking, Linked Roles, VTC verification, and the main-server Verified VTC role.
-      [Read the guide →](/guides/discord-connection-flows/)
-    </Card>
-    <Card title="Linked Roles" icon="external">
-      Install the TrucklineMP bot and let members opt in to verified roles on your server.
-      [Read the guide →](/guides/discord-linked-roles/)
-    </Card>
-    <Card title="Discord Notifications" icon="email">
-      Receive site notifications as Discord DMs when your account is linked.
-      [Read the guide →](/guides/discord-notifications/)
-    </Card>
-    <Card title="Official Discord Server" icon="discord">
-      How the main TrucklineMP Discord relates to website support and moderation.
-      [Read the guide →](/guides/official-discord-server/)
-    </Card>
-  </CardGrid>
-</HomeSection>
-
-<HomeSection
-  id="developers"
-  title="Developers"
-  description="Build integrations with the TrucklineMP Public API, OAuth, webhooks, and the Developer Console."
-  icon="document"
->
-  <CardGrid stagger>
-    <Card title="Platform Overview" icon="rocket">
-      Enable Developer Mode, create projects, and choose between API keys, OAuth, or webhooks.
-      [Get started →](/guides/developers/overview/)
-    </Card>
-    <Card title="Developer Console" icon="setting">
-      Projects, analytics, audit logs, quotas, playground, and app directory.
-      [Read the guide →](/guides/developers/console/)
-    </Card>
-    <Card title="Public API" icon="document">
-      Authentication, base URLs, rate limits, and an endpoint overview for read-only REST access.
-      [Read the guide →](/guides/developers/public-api/)
-    </Card>
-    <Card title="TypeScript SDK" icon="puzzle">
-      Official `@trucklinemp/sdk` client for Node: install, resources, errors, and webhook verification.
-      [Read the guide →](/guides/developers/sdk/)
-    </Card>
-    <Card title="OAuth Apps" icon="external">
-      Sign users in with TrucklineMP, configure PKCE, test users, and publish your application.
-      [Read the guide →](/guides/developers/oauth-apps/)
-    </Card>
-    <Card title="Webhooks" icon="external">
-      Subscribe to platform events, verify HMAC signatures, and handle automatic retries.
-      [Read the guide →](/guides/developers/webhooks/)
-    </Card>
-  </CardGrid>
-</HomeSection>
-
-<HomeSection
-  id="account-guides"
-  title="Account Guides"
-  description="Manage your TrucklineMP profile, security, connections, support, and personal preferences."
-  icon="user"
->
-  <CardGrid stagger>
-    <Card title="Profile Settings" icon="user">
-      Configure your display name, social handle, profile picture, and social links.
-      [Read the guide →](/guides/profile-settings/)
-    </Card>
-    <Card title="Public Profile" icon="open-book">
-      Profile tabs, badges, activity, forum, and what others can see.
-      [Read the guide →](/guides/public-profile/)
-    </Card>
-    <Card title="User Directory" icon="external">
-      Search and browse TrucklineMP user profiles.
-      [Read the guide →](/guides/user-directory/)
-    </Card>
-    <Card title="Account Security" icon="lock">
-      Protect your account with two-factor authentication, session management, and Developer Mode.
-      [Read the guide →](/guides/account-security/)
-    </Card>
-    <Card title="Connections" icon="external">
-      Link and manage external accounts: Discord, Google, YouTube, and Twitch.
-      [Read the guide →](/guides/connections/)
-    </Card>
-    <Card title="Regional & Timezone" icon="globe">
-      Set your timezone for events, notifications, and localized times.
-      [Read the guide →](/guides/regional-timezone/)
-    </Card>
-    <Card title="Notifications" icon="bell">
-      Use the notification bell and understand Discord DM delivery.
-      [Read the guide →](/guides/notifications/)
-    </Card>
-    <Card title="Appearance & Preferences" icon="setting">
-      Customize themes, manage authorized apps, export data, and configure forum settings.
-      [Read the guide →](/guides/appearance-preferences/)
-    </Card>
-    <Card title="Forum" icon="open-book">
-      Use forum.trucklinemp.com with your TrucklineMP account.
-      [Read the guide →](/guides/forum/)
-    </Card>
-    <Card title="Support Tickets" icon="email">
-      Open tickets for help, player reports, and staff assistance.
-      [Read the guide →](/guides/support-tickets/)
-    </Card>
-    <Card title="Bans & Appeals" icon="warning">
-      Public ban records and how to submit an appeal.
-      [Read the guide →](/guides/bans-appeals/)
-    </Card>
-    <Card title="Account Deletion" icon="trash">
-      Learn how to permanently delete your account and understand what happens when you do.
-      [Read the guide →](/guides/account-deletion/)
-    </Card>
-  </CardGrid>
-</HomeSection>
-
-<HomeSection
-  id="contribute"
-  title="Contribute"
-  description="Help improve TrucklineMP documentation through translations and community contributions."
-  icon="open-book"
->
-  <CardGrid stagger>
-    <Card title="Translate Documentation" icon="open-book">
-      Help make TrucklineMP accessible to everyone by translating documentation into your language.
-      [Read the guide →](/guides/contributing/)
-    </Card>
-    <Card title="Contributors" icon="star">
-      Meet the community contributors and Truckline team behind the documentation.
-      [View contributors →](/guides/contributors/)
-    </Card>
-  </CardGrid>
+	<QuickLinks links={[
+		{ label: 'VTC & VBC Guides', href: '/guides/vtc/creating/' },
+		{ label: 'Account Settings', href: '/guides/account/profile-settings/' },
+		{ label: 'Discord Bot', href: '/guides/discord-bot/connection-flows/' },
+		{ label: 'Developers', href: '/guides/developers/overview/' },
+		{ label: 'VTC Programs', href: '/guides/vtc-programs/verified/' },
+		{ label: 'Contribute', href: '/guides/contribute/contributing/' },
+	]} />
 </HomeSection>

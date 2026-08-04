@@ -1,0 +1,93 @@
+---
+title: Internationalization & Translations
+description: Developer guide to the Next-Intl runtime, catalog structure, translation workspaces, and validation tooling.
+version: 1.0.0
+lastUpdated: 2026-07-20
+---
+
+TrucklineMP uses a unified internationalization (i18n) system built on [Next-Intl](https://next-intl-docs.vercel.app/) to handle multi-language routing, translation catalogs, and translation contributions.
+
+---
+
+## Translation Catalogs
+
+All translatable strings in the Web app are defined in JSON message files organized by locale under `messages/`:
+
+```
+messages/
+├── en/                   # English (Source Catalog)
+│   ├── common.json
+│   ├── account.json
+│   └── ...
+├── pl/                   # Polski (Polish)
+│   ├── common.json
+│   └── ...
+└── de/                   # Deutsch (German)
+    ├── common.json
+    └── ...
+```
+
+### Formatting Messages
+Message keys support standard ICU translation features such as interpolation and plurals:
+```json
+{
+  "welcome": "Welcome back, {username}!",
+  "memberCount": "{count, plural, =0 {No members} =1 {1 member} other {# members}}"
+}
+```
+
+---
+
+## Translation Workspaces
+
+TrucklineMP features built-in workspaces to manage and review translations:
+
+1. **User Workspace (`/translations`)**: Allows community members to submit translation contributions for incomplete keys in their chosen languages.
+2. **Review Workspace (`/translations/[locale]/review`)**: A workflow interface for translation moderators to inspect, approve, or reject translation submissions.
+3. **Translation Admin Console (`/admin/translations`)**: An interface for system administrators to configure supported locales, manage user workspace permissions, and deploy translation catalog updates.
+
+---
+
+## Official Content
+
+System-level content, such as badge definitions, dynamic dropdown options, or official platform rules, are registered in:
+
+[official-content.ts](file:///c:/Users/olus/Desktop/truckline/Web/src/i18n/official-content.ts)
+
+Developers must use the helper functions in this module to register system strings and ensure they are parsed and cataloged by the translation runtime.
+
+---
+
+## CLI Translation Tooling
+
+Several CLI scripts are available to synchronize, validate, and check translation catalogs during development.
+
+### Sync Catalogs
+Synchronizes all target locale catalogs (`messages/pl/*.json`, `messages/de/*.json`, etc.) with the English source catalog structure, adding any missing keys and removing retired keys:
+```bash
+npm run i18n:sync
+```
+
+### Check Catalogs
+Validates that all catalog JSON files are well-formed and contain valid syntax:
+```bash
+npm run i18n:check
+```
+
+### Verify Layout Placeholders
+Verifies that ICU formatting variables (e.g. `{username}`) match perfectly between the English source file and all translated files:
+```bash
+npm run i18n:layout
+```
+
+### Evaluation Coverage
+Calculates the translation percentage coverage metrics across all configured locales:
+```bash
+npm run i18n:coverage
+```
+
+### Verification Suite
+Runs the comprehensive validation checks (Check, Strict Coverage, Layout checks, and unit tests under `src/i18n/__tests__/` to prevent security and cross-site scripting (XSS) injection attacks via translations). This suite is run by the CI pipeline before merging any pull requests:
+```bash
+npm run i18n:verify
+```
