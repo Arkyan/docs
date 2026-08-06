@@ -1,262 +1,72 @@
 ---
 title: Документация TrucklineMP
-description: Официальная документация TrucklineMP — программы VTC, руководства по управлению и настроек пользователя.
-version: 1.2.0
-lastUpdated: 2026-07-08
+description: Официальная документация и руководства для TrucklineMP. Управление виртуальными транспортными и автобусными компаниями, безопасность аккаунта, интеграция с Discord и инструменты разработчика.
+version: 1.3.0
+lastUpdated: 2026-08-06
 template: splash
 hero:
-  tagline: Многопользовательская платформа, созданная для преданного сообщества дальнобойщиков.
+  tagline: Многопользовательская платформа, созданная для сообщества виртуальных транспортных и автобусных компаний.
   image:
     file: ../../../assets/truckline_large_no_shadow.svg
     alt: TrucklineMP
   actions:
-    - text: Руководства VTC
-      link: /ru/guides/vtc/general-settings/
-      icon: right-arrow
-      variant: primary
-    - text: Настройки аккаунта
-      link: /ru/guides/account/profile-settings/
-      icon: setting
-      variant: minimal
-    - text: Участники
-      link: /ru/guides/contribute/contributors/
+    - text: Просмотр руководств
+      link: /ru/guides/vtc/creating/
       icon: open-book
+      variant: primary
+    - text: Инструменты разработчика
+      link: /ru/guides/developers/overview/
+      icon: setting
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import HomeSection from '../../../components/HomeSection.astro';
 import QuickLinks from '../../../components/QuickLinks.astro';
+import ContributorAvatars from '../../../components/ContributorAvatars.astro';
 
-<QuickLinks links={[
-  { label: 'Программы VTC', href: '#vtc-programs' },
-  { label: 'Руководства VTC', href: '#vtc-guides' },
-  { label: 'Discord Бот', href: '#discord-bot' },
-  { label: 'Разработчикам', href: '#developers' },
-  { label: 'Аккаунт', href: '#account-guides' },
-  { label: 'Участие', href: '#contribute' },
-]} />
+<div class="home-statement-section">
+  <p class="home-statement-text">
+	  Мы создаем TrucklineMP, потому что верим, что логистика многопользовательских грузовых и автобусных перевозок должна быть бесшовной, конкурентоспособной и управляемой сообществом. Платформа разработана с нуля, чтобы предоставить виртуальным транспортным компаниям и виртуальным автобусным компаниям инструменты, необходимые для управления профессиональными автопарками, организации крупномасштабных конвоев и объединения своих водителей в едином центре.
+  </p>
+</div>
 
 <HomeSection
-  id="vtc-programs"
-  title="Программы VTC"
-  description="Официальные программы, правила участия и требования к оформлению для виртуальных транспортных компаний на TrucklineMP."
-  icon="check-circle"
+	id="features"
+	title="Создано для вас"
+	description="Всё необходимое для управления, масштабирования и автоматизации вашей виртуальной транспортной или автобусной организации."
+	icon="rocket"
 >
-  <CardGrid stagger>
-    <Card title="Программа Верифицированных VTC" icon="check-circle">
-      Узнайте, как подать заявку на получение статуса верификации, выполнить требования и поддерживать статус проверенной компании.
-      [Читать правила →](/ru/guides/vtc-programs/verified/)
-    </Card>
-    <Card title="Роль Verified VTC в Discord" icon="discord">
-      Запросите роль Verified VTC Manager/Owner на главном сервере Discord TrucklineMP после верификации.
-      [Читать руководство →](/ru/guides/vtc-programs/discord-role/)
-    </Card>
-    <Card title="Партнёрская программа VTC" icon="star">
-      Ознакомьтесь с преимуществами партнёрства и критериями отбора для получения этого элитного статуса.
-      [Подробнее →](/ru/guides/vtc-programs/partnered/)
-    </Card>
-    <Card title="Правила оформления окрасок VTC" icon="document">
-      Требования к дизайну и процесс одобрения пользовательских внутриигровых окрасок для Партнёрских VTC.
-      [Читать требования →](/ru/guides/vtc-programs/livery-guidelines/)
-    </Card>
-  </CardGrid>
+	<CardGrid stagger>
+		<Card title="Управление автопарком" icon="user">
+			Нанимайте водителей, назначайте пользовательские роли, создавайте формы заявок и точно управляйте своим составом.
+		</Card>
+		<Card title="Логистика конвоев" icon="calendar">
+			Планируйте мероприятия в глобальном календаре, распределяйте слоты, отслеживайте посещаемость и держите детали ваших конвоев в порядке.
+		</Card>
+		<Card title="Интеграция с Discord" icon="discord">
+			Подключите свой сервер для автоматической синхронизации рангов, подтверждения владения и трансляции обновлений вебхуков в реальном времени.
+		</Card>
+		<Card title="Экосистема для разработчиков" icon="setting">
+			Интегрируйте собственные инструменты, используя TypeScript SDK, получайте вебхуки в реальном времени и запрашивайте публичную статистику.
+		</Card>
+	</CardGrid>
 </HomeSection>
 
-<HomeSection
-  id="vtc-guides"
-  title="Руководства VTC"
-  description="Пошаговые руководства по созданию, управлению и развитию вашей VTC в TrucklineMP."
-  icon="setting"
->
-  <CardGrid stagger>
-    <Card title="Создание VTC" icon="rocket">
-      Требования, мастер создания и что происходит после запуска.
-      [Читать руководство →](/ru/guides/vtc/creating/)
-    </Card>
-    <Card title="Каталог VTC" icon="eye">
-      Просматривайте, ищите и фильтруйте компании в публичном каталоге.
-      [Читать руководство →](/ru/guides/vtc/directory/)
-    </Card>
-    <Card title="Общие настройки" icon="setting">
-      Настройка идентификационных данных VTC, социальных сетей, требований к набору и базовых параметров.
-      [Читать руководство →](/ru/guides/vtc/general-settings/)
-    </Card>
-    <Card title="Роли и права" icon="user">
-      Создание ролей, распределение прав и выстраивание иерархии вашей VTC.
-      [Читать руководство →](/ru/guides/vtc/roles-permissions/)
-    </Card>
-    <Card title="Управление участниками" icon="user">
-      Работа со списком участников, выдача ролей, заметки персонала и управление действиями участников.
-      [Читать руководство →](/ru/guides/vtc/member-management/)
-    </Card>
-    <Card title="Набор персонала" icon="document">
-      Настройка анкет, пользовательские вопросы и управление процессом подачи заявок в вашу VTC.
-      [Читать руководство →](/ru/guides/vtc/recruitment/)
-    </Card>
-    <Card title="Мероприятия" icon="external">
-      Планируйте конвои, заявки на участие, слоты, посещаемость и глобальный календарь мероприятий.
-      [Читать руководство →](/ru/guides/vtc/events/)
-    </Card>
-    <Card title="Новости" icon="document">
-      Публикуйте сообщения в профиле вашей VTC и управляйте лентой новостей.
-      [Читать руководство →](/ru/guides/vtc/news/)
-    </Card>
-    <Card title="Оповещения" icon="external">
-      Отправляйте уведомления через вебхуки Discord, когда присоединяются участники, поступают заявки, меняются мероприятия и многое другое.
-      [Читать руководство →](/ru/guides/vtc/announcements/)
-    </Card>
-    <Card title="Верификация Discord" icon="external">
-      Привяжите и верифицируйте Discord-сервер вашей VTC, чтобы он отображался в вашем публичном профиле.
-      [Читать руководство →](/ru/guides/vtc/discord-verification/)
-    </Card>
-    <Card title="Видимость" icon="eye">
-      Управляйте тем, кто может найти и просмотреть вашу VTC: объяснение публичной, скрытой и приватной видимости.
-      [Читать руководство →](/ru/guides/vtc/visibility/)
-    </Card>
-    <Card title="Журнал активности" icon="document">
-      Просматривайте историю аудита действий участников и изменений настроек.
-      [Читать руководство →](/ru/guides/vtc/activity-log/)
-    </Card>
-    <Card title="Расформирование VTC" icon="warning">
-      Безвозвратно закройте вашу VTC и узнайте, что происходит с участниками.
-      [Читать руководство →](/ru/guides/vtc/disbanding/)
-    </Card>
-  </CardGrid>
-</HomeSection>
+<ContributorAvatars />
 
 <HomeSection
-  id="discord-bot"
-  title="Discord Бот"
-  description="Привяжите Discord к вашему аккаунту, верифицируйте серверы VTC и используйте связанные роли на вашем сервере сообщества."
-  icon="external"
+	id="quick-start"
+	title="Быстрая навигация"
+	description="Перейдите прямо к основным разделам нашей документации и руководствам платформы."
+	icon="document"
 >
-  <CardGrid stagger>
-    <Card title="Варианты подключения" icon="information">
-      Как TrucklineMP использует Discord: привязка, связанные роли, верификация VTC и роль Verified VTC на главном сервере.
-      [Читать руководство →](/ru/guides/discord-bot/connection-flows/)
-    </Card>
-    <Card title="Связанные роли" icon="external">
-      Установите бота TrucklineMP и позвольте участникам получать верифицированные роли на вашем сервере.
-      [Читать руководство →](/ru/guides/discord-bot/linked-roles/)
-    </Card>
-    <Card title="Уведомления Discord" icon="email">
-      Получайте уведомления сайта в виде личных сообщений Discord, если ваш аккаунт привязан.
-      [Читать руководство →](/ru/guides/discord-bot/notifications/)
-    </Card>
-    <Card title="Официальный сервер Discord" icon="discord">
-      Как основной Discord TrucklineMP связан с веб-сайтом, поддержкой и модерацией.
-      [Читать руководство →](/ru/guides/discord-bot/official-server/)
-    </Card>
-  </CardGrid>
-</HomeSection>
-
-<HomeSection
-  id="developers"
-  title="Разработчикам"
-  description="Создавайте интеграции с использованием публичного API TrucklineMP, OAuth, вебхуков и Консоли разработчика."
-  icon="document"
->
-  <CardGrid stagger>
-    <Card title="Обзор платформы" icon="rocket">
-      Включите Режим разработчика, создавайте проекты и выбирайте между ключами API, OAuth или вебхуками.
-      [Начать работу →](/ru/guides/developers/overview/)
-    </Card>
-    <Card title="Консоль разработчика" icon="setting">
-      Проекты, аналитика, журналы аудита, квоты, тестовая среда и каталог приложений.
-      [Читать руководство →](/ru/guides/developers/console/)
-    </Card>
-    <Card title="Публичный API" icon="document">
-      Аутентификация, базовые URL-адреса, лимиты запросов и обзор эндпоинтов для REST-доступа только для чтения.
-      [Читать руководство →](/ru/guides/developers/public-api/)
-    </Card>
-    <Card title="TypeScript SDK" icon="puzzle">
-          Официальный клиент `@trucklinemp/sdk` для Node: установка, ресурсы, ошибки и проверка вебхуков.
-      [Читать руководство →](/ru/guides/developers/sdk/)
-    </Card>
-    <Card title="Приложения OAuth" icon="external">
-      Авторизация пользователей через TrucklineMP, настройка PKCE, тестовые пользователи и публикация вашего приложения.
-      [Читать руководство →](/ru/guides/developers/oauth-apps/)
-    </Card>
-    <Card title="Вебхуки" icon="external">
-      Подписывайтесь на события платформы, проверяйте подписи HMAC и управляйте автоматическими повторными попытками.
-      [Читать руководство →](/ru/guides/developers/webhooks/)
-    </Card>
-  </CardGrid>
-</HomeSection>
-
-<HomeSection
-  id="account-guides"
-  title="Настройки аккаунта"
-  description="Управляйте своим профилем TrucklineMP, безопасностью, подключениями, поддержкой и личными предпочтениями."
-  icon="user"
->
-  <CardGrid stagger>
-    <Card title="Настройки профиля" icon="user">
-      Настройте отображаемое имя, имя пользователя, аватар и социальные ссылки.
-      [Читать руководство →](/ru/guides/account/profile-settings/)
-    </Card>
-    <Card title="Публичный профиль" icon="open-book">
-      Вкладки профиля, значки, активность, форум и то, что могут видеть другие.
-      [Читать руководство →](/ru/guides/account/public-profile/)
-    </Card>
-    <Card title="Каталог пользователей" icon="external">
-      Ищите и просматривайте профили пользователей TrucklineMP.
-      [Читать руководство →](/ru/guides/account/user-directory/)
-    </Card>
-    <Card title="Безопасность аккаунта" icon="lock">
-      Защитите свой аккаунт с помощью двухфакторной аутентификации, управление сессиями и Режим разработчика.
-      [Читать руководство →](/ru/guides/account/security/)
-    </Card>
-    <Card title="Подключения" icon="external">
-      Связывайте и управляйте внешними аккаунтами: Discord, Google, YouTube и Twitch.
-      [Читать руководство →](/ru/guides/account/connections/)
-    </Card>
-    <Card title="Регион и часовой пояс" icon="globe">
-      Настройте свой часовой пояс для мероприятий, уведомлений и местного времени.
-      [Читать руководство →](/ru/guides/account/regional-timezone/)
-    </Card>
-    <Card title="Уведомления" icon="bell">
-      Используйте колокольчик уведомлений и узнайте о доставке личных сообщений в Discord.
-      [Читать руководство →](/ru/guides/account/notifications/)
-    </Card>
-    <Card title="Внешний вид и предпочтения" icon="setting">
-      Настраивайте темы, управляйте авторизованными приложениями, экспортируйте данные и настраивайте параметры форума.
-      [Читать руководство →](/ru/guides/account/appearance-preferences/)
-    </Card>
-    <Card title="Форум" icon="open-book">
-      Используйте forum.trucklinemp.com с вашим аккаунтом TrucklineMP.
-      [Читать руководство →](/ru/guides/account/forum/)
-    </Card>
-    <Card title="Тикеты поддержки" icon="email">
-      Открывайте тикеты для получения помощи, жалоб на игроков и помощи персонала.
-      [Читать руководство →](/ru/guides/account/support-tickets/)
-    </Card>
-    <Card title="Баны и апелляции" icon="warning">
-      Публичные записи о банах и как подать апелляцию.
-      [Читать руководство →](/ru/guides/account/bans-appeals/)
-    </Card>
-    <Card title="Удаление аккаунта" icon="trash">
-      Узнайте, как навсегда удалить свой аккаунт, и поймите, что произойдет после этого.
-      [Читать руководство →](/ru/guides/account/deletion/)
-    </Card>
-  </CardGrid>
-</HomeSection>
-
-<HomeSection
-  id="contribute"
-  title="Участие"
-  description="Помогите улучшить документацию TrucklineMP с помощью переводов и вклада сообщества."
-  icon="open-book"
->
-  <CardGrid stagger>
-    <Card title="Перевод документации" icon="open-book">
-      Помогите сделать TrucklineMP доступным для всех, переводя документацию на свой язык.
-      [Читать руководство →](/ru/guides/contribute/contributing/)
-    </Card>
-    <Card title="Участники" icon="star">
-      Познакомьтесь с участниками сообщества и командой Truckline, стоящими за созданием документации.
-      [Посмотреть участников →](/ru/guides/contribute/contributors/)
-    </Card>
-  </CardGrid>
+	<QuickLinks links={[
+		{ label: 'Руководства для транспортных и автобусных компаний', href: '/ru/guides/vtc/creating/' },
+		{ label: 'Настройки аккаунта', href: '/ru/guides/account/profile-settings/' },
+		{ label: 'Discord бот', href: '/ru/guides/discord-bot/connection-flows/' },
+		{ label: 'Разработчикам', href: '/ru/guides/developers/overview/' },
+		{ label: 'Программы для компаний', href: '/ru/guides/vtc-programs/verified/' },
+		{ label: 'Сотрудничество', href: '/ru/guides/contribute/contributing/' },
+	]} />
 </HomeSection>
