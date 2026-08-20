@@ -1,72 +1,60 @@
 ---
 title: TrucklineMP Documentation
-description: Official documentation and guides for TrucklineMP. VTC/VBC management, account security, Discord integration, and developer tools.
+description: Official documentation for TrucklineMP - web docs, web SDK, and (soon) game docs and SDK.
 version: 1.3.0
-lastUpdated: 2026-07-20
+lastUpdated: 2026-08-20
 template: splash
 hero:
   tagline: The multiplayer platform built for the virtual trucking and coach community.
   image:
     file: ../../assets/truckline_large_no_shadow.svg
     alt: TrucklineMP
-  actions:
-    - text: Browse the Guides
-      link: /guides/vtc/creating/
-      icon: open-book
-      variant: primary
-    - text: Developer Tools
-      link: /guides/developers/overview/
-      icon: setting
-      variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-import HomeSection from '../../components/HomeSection.astro';
-import QuickLinks from '../../components/QuickLinks.astro';
+import ModuleGrid from '../../components/ModuleGrid.astro';
+import ModuleCard from '../../components/ModuleCard.astro';
 import ContributorAvatars from '../../components/ContributorAvatars.astro';
 
 <div class="home-statement-section">
+	<p class="home-eyebrow">Documentation Hub</p>
 	<p class="home-statement-text">
-		We build TrucklineMP because we believe multiplayer trucking and coach logistics should be seamless, competitive, and community driven. The platform is designed from the ground up to give Virtual Trucking Companies and Virtual Bus Companies the tools they need to operate professional fleets, organize large-scale convoys, and connect their drivers under a single hub.
+		Pick a module below to get started. Each one has its own docs, scoped to keep you where you need to be.
 	</p>
 </div>
 
-<HomeSection
-	id="features"
-	title="Built for You"
-	description="Everything you need to run, scale, and automate your virtual trucking or coach organization."
-	icon="rocket"
->
-	<CardGrid stagger>
-		<Card title="Fleet Management" icon="user">
-			Recruit drivers, assign custom roles, design application forms, and manage your roster with precision.
-		</Card>
-		<Card title="Convoy Logistics" icon="calendar">
-			Schedule events on the global calendar, allocate slots, track attendance, and keep your convoy details organized.
-		</Card>
-		<Card title="Discord Integration" icon="discord">
-			Connect your server to sync ranks automatically, verify ownership, and broadcast real-time webhook updates.
-		</Card>
-		<Card title="Developer Ecosystem" icon="setting">
-			Integrate your own tools using the TypeScript SDK, receive real-time webhooks, and query public statistics.
-		</Card>
-	</CardGrid>
-</HomeSection>
+<ModuleGrid>
+	<ModuleCard
+		title="Web Docs"
+		tag="Platform"
+		icon="open-book"
+		status="available"
+		href="/web-docs/vtc/creating/"
+		description="Guides for running your VTC or VBC - recruitment, events, Discord integration, and account management."
+	/>
+	<ModuleCard
+		title="Web API"
+		tag="Developers"
+		icon="setting"
+		status="available"
+		href="/web-api/overview/"
+		description="Integrate with TrucklineMP - the public API, TypeScript SDK, OAuth apps, and webhooks."
+	/>
+	<ModuleCard
+		title="Game Docs"
+		tag="In-Game"
+		icon="rocket"
+		status="soon"
+		href="/game-docs/"
+		description="Documentation for the TrucklineMP in-game companion mod."
+	/>
+	<ModuleCard
+		title="Game SDK"
+		tag="Developers"
+		icon="puzzle"
+		status="soon"
+		href="/game-sdk/"
+		description="Build tools and mods on top of the TrucklineMP game integration."
+	/>
+</ModuleGrid>
 
 <ContributorAvatars />
-
-<HomeSection
-	id="quick-start"
-	title="Quick Navigation"
-	description="Jump directly to the main sections of our documentation and platform guides."
-	icon="document"
->
-	<QuickLinks links={[
-		{ label: 'VTC & VBC Guides', href: '/guides/vtc/creating/' },
-		{ label: 'Account Settings', href: '/guides/account/profile-settings/' },
-		{ label: 'Discord Bot', href: '/guides/discord-bot/connection-flows/' },
-		{ label: 'Developers', href: '/guides/developers/overview/' },
-		{ label: 'VTC Programs', href: '/guides/vtc-programs/verified/' },
-		{ label: 'Contribute', href: '/guides/contribute/contributing/' },
-	]} />
-</HomeSection>

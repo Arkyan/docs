@@ -1,0 +1,21 @@
+---
+---
+
+<div class="module-grid">
+	<slot />
+</div>
+
+<style>
+	.module-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		margin-block: 2rem 3rem;
+	}
+
+	@media (max-width: 50rem) {
+		.module-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

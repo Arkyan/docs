@@ -1,0 +1,35 @@
+---
+title: VTC Integrations
+description: Create embed tokens and embed your company's upcoming events on external sites with the VTC Integrations tab on TrucklineMP.
+version: 1.0.0
+lastUpdated: 2026-08-20
+---
+
+The Integrations tab in your company management panel creates embed tokens for showing your upcoming events on an external site, such as your VTC's own website or a linked community page.
+
+Open **Manage** then **Integrations** from the sidebar (`/vtc/@handle/manage/integrations`). Staff with the `events.manage` permission can create and revoke tokens.
+
+## How embeds work
+
+An embed is an iframe widget that lists your upcoming events. It is served from TrucklineMP and updates automatically as events change. Visitors do not need an account to view the widget.
+
+## Creating an embed token
+
+1. Open **Integrations**.
+2. Click **Create Token**, give it a label, and generate it.
+3. Set how many days of upcoming events the widget should include.
+4. Copy the generated iframe snippet and paste it into your external page.
+
+## Revoking a token
+
+Tokens can be revoked at any time from the same tab. Revoking a token immediately disables every embed that uses it.
+
+## Preview
+
+The Integrations tab shows a live preview of the widget as you configure it, so you can check the appearance before copying the snippet.
+
+## Related guides
+
+- [VTC Events](/web-docs/vtc/events/) - the events shown by the embed
+- [VTC Announcements](/web-docs/vtc/announcements/) - send event updates to Discord instead
+- [Roles & Permissions](/web-docs/vtc/roles-permissions/) - who can create embed tokens

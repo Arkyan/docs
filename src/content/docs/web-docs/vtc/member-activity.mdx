@@ -1,0 +1,37 @@
+---
+title: VTC Member Activity
+description: Track member activity in your VTC or VBC - activity statuses, inactivity policy, and leave requests on TrucklineMP.
+version: 1.0.0
+lastUpdated: 2026-08-20
+---
+
+The Member Activity page in your company management panel shows how active each member is and lets staff manage inactivity policy and leave requests. Open it from the sidebar (`/vtc/@handle/manage/member-activity`).
+
+Access requires the `management.members.view_activity` permission. Owners always have access.
+
+## Activity statuses
+
+Each member has an activity status based on their recent participation:
+
+| Status | Meaning |
+|--------|---------|
+| Active | Participated recently |
+| At risk | Inactive for a while and close to the inactivity threshold |
+| Inactive | Inactive for longer than the allowed period |
+| On leave | Covered by an approved leave request |
+| Exempt | Exempt from activity requirements |
+
+The page shows days since each member was last active and how many events they joined in the review period.
+
+## Inactivity policy
+
+Staff can set the maximum number of inactive days allowed before a member is marked inactive. Members marked inactive can be removed from the company or given a leave request to protect their membership.
+
+## Leave requests
+
+Members can request leave if they cannot participate for a while. Staff review pending requests and approve or reject them. Approved leave protects the member from the inactivity policy until the leave ends.
+
+## Related guides
+
+- [Member Management](/web-docs/vtc/member-management/) - manage the member roster
+- [Activity Log](/web-docs/vtc/activity-log/) - the audit trail of management actions

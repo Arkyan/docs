@@ -1,0 +1,32 @@
+---
+// Renders the interactive Swagger UI reference for the TrucklineMP Public API.
+// The swagger-ui-dist static assets are copied into /public/swagger-ui-dist at
+// build time so they are served as static files and loaded with the standard
+// Swagger UI pattern (swagger-ui-bundle.js + swagger-ui.css).
+interface Props {
+  specUrl: string;
+}
+
+const { specUrl } = Astro.props;
+---
+
+<div id="swagger-ui" class="swagger-shell" />
+
+<link rel="stylesheet" href="/swagger-ui-dist/swagger-ui.css" />
+
+<script is:inline src="/swagger-ui-dist/swagger-ui-bundle.js"></script>
+<script define:vars={{ specUrl }}>
+  window.SwaggerUIBundle({
+    url: specUrl,
+    domNode: document.getElementById("swagger-ui"),
+    deepLinking: true,
+    persistAuthorization: true,
+    displayOperationId: false,
+    defaultModelsExpandDepth: 1,
+    defaultModelExpandDepth: 1,
+    docExpansion: "list",
+    filter: true,
+    tryItOutEnabled: true,
+    showExtensions: false,
+  });
+</script>

@@ -1,6 +1,6 @@
 ---
 title: TypeScript SDK
-description: Official @trucklinemp/sdk guide — Public API client, typed models, pagination, OAuth, webhooks, errors, and configuration.
+description: Official @trucklinemp/sdk guide - Public API client, typed models, pagination, OAuth, webhooks, errors, and configuration.
 version: 2.0.0
 lastUpdated: 2026-07-10
 ---
@@ -93,9 +93,8 @@ new Truckline({
 | Option | Base URL |
 |--------|----------|
 | Default | `https://api.trucklinemp.com` |
-| Local Web | `http://localhost:3000/api/v1` |
 
-Do **not** append an extra `/v1` on `api.trucklinemp.com`. See [Public API base URLs](/guides/developers/public-api/#base-urls).
+Do **not** append an extra `/v1` on `api.trucklinemp.com`. See [Public API base URLs](/web-api/public-api/#base-urls).
 
 ### Rate limit info
 
@@ -227,11 +226,11 @@ Failed HTTP responses throw `TrucklineError`:
 
 Default retries: up to `maxRetries` (default `1`) on **429** and **5xx**, with jitter. Set `maxRetries: 0` to disable. Network failures also retry when `maxRetries > 0`.
 
-Platform limit tables: [Rate limits](/guides/developers/public-api/#rate-limits).
+Platform limit tables: [Rate limits](/web-api/public-api/#rate-limits).
 
 ## OAuth
 
-Use OAuth when you need data **as a signed-in user** (not with an API key alone). Full product flow: [OAuth Apps](/guides/developers/oauth-apps/).
+Use OAuth when you need data **as a signed-in user** (not with an API key alone). Full product flow: [OAuth Apps](/web-api/oauth-apps/).
 
 ```ts
 import { TrucklineOAuth, generatePkce } from "@trucklinemp/sdk/oauth";
@@ -261,7 +260,7 @@ const refreshed = await oauth.refresh(tokens.refresh_token!);
 await oauth.revoke(tokens.access_token, "access_token");
 ```
 
-Redirect URI rules (localhost / private LAN / https): [OAuth Apps — redirect URIs](/guides/developers/oauth-apps/#redirect-uri-rules).
+Redirect URI rules (localhost / private LAN / https): [OAuth Apps - redirect URIs](/web-api/oauth-apps/#redirect-uri-rules).
 
 `userinfo` with `profile` includes `steam_id` when linked.
 
@@ -302,7 +301,7 @@ Low-level:
 verifyWebhookSignature(rawBody, req.headers[WEBHOOK_SIGNATURE_HEADER], secret);
 ```
 
-Event catalog and retries: [Webhooks](/guides/developers/webhooks/).
+Event catalog and retries: [Webhooks](/web-api/webhooks/).
 
 ## Examples
 
@@ -322,20 +321,20 @@ In the SDK repository (after `npm run build`):
 
 ## Privacy
 
-API traffic with your key is subject to the same logging and rate limiting as raw HTTP. See the [Privacy Policy](https://id.trucklinemp.com/legal/privacy) and [Public API](/guides/developers/public-api/) telemetry notes.
+API traffic with your key is subject to the same logging and rate limiting as raw HTTP. See the [Privacy Policy](https://id.trucklinemp.com/legal/privacy) and [Public API](/web-api/public-api/) telemetry notes.
 
 ## Contributing
 
-Package layout, PRs, and adding methods: [Contributing to the TypeScript SDK](/guides/developers/sdk-contributing/).
+Package layout, PRs, and adding methods: [Contributing to the TypeScript SDK](/web-api/sdk-contributing/).
 
 ## Related guides
 
 | Guide | Topics |
 |-------|--------|
-| [Platform Overview](/guides/developers/overview/) | Developer Mode, integration types |
-| [Public API](/guides/developers/public-api/) | Auth, base URLs, rate limits, endpoint map |
-| [OAuth Apps](/guides/developers/oauth-apps/) | Authorize, tokens, scopes, redirect URIs |
-| [Webhooks](/guides/developers/webhooks/) | Events, signatures, retries |
-| [Developer Console](/guides/developers/console/) | Projects, keys, playground |
-| [Contributing to the SDK](/guides/developers/sdk-contributing/) | Local setup and PRs |
-| [Leaked API Keys & Secrets](/guides/developers/leaked-secrets/) | Rotation after exposure |
+| [Platform Overview](/web-api/overview/) | Developer Mode, integration types |
+| [Public API](/web-api/public-api/) | Auth, base URLs, rate limits, endpoint map |
+| [OAuth Apps](/web-api/oauth-apps/) | Authorize, tokens, scopes, redirect URIs |
+| [Webhooks](/web-api/webhooks/) | Events, signatures, retries |
+| [Developer Console](/web-api/console/) | Projects, keys, playground |
+| [Contributing to the SDK](/web-api/sdk-contributing/) | Local setup and PRs |
+| [Leaked API Keys & Secrets](/web-api/leaked-secrets/) | Rotation after exposure |

@@ -1,13 +1,13 @@
 ---
 title: Contributing to the TypeScript SDK
-description: How to contribute to @trucklinemp/sdk — local setup, package layout, adding endpoints, PR standards, and releases.
+description: How to contribute to @trucklinemp/sdk - local setup, package layout, adding endpoints, PR standards, and releases.
 version: 1.1.0
 lastUpdated: 2026-07-10
 ---
 
-Thank you for helping improve `@trucklinemp/sdk`, the official TypeScript and JavaScript toolkit for the TrucklineMP [Public API](/guides/developers/public-api/), OAuth, and webhooks.
+Thank you for helping improve `@trucklinemp/sdk`, the official TypeScript and JavaScript toolkit for the TrucklineMP [Public API](/web-api/public-api/), OAuth, and webhooks.
 
-This guide is for people who want to change the **SDK package itself** (new methods, bug fixes, types, docs in the repo). If you only need to **use** the SDK in an app, see [TypeScript SDK](/guides/developers/sdk/) instead.
+This guide is for people who want to change the **SDK package itself** (new methods, bug fixes, types, docs in the repo). If you only need to **use** the SDK in an app, see [TypeScript SDK](/web-api/sdk/) instead.
 
 | | |
 |---|---|
@@ -19,7 +19,7 @@ This guide is for people who want to change the **SDK package itself** (new meth
 ## Before you start
 
 1. Open an [issue](https://github.com/trucklinemp/sdk/issues) for larger changes so maintainers can align on design.
-2. Check the [OpenAPI spec](https://trucklinemp.com/api/v1/openapi.json) and [Public API guide](/guides/developers/public-api/) for the real HTTP contract. The SDK is a thin client — it should mirror public routes, not invent private ones.
+2. Check the [OpenAPI spec](https://trucklinemp.com/api/v1/openapi.json) and [Public API guide](/web-api/public-api/) for the real HTTP contract. The SDK is a thin client - it should mirror public routes, not invent private ones.
 3. Prefer small, focused pull requests over large rewrites.
 
 ## Requirements
@@ -31,7 +31,6 @@ This guide is for people who want to change the **SDK package itself** (new meth
 Optional for manual integration checks:
 
 - A TrucklineMP [Developer Console](https://trucklinemp.com/developer) API key
-- Local Public API at `http://localhost:3000/api/v1` if you run the web app nearby
 
 ## Clone and install
 
@@ -91,7 +90,7 @@ sdk/
 - **Thin wrappers** over HTTP paths. Prefer `this.http.get("/users/…")` over heavy mapping.
 - **Encode path segments** with `encodeURIComponent`.
 - **Pass query objects** through `withOpts` so `RequestOptions` stay consistent.
-- **Types live in `models.ts`** — keep them aligned with public API / OpenAPI.
+- **Types live in `models.ts`** - keep them aligned with public API / OpenAPI.
 - **Webhook crypto stays in `webhooks.ts`** (Node-only). Prefer `@trucklinemp/sdk/webhooks` for server handlers.
 - **OAuth lives in `oauth.ts`** and the `/oauth` subpath export.
 - Breaking changes to method names / options follow semver; optional response fields can grow without a major bump.
@@ -114,7 +113,7 @@ getBySteam(steamId: string, options?: RequestOptions) {
 ```
 
 3. If you introduce a **new resource class**, construct it on `Truckline` in `src/client.ts` and export any new types from `src/index.ts` only if callers need them.
-4. Update the consumer docs page ([TypeScript SDK](/guides/developers/sdk/)) when the change is user-facing.
+4. Update the consumer docs page ([TypeScript SDK](/web-api/sdk/)) when the change is user-facing.
 5. `npm run build && npm run typecheck`.
 
 ### Escape hatch
@@ -135,7 +134,6 @@ import { Truckline } from "trucklinemp-sdk"; // or import from your local checko
 
 const tl = new Truckline({
   apiKey: process.env.TRUCKLINE_API_KEY,
-  // baseUrl: "http://localhost:3000/api/v1",
 });
 
 console.log(await tl.meta.version());
@@ -181,11 +179,11 @@ Contributors do not need npm publish rights. Maintainers cut releases after revi
 
 | Resource | Link |
 |----------|------|
-| Using the SDK | [TypeScript SDK](/guides/developers/sdk/) |
-| Public API | [Public API](/guides/developers/public-api/) |
-| Webhooks | [Webhooks](/guides/developers/webhooks/) |
+| Using the SDK | [TypeScript SDK](/web-api/sdk/) |
+| Public API | [Public API](/web-api/public-api/) |
+| Webhooks | [Webhooks](/web-api/webhooks/) |
 | Developer Console | [trucklinemp.com/developer](https://trucklinemp.com/developer) |
 | OpenAPI | [openapi.json](https://trucklinemp.com/api/v1/openapi.json) |
-| Docs translations | [Contributing translations](/guides/contribute/contributing/) |
+| Docs translations | [Contributing translations](/web-docs/contribute/contributing/) |
 
 Questions about platform APIs (not just the SDK package) are welcome via support or the developer channels listed on trucklinemp.com.

@@ -1,7 +1,4 @@
 ---
-import { fetchContributorBadgeProgram } from '../lib/truckline-api';
-
-// Fetch GitHub contributors at build time
 let githubContributors = [];
 try {
 	const response = await fetch('https://api.github.com/repos/TrucklineMP/docs/contributors?per_page=100', {
@@ -17,23 +14,10 @@ try {
 	console.error('Failed to fetch GitHub contributors:', e);
 }
 
-// Fetch Recognized contributors
-let recognizedContributors = [];
-try {
-	const program = await fetchContributorBadgeProgram();
-	recognizedContributors = program?.recipients ?? [];
-} catch (e) {
-	console.error('Failed to fetch recognized contributors:', e);
-}
-
-// Limits for display in the overlapping row
 const MAX_DISPLAY = 15;
 
 const githubDisplay = githubContributors.slice(0, MAX_DISPLAY);
 const githubOverflow = githubContributors.length > MAX_DISPLAY ? githubContributors.length - MAX_DISPLAY : 0;
-
-const recognizedDisplay = recognizedContributors.slice(0, MAX_DISPLAY);
-const recognizedOverflow = recognizedContributors.length > MAX_DISPLAY ? recognizedContributors.length - MAX_DISPLAY : 0;
 ---
 
 <div class="contributors-container">
@@ -46,80 +30,26 @@ const recognizedOverflow = recognizedContributors.length > MAX_DISPLAY ? recogni
 	<h2 class="section-heading">Made Possible by You</h2>
 	<p class="section-subheading">TrucklineMP is powered by passion and our active community.</p>
 
-	<div class="tabs-control">
-		<button type="button" class="tab-btn active" data-tab="recognized">Recognized</button>
-		<button type="button" class="tab-btn" data-tab="github">Contributors</button>
-	</div>
-
-	<!-- Recognized Tab Panel -->
-	<div class="tab-panel active" id="panel-recognized">
-		{recognizedContributors.length > 0 ? (
-			<div class="avatar-strip-wrapper">
-				<div class="avatar-strip">
-					{recognizedDisplay.map((member) => {
-						const avatar = member.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=1a1a1a&color=c8ff00`;
-						return (
-							<a href={member.profileUrl} target="_blank" rel="noopener noreferrer" class="avatar-link" title={member.name}>
-								<img src={avatar} alt={member.name} width="64" height="64" class="avatar-img" loading="lazy" />
-							</a>
-						);
-					})}
-					{recognizedOverflow > 0 && (
-						<div class="avatar-overflow">
-							+{recognizedOverflow}
-						</div>
-					)}
-				</div>
-				<p class="caption-text">Some of our recognized community members.</p>
+	{githubContributors.length > 0 ? (
+		<div class="avatar-strip-wrapper">
+			<div class="avatar-strip">
+				{githubDisplay.map((user: any) => (
+					<a href={user.html_url} target="_blank" rel="noopener noreferrer" class="avatar-link" title={user.login}>
+						<img src={user.avatar_url} alt={user.login} width="64" height="64" class="avatar-img" loading="lazy" />
+					</a>
+				))}
+				{githubOverflow > 0 && (
+					<div class="avatar-overflow">
+						+{githubOverflow}
+					</div>
+				)}
 			</div>
-		) : (
-			<p class="empty-state">No recognized contributors yet. Outstanding members are listed here when awarded.</p>
-		)}
-	</div>
-
-	<!-- GitHub Tab Panel -->
-	<div class="tab-panel" id="panel-github">
-		{githubContributors.length > 0 ? (
-			<div class="avatar-strip-wrapper">
-				<div class="avatar-strip">
-					{githubDisplay.map((user: any) => (
-						<a href={user.html_url} target="_blank" rel="noopener noreferrer" class="avatar-link" title={user.login}>
-							<img src={user.avatar_url} alt={user.login} width="64" height="64" class="avatar-img" loading="lazy" />
-						</a>
-					))}
-					{githubOverflow > 0 && (
-						<div class="avatar-overflow">
-							+{githubOverflow}
-						</div>
-					)}
-				</div>
-				<p class="caption-text">Some of our open source documentation contributors.</p>
-			</div>
-		) : (
-			<p class="empty-state">No GitHub contributors found.</p>
-		)}
-	</div>
+			<p class="caption-text">Some of our open source documentation contributors.</p>
+		</div>
+	) : (
+		<p class="empty-state">No GitHub contributors found.</p>
+	)}
 </div>
-
-<script>
-	const buttons = document.querySelectorAll('.tab-btn');
-	const panels = document.querySelectorAll('.tab-panel');
-
-	buttons.forEach((btn) => {
-		btn.addEventListener('click', () => {
-			const tabName = btn.getAttribute('data-tab');
-
-			buttons.forEach((b) => b.classList.remove('active'));
-			panels.forEach((p) => p.classList.remove('active'));
-
-			btn.classList.add('active');
-			const targetPanel = document.getElementById(`panel-${tabName}`);
-			if (targetPanel) {
-				targetPanel.classList.add('active');
-			}
-		});
-	});
-</script>
 
 <style>
 	.contributors-container {
@@ -153,49 +83,9 @@ const recognizedOverflow = recognizedContributors.length > MAX_DISPLAY ? recogni
 	.section-subheading {
 		font-size: var(--sl-text-base);
 		color: var(--sl-color-gray-2);
-		margin: 0 0 2rem !important;
+		margin: 0 0 2.5rem !important;
 		max-width: 32rem;
 		margin-inline: auto !important;
-	}
-
-	.tabs-control {
-		display: inline-flex;
-		gap: 0.5rem;
-		padding: 0.35rem;
-		background: #080808;
-		border: 1px solid var(--sl-color-hairline);
-		margin-bottom: 2.5rem;
-	}
-
-	.tab-btn {
-		background: transparent;
-		border: none;
-		color: var(--sl-color-gray-2);
-		font-family: var(--sl-font-mono);
-		font-size: var(--sl-text-xs);
-		font-weight: 700;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-		padding: 0.5rem 1rem;
-		cursor: pointer;
-		transition: all 0.2s ease;
-	}
-
-	.tab-btn:hover {
-		color: var(--sl-color-white);
-	}
-
-	.tab-btn.active {
-		background: var(--sl-color-accent);
-		color: #000;
-	}
-
-	.tab-panel {
-		display: none;
-	}
-
-	.tab-panel.active {
-		display: block;
 	}
 
 	.avatar-strip-wrapper {

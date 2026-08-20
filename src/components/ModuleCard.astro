@@ -1,0 +1,144 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+
+interface Props {
+	title: string;
+	description: string;
+	icon: string;
+	href: string;
+	status?: 'available' | 'soon';
+	tag: string;
+}
+
+const { title, description, icon, href, status = 'available', tag } = Astro.props;
+---
+
+<a class="module-card" data-status={status} href={href}>
+	<div class="module-card-top">
+		<span class="module-icon">
+			<Icon name={icon} size="1.5rem" />
+		</span>
+		<span class="module-status">{status === 'soon' ? 'Coming soon' : 'Available'}</span>
+	</div>
+
+	<p class="module-tag">{tag}</p>
+	<h2 class="module-title">{title}</h2>
+	<p class="module-description">{description}</p>
+
+	<span class="module-cta">
+		Explore
+		<Icon name="right-arrow" size="1rem" />
+	</span>
+</a>
+
+<style>
+	.module-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 0.85rem;
+		padding: 1.75rem;
+		text-decoration: none;
+		color: inherit;
+		background: var(--sl-color-gray-6);
+		border: 1px solid var(--sl-color-hairline);
+		border-top: 2px solid var(--sl-color-hairline);
+		transition:
+			border-color 0.2s ease,
+			transform 0.2s ease,
+			box-shadow 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.module-card:hover {
+		border-color: rgba(200, 255, 0, 0.35);
+		border-top-color: var(--sl-color-accent);
+		transform: translateY(-4px);
+		background: #131313;
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+	}
+
+	.module-card[data-status='soon'] {
+		opacity: 0.82;
+	}
+
+	.module-card[data-status='soon']:hover {
+		border-top-color: var(--sl-color-gray-3);
+		opacity: 1;
+	}
+
+	.module-card-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.module-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		color: var(--sl-color-accent);
+		background: rgba(200, 255, 0, 0.06);
+		border: 1px solid rgba(200, 255, 0, 0.18);
+	}
+
+	.module-status {
+		font-family: var(--sl-font-mono);
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--sl-color-gray-3);
+	}
+
+	.module-card[data-status='available'] .module-status {
+		color: var(--sl-color-accent-high);
+	}
+
+	.module-tag {
+		margin: 0;
+		font-family: var(--sl-font-mono);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--sl-color-gray-3);
+	}
+
+	.module-title {
+		margin: 0;
+		font-size: var(--sl-text-xl);
+		font-weight: 800;
+		letter-spacing: -0.01em;
+		color: var(--sl-color-white);
+	}
+
+	.module-description {
+		margin: 0;
+		flex-grow: 1;
+		font-size: var(--sl-text-sm);
+		line-height: 1.6;
+		color: var(--sl-color-gray-2);
+	}
+
+	.module-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-top: 0.25rem;
+		font-family: var(--sl-font-mono);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--sl-color-gray-2);
+		transition: color 0.2s ease, gap 0.2s ease;
+	}
+
+	.module-card:hover .module-cta {
+		color: var(--sl-color-accent-high);
+		gap: 0.6rem;
+	}
+</style>

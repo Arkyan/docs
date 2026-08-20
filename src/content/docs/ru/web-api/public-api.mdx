@@ -27,7 +27,7 @@ Authorization: Bearer tlmp_api_YOUR_API_KEY
 
 Недействительные или отозванные ключи игнорируются. Запрос рассматривается как анонимный и получает анонимные лимиты запросов.
 
-Если ваш API-ключ оказался в открытом доступе (например, был закоммичен в репозиторий), немедленно смените его — см. [Утечка API-ключей и секретов](/ru/guides/developers/leaked-secrets/).
+Если ваш API-ключ оказался в открытом доступе (например, был закоммичен в репозиторий), немедленно смените его — см. [Утечка API-ключей и секретов](/ru/web-api/leaked-secrets/).
 
 ### Сессионные cookie
 
@@ -38,7 +38,6 @@ Authorization: Bearer tlmp_api_YOUR_API_KEY
 | Среда | Базовый URL | Примечания |
 |-------------|----------|-------|
 | Рабочая | `https://api.trucklinemp.com` | Хост публичного API |
-| Локальная | `http://localhost:3000/api/v1` | Локальный сервер разработки веб-приложения |
 | Тот же источник | `https://trucklinemp.com/api/v1` | Используется в браузере |
 
 ### Важно: не дублируйте `/v1`
@@ -51,10 +50,9 @@ https://api.trucklinemp.com/vtcs
 
 проксируется к `/api/v1/vtcs` в приложении. **Не добавляйте** `/v1` к URL-адресу хоста.
 
-Локальная разработка и запросы из того же источника используют `/api/v1` напрямую:
+Запросы из того же источника используют `/api/v1` напрямую:
 
 ```
-http://localhost:3000/api/v1/vtcs
 https://trucklinemp.com/api/v1/vtcs
 ```
 
@@ -116,7 +114,7 @@ curl -H "Authorization: Bearer tlmp_api_YOUR_API_KEY" \
 
 ## TypeScript SDK
 
-Для интеграций на базе Node.js вы можете использовать официальный клиент вместо написания запросов `fetch` вручную. См. [TypeScript SDK](/ru/guides/developers/sdk/).
+Для интеграций на базе Node.js вы можете использовать официальный клиент вместо написания запросов `fetch` вручную. См. [TypeScript SDK](/ru/web-api/sdk/).
 
 ## Ответы с ошибками
 
@@ -133,11 +131,11 @@ curl -H "Authorization: Bearer tlmp_api_YOUR_API_KEY" \
 ## Интерактивные инструменты
 
 - [API Playground](https://trucklinemp.com/developer/playground): отправляйте запросы из браузера (использует тот же `/api/v1`).
-- [ReDoc](https://trucklinemp.com/developers/redoc) / [Swagger](https://trucklinemp.com/developers/swagger): просматривайте полную схему.
+- [Swagger UI](/ru/web-api/public-api/doc): просматривайте полную схему интерактивно, прямо здесь в документации.
 
 ## Связанные руководства
 
-- [Обзор платформы для разработчиков](/ru/guides/developers/overview/)
-- [Приложения OAuth](/ru/guides/developers/oauth-apps/) (вход пользователей, не требуется для публичных эндпоинтов чтения)
-- [Вебхуки](/ru/guides/developers/webhooks/) (push-уведомления о событиях)
-- [Утечка API-ключей и секретов](/ru/guides/developers/leaked-secrets/) (устранение последствий компрометации ключа)
+- [Обзор платформы для разработчиков](/ru/web-api/overview/)
+- [Приложения OAuth](/ru/web-api/oauth-apps/) (вход пользователей, не требуется для публичных эндпоинтов чтения)
+- [Вебхуки](/ru/web-api/webhooks/) (push-уведомления о событиях)
+- [Утечка API-ключей и секретов](/ru/web-api/leaked-secrets/) (устранение последствий компрометации ключа)

@@ -7,9 +7,9 @@ lastUpdated: 2026-07-14
 
 # Участие в разработке TypeScript SDK
 
-Спасибо, что помогаете улучшать `@trucklinemp/sdk`, официальный набор инструментов TypeScript и JavaScript для [Публичного API](/ru/guides/developers/public-api/) TrucklineMP, OAuth и вебхуков.
+Спасибо, что помогаете улучшать `@trucklinemp/sdk`, официальный набор инструментов TypeScript и JavaScript для [Публичного API](/ru/web-api/public-api/) TrucklineMP, OAuth и вебхуков.
 
-Это руководство предназначено для тех, кто хочет изменить сам **пакет SDK** (новые методы, исправления ошибок, типы, документация в репозитории). Если вам нужно только **использовать** SDK в приложении, вместо этого ознакомьтесь с разделом [TypeScript SDK](/ru/guides/developers/sdk/).
+Это руководство предназначено для тех, кто хочет изменить сам **пакет SDK** (новые методы, исправления ошибок, типы, документация в репозитории). Если вам нужно только **использовать** SDK в приложении, вместо этого ознакомьтесь с разделом [TypeScript SDK](/ru/web-api/sdk/).
 
 | | |
 |---|---|
@@ -21,7 +21,7 @@ lastUpdated: 2026-07-14
 ## Перед началом работы
 
 1. Откройте [issue](https://github.com/trucklinemp/sdk/issues) для крупных изменений, чтобы мейнтейнеры могли согласовать архитектуру.
-2. Проверьте [спецификацию OpenAPI](https://trucklinemp.com/api/v1/openapi.json) и [руководство по публичному API](/ru/guides/developers/public-api/), чтобы узнать реальный HTTP-контракт. SDK — это тонкий клиент, он должен отражать публичные маршруты, а не выдумывать приватные.
+2. Проверьте [спецификацию OpenAPI](https://trucklinemp.com/api/v1/openapi.json) и [руководство по публичному API](/ru/web-api/public-api/), чтобы узнать реальный HTTP-контракт. SDK — это тонкий клиент, он должен отражать публичные маршруты, а не выдумывать приватные.
 3. Отдавайте предпочтение небольшим, сфокусированным pull request-ам вместо масштабных переписываний кода.
 
 ## Требования
@@ -33,7 +33,6 @@ lastUpdated: 2026-07-14
 Необязательно для ручных проверок интеграции:
 
 - API-ключ из [Консоли разработчика](https://trucklinemp.com/developer) TrucklineMP
-- Локальный публичный API по адресу `http://localhost:3000/api/v1`, если вы запускаете веб-приложение локально
 
 ## Клонирование и установка
 
@@ -116,7 +115,7 @@ getBySteam(steamId: string, options?: RequestOptions) {
 ```
 
 3. Если вы вводите **новый класс ресурса**, создайте его в классе `Truckline` в файле `src/client.ts` и экспортируйте любые новые типы из `src/index.ts` только в том случае, если они нужны вызывающему коду.
-4. Обновите страницу пользовательской документации ([TypeScript SDK](/ru/guides/developers/sdk/)), если изменение затрагивает пользователей.
+4. Обновите страницу пользовательской документации ([TypeScript SDK](/ru/web-api/sdk/)), если изменение затрагивает пользователей.
 5. Выполните `npm run build && npm run typecheck`.
 
 ### Запасной выход
@@ -137,7 +136,6 @@ import { Truckline } from "trucklinemp-sdk"; // или импортируйте 
 
 const tl = new Truckline({
   apiKey: process.env.TRUCKLINE_API_KEY,
-  // baseUrl: "http://localhost:3000/api/v1",
 });
 
 console.log(await tl.meta.version());
@@ -183,11 +181,11 @@ chore(sdk): bump version to 0.1.2
 
 | Ресурс | Ссылка |
 |----------|------|
-| Использование SDK | [TypeScript SDK](/ru/guides/developers/sdk/) |
-| Публичный API | [Публичный API](/ru/guides/developers/public-api/) |
-| Вебхуки | [Вебхуки](/ru/guides/developers/webhooks/) |
+| Использование SDK | [TypeScript SDK](/ru/web-api/sdk/) |
+| Публичный API | [Публичный API](/ru/web-api/public-api/) |
+| Вебхуки | [Вебхуки](/ru/web-api/webhooks/) |
 | Консоль разработчика | [trucklinemp.com/developer](https://trucklinemp.com/developer) |
 | OpenAPI | [openapi.json](https://trucklinemp.com/api/v1/openapi.json) |
-| Перевод документации | [Перевод документации](/ru/guides/contribute/contributing/) |
+| Перевод документации | [Перевод документации](/ru/web-docs/contribute/contributing/) |
 
 Вопросы об API платформы (а не только о пакете SDK) приветствуются через службу поддержки или каналы для разработчиков, указанные на trucklinemp.com.

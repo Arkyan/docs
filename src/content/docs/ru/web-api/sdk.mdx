@@ -93,9 +93,8 @@ new Truckline({
 | Опция | Базовый URL |
 |--------|----------|
 | По умолчанию | `https://api.trucklinemp.com` |
-| Локальный сервер | `http://localhost:3000/api/v1` |
 
-**Не** добавляйте дополнительный `/v1` к `api.trucklinemp.com`. См. [Базовые URL публичного API](/ru/guides/developers/public-api/#base-urls).
+**Не** добавляйте дополнительный `/v1` к `api.trucklinemp.com`. См. [Базовые URL публичного API](/ru/web-api/public-api/#base-urls).
 
 ### Информация о лимитах запросов
 
@@ -227,11 +226,11 @@ await tl.post("/path", { body: { … } }); // если в будущем буд�
 
 Повторные попытки по умолчанию: до `maxRetries` (по умолчанию `1`) при ошибках **429** и **5xx**, с использованием джиттера. Установите `maxRetries: 0`, чтобы отключить. При сбоях сети запросы также повторяются, если `maxRetries > 0`.
 
-Таблицы лимитов платформы: [Лимиты запросов](/ru/guides/developers/public-api/#rate-limits).
+Таблицы лимитов платформы: [Лимиты запросов](/ru/web-api/public-api/#rate-limits).
 
 ## OAuth
 
-Используйте OAuth, когда вам нужны данные **от лица авторизованного пользователя** (а не только с помощью API-ключа). Полное описание процесса: [Приложения OAuth](/ru/guides/developers/oauth-apps/).
+Используйте OAuth, когда вам нужны данные **от лица авторизованного пользователя** (а не только с помощью API-ключа). Полное описание процесса: [Приложения OAuth](/ru/web-api/oauth-apps/).
 
 ```ts
 import { TrucklineOAuth, generatePkce } from "@trucklinemp/sdk/oauth";
@@ -261,7 +260,7 @@ const refreshed = await oauth.refresh(tokens.refresh_token!);
 await oauth.revoke(tokens.access_token, "access_token");
 ```
 
-Правила Redirect URI (localhost / приватная LAN / https): [Приложения OAuth — redirect URIs](/ru/guides/developers/oauth-apps/#redirect-uri-rules).
+Правила Redirect URI (localhost / приватная LAN / https): [Приложения OAuth — redirect URIs](/ru/web-api/oauth-apps/#redirect-uri-rules).
 
 `userinfo` с областью видимости `profile` включает `steam_id`, если аккаунт привязан.
 
@@ -302,7 +301,7 @@ app.post("/hooks/truckline", express.raw({ type: "*/*" }), async (req, res) => {
 verifyWebhookSignature(rawBody, req.headers[WEBHOOK_SIGNATURE_HEADER], secret);
 ```
 
-Каталог событий и повторные попытки: [Вебхуки](/ru/guides/developers/webhooks/).
+Каталог событий и повторные попытки: [Вебхуки](/ru/web-api/webhooks/).
 
 ## Примеры
 
@@ -322,20 +321,20 @@ verifyWebhookSignature(rawBody, req.headers[WEBHOOK_SIGNATURE_HEADER], secret);
 
 ## Конфиденциальность
 
-API-трафик с использованием вашего ключа подлежит такому же логированию и ограничению скорости, как и обычные HTTP-запросы. Ознакомьтесь с [Политикой конфиденциальности](https://id.trucklinemp.com/legal/privacy) и примечаниями к телеметрии [Публичный API](/ru/guides/developers/public-api/).
+API-трафик с использованием вашего ключа подлежит такому же логированию и ограничению скорости, как и обычные HTTP-запросы. Ознакомьтесь с [Политикой конфиденциальности](https://id.trucklinemp.com/legal/privacy) и примечаниями к телеметрии [Публичный API](/ru/web-api/public-api/).
 
 ## Участие в разработке
 
-Структура пакета, пулл-реквесты PR и добавление новых методов: [Участие в разработке TypeScript SDK](/ru/guides/developers/sdk-contributing/).
+Структура пакета, пулл-реквесты PR и добавление новых методов: [Участие в разработке TypeScript SDK](/ru/web-api/sdk-contributing/).
 
 ## Связанные руководства
 
 | Руководство | Темы |
 |-------|--------|
-| [Обзор платформы](/ru/guides/developers/overview/) | Режим разработчика, типы интеграций |
-| [Публичный API](/ru/guides/developers/public-api/) | Авторизация, базовые URL, лимиты, карта эндпоинтов |
-| [Приложения OAuth](/ru/guides/developers/oauth-apps/) | Авторизация, токены, права доступа, redirect URIs |
-| [Вебхуки](/ru/guides/developers/webhooks/) | События, подписи, повторные попытки |
-| [Консоль разработчика](/ru/guides/developers/console/) | Проекты, ключи, рабочая среда |
-| [Участие в разработке SDK](/ru/guides/developers/sdk-contributing/) | Локальная настройка и PR |
-| [Утечка API-ключей и секретов](/ru/guides/developers/leaked-secrets/) | Смена ключей после компрометации |
+| [Обзор платформы](/ru/web-api/overview/) | Режим разработчика, типы интеграций |
+| [Публичный API](/ru/web-api/public-api/) | Авторизация, базовые URL, лимиты, карта эндпоинтов |
+| [Приложения OAuth](/ru/web-api/oauth-apps/) | Авторизация, токены, права доступа, redirect URIs |
+| [Вебхуки](/ru/web-api/webhooks/) | События, подписи, повторные попытки |
+| [Консоль разработчика](/ru/web-api/console/) | Проекты, ключи, рабочая среда |
+| [Участие в разработке SDK](/ru/web-api/sdk-contributing/) | Локальная настройка и PR |
+| [Утечка API-ключей и секретов](/ru/web-api/leaked-secrets/) | Смена ключей после компрометации |

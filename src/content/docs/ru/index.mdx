@@ -1,72 +1,60 @@
 ---
 title: Документация TrucklineMP
-description: Официальная документация и руководства для TrucklineMP. Управление виртуальными транспортными и автобусными компаниями, безопасность аккаунта, интеграция с Discord и инструменты разработчика.
+description: Официальная документация TrucklineMP — веб-документация, веб-SDK, а также (скоро) игровая документация и игровой SDK.
 version: 1.3.0
-lastUpdated: 2026-08-06
+lastUpdated: 2026-08-20
 template: splash
 hero:
   tagline: Многопользовательская платформа, созданная для сообщества виртуальных транспортных и автобусных компаний.
   image:
     file: ../../../assets/truckline_large_no_shadow.svg
     alt: TrucklineMP
-  actions:
-    - text: Просмотр руководств
-      link: /ru/guides/vtc/creating/
-      icon: open-book
-      variant: primary
-    - text: Инструменты разработчика
-      link: /ru/guides/developers/overview/
-      icon: setting
-      variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-import HomeSection from '../../../components/HomeSection.astro';
-import QuickLinks from '../../../components/QuickLinks.astro';
+import ModuleGrid from '../../../components/ModuleGrid.astro';
+import ModuleCard from '../../../components/ModuleCard.astro';
 import ContributorAvatars from '../../../components/ContributorAvatars.astro';
 
 <div class="home-statement-section">
-  <p class="home-statement-text">
-	  Мы создаем TrucklineMP, потому что верим, что логистика многопользовательских грузовых и автобусных перевозок должна быть бесшовной, конкурентоспособной и управляемой сообществом. Платформа разработана с нуля, чтобы предоставить виртуальным транспортным компаниям и виртуальным автобусным компаниям инструменты, необходимые для управления профессиональными автопарками, организации крупномасштабных конвоев и объединения своих водителей в едином центре.
-  </p>
+	<p class="home-eyebrow">Центр документации</p>
+	<p class="home-statement-text">
+		Выберите модуль ниже, чтобы начать. У каждого своя документация, чтобы вы всегда были в нужном разделе.
+	</p>
 </div>
 
-<HomeSection
-	id="features"
-	title="Создано для вас"
-	description="Всё необходимое для управления, масштабирования и автоматизации вашей виртуальной транспортной или автобусной организации."
-	icon="rocket"
->
-	<CardGrid stagger>
-		<Card title="Управление автопарком" icon="user">
-			Нанимайте водителей, назначайте пользовательские роли, создавайте формы заявок и точно управляйте своим составом.
-		</Card>
-		<Card title="Логистика конвоев" icon="calendar">
-			Планируйте мероприятия в глобальном календаре, распределяйте слоты, отслеживайте посещаемость и держите детали ваших конвоев в порядке.
-		</Card>
-		<Card title="Интеграция с Discord" icon="discord">
-			Подключите свой сервер для автоматической синхронизации рангов, подтверждения владения и трансляции обновлений вебхуков в реальном времени.
-		</Card>
-		<Card title="Экосистема для разработчиков" icon="setting">
-			Интегрируйте собственные инструменты, используя TypeScript SDK, получайте вебхуки в реальном времени и запрашивайте публичную статистику.
-		</Card>
-	</CardGrid>
-</HomeSection>
+<ModuleGrid>
+	<ModuleCard
+		title="Web Docs"
+		tag="Платформа"
+		icon="open-book"
+		status="available"
+		href="/ru/web-docs/vtc/creating/"
+		description="Руководства по управлению вашей VTC или VBC — набор персонала, мероприятия, интеграция с Discord и управление аккаунтом."
+	/>
+	<ModuleCard
+		title="Web API"
+		tag="Разработчикам"
+		icon="setting"
+		status="available"
+		href="/ru/web-api/overview/"
+		description="Интеграция с TrucklineMP — публичный API, TypeScript SDK, OAuth-приложения и вебхуки."
+	/>
+	<ModuleCard
+		title="Game Docs"
+		tag="В игре"
+		icon="rocket"
+		status="soon"
+		href="/game-docs/"
+		description="Документация по игровому дополнению-компаньону TrucklineMP."
+	/>
+	<ModuleCard
+		title="Game SDK"
+		tag="Разработчикам"
+		icon="puzzle"
+		status="soon"
+		href="/game-sdk/"
+		description="Создавайте инструменты и моды на основе игровой интеграции TrucklineMP."
+	/>
+</ModuleGrid>
 
 <ContributorAvatars />
-
-<HomeSection
-	id="quick-start"
-	title="Быстрая навигация"
-	description="Перейдите прямо к основным разделам нашей документации и руководствам платформы."
-	icon="document"
->
-	<QuickLinks links={[
-		{ label: 'Руководства для транспортных и автобусных компаний', href: '/ru/guides/vtc/creating/' },
-		{ label: 'Настройки аккаунта', href: '/ru/guides/account/profile-settings/' },
-		{ label: 'Discord бот', href: '/ru/guides/discord-bot/connection-flows/' },
-		{ label: 'Разработчикам', href: '/ru/guides/developers/overview/' },
-		{ label: 'Программы для компаний', href: '/ru/guides/vtc-programs/verified/' },
-		{ label: 'Сотрудничество', href: '/ru/guides/contribute/contributing/' },
-	]} />
-</HomeSection>

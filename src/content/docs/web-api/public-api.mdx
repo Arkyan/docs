@@ -27,7 +27,7 @@ API keys:
 
 Invalid or revoked keys are ignored. The request is treated as anonymous and receives anonymous rate limits.
 
-If your API key is exposed publicly (e.g. committed to a repository), rotate it immediately — see [Leaked API Keys & Secrets](/guides/developers/leaked-secrets/).
+If your API key is exposed publicly (e.g. committed to a repository), rotate it immediately - see [Leaked API Keys & Secrets](/web-api/leaked-secrets/).
 
 ### Session cookies
 
@@ -38,7 +38,6 @@ Some endpoints return extra fields when you are logged in on trucklinemp.com and
 | Environment | Base URL | Notes |
 |-------------|----------|-------|
 | Production | `https://api.trucklinemp.com` | Public API hostname |
-| Local | `http://localhost:3000/api/v1` | Local Web app dev server |
 | Same-origin | `https://trucklinemp.com/api/v1` | Used by the in-browser playground |
 
 ### Important: do not double up `/v1`
@@ -51,10 +50,9 @@ https://api.trucklinemp.com/vtcs
 
 is proxied to `/api/v1/vtcs` on the app. **Do not** append `/v1` to the hostname URL.
 
-Local development and same-origin requests use `/api/v1` directly:
+Same-origin requests use `/api/v1` directly:
 
 ```
-http://localhost:3000/api/v1/vtcs
 https://trucklinemp.com/api/v1/vtcs
 ```
 
@@ -116,7 +114,7 @@ Path parameters such as `{idOrHandle}` accept either a numeric ID or a public ha
 
 ## TypeScript SDK
 
-For Node.js integrations, you can use the official client instead of hand-written `fetch` calls. See [TypeScript SDK](/guides/developers/sdk/).
+For Node.js integrations, you can use the official client instead of hand-written `fetch` calls. See [TypeScript SDK](/web-api/sdk/).
 
 ## Error responses
 
@@ -133,11 +131,11 @@ Common error codes:
 ## Interactive tools
 
 - [API Playground](https://trucklinemp.com/developer/playground): send requests from the browser (uses same-origin `/api/v1`).
-- [ReDoc](https://trucklinemp.com/developers/redoc) / [Swagger](https://trucklinemp.com/developers/swagger): browse the full schema.
+- [Swagger UI](/web-api/public-api/doc): browse the full schema interactively, right here in the docs.
 
 ## Related guides
 
-- [Developer Platform Overview](/guides/developers/overview/)
-- [OAuth Apps](/guides/developers/oauth-apps/) (user sign-in, not required for public read endpoints)
-- [Webhooks](/guides/developers/webhooks/) (event push notifications)
-- [Leaked API Keys & Secrets](/guides/developers/leaked-secrets/) (remediation if a key is exposed)
+- [Developer Platform Overview](/web-api/overview/)
+- [OAuth Apps](/web-api/oauth-apps/) (user sign-in, not required for public read endpoints)
+- [Webhooks](/web-api/webhooks/) (event push notifications)
+- [Leaked API Keys & Secrets](/web-api/leaked-secrets/) (remediation if a key is exposed)

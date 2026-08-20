@@ -1,8 +1,8 @@
 ---
 title: Contributing Translations
-description: Full guide for contributing translations to the TrucklineMP documentation — file structure, quality standards, and submission process.
+description: Full guide for contributing translations to the TrucklineMP documentation - file structure, quality standards, and submission process.
 version: 1.3.0
-lastUpdated: 2026-07-09
+lastUpdated: 2026-08-20
 ---
 
 Thank you for your interest in translating the TrucklineMP documentation! This guide explains how to contribute translations, what standards we expect, and how to submit your work.
@@ -35,18 +35,21 @@ lastUpdated: 2026-07-09
 - **`version`** identifies the content revision of the page. When the English page changes meaningfully, its version is bumped.
 - **`lastUpdated`** is the date the file was last edited.
 
-When you translate or update a translation, **copy the `version` from the current English page** and set `lastUpdated` to today's date. A translation whose version matches the English page shows as **Current** on the [Translation Status](/guides/contribute/translation-status/) page; a mismatch shows as **Outdated** and displays a notice banner on the translated page. Both fields are required — the CI check will fail a pull request that omits them.
+When you translate or update a translation, **copy the `version` from the current English page** and set `lastUpdated` to today's date. A translation whose version matches the English page shows as **Current** on the [Translation Status](/web-docs/contribute/translation-status/) page; a mismatch shows as **Outdated** and displays a notice banner on the translated page. Both fields are required - the CI check will fail a pull request that omits them.
 
 ## Currently Supported Languages
 
 | Locale | Language | Status |
 |--------|----------|--------|
 | `en` | English | Source language, always complete |
-| `pl` | Polski (Polish) | Community translations accepted |
+| `ru` | Русский (Russian) | Community translations accepted, largely complete |
 | `de` | Deutsch (German) | Community translations accepted |
+| `ta` | தமிழ் (Tamil) | Community translations accepted |
+| `tr` | Türkçe (Turkish) | Community translations accepted |
+| `pl` | Polski (Polish) | Community translations accepted |
 | `fr` | Français (French) | Community translations accepted |
 
-You are not limited to Polish. You can translate the documentation into **any language** you are fluent in. If your language isn't listed above, follow the "Adding a New Language" section below and contact the team so we can add the locale.
+Check the [Translation Status](/web-docs/contribute/translation-status/) page for the current state of each locale. You are not limited to the languages above - you can translate the documentation into **any language** you are fluent in. If your language isn't listed, follow the "Adding a New Language" section below and contact the team so we can add the locale.
 
 ---
 
@@ -56,27 +59,34 @@ TrucklineMP documentation is built with [Astro Starlight](https://starlight.astr
 
 ### File Structure
 
-Translations live in locale-specific folders under `src/content/docs/`:
+Translations live in locale-specific folders under `src/content/docs/`. Content is organized into modules (`web-docs/`, `web-api/`, `game-docs/`, `game-sdk/`), each translated the same way:
 
 ```
 src/content/docs/
 ├── index.mdx                     # English homepage
-├── guides/
-│   ├── verified-vtc-program.mdx  # English guide
+├── web-docs/
+│   ├── vtc-programs/
+│   │   ├── verified.mdx          # English guide
+│   │   └── ...
 │   └── ...
 └── pl/                           # Polish locale folder
     ├── index.mdx                 # Polish homepage
-    └── guides/
-        ├── verified-vtc-program.mdx  # Polish translation
+    └── web-docs/
+        ├── vtc-programs/
+        │   ├── verified.mdx      # Polish translation
+        │   └── ...
         └── ...
 ```
 
 ### URL Structure
 
-- English: `https://docs.trucklinemp.com/guides/vtc-programs/verified/`
-- Polish: `https://docs.trucklinemp.com/pl/guides/vtc-programs/verified/`
-- German: `https://docs.trucklinemp.com/de/guides/vtc-programs/verified/`
-- French: `https://docs.trucklinemp.com/fr/guides/vtc-programs/verified/`
+- English: `https://docs.trucklinemp.com/web-docs/vtc-programs/verified/`
+- Russian: `https://docs.trucklinemp.com/ru/web-docs/vtc-programs/verified/`
+- German: `https://docs.trucklinemp.com/de/web-docs/vtc-programs/verified/`
+- Tamil: `https://docs.trucklinemp.com/ta/web-docs/vtc-programs/verified/`
+- Turkish: `https://docs.trucklinemp.com/tr/web-docs/vtc-programs/verified/`
+- Polish: `https://docs.trucklinemp.com/pl/web-docs/vtc-programs/verified/`
+- French: `https://docs.trucklinemp.com/fr/web-docs/vtc-programs/verified/`
 
 The language selector in the top-right corner lets users switch between available languages.
 
@@ -86,7 +96,7 @@ The language selector in the top-right corner lets users switch between availabl
 
 ### 1. Guide Content
 
-All `.mdx` files under `src/content/docs/guides/` can be translated. Each English guide should have a matching file in the target locale folder.
+All `.mdx` files under `src/content/docs/web-docs/`, `web-api/`, `game-docs/`, and `game-sdk/` can be translated. Each English guide should have a matching file in the target locale folder.
 
 ### 2. Homepage
 
@@ -94,23 +104,30 @@ The `index.mdx` splash page should also be translated to welcome users in their 
 
 ### 3. Sidebar Labels
 
-Sidebar labels are configured in `astro.config.mjs` and support translations:
+Sidebar labels are configured per module in `astro.config.mjs` (via `starlightSidebarTopics`) and support translations:
 
 ```js
-sidebar: [
+starlightSidebarTopics([
   {
-    label: 'VTC Programs',
+    label: 'Web Docs',
+    link: 'web-docs/vtc/creating',
     items: [
       {
-        slug: 'guides/vtc-programs/verified',
-        label: 'Verified VTC Program',
-        translations: {
-          pl: 'Zweryfikowany Program VTC',
-        },
+        label: 'VTC Programs',
+        items: [
+          {
+            slug: 'web-docs/vtc-programs/verified',
+            label: 'Verified VTC Program',
+            translations: {
+              pl: 'Zweryfikowany Program VTC',
+            },
+          },
+        ],
       },
     ],
   },
-],
+  // ... Web API, Game Docs, Game SDK
+])
 ```
 
 When translating, add your language's label to the `translations` object.
@@ -146,21 +163,7 @@ Some Starlight UI labels (like "On this page", "Edit page", "Search") are handle
 
 ### Step 2: Set Up the Project (Optional)
 
-To preview your translations locally:
-
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/docs.git
-cd docs
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
-The site will be available at `http://localhost:4321`.
+To preview your translations, open a pull request and use the automatic preview deployment generated for your branch. A preview link appears on the pull request once the build finishes.
 
 ### Step 3: Choose a Guide to Translate
 
@@ -174,8 +177,8 @@ Check the current translation status and pick a guide that hasn't been translate
 
 ### Step 4: Create the Translated File
 
-1. Find the English source file (e.g., `src/content/docs/guides/vtc-programs/verified.mdx`)
-2. Create the matching file in the target locale folder (e.g., `src/content/docs/pl/guides/vtc-programs/verified.mdx`)
+1. Find the English source file (e.g., `src/content/docs/web-docs/vtc-programs/verified.mdx`)
+2. Create the matching file in the target locale folder (e.g., `src/content/docs/pl/web-docs/vtc-programs/verified.mdx`)
 3. Copy the frontmatter and translate the content
 
 ### Step 5: Preserve Frontmatter Structure
@@ -185,7 +188,7 @@ The frontmatter must keep the same structure. Only translate the values:
 ```mdx
 ---
 title: Verified VTC Program Rules
-description: Complete guide to the Truckline Verified VTC Program — how to apply, requirements, and rules for maintaining verified status.
+description: Complete guide to the Truckline Verified VTC Program - how to apply, requirements, and rules for maintaining verified status.
 ---
 ```
 
@@ -194,7 +197,7 @@ Polish example:
 ```mdx
 ---
 title: Zasady Programu Zweryfikowanych VTC
-description: Pełny przewodnik po Programie Zweryfikowanych VTC Truckline — jak aplikować, wymagania i zasady utrzymania statusu zweryfikowanego.
+description: Pełny przewodnik po Programie Zweryfikowanych VTC Truckline - jak aplikować, wymagania i zasady utrzymania statusu zweryfikowanego.
 ---
 ```
 
@@ -204,7 +207,7 @@ Open `astro.config.mjs` and add translations for the guides you've translated:
 
 ```js
 {
-  slug: 'guides/vtc-programs/verified',
+  slug: 'web-docs/vtc-programs/verified',
   label: 'Verified VTC Program',
   translations: {
     pl: 'Zweryfikowany Program VTC',
@@ -214,11 +217,7 @@ Open `astro.config.mjs` and add translations for the guides you've translated:
 
 ### Step 7: Preview Your Work
 
-Run the dev server and navigate to the translated page:
-
-```
-http://localhost:4321/pl/guides/vtc-programs/verified/
-```
+Open the preview deployment link from your pull request and navigate to the translated page, for example `/pl/web-docs/vtc-programs/verified/`.
 
 Check that:
 - All content is translated
@@ -277,7 +276,7 @@ Do **not** translate:
 
 ### Links
 - Internal links should point to the translated version when available
-- Example: `/guides/vtc-programs/verified/` → `/pl/guides/vtc-programs/verified/`
+- Example: `/web-docs/vtc-programs/verified/` → `/pl/web-docs/vtc-programs/verified/`
 - External links should remain unchanged
 
 ### Images
@@ -297,7 +296,7 @@ Before submitting your translation, verify:
 - [ ] Links point to the correct locale
 - [ ] Code blocks and URLs are unchanged
 - [ ] Sidebar labels are updated in `astro.config.mjs`
-- [ ] The page renders correctly in the dev server
+- [ ] The page renders correctly in the pull request preview
 - [ ] No broken formatting or Markdown errors
 - [ ] Terminology is consistent throughout
 
@@ -356,6 +355,18 @@ locales: {
     label: 'Français',
     lang: 'fr',
   },
+  ru: {
+    label: 'Русский',
+    lang: 'ru',
+  },
+  ta: {
+    label: 'தமிழ்',
+    lang: 'ta',
+  },
+  tr: {
+    label: 'Türkçe',
+    lang: 'tr',
+  },
 },
 ```
 
@@ -366,20 +377,20 @@ Make sure to use the correct [BCP 47 language tag](https://en.wikipedia.org/wiki
 ## Common Mistakes
 
 ### Translating URLs
-❌ `/pl/przewodniki/zweryfikowany-program-vtc/`  
-✅ `/pl/guides/vtc-programs/verified/`
+No `/pl/przewodniki/zweryfikowany-program-vtc/`  
+Yes `/pl/web-docs/vtc-programs/verified/`
 
 ### Forgetting Frontmatter
-❌ Missing `title` or `description`  
-✅ Complete frontmatter in the target language
+No Missing `title` or `description`  
+Yes Complete frontmatter in the target language
 
 ### Inconsistent Terminology
-❌ Using "weryfikacja" in one place and "zweryfikowanie" in another  
-✅ Consistent term throughout
+No Using "weryfikacja" in one place and "zweryfikowanie" in another  
+Yes Consistent term throughout
 
 ### Breaking Markdown
-❌ Removing `#` from headings or breaking tables  
-✅ Preserving all Markdown formatting
+No Removing `#` from headings or breaking tables  
+Yes Preserving all Markdown formatting
 
 ---
 
@@ -395,4 +406,4 @@ If you have questions about translating:
 
 ## Recognition
 
-Translators and contributors are credited on the [Contributors](/guides/contribute/contributors/) page. Thank you for helping make TrucklineMP accessible to everyone!
+Translators and contributors are credited on the [Contributors](/web-docs/contribute/contributors/) page. Thank you for helping make TrucklineMP accessible to everyone!

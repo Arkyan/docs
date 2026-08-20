@@ -1,0 +1,20 @@
+---
+title: Public API Reference
+description: Interactive Swagger UI reference for the TrucklineMP Public REST API.
+version: 1.3.0
+lastUpdated: 2026-08-20
+---
+
+import SwaggerUI from '../../../../components/SwaggerUI.astro';
+
+The full TrucklineMP Public API specification, rendered interactively with Swagger UI. Every endpoint, parameter, and response schema is generated live from the OpenAPI spec at [trucklinemp.com/api/v1/openapi.json](https://trucklinemp.com/api/v1/openapi.json).
+
+Use the filter to find an endpoint, expand a section to see parameters and examples, and press **Try it out** to send real requests. Public read endpoints work without an API key; add a `tlmp_api_...` key from the [Developer Console](https://trucklinemp.com/developer) to raise your rate limits.
+
+<SwaggerUI specUrl="https://trucklinemp.com/api/v1/openapi.json" />
+
+## More resources
+
+- [Public API](/web-api/public-api/) - authentication, base URLs, rate limits, and endpoint overview.
+- [API Playground](https://trucklinemp.com/developer/playground) - send requests from the browser.
+- [TypeScript SDK](/web-api/sdk/) - install the official client.
