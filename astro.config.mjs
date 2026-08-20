@@ -12,6 +12,7 @@ export default defineConfig({
         de: "TrucklineMP",
         fr: "TrucklineMP",
         ru: "TrucklineMP",
+        tr: "TrucklineMP",
       },
       defaultLocale: "root",
       locales: {
@@ -38,6 +39,10 @@ export default defineConfig({
         ta: {
           label: "தமிழ்",
           lang: "ta",
+        },
+        tr: {
+          label: "Türkçe",
+          lang: "tr",
         },
       },
       logo: {
@@ -213,6 +218,9 @@ export default defineConfig({
             {
               slug: "guides/vtc/sister-companies",
               label: "Sister Companies",
+              translations: {
+                ru: "Родственные компании",
+              },
             },
             {
               slug: "guides/vtc/activity-log",
@@ -224,10 +232,16 @@ export default defineConfig({
             {
               slug: "guides/vtc/analytics",
               label: "Analytics",
+              translations: {
+                ru: "Аналитика",
+              },
             },
             {
               slug: "guides/vtc/support-tickets",
               label: "Support Tickets",
+              translations: {
+                ru: "Тикеты поддержки",
+              },
             },
             {
               slug: "guides/vtc/disbanding",
@@ -349,10 +363,16 @@ export default defineConfig({
             {
               slug: "guides/account/onboarding",
               label: "Onboarding Tour",
+              translations: {
+                ru: "Ознакомительный тур",
+              },
             },
             {
               slug: "guides/account/supporter",
               label: "Supporter & Premium",
+              translations: {
+                ru: "Спонсор и Премиум",
+              },
             },
             {
               slug: "guides/account/forum",
