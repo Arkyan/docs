@@ -1,0 +1,149 @@
+---
+title: Événements VTC
+description: Créez des convois et des événements, gérez les RSVP, les créneaux, la fréquentation, les widgets intégrables, et le calendrier global des événements sur TrucklineMP.
+version: 1.3.0
+lastUpdated: 2026-09-17
+---
+
+Les événements TrucklineMP permettent aux VTC de planifier des convois, gérer les RSVP, attribuer des créneaux, et suivre la fréquentation. Les utilisateurs connectés peuvent découvrir les événements sur le calendrier global ; les visiteurs peuvent voir les événements d'une entreprise sur son profil public.
+
+## Où vivent les événements
+
+| Emplacement | URL | Qui le voit |
+|----------|-----|-------------|
+| **Calendrier global** | [trucklinemp.com/events](https://trucklinemp.com/events) | Utilisateurs connectés (les événements publics sont visibles sur chaque profil VTC pour les visiteurs) |
+| **Profil VTC** | Section événements de `/vtc/@handle` | Visiteurs sur votre profil |
+| **Gestion VTC** | `/vtc/@handle/manage/events` | Staff disposant des permissions d'événements |
+
+---
+
+## Créer un événement (staff VTC)
+
+1. Ouvrez le panneau **Manage** de votre VTC
+2. Allez dans **Events**
+3. Cliquez sur **Create Event** (ou utilisez `/vtc/@handle/manage/events/create`)
+4. Renseignez les détails de l'événement et publiez
+
+Les champs typiques incluent :
+
+- **Titre et description**
+- **Heure de début et de fin**
+- **Serveur** (serveur de jeu ou royaume)
+- Lieux de **départ et d'arrivée**
+- **Catégorie** (par exemple convoi, course, rencontre)
+- **Image de bannière** (URL HTTPS)
+- **Nombre maximum de participants** (limite de capacité optionnelle)
+- **Visibilité** (qui peut voir et faire un RSVP)
+
+Le staff a besoin des permissions **events** appropriées dans son rôle VTC. Voir [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/).
+
+---
+
+## RSVP et fréquentation
+
+Les membres et les utilisateurs éligibles peuvent faire un RSVP depuis la page de l'événement.
+
+### Statuts RSVP
+
+| Statut | Signification |
+|--------|-------------|
+| **Going** | Présence confirmée |
+| **Unsure** | Intéressé mais non engagé |
+| **Not going** | Décliné |
+
+Lorsque le **nombre maximum de participants** est défini et que la liste des présents est pleine, les nouveaux RSVP « présent » sont automatiquement placés en liste d'attente jusqu'à ce qu'une place se libère.
+
+### Check-in
+
+Les gestionnaires d'événements peuvent enregistrer les participants au moment de l'événement. Le check-in autonome peut être disponible selon les paramètres de l'événement.
+
+### Flux d'approbation
+
+Certains événements exigent que le staff approuve les RSVP avant qu'un utilisateur ne soit marqué comme présent.
+
+---
+
+## Créneaux d'événement
+
+Les créneaux vous permettent d'attribuer des rôles ou des positions au sein d'un événement (par exemple camion de tête, serre-file, photographe).
+
+Les gestionnaires disposant des permissions de créneaux peuvent :
+
+- Créer des créneaux avec des étiquettes et des rôles
+- Définir un nombre maximum d'occupants par créneau
+- Assigner des membres présents à des créneaux
+- Réordonner les créneaux
+
+Seuls les utilisateurs participant à l'événement peuvent être assignés à des créneaux.
+
+---
+
+## Co-organisateurs et événements multi-VTC
+
+Les événements peuvent impliquer plusieurs VTC. Les VTC co-organisatrices apparaissent sur la page de l'événement. Le suivi de fréquentation au niveau VTC enregistre quelles entreprises participent.
+
+---
+
+## Gérer un événement actif
+
+Le staff disposant des permissions **events.manage** (ou équivalent) peut :
+
+- Modifier les détails de l'événement avant son démarrage
+- Annuler l'événement (notifie les participants)
+- Diffuser un message aux RSVP
+- Voir et exporter la liste des participants
+- Gérer les bannissements d'événement (bloquer des utilisateurs spécifiques pour cet événement)
+- Ajouter des notes internes sur les membres pour le staff de l'événement
+
+Les événements annulés restent visibles avec un statut annulé lorsque configuré ainsi.
+
+---
+
+## Page globale des événements
+
+[trucklinemp.com/events](https://trucklinemp.com/events) liste les événements à venir sur toute la plateforme pour les utilisateurs connectés. Les visiteurs non connectés sont redirigés vers la page de connexion ; ils peuvent toujours voir les événements à venir d'une entreprise sur son profil public ou via le widget d'événements en direct.
+
+Les utilisateurs authentifiés peuvent aussi créer des événements depuis le flux global lorsque cela est autorisé.
+
+---
+
+## Intégrer vos événements
+
+Vous pouvez intégrer vos événements à venir sur un site externe avec un widget iframe. Les jetons d'intégration se gèrent depuis l'onglet **Integrations** (`/vtc/@handle/manage/integrations`). Voir [Intégrations VTC](/fr/web-docs/vtc/integrations/).
+
+---
+
+## Intégration avec les annonces
+
+Lorsque les webhooks [Annonces VTC](/fr/web-docs/vtc/announcements/) sont configurés, les changements de cycle de vie des événements (création, mise à jour, annulation, RSVP) peuvent être publiés automatiquement sur votre serveur Discord.
+
+---
+
+## Référence des permissions
+
+Les permissions VTC liées aux événements sont regroupées sous **events** dans l'éditeur de rôles. Les identifiants courants incluent la création d'événements, la gestion de la fréquentation, la gestion des créneaux, et la consultation des données d'événement réservées au staff. Les propriétaires ont toujours un accès complet.
+
+---
+
+## Dépannage
+
+### « Je ne peux pas créer d'événement »
+
+Confirmez que votre rôle inclut la permission de création d'événements et que le module plateforme **VTC Events** est activé.
+
+### RSVP bloqué en liste d'attente
+
+L'événement est peut-être à pleine capacité. Un gestionnaire peut libérer une place « présent » ou augmenter le nombre maximum de participants.
+
+### Événement absent du calendrier global
+
+Vérifiez les paramètres de visibilité de l'événement. Les événements privés ou réservés à la VTC peuvent ne pas apparaître publiquement.
+
+---
+
+## Guides associés
+
+- [Annonces VTC](/fr/web-docs/vtc/announcements/) - alertes webhook Discord pour les changements d'événements
+- [Intégrations VTC](/fr/web-docs/vtc/integrations/) - intégrer vos événements sur des sites externes
+- [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/) - permissions d'événements et d'intégration
+- [API publique](/fr/web-api/public-api/) - `GET /events` pour les intégrations

@@ -82,6 +82,7 @@ export default defineConfig({
             label: "Web Docs",
             translations: {
               ru: "Веб-документация",
+              fr: "Documentation Web",
             },
             link: "web-docs/vtc/creating",
             icon: "open-book",
@@ -91,6 +92,7 @@ export default defineConfig({
                 translations: {
                   ru: "Программы VTC",
                   de: "VTC Programme",
+                  fr: "Programmes VTC",
                 },
                 collapsed: false,
                 items: [
@@ -101,6 +103,7 @@ export default defineConfig({
                       pl: "Zweryfikowany Program VTC",
                       ru: "Программа верификации VTC",
                       de: "Verifizierungsprogramm für VTCs",
+                      fr: "Programme des VTC Vérifiées",
                     },
                   },
                   {
@@ -110,6 +113,7 @@ export default defineConfig({
                       pl: "Rola Discord Zweryfikowanego VTC",
                       ru: "Роль Discord верифицированного VTC",
                       de: "Verifizierte VTC-Discord-Rolle",
+                      fr: "Rôle Discord VTC Vérifiée",
                     },
                   },
                   {
@@ -119,6 +123,7 @@ export default defineConfig({
                       pl: "Partnerski Program VTC",
                       ru: "Партнёрская программа VTC",
                       de: "Partner-VTC-Programm",
+                      fr: "Programme des VTC Partenaires",
                     },
                   },
                   {
@@ -128,6 +133,7 @@ export default defineConfig({
                       pl: "Wytyczne Malowania VTC",
                       ru: "Правила оформления окрасок VTC",
                       de: "VTC-Lackierungsrichtlinien",
+                      fr: "Directives de livrée VTC",
                     },
                   },
                 ],
@@ -136,6 +142,7 @@ export default defineConfig({
                 label: "VTC Guides",
                 translations: {
                   ru: "Руководства по VTC",
+                  fr: "Guides VTC",
                 },
                 collapsed: false,
                 items: [
@@ -144,6 +151,7 @@ export default defineConfig({
                     label: "Creating a VTC",
                     translations: {
                       ru: "Создание VTC",
+                      fr: "Créer une VTC",
                     },
                   },
                   {
@@ -151,6 +159,7 @@ export default defineConfig({
                     label: "VTC Directory",
                     translations: {
                       ru: "Каталог VTC",
+                      fr: "Annuaire VTC",
                     },
                   },
                   {
@@ -160,6 +169,7 @@ export default defineConfig({
                       pl: "Ustawienia Ogólne",
                       ru: "Общие настройки",
                       de: "Allgemeine VTC-Einstellungen",
+                      fr: "Paramètres généraux",
                     },
                   },
                   {
@@ -167,6 +177,7 @@ export default defineConfig({
                     label: "Appearance",
                     translations: {
                       ru: "Оформление",
+                      fr: "Apparence",
                     },
                   },
                   {
@@ -174,6 +185,7 @@ export default defineConfig({
                     label: "Member Activity",
                     translations: {
                       ru: "Активность участников",
+                      fr: "Activité des membres",
                     },
                   },
                   {
@@ -182,6 +194,7 @@ export default defineConfig({
                     translations: {
                       pl: "Role i Uprawnienia",
                       ru: "Роли и права доступа",
+                      fr: "Rôles et permissions",
                     },
                   },
                   {
@@ -190,6 +203,7 @@ export default defineConfig({
                     translations: {
                       pl: "Zarządzanie Członkami",
                       ru: "Управление участниками",
+                      fr: "Gestion des membres",
                     },
                   },
                   {
@@ -198,6 +212,7 @@ export default defineConfig({
                     translations: {
                       pl: "Rekrutacja",
                       ru: "Набор участников",
+                      fr: "Recrutement",
                     },
                   },
                   {
@@ -205,6 +220,7 @@ export default defineConfig({
                     label: "Events",
                     translations: {
                       ru: "Мероприятия",
+                      fr: "Événements",
                     },
                   },
                   {
@@ -212,6 +228,7 @@ export default defineConfig({
                     label: "Integrations",
                     translations: {
                       ru: "Интеграции",
+                      fr: "Intégrations",
                     },
                   },
                   {
@@ -219,6 +236,7 @@ export default defineConfig({
                     label: "News",
                     translations: {
                       ru: "Новости",
+                      fr: "Actualités",
                     },
                   },
                   {
@@ -226,6 +244,7 @@ export default defineConfig({
                     label: "Gallery",
                     translations: {
                       ru: "Галерея",
+                      fr: "Galerie",
                     },
                   },
                   {
@@ -234,6 +253,7 @@ export default defineConfig({
                     translations: {
                       pl: "Ogłoszenia",
                       ru: "Уведомления",
+                      fr: "Annonces",
                     },
                   },
                   {
@@ -243,6 +263,7 @@ export default defineConfig({
                       pl: "Weryfikacja Discord",
                       ru: "Верификация Discord",
                       de: "VTC-Discord-Server-Verifizierung",
+                      fr: "Vérification Discord",
                     },
                   },
                   {
@@ -251,6 +272,7 @@ export default defineConfig({
                     translations: {
                       pl: "Widoczność",
                       ru: "Видимость",
+                      fr: "Visibilité",
                     },
                   },
                   {
@@ -258,6 +280,7 @@ export default defineConfig({
                     label: "Sister Companies",
                     translations: {
                       ru: "Родственные компании",
+                      fr: "Entreprises sœurs",
                     },
                   },
                   {
@@ -265,6 +288,7 @@ export default defineConfig({
                     label: "Partnerships",
                     translations: {
                       ru: "Партнёрства",
+                      fr: "Partenariats",
                     },
                   },
                   {
@@ -272,6 +296,7 @@ export default defineConfig({
                     label: "Activity Log",
                     translations: {
                       ru: "Журнал активности",
+                      fr: "Journal d'activité",
                     },
                   },
                   {
@@ -279,6 +304,7 @@ export default defineConfig({
                     label: "Analytics",
                     translations: {
                       ru: "Аналитика",
+                      fr: "Statistiques",
                     },
                   },
                   {
@@ -286,6 +312,7 @@ export default defineConfig({
                     label: "Support Tickets",
                     translations: {
                       ru: "Тикеты поддержки",
+                      fr: "Tickets de support",
                     },
                   },
                   {
@@ -293,6 +320,7 @@ export default defineConfig({
                     label: "Disbanding a VTC",
                     translations: {
                       ru: "Расформирование VTC",
+                      fr: "Dissoudre une VTC",
                     },
                   },
                 ],
@@ -302,6 +330,7 @@ export default defineConfig({
                 translations: {
                   pl: "Bot Discord",
                   ru: "Бот Discord",
+                  fr: "Bot Discord",
                 },
                 collapsed: false,
                 items: [
@@ -310,6 +339,7 @@ export default defineConfig({
                     label: "Connection Flows",
                     translations: {
                       ru: "Варианты подключения Discord",
+                      fr: "Flux de connexion",
                     },
                   },
                   {
@@ -318,6 +348,7 @@ export default defineConfig({
                     translations: {
                       pl: "Połączone Role",
                       ru: "Привязанные Роли",
+                      fr: "Rôles liés",
                     },
                   },
                   {
@@ -325,6 +356,7 @@ export default defineConfig({
                     label: "Discord Notifications",
                     translations: {
                       ru: "Уведомления Discord",
+                      fr: "Notifications Discord",
                     },
                   },
                   {
@@ -332,6 +364,7 @@ export default defineConfig({
                     label: "Official Discord Server",
                     translations: {
                       ru: "Официальный сервер Discord",
+                      fr: "Serveur Discord officiel",
                     },
                   },
                 ],
@@ -340,6 +373,7 @@ export default defineConfig({
                 label: "Account Guides",
                 translations: {
                   ru: "Руководства по учетным записям",
+                  fr: "Guides de compte",
                 },
                 collapsed: false,
                 items: [
@@ -350,6 +384,7 @@ export default defineConfig({
                       pl: "Ustawienia Profilu",
                       ru: "Настройки профиля",
                       de: "Profileinstellungen",
+                      fr: "Paramètres du profil",
                     },
                   },
                   {
@@ -357,6 +392,7 @@ export default defineConfig({
                     label: "Public Profile",
                     translations: {
                       ru: "Публичный профиль",
+                      fr: "Profil public",
                     },
                   },
                   {
@@ -364,6 +400,7 @@ export default defineConfig({
                     label: "User Directory",
                     translations: {
                       ru: "Каталог пользователей",
+                      fr: "Annuaire des utilisateurs",
                     },
                   },
                   {
@@ -373,6 +410,7 @@ export default defineConfig({
                       pl: "Bezpieczeństwo Konta",
                       ru: "Безопасность аккаунта",
                       de: "Kontosicherheit",
+                      fr: "Sécurité du compte",
                     },
                   },
                   {
@@ -381,6 +419,7 @@ export default defineConfig({
                     translations: {
                       pl: "Połączenia",
                       ru: "Подключённые аккаунты",
+                      fr: "Connexions",
                     },
                   },
                   {
@@ -388,6 +427,7 @@ export default defineConfig({
                     label: "Regional & Timezone",
                     translations: {
                       ru: "Регион и часовой пояс",
+                      fr: "Région et fuseau horaire",
                     },
                   },
                   {
@@ -395,6 +435,7 @@ export default defineConfig({
                     label: "Notifications",
                     translations: {
                       ru: "Уведомления",
+                      fr: "Notifications",
                     },
                   },
                   {
@@ -403,6 +444,7 @@ export default defineConfig({
                     translations: {
                       pl: "Wygląd i Preferencje",
                       ru: "Внешний вид и предпочтения",
+                      fr: "Apparence et préférences",
                     },
                   },
                   {
@@ -410,6 +452,7 @@ export default defineConfig({
                     label: "Onboarding Tour",
                     translations: {
                       ru: "Ознакомительный тур",
+                      fr: "Visite guidée",
                     },
                   },
                   {
@@ -417,6 +460,7 @@ export default defineConfig({
                     label: "Supporter & Premium",
                     translations: {
                       ru: "Спонсор и Премиум",
+                      fr: "Supporter et Premium",
                     },
                   },
                   {
@@ -424,6 +468,7 @@ export default defineConfig({
                     label: "Forum",
                     translations: {
                       ru: "Форум",
+                      fr: "Forum",
                     },
                   },
                   {
@@ -431,6 +476,7 @@ export default defineConfig({
                     label: "Support Tickets",
                     translations: {
                       ru: "Тикеты поддержки",
+                      fr: "Tickets de support",
                     },
                   },
                   {
@@ -438,6 +484,7 @@ export default defineConfig({
                     label: "Bans & Appeals",
                     translations: {
                       ru: "Баны и апелляции",
+                      fr: "Bans et appels",
                     },
                   },
                   {
@@ -445,6 +492,7 @@ export default defineConfig({
                     label: "Standing & Driver Licence",
                     translations: {
                       ru: "Репутация и водительские права",
+                      fr: "Réputation et permis de conduite",
                     },
                   },
                   {
@@ -453,6 +501,7 @@ export default defineConfig({
                     translations: {
                       pl: "Usunięcie Konta",
                       ru: "Удаление аккаунта",
+                      fr: "Suppression du compte",
                     },
                   },
                 ],
@@ -461,6 +510,7 @@ export default defineConfig({
                 label: "Platform Guides",
                 translations: {
                   ru: "Руководства по платформе",
+                  fr: "Guides de la plateforme",
                 },
                 collapsed: false,
                 items: [
@@ -469,6 +519,7 @@ export default defineConfig({
                     label: "Platform News",
                     translations: {
                       ru: "Новости платформы",
+                      fr: "Actualités de la plateforme",
                     },
                   },
                   {
@@ -476,6 +527,7 @@ export default defineConfig({
                     label: "Community Polls",
                     translations: {
                       ru: "Опросы сообщества",
+                      fr: "Sondages communautaires",
                     },
                   },
                   {
@@ -483,6 +535,7 @@ export default defineConfig({
                     label: "Programs & Recognition",
                     translations: {
                       ru: "Программы и признание",
+                      fr: "Programmes et reconnaissance",
                     },
                   },
                   {
@@ -490,6 +543,7 @@ export default defineConfig({
                     label: "Status & Changelog",
                     translations: {
                       ru: "Статус и список изменений",
+                      fr: "Statut et journal des modifications",
                     },
                   },
                 ],
@@ -498,6 +552,7 @@ export default defineConfig({
                 label: "Contribute",
                 translations: {
                   ru: "Внесите вклад",
+                  fr: "Contribuer",
                 },
                 collapsed: false,
                 items: [
@@ -507,6 +562,7 @@ export default defineConfig({
                     translations: {
                       pl: "Współtwórcy",
                       ru: "Участники",
+                      fr: "Contributeurs",
                     },
                   },
                   {
@@ -515,6 +571,7 @@ export default defineConfig({
                     translations: {
                       pl: "Tłumacz Dokumentację",
                       ru: "Перевод документации",
+                      fr: "Traduire la documentation",
                     },
                   },
                   {
@@ -522,6 +579,7 @@ export default defineConfig({
                     label: "Translation Status",
                     translations: {
                       ru: "Статус перевода",
+                      fr: "Statut des traductions",
                     },
                   },
                 ],
@@ -532,6 +590,7 @@ export default defineConfig({
             label: "Web API",
             translations: {
               ru: "Веб API",
+              fr: "API Web",
             },
             link: "web-api/overview",
             icon: "setting",
@@ -540,6 +599,7 @@ export default defineConfig({
                 label: "Getting Started",
                 translations: {
                   ru: "Начало работы",
+                  fr: "Démarrage",
                 },
                 collapsed: false,
                 items: [
@@ -548,6 +608,7 @@ export default defineConfig({
                     label: "Platform Overview",
                     translations: {
                       ru: "Обзор платформы",
+                      fr: "Vue d'ensemble de la plateforme",
                     },
                   },
                   {
@@ -555,6 +616,7 @@ export default defineConfig({
                     label: "Developer Console",
                     translations: {
                       ru: "Консоль разработчика",
+                      fr: "Console développeur",
                     },
                   },
                 ],
@@ -563,6 +625,7 @@ export default defineConfig({
                 label: "Public API",
                 translations: {
                   ru: "Публичный API",
+                  fr: "API publique",
                 },
                 collapsed: false,
                 items: [
@@ -571,6 +634,7 @@ export default defineConfig({
                     label: "Public API",
                     translations: {
                       ru: "Публичный API",
+                      fr: "API publique",
                     },
                   },
                   {
@@ -578,6 +642,7 @@ export default defineConfig({
                     label: "Doc",
                     translations: {
                       ru: "Справочник",
+                      fr: "Référence",
                     },
                   },
                   {
@@ -585,6 +650,7 @@ export default defineConfig({
                     label: "Leaked API Keys & Secrets",
                     translations: {
                       ru: "Утечка API-ключей и секретов",
+                      fr: "Clés API et secrets exposés",
                     },
                   },
                 ],
@@ -593,6 +659,7 @@ export default defineConfig({
                 label: "TypeScript SDK",
                 translations: {
                   ru: "TypeScript SDK",
+                  fr: "SDK TypeScript",
                 },
                 collapsed: false,
                 items: [
@@ -601,6 +668,7 @@ export default defineConfig({
                     label: "TypeScript SDK",
                     translations: {
                       ru: "TypeScript SDK",
+                      fr: "SDK TypeScript",
                     },
                   },
                   {
@@ -608,6 +676,7 @@ export default defineConfig({
                     label: "Contributing to the SDK",
                     translations: {
                       ru: "Вклад в SDK",
+                      fr: "Contribuer au SDK",
                     },
                   },
                   {
@@ -615,6 +684,7 @@ export default defineConfig({
                     label: "i18n & Translations",
                     translations: {
                       ru: "Локализация и переводы",
+                      fr: "i18n et traductions",
                     },
                   },
                 ],
@@ -623,6 +693,7 @@ export default defineConfig({
                 label: "Integrations",
                 translations: {
                   ru: "Интеграции",
+                  fr: "Intégrations",
                 },
                 collapsed: false,
                 items: [
@@ -631,6 +702,7 @@ export default defineConfig({
                     label: "OAuth Apps",
                     translations: {
                       ru: "Приложения OAuth",
+                      fr: "Applications OAuth",
                     },
                   },
                   {
@@ -638,6 +710,7 @@ export default defineConfig({
                     label: "Webhooks",
                     translations: {
                       ru: "Вебхуки",
+                      fr: "Webhooks",
                     },
                   },
                 ],
@@ -646,25 +719,53 @@ export default defineConfig({
           },
           {
             label: "Game Docs",
+            translations: {
+              fr: "Documentation du jeu",
+            },
             link: "game-docs",
             icon: "seti:asm",
             items: [
               {
                 label: "Game Docs",
+                translations: {
+                  fr: "Documentation du jeu",
+                },
                 collapsed: false,
-                items: [{ slug: "game-docs", label: "Overview" }],
+                items: [
+                  {
+                    slug: "game-docs",
+                    label: "Overview",
+                    translations: {
+                      fr: "Vue d'ensemble",
+                    },
+                  },
+                ],
               },
             ],
           },
           {
             label: "Game SDK",
+            translations: {
+              fr: "SDK du jeu",
+            },
             link: "game-sdk",
             icon: "puzzle",
             items: [
               {
                 label: "Game SDK",
+                translations: {
+                  fr: "SDK du jeu",
+                },
                 collapsed: false,
-                items: [{ slug: "game-sdk", label: "Overview" }],
+                items: [
+                  {
+                    slug: "game-sdk",
+                    label: "Overview",
+                    translations: {
+                      fr: "Vue d'ensemble",
+                    },
+                  },
+                ],
               },
             ],
           },

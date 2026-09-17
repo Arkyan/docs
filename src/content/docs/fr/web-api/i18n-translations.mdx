@@ -1,0 +1,94 @@
+---
+title: Internationalisation et traductions
+description: Guide développeur pour le runtime Next-Intl, la structure des catalogues, les espaces de travail de traduction et les outils de validation.
+version: 1.0.0
+lastUpdated: 2026-09-17
+---
+
+TrucklineMP utilise un système unifié d'internationalisation (i18n) construit sur [Next-Intl](https://next-intl-docs.vercel.app/) pour gérer le routage multilingue, les catalogues de traduction et les contributions de traduction.
+
+---
+
+## Catalogues de traduction
+
+Toutes les chaînes traduisibles de l'application web sont définies dans des fichiers de messages JSON organisés par locale sous `messages/` :
+
+```
+messages/
+├── en/                   # Anglais (catalogue source)
+│   ├── common.json
+│   ├── account.json
+│   └── ...
+├── pl/                   # Polski (Polonais)
+│   ├── common.json
+│   └── ...
+└── de/                   # Deutsch (Allemand)
+    ├── common.json
+    └── ...
+```
+
+### Formatage des messages
+Les clés de message prennent en charge les fonctionnalités de traduction standard ICU telles que l'interpolation et les pluriels :
+```json
+{
+  "welcome": "Welcome back, {username}!",
+  "memberCount": "{count, plural, =0 {No members} =1 {1 member} other {# members}}"
+}
+```
+
+---
+
+## Espaces de travail de traduction
+
+TrucklineMP dispose d'espaces de travail intégrés pour gérer et réviser les traductions :
+
+1. **Espace de travail utilisateur (`/translations`)** : Permet aux membres de la communauté de soumettre des contributions de traduction pour les clés incomplètes dans les langues de leur choix.
+2. **Espace de travail de révision (`/translations/[locale]/review`)** : Une interface de workflow permettant aux modérateurs de traduction d'inspecter, d'approuver ou de rejeter les soumissions de traduction.
+
+L'équipe de la plateforme gère la configuration des locales et le déploiement des traductions via des outils réservés à l'équipe.
+
+---
+
+## Contenu officiel
+
+Le contenu au niveau système, comme les définitions de badges, les options de menus déroulants dynamiques, ou les règles officielles de la plateforme, est enregistré dans :
+
+[official-content.ts](file:///c:/Users/olus/Desktop/truckline/Web/src/i18n/official-content.ts)
+
+Les développeurs doivent utiliser les fonctions utilitaires de ce module pour enregistrer les chaînes système et s'assurer qu'elles sont analysées et cataloguées par le runtime de traduction.
+
+---
+
+## Outils CLI de traduction
+
+Plusieurs scripts CLI sont disponibles pour synchroniser, valider et vérifier les catalogues de traduction pendant le développement.
+
+### Synchroniser les catalogues
+Synchronise tous les catalogues de locales cibles (`messages/pl/*.json`, `messages/de/*.json`, etc.) avec la structure du catalogue source anglais, en ajoutant les clés manquantes et en supprimant les clés retirées :
+```bash
+npm run i18n:sync
+```
+
+### Vérifier les catalogues
+Valide que tous les fichiers JSON des catalogues sont bien formés et contiennent une syntaxe valide :
+```bash
+npm run i18n:check
+```
+
+### Vérifier les espaces réservés de mise en page
+Vérifie que les variables de formatage ICU (par exemple `{username}`) correspondent parfaitement entre le fichier source anglais et tous les fichiers traduits :
+```bash
+npm run i18n:layout
+```
+
+### Couverture d'évaluation
+Calcule les métriques de pourcentage de couverture de traduction sur toutes les locales configurées :
+```bash
+npm run i18n:coverage
+```
+
+### Suite de vérification
+Exécute les contrôles de validation complets (vérification, couverture stricte, contrôles de mise en page, et tests unitaires sous `src/i18n/__tests__/` pour prévenir les attaques de sécurité et d'injection XSS via les traductions). Cette suite est exécutée par le pipeline CI avant de fusionner toute pull request :
+```bash
+npm run i18n:verify
+```

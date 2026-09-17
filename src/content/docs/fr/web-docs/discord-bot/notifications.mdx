@@ -1,0 +1,68 @@
+---
+title: Notifications Discord
+description: Recevez les notifications du site TrucklineMP en messages directs Discord lorsque votre compte est lié.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Quand votre compte Discord est lié à TrucklineMP, le **bot Discord TrucklineMP** peut vous transmettre certaines notifications du site sous forme de **DM Discord**.
+
+Ceci est distinct des webhooks [Annonces VTC](/fr/web-docs/vtc/announcements/) (qui publient dans les canaux de **votre** serveur VTC). Les notifications Discord sont des DM personnels envoyés par le bot de la plateforme.
+
+---
+
+## Prérequis
+
+1. **Discord lié** sous [Connections](/fr/web-docs/account/connections/) sur trucklinemp.com
+2. **DM autorisés** de la part de TrucklineMP / des membres du serveur dans vos paramètres de confidentialité Discord
+3. Le **type de notification** doit être éligible au relais Discord (tous les éléments de la cloche ne sont pas relayés)
+
+---
+
+## Fonctionnement
+
+1. Quelque chose se produit sur TrucklineMP (mise à jour de candidature, annonce d'événement, etc.)
+2. Une entrée est créée dans votre liste de notifications (cloche du site)
+3. Le bot récupère la notification et envoie un DM avec un embed contenant un lien vers le site
+4. La notification est marquée comme envoyée vers Discord pour éviter les doublons
+
+Si vous êtes hors ligne, le bot rattrape les notifications récentes non envoyées lorsqu'il se synchronise.
+
+---
+
+## À quoi ressemblent les DM
+
+Les DM utilisent des embeds contenant :
+
+- Un titre et une description courts
+- Un lien vers la page trucklinemp.com concernée
+- L'identité visuelle de TrucklineMP
+
+Ils sont informatifs. Répondre à un DM n'est pas un canal de support. Utilisez les [Tickets de support](/fr/web-docs/account/support-tickets/) pour l'aide du staff.
+
+---
+
+## Dépannage
+
+### Pas de DM mais les notifications de la cloche fonctionnent
+
+- Confirmez que Discord est toujours connecté dans les Paramètres
+- Ouvrez **User Settings > Privacy & Safety** sur Discord et autorisez les DM
+- Débloquez le bot TrucklineMP si vous l'aviez bloqué précédemment
+- Reliez Discord sous Connections
+
+### Les DM se sont arrêtés après avoir quitté un serveur
+
+Les DM personnels de notification ne nécessitent pas de rester dans un serveur particulier. Si les DM échouent toujours, réautorisez la connexion.
+
+### Messages en double ou manquants
+
+Le bot envoie chaque notification une seule fois. Actualisez la cloche du site si les nombres ne correspondent pas. Les DM manquants peuvent arriver avec un léger délai en cas de forte charge.
+
+---
+
+## Guides associés
+
+- [Notifications](/fr/web-docs/account/notifications/) - cloche du site
+- [Flux de connexion Discord](/fr/web-docs/discord-bot/connection-flows/) - en quoi la liaison diffère des Rôles liés
+- [Connections](/fr/web-docs/account/connections/)

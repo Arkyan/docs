@@ -1,0 +1,79 @@
+---
+title: Vue d'ensemble de la plateforme développeur
+description: Démarrez avec la plateforme développeur TrucklineMP. Activez la console, créez des projets, et intégrez avec l'API publique ou OAuth.
+version: 1.3.0
+lastUpdated: 2026-09-17
+---
+
+TrucklineMP propose une plateforme développeur pour les intégrations tierces. Vous pouvez lire les données publiques de la plateforme via l'**API publique**, identifier des utilisateurs avec **OAuth 2.0**, et recevoir des mises à jour en temps réel via des **webhooks**.
+
+Cette documentation couvre les concepts et les workflows. Pour la liste complète des endpoints, des formes de requêtes et des schémas de réponse, utilisez la référence API interactive sur le site principal.
+
+## Ce que vous pouvez construire
+
+| Intégration | Idéal pour |
+|-------------|----------|
+| **API publique** | Bots, tableaux de bord, sites de statistiques, et outils qui lisent les VTC, événements, actualités, utilisateurs, et données de modération |
+| **Applications OAuth** | Applications qui connectent les utilisateurs avec leur compte TrucklineMP et lisent des données de profil limitées |
+| **Webhooks** | Services qui réagissent aux événements de la plateforme (arrivées de membres, bannissements, RSVP, et plus) |
+
+## Avant de commencer
+
+1. Créez un compte TrucklineMP sur [trucklinemp.com](https://trucklinemp.com).
+2. Activez le **Mode développeur** dans **Paramètres du compte → Sécurité → Mode développeur → Activer**.
+3. Ouvrez la [Console développeur](https://trucklinemp.com/developer) depuis la barre de navigation ou vos paramètres de sécurité.
+
+Le Mode développeur débloque la console. Il n'accorde pas de permissions API élevées à lui seul. Les endpoints de l'API publique restent en lecture seule. Les scopes OAuth contrôlent quelles données utilisateur votre application peut accéder après qu'un utilisateur l'ait autorisée.
+
+## Démarrage rapide : API publique
+
+1. Dans la Console développeur, créez un **projet**.
+2. Générez une clé API (préfixe `tlmp_api_...`). Copiez-la lorsqu'elle est affichée. Elle ne peut plus être consultée ensuite.
+3. Envoyez une requête avec votre clé :
+
+```bash
+curl -H "Authorization: Bearer tlmp_api_YOUR_API_KEY" \
+  "https://api.trucklinemp.com/vtcs"
+```
+
+4. Essayez les endpoints de manière interactive dans le [API Playground](https://trucklinemp.com/developer/playground).
+
+Les endpoints de lecture publique fonctionnent **sans** clé API. Les clés augmentent vos limites de débit et rattachent l'usage à votre projet pour l'analytique.
+
+## Démarrage rapide : application OAuth
+
+1. Dans la Console développeur, allez dans **Applications OAuth** et créez une application.
+2. Définissez les **URI de redirection** et les **scopes** sur la page des paramètres OAuth.
+3. Copiez le **lien d'installation** depuis la page d'aperçu de l'application (ou construisez votre propre URL d'autorisation).
+4. Tant que l'application n'est pas publiée, ajoutez des **utilisateurs de test** pour que d'autres puissent l'autoriser pendant le développement.
+5. Lorsque vous êtes prêt, complétez la vérification de domaine et publiez via la page Publishing.
+
+Voir [Applications OAuth](/fr/web-api/oauth-apps/) pour le flux d'autorisation complet, PKCE, et les règles de publication.
+
+## Où trouver la référence API
+
+La référence canonique des endpoints est générée à partir de la spécification OpenAPI en direct :
+
+| Ressource | URL |
+|----------|-----|
+| OpenAPI JSON | [trucklinemp.com/api/v1/openapi.json](https://trucklinemp.com/api/v1/openapi.json) |
+| Référence interactive | [/web-api/public-api/doc](/fr/web-api/public-api/doc) (Swagger UI) |
+| Documentation console | [trucklinemp.com/developer/docs](https://trucklinemp.com/developer/docs) |
+| Playground | [trucklinemp.com/developer/playground](https://trucklinemp.com/developer/playground) |
+
+## Plan de la documentation
+
+| Guide | Sujets |
+|-------|--------|
+| [API publique](/fr/web-api/public-api/) | Authentification, URL de base, limites de débit, vue d'ensemble des endpoints |
+| [SDK TypeScript](/fr/web-api/sdk/) | Installer `@trucklinemp/sdk`, usage du client, erreurs, vérification de webhook |
+| [Applications OAuth](/fr/web-api/oauth-apps/) | Flux d'autorisation, scopes, userinfo, utilisateurs de test, PKCE, publication |
+| [Webhooks](/fr/web-api/webhooks/) | Abonnements, signatures, réessais, catalogue d'événements |
+| [Console développeur](/fr/web-api/console/) | Projets, analytique, journaux d'audit, quotas, playground |
+| [Clés API et secrets exposés](/fr/web-api/leaked-secrets/) | Que faire si une clé ou un secret est exposé publiquement |
+
+## Confidentialité et conformité
+
+L'usage de l'API est journalisé pour la limitation de débit, la prévention des abus, et l'analytique. Voir la [Politique de confidentialité](https://id.trucklinemp.com/legal/privacy) pour savoir comment la télémétrie est traitée.
+
+Les applications OAuth doivent fournir une **URL de politique de confidentialité** et devraient fournir une **URL de conditions d'utilisation** avant la publication.

@@ -1,0 +1,266 @@
+---
+title: Règles du Programme des VTC Vérifiées
+description: Guide complet du Programme des VTC Vérifiées de Truckline - comment postuler, exigences et règles pour conserver le statut vérifié.
+version: 1.3.0
+lastUpdated: 2026-09-17
+---
+
+import { LEGAL_URLS } from "../../../../../lib/legal-urls";
+
+Le Programme des VTC Vérifiées reconnaît les Virtual Trucking Companies authentiques, actives et bien gérées sur TrucklineMP. Les VTC Vérifiées reçoivent un badge de vérification bleu et l'accès à des fonctionnalités supplémentaires de la plateforme.
+
+## Comment postuler
+
+### Éligibilité
+
+- Vous devez être le **propriétaire** de la VTC ou détenir la permission `management.vtc.edit`.
+- Votre VTC ne doit **pas** déjà être vérifiée.
+- Le Programme des VTC Vérifiées doit **actuellement accepter des candidatures** (vérifiez le statut sur la page Statut de vérification de votre VTC).
+
+### Processus de candidature
+
+1. Rendez-vous dans le panneau de gestion de votre VTC.
+2. Sélectionnez **Statut de vérification** dans la barre latérale.
+3. Consultez les exigences du programme affichées sur la page.
+4. Cliquez sur **Postuler à la vérification** pour ouvrir le formulaire de candidature.
+5. Répondez avec précision à toutes les questions obligatoires.
+6. (Facultatif) Fournissez une URL de webhook Discord pour recevoir les notifications de statut.
+7. Soumettez votre candidature.
+
+### Après la soumission
+
+- Votre candidature passera au statut **En attente de révision**.
+- L'équipe de modération de Truckline examinera votre soumission.
+- Vous pourrez passer au statut **En cours de révision** pendant l'évaluation de votre candidature.
+- Vous serez informé de la décision via :
+  - Le statut affiché sur la page Statut de vérification de votre VTC.
+  - Une notification par webhook Discord (si fournie).
+
+### Nouvelle candidature
+
+- Si votre candidature est **rejetée**, vous devez attendre **30 jours** avant de repostuler.
+- Si votre candidature est **retirée**, vous pouvez soumettre une nouvelle candidature immédiatement.
+
+### Retirer une candidature
+
+- Vous pouvez retirer votre candidature à tout moment tant qu'elle est **En attente** ou **En cours de révision**.
+- Les candidatures retirées peuvent être remplacées par une nouvelle soumission immédiatement.
+
+---
+
+## Exigences
+
+Les exigences suivantes doivent être remplies pour que votre VTC soit approuvée pour la vérification :
+
+### Exigences générales
+
+- Votre VTC doit être une communauté de transport routier virtuel **légitime et active**.
+- Votre VTC doit avoir un **profil complet**, incluant :
+  - Un nom et un identifiant de VTC valides.
+  - Une description ou un slogan.
+  - Des informations de contact (site web, e-mail, Discord ou réseaux sociaux).
+- Votre VTC doit se conformer à l'ensemble des [Conditions d'utilisation de TrucklineMP]({LEGAL_URLS.termsOfService}) et des directives communautaires.
+
+### Adhésion multiplateforme
+
+Si votre VTC maintient un profil actif sur une autre plateforme de transport routier virtuel (par exemple, TruckersMP), une partie des conducteurs de cet effectif **externe** doit également être membre de votre VTC sur TrucklineMP. Le chevauchement requis évolue selon la taille de votre effectif externe - les communautés plus grandes doivent avoir une présence plus forte ici.
+
+Cette exigence s'applique lorsque vous avez un ou plusieurs profils externes liés ou déclarés dans votre candidature (par exemple, l'URL de la page VTC sur TruckersMP). Si vous n'avez **aucun** profil VTC externe, cette section ne s'applique pas.
+
+#### Paliers de chevauchement
+
+Utilisez la ligne correspondant au **nombre de conducteurs de votre plus grand profil VTC externe déclaré**. Vous devez remplir **à la fois** le pourcentage et le nombre absolu minimum pour ce palier (le calcul exigeant le plus de membres l'emporte).
+
+| Conducteurs externes | Chevauchement requis sur TrucklineMP       |
+| --------------------- | ------------------------------------------ |
+| **1-19**               | Au moins **8** membres                     |
+| **20-49**              | Au moins **25%**, minimum **12** membres   |
+| **50-99**              | Au moins **30%**, minimum **18** membres   |
+| **100-199**            | Au moins **35%**, minimum **40** membres   |
+| **200-399**            | Au moins **40%**, minimum **90** membres   |
+| **400+**               | Au moins **45%**, minimum **160** membres  |
+
+**Exemples**
+
+- 15 conducteurs sur TruckersMP → il faut **8** sur TrucklineMP.
+- 40 conducteurs sur TruckersMP → 25% = 10, mais le minimum du palier est **12** → il faut **12** sur TrucklineMP.
+- 80 conducteurs sur TruckersMP → 30% = **24** sur TrucklineMP.
+- 150 conducteurs sur TruckersMP → 35% = **53** sur TrucklineMP.
+- 350 conducteurs sur TruckersMP → 40% = **140** sur TrucklineMP.
+
+Les pourcentages sont arrondis **vers le haut** au conducteur entier le plus proche. Le staff comptabilise le chevauchement à partir de l'effectif externe que vous déclarez - les entrées inactives ou en double peuvent être exclues lors de la révision.
+
+#### Au moment de la candidature
+
+- Vous devez remplir le palier correspondant à la taille de votre effectif externe **au moment de la candidature**.
+- Les candidatures dont le chevauchement est inférieur au minimum requis peuvent être rejetées jusqu'à ce que le nombre de membres sur TrucklineMP rattrape le retard.
+
+#### Après la vérification
+
+- Vous êtes censé rester dans votre palier. Une baisse soutenue de **plus de 10 points de pourcentage en dessous** du pourcentage de votre palier, ou en dessous du minimum absolu de votre palier, peut déclencher une révision et affecter le statut vérifié.
+- Les baisses temporaires (par exemple, après une campagne de recrutement sur une autre plateforme) sont comprises ; contactez le staff si vous anticipez un changement temporaire.
+
+### Questions du formulaire de candidature
+
+Le formulaire de candidature comprend des questions configurées par l'équipe Truckline. Celles-ci peuvent inclure :
+
+- L'URL de la page de votre VTC sur TruckersMP (le cas échéant).
+- Des détails sur la structure, les règles et l'activité de votre VTC.
+- Des liens vers le serveur Discord ou le site web de votre VTC.
+- Une URL de webhook Discord pour recevoir les notifications de statut de vérification.
+
+**Tous les champs obligatoires doivent être remplis de façon véridique.** Les candidatures incomplètes ou trompeuses seront rejetées.
+
+---
+
+## Avantages du statut Vérifié
+
+Les VTC Vérifiées reçoivent les avantages suivants :
+
+| Avantage                 | VTC Standard | VTC Vérifiée             |
+| ----------------------- | ------------ | ------------------------ |
+| Badge de vérification      | Non           | Oui (coche bleue)     |
+| Rôles personnalisés            | Jusqu'à 20     | **Illimité**            |
+| Visibilité dans l'annuaire    | Standard     | Mise en avant avec badge   |
+| Badge de profil           | Aucun         | Distinction « Verified » bleue    |
+| Mise en page personnalisée      | Non           | **Oui**                  |
+| Confiance de la communauté         | Standard | Crédibilité renforcée     |
+| Recrutement bêta-testeurs | Standard     | **Recrutement prioritaire** |
+
+### Badge de vérification
+
+- Un badge de coche bleue est affiché à côté du nom de votre VTC sur toute la plateforme.
+- Le badge apparaît sur le profil de votre VTC, dans l'annuaire des VTC, et dans les fils d'actualité globaux.
+
+### Rôles personnalisés illimités
+
+- Les VTC Vérifiées peuvent créer un **nombre illimité de rôles personnalisés** pour leur hiérarchie organisationnelle.
+- Les VTC Standard sont limitées à 20 rôles.
+
+### Visibilité renforcée
+
+- Les VTC Vérifiées sont mises en avant dans l'annuaire des VTC avec un badge bleu « Verified ».
+- Le profil de votre VTC affiche une distinction « Verified » bien visible avec la description : _« Cette VTC a été vérifiée pour son authenticité. »_
+
+### Recrutement prioritaire des bêta-testeurs
+
+- Tous les membres des VTC Vérifiées reçoivent un **statut prioritaire** lorsqu'ils postulent pour devenir bêta-testeurs de TrucklineMP.
+- Cette priorité s'applique à chaque membre de votre VTC, pas seulement à la direction.
+- Les membres doivent tout de même compléter le processus de vérification du NDA bêta.
+- Le statut prioritaire est appliqué automatiquement lorsqu'un membre accepte le NDA bêta avec son compte Discord lié.
+
+### Mise en page et sections de profil personnalisées
+
+- Les VTC Vérifiées peuvent **réorganiser le contenu de leur page web VTC** grâce au générateur Home Layout.
+- Vous pouvez **ajouter des sections de profil personnalisées** pour mettre en valeur votre communauté, vos règles, votre recrutement, ou d'autres informations.
+- Gérez cela depuis le panneau de gestion de votre VTC, sous **Appearance** → **Profile Sections** et **Home Layout** (nécessite la permission `management.vtc.appearance`).
+
+---
+
+## Règles pour conserver le statut Vérifié
+
+Une fois votre VTC vérifiée, vous devez continuer à respecter les règles suivantes pour conserver votre statut.
+
+### Exigences de conformité
+
+1. **Respecter toutes les règles et politiques de TrucklineMP.** Toute violation peut entraîner le retrait immédiat du statut vérifié.
+2. **Maintenir un profil VTC exact et à jour.** Cela inclut :
+   - Une méthode de contact valide et active (site web, Discord ou e-mail).
+   - Des informations et une description de VTC exactes.
+3. **Ne pas se livrer à des pratiques frauduleuses ou trompeuses.** Cela inclut :
+   - Falsifier le nombre de membres.
+   - Usurper l'identité d'autres VTC ou organisations.
+   - Présenter de façon trompeuse les activités ou affiliations de votre VTC.
+4. **Maintenir des opérations VTC actives.** Les VTC Vérifiées qui deviennent inactives ou abandonnées peuvent voir leur statut révoqué.
+5. **Ne pas utiliser de médias générés par IA.** Les VTC Vérifiées ne peuvent pas utiliser de contenu généré par IA dans le cadre de leur présence officielle sur TrucklineMP (voir ci-dessous).
+
+### Aucun média généré par IA
+
+Les VTC Vérifiées (et les VTC Partenaires) **ne peuvent pas** utiliser de contenu généré par IA pour leur présence publique sur TrucklineMP. Cette interdiction inclut, sans s'y limiter :
+
+- Les photos de profil générées par IA
+- Les bannières générées par IA
+- Le contenu de site web ou les pages d'atterrissage générés par IA présentés comme le site officiel de votre VTC
+- Toute autre image, vidéo ou média généré par IA utilisé dans le profil, les sections de page, ou l'image de marque de votre VTC
+
+L'utilisation de médias générés par IA peut entraîner le retrait du statut vérifié ou partenaire et l'obligation de remplacer les éléments concernés.
+
+### Actions interdites
+
+Les actions suivantes peuvent entraîner le retrait immédiat du statut vérifié :
+
+- Violer les Conditions d'utilisation de TrucklineMP.
+- Se livrer à du harcèlement, des discours de haine ou un comportement discriminatoire.
+- Utiliser la VTC pour des activités illégales.
+- Falsifier des informations sur le profil ou la candidature de votre VTC.
+- Transférer la propriété de la VTC à un utilisateur inéligible.
+- Ne pas répondre aux demandes de modération dans un délai raisonnable.
+- Utiliser des photos de profil, bannières, contenu de site web ou autres médias générés par IA sur votre page VTC ou en tant qu'image de marque officielle de la VTC.
+
+### Révocation du statut
+
+- Le statut vérifié peut être révoqué par l'équipe de modération de Truckline à tout moment si votre VTC ne respecte pas ces règles.
+- Si votre statut vérifié est révoqué, vous pouvez repostuler après avoir résolu les problèmes ayant conduit à la révocation.
+- La révocation est permanente pour le cycle de candidature en cours. Vous devez soumettre une nouvelle candidature après la révocation.
+
+### Restrictions de changement de nom
+
+- Les VTC Vérifiées sont soumises à des délais de restriction sur les changements de nom afin de prévenir les abus.
+- Des changements de nom fréquents ou suspects peuvent déclencher une révision de votre statut vérifié.
+
+---
+
+## Statuts de candidature
+
+| Statut             | Description                                                          |
+| ------------------ | -------------------------------------------------------------------- |
+| **En attente de révision** | Votre candidature attend d'être examinée par l'équipe de modération.   |
+| **En cours de révision**   | Votre candidature est actuellement en cours d'évaluation.                       |
+| **Approuvée**       | Votre VTC a obtenu le statut Vérifié.                           |
+| **Non approuvée**   | Votre candidature n'a pas été approuvée. Vous pouvez repostuler après 30 jours.    |
+| **Retirée**      | Vous avez retiré votre candidature. Vous pouvez en soumettre une nouvelle immédiatement. |
+
+---
+
+## Foire aux questions
+
+### Combien de temps prend le processus de révision ?
+
+Les délais de révision varient selon le volume de candidatures. La plupart des candidatures sont examinées sous 7 à 14 jours.
+
+### Puis-je modifier ma candidature après l'avoir soumise ?
+
+Non. Une fois soumise, vous ne pouvez pas modifier votre candidature. Si vous devez apporter des changements, retirez votre candidature et soumettez-en une nouvelle.
+
+### Que se passe-t-il si ma candidature est rejetée ?
+
+Vous recevrez une note de révision expliquant le motif du rejet. Vous pouvez repostuler après 30 jours.
+
+### Puis-je faire appel d'un rejet ?
+
+Il n'existe pas de processus d'appel formel. Cependant, vous pouvez soumettre une nouvelle candidature après le délai de 30 jours, avec des informations ou corrections supplémentaires.
+
+### Le statut vérifié expire-t-il ?
+
+Le statut vérifié n'a pas de date d'expiration fixe. Cependant, il peut être révoqué si votre VTC ne respecte pas les règles du programme ou devient inactive.
+
+### Puis-je perdre mon statut vérifié ?
+
+Oui. Le statut vérifié peut être révoqué en cas de violation des règles TrucklineMP, d'activité frauduleuse, ou d'inactivité prolongée.
+
+### Y a-t-il un coût pour le statut vérifié ?
+
+Non. Le Programme des VTC Vérifiées est gratuit pour toutes les VTC éligibles.
+
+### Les propriétaires de VTC vérifiées peuvent-ils obtenir un rôle sur le Discord principal ?
+
+Oui. Une fois votre VTC vérifiée, vous pouvez demander le rôle **Verified VTC Manager/Owner** sur le Discord officiel de TrucklineMP. Voir [Rôle Discord VTC Vérifiée](/fr/web-docs/vtc-programs/discord-role/).
+
+---
+
+## Contact
+
+Si vous avez des questions sur le Programme des VTC Vérifiées, veuillez contacter l'équipe de modération de Truckline via :
+
+- **Discord :** [https://discord.gg/trucklinemp](https://discord.gg/trucklinemp)
+- **E-mail :** support@trucklinemp.com

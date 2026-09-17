@@ -1,0 +1,173 @@
+---
+title: Rôles et permissions VTC
+description: Découvrez comment créer, gérer, et configurer les rôles et permissions de votre VTC sur TrucklineMP.
+version: 1.3.0
+lastUpdated: 2026-09-17
+---
+
+Les rôles définissent la hiérarchie de votre VTC et contrôlent ce que les membres peuvent faire. Ce guide couvre la création de rôles, l'attribution de permissions, et la gestion de votre structure de rôles.
+
+## Accéder à la gestion des rôles
+
+1. Accédez au panneau de gestion de votre VTC
+2. Sélectionnez **Roles** dans la barre latérale
+3. Vous verrez tous les rôles existants et leurs détails
+
+---
+
+## Limites de rôles
+
+| Statut VTC | Limite de rôles |
+|-----------|------------|
+| Standard | 20 rôles |
+| Vérifié | Illimité |
+
+Si vous atteignez la limite, un avertissement s'affiche. Postulez pour le [statut Vérifié](/fr/web-docs/vtc-programs/verified/) pour débloquer un nombre illimité de rôles.
+
+---
+
+## Créer des rôles
+
+1. Cliquez sur **Create New Rank** en haut à droite
+2. Renseignez les détails du rôle :
+   - **Role Name** (obligatoire, maximum 50 caractères)
+   - **Description** (facultatif)
+   - **Color** (choisissez une couleur pour le badge du rôle)
+3. Cliquez sur **Create Role**
+
+Le rôle est désormais disponible pour être attribué aux membres.
+
+---
+
+## Modifier des rôles
+
+Cliquez sur l'icône de modification sur n'importe quelle carte de rôle pour ouvrir la fenêtre d'édition. Vous pouvez gérer trois onglets :
+
+### Onglet Details
+- **Role Name** - modifier le nom d'affichage
+- **Description** - mettre à jour la description du rôle
+- **Color** - modifier la couleur du badge
+
+Les modifications sont enregistrées quand vous cliquez sur **Save Changes**.
+
+### Onglet Permissions
+Configurez ce que les membres ayant ce rôle peuvent faire. Les permissions sont regroupées par catégorie :
+
+**Permissions de gestion :**
+- `management.vtc.edit` - modifier les paramètres de la VTC
+- `management.vtc.visibility` - modifier la visibilité de la VTC et gérer les invitations
+- `management.vtc.appearance` - personnaliser les couleurs de thème et la mise en page de la VTC
+- `management.members.manage` - modifier les rôles des membres
+- `management.members.kick` - retirer des membres de la VTC
+- `management.members.view_activity` - consulter les journaux d'activité des membres
+- `management.roles.manage` - créer, modifier, et supprimer des rôles
+
+**Autres permissions :**
+- D'autres catégories couvrent les actualités, le recrutement, les événements, les invitations, les annonces, la liste noire, la galerie, les partenariats, le support, et les statistiques (`analytics.view`, voir [Statistiques](/fr/web-docs/vtc/analytics/)) - la disponibilité dépend de la configuration de votre VTC
+
+Utilisez **Select All** pour accorder toutes les permissions d'une catégorie, ou **Deselect All** pour les retirer.
+
+### Onglet Users
+Voir tous les membres qui ont ce rôle :
+- Voir les noms des membres et leurs WebID
+- Retirer le rôle de membres individuels
+- Voir combien de membres détiennent ce rôle
+
+---
+
+## Supprimer des rôles
+
+1. Cliquez sur l'icône de corbeille sur la carte du rôle
+2. Confirmez la suppression dans la fenêtre
+3. Les membres ayant ce rôle le perdront
+
+**Avertissement :** cette action est irréversible.
+
+---
+
+## Attribuer des rôles aux membres
+
+Les membres peuvent détenir jusqu'à **4 rôles** simultanément.
+
+### Depuis la page Members
+1. Allez dans **Members** dans la barre latérale
+2. Cliquez sur l'icône de modification à côté d'un membre
+3. Cochez/décochez les rôles dans la fenêtre
+4. Les modifications sont enregistrées automatiquement
+
+### Depuis la fenêtre de modification de rôle
+1. Ouvrez la fenêtre de modification d'un rôle
+2. Allez dans l'onglet **Users**
+3. Utilisez l'interface pour gérer qui détient ce rôle
+
+---
+
+## Bonnes pratiques de hiérarchie des rôles
+
+### Structure suggérée
+```
+Owner (intégré, ne peut pas être retiré)
+├── Admin
+│   ├── Moderator
+│   │   ├── Senior Driver
+│   │   └── Driver
+```
+
+### Recommandations de permissions
+- **Owner** - contrôle total (intégré)
+- **Admin** - toutes les permissions de gestion
+- **Moderator** - gestion des membres, actualités, événements
+- **Senior Driver** - permissions limitées, rôle de mentorat
+- **Driver** - aucune permission spéciale (rôle par défaut)
+
+### Conseils
+- Commencez simple et ajoutez des rôles au besoin
+- Utilisez les couleurs pour distinguer visuellement la hiérarchie
+- Rédigez des descriptions claires pour chaque rôle
+- Réexaminez régulièrement les permissions
+- Ne compliquez pas trop votre structure
+
+---
+
+## Affichage des rôles
+
+### Sur les profils des membres
+- Les rôles apparaissent comme des badges colorés
+- Les membres peuvent avoir jusqu'à 4 badges de rôle visibles
+- Le badge de propriétaire est toujours affiché pour les propriétaires de VTC
+
+### Dans la liste des membres
+- Tous les rôles attribués sont listés pour chaque membre
+- Les membres sans rang affichent « Unranked » (sauf les propriétaires)
+- Les couleurs des rôles correspondent aux couleurs configurées
+
+---
+
+## Dépannage
+
+### « J'ai atteint la limite de rôles »
+- Les VTC standard sont limitées à 20 rôles
+- Supprimez les rôles inutilisés ou postulez pour le statut Vérifié
+- Les VTC vérifiées ont un nombre illimité de rôles
+
+### « Les membres ne voient pas le panneau de gestion »
+- Assurez-vous qu'ils ont la permission `management.vtc.edit`
+- Vérifiez que la permission est attribuée à leur rôle
+- Seuls les propriétaires peuvent accéder à certains paramètres
+
+### « Je ne peux pas supprimer un rôle »
+- Assurez-vous qu'aucun membre n'a ce rôle, ou réattribuez-les d'abord
+- Le rôle de propriétaire ne peut pas être supprimé
+- Vous devez avoir la permission de gérer les rôles
+
+### « Un membre a perdu son rôle »
+- Vérifiez si le rôle a été supprimé
+- Consultez le journal d'activité pour les changements de rôle
+- Réattribuez le rôle depuis la page Members
+
+---
+
+## Guides associés
+
+- [Gestion des membres VTC](/fr/web-docs/vtc/member-management/) - gérer la liste de vos membres
+- [Programme VTC Vérifié](/fr/web-docs/vtc-programs/verified/) - débloquer un nombre illimité de rôles

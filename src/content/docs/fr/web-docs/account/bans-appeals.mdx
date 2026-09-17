@@ -1,0 +1,112 @@
+---
+title: Bans et appels
+description: Comprenez les registres publics de bans, consultez votre réputation et soumettez des appels de ban sur TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+TrucklineMP publie certains registres de modération et propose une procédure d'appel lorsque vous n'êtes pas d'accord avec un ban ou une suspension.
+
+## Liste publique des bans
+
+Rendez-vous sur [trucklinemp.com/bans](https://trucklinemp.com/bans) pour parcourir les entrées de bans publiques.
+
+Chaque entrée peut afficher :
+
+- La catégorie de l'infraction (anonymisée pour la confidentialité)
+- La portée (plateforme, jeu, communication)
+- Les dates de début et de fin pour les sanctions temporaires
+- Si le ban est actif ou expiré
+
+Les pages individuelles de ban se trouvent à `/bans/{id}`.
+
+Toutes les notes de modération internes n'apparaissent pas publiquement. Les détails sensibles restent dans les outils de l'équipe.
+
+---
+
+## Votre profil et votre réputation
+
+Sur votre [profil public](/fr/web-docs/account/public-profile/) :
+
+- Une bannière de ban actif apparaît lorsque vous êtes actuellement banni ou suspendu
+- L'onglet **Record** peut lister votre historique de bans selon les règles de visibilité
+
+Les autres utilisateurs ne voient que ce que la politique autorise.
+
+---
+
+## Éligibilité à l'appel
+
+Tous les bans ne peuvent pas être immédiatement contestés. Cela dépend de plusieurs facteurs :
+
+- Le type et la gravité du ban
+- Le délai depuis le dernier appel
+- Si le ban est permanent selon la politique en vigueur
+
+Le système de support vérifie l'éligibilité au moment où vous lancez un appel. Si vous n'êtes pas éligible, le formulaire explique pourquoi et quand vous pourrez réessayer.
+
+---
+
+## Soumettre un appel
+
+1. Connectez-vous au compte ayant reçu le ban
+2. Ouvrez [trucklinemp.com/support?lane=appeal](https://trucklinemp.com/support?lane=appeal)
+3. Remplissez le formulaire d'appel avec une explication honnête
+4. Attendez l'examen par l'équipe sur le fil du ticket
+
+Les appels ne sont **pas** un chat instantané avec les modérateurs. L'équipe lit votre ticket et répond une fois l'examen terminé.
+
+### Le formulaire n'est pas un tribunal
+
+Peu nous importe le professionnalisme de façade. Vous ne perdrez pas de points pour un style informel. Vous en perdrez pour avoir menti.
+
+Le formulaire pose deux questions directement :
+
+- **Était-ce un peu de votre faute ?** Choisissez Oui, Non, ou Ça dépend. Répondez honnêtement, pas ce que vous pensez que l'équipe veut entendre.
+- **Pourquoi c'est arrivé.** Expliquez-le avec vos propres mots. Pas besoin d'une dissertation formelle, dites-nous simplement ce qui s'est passé.
+
+Ne faites pas semblant d'être désolé. Si vous pensez sincèrement que ce n'était pas vous, dites-le. Si vous savez que c'était vous, assumez-le. L'équipe sait faire la différence entre une vraie explication et des excuses scriptées, et l'honnêteté est examinée plus rapidement dans tous les cas.
+
+### Ce qu'il faut inclure
+
+- Ce que vous pensez être incorrect dans la décision, le cas échéant
+- Tout contexte que l'équipe aurait pu manquer
+- Des liens vers des preuves (captures d'écran, horodatages) si pertinent
+- Un ton direct et honnête. L'hostilité et les mensonges évidents rallongent le délai d'examen, la politesse n'est pas requise
+
+---
+
+## Après une décision
+
+- **Acceptée** : Les restrictions sont levées selon les instructions de l'équipe. Vous devrez peut-être vous déconnecter puis vous reconnecter.
+- **Rejetée** : Le ticket affiche le résultat. Un délai peut s'appliquer avant un nouvel appel.
+- **Retirée** : Vous (ou l'équipe en votre nom) avez retiré l'appel avant qu'une décision ne soit prise.
+
+---
+
+## Bans Discord
+
+La modération Discord sur le **serveur officiel TrucklineMP** est liée à la réputation sur la plateforme dans de nombreux cas. Les problèmes propres à Discord sur les **serveurs VTC** sont gérés par les administrateurs de ce VTC, pas par l'équipe TrucklineMP.
+
+Faites appel des bans de plateforme via le système de support du site, pas en envoyant un message privé aux modérateurs sur Discord.
+
+---
+
+## Visibilité via l'API
+
+Les outils tiers peuvent lire les données publiques de bans via :
+
+```
+GET https://api.trucklinemp.com/bans
+GET https://api.trucklinemp.com/bans/{id}
+```
+
+Le scope OAuth `bans:read` est défini pour une future utilisation dans userinfo mais n'est **pas** encore renvoyé dans userinfo aujourd'hui. Voir [Applications OAuth](/fr/web-api/oauth-apps/#réponse-userinfo).
+
+---
+
+## Guides associés
+
+- [Tickets de support](/fr/web-docs/account/support-tickets/)
+- [Profil public](/fr/web-docs/account/public-profile/)
+- [Serveur Discord officiel](/fr/web-docs/discord-bot/official-server/)

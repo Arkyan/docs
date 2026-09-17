@@ -1,0 +1,141 @@
+---
+title: API publique
+description: Authentification, URL de base, limites de débit, et vue d'ensemble des endpoints pour l'API REST publique de TrucklineMP.
+version: 1.3.0
+lastUpdated: 2026-09-17
+---
+
+L'API publique TrucklineMP est une surface REST en lecture seule pour les intégrations tierces. Elle expose les données de l'annuaire VTC, les événements, les actualités, la recherche d'utilisateurs, les enregistrements de modération, et les métadonnées de la plateforme.
+
+Tous les endpoints sont disponibles sans authentification. Passer une clé API de la Console développeur augmente vos limites de débit et lie les requêtes à votre projet.
+
+## Authentification
+
+Envoyez votre clé API dans l'en-tête `Authorization` :
+
+```
+Authorization: Bearer tlmp_api_YOUR_API_KEY
+```
+
+Les clés API :
+
+- Utilisent le préfixe `tlmp_api_` (par exemple `tlmp_api_a1b2c3...`). Les anciennes clés émises avec le préfixe historique `tl_` fonctionnent toujours.
+- Sont créées par projet dans la [Console développeur](https://trucklinemp.com/developer).
+- Sont affichées **une seule fois** à la création. Stockez-les de manière sécurisée.
+- Fournissent un accès **en lecture seule** aux données publiques. Elles ne débloquent pas d'actions privées de compte ni d'opérations d'écriture.
+- Peuvent être révoquées à tout moment depuis la console.
+
+Les clés invalides ou révoquées sont ignorées. La requête est traitée comme anonyme et reçoit les limites de débit anonymes.
+
+Si votre clé API est exposée publiquement (par exemple committée dans un dépôt), régénérez-la immédiatement - voir [Clés API et secrets exposés](/fr/web-api/leaked-secrets/).
+
+### Cookies de session
+
+Certains endpoints retournent des champs supplémentaires lorsque vous êtes connecté sur trucklinemp.com et envoyez des cookies de session avec la requête (par exemple, des champs VTC réservés aux membres). Ceci est optionnel et destiné à l'usage interne. Les intégrations tierces devraient s'appuyer sur les clés API et OAuth le cas échéant.
+
+## URL de base
+
+| Environnement | URL de base | Notes |
+|-------------|----------|-------|
+| Production | `https://api.trucklinemp.com` | Nom d'hôte de l'API publique |
+| Même origine | `https://trucklinemp.com/api/v1` | Utilisé par le playground intégré au navigateur |
+
+### Important : ne doublez pas `/v1`
+
+Le nom d'hôte de production `api.trucklinemp.com` passe par nginx. Une requête vers :
+
+```
+https://api.trucklinemp.com/vtcs
+```
+
+est redirigée vers `/api/v1/vtcs` sur l'application. **N'ajoutez pas** `/v1` à l'URL du nom d'hôte.
+
+Les requêtes de même origine utilisent directement `/api/v1` :
+
+```
+https://trucklinemp.com/api/v1/vtcs
+```
+
+### Exemple de requête
+
+```bash
+curl "https://api.trucklinemp.com/version"
+
+curl -H "Authorization: Bearer tlmp_api_YOUR_API_KEY" \
+  "https://api.trucklinemp.com/vtcs?limit=10"
+```
+
+## Limites de débit
+
+Les limites s'appliquent par IP client pour le trafic anonyme et par clé API (et IP) lorsqu'une clé valide est présente. Les limites sont appliquées sur une fenêtre de **1 minute** et une fenêtre de **5 minutes**. Dépasser l'une ou l'autre retourne un HTTP `429` avec une erreur `RATE_LIMITED`.
+
+### Anonyme (sans clé API)
+
+| Fenêtre | Limite |
+|--------|-------|
+| 1 minute | 100 requêtes |
+| 5 minutes | 400 requêtes |
+
+### Paliers de clés API
+
+| Palier | 1 minute | 5 minutes |
+|------|----------|-----------|
+| **free** (par défaut) | 1 000 | 5 000 |
+| **basic** | 2 500 | 12 000 |
+| **premium** | 5 000 | 25 000 |
+| **unlimited** | 20 000 | 80 000 |
+
+L'attribution des paliers est gérée par l'équipe TrucklineMP. Contactez le support si votre intégration a besoin d'un palier supérieur.
+
+### Bonnes pratiques
+
+- Mettez en cache les réponses lorsque c'est possible. De nombreux endpoints de liste prennent en charge la pagination.
+- Ralentissez en cas de réponses `429`. Réduisez la concurrence avant de réessayer.
+- Envoyez toujours une clé API valide en production. Les limites anonymes sont destinées uniquement à des tests légers.
+
+## Vue d'ensemble des endpoints
+
+La spécification OpenAPI sur [trucklinemp.com/api/v1/openapi.json](https://trucklinemp.com/api/v1/openapi.json) fait foi. Principaux groupes de ressources :
+
+| Groupe | Exemples |
+|-------|----------|
+| **Plateforme** | `GET /version`, `GET /status`, `GET /rules`, `GET /partners`, `GET /stats` |
+| **VTC** | `GET /vtcs`, `GET /vtcs/{idOrHandle}`, `GET /vtcs/{id}/members`, `GET /vtcs/{id}/news`, `GET /vtcs/{id}/events`, `GET /vtcs/{id}/roles` |
+| **Événements** | `GET /events`, `GET /events/{eventId}`, `GET /events/{eventId}/attendees`, `GET /events/{eventId}/slots` |
+| **Actualités** | `GET /news`, `GET /news/{newsId}` |
+| **Utilisateurs** | `GET /users/search`, `GET /users/{handleOrId}`, `GET /users/steam/{steamId}`, `GET /users/batch`, `GET /users/{id}/bans`, `GET /users/{id}/events` |
+
+Les objets utilisateur publics incluent un champ `steamId` (chaîne SteamID64, ou `null` si non lié). Vous pouvez aussi résoudre un profil avec `GET /users/{steamId}` ou la route dédiée `GET /users/steam/{steamId}`.
+| **Bannissements** | `GET /bans`, `GET /bans/{id}` |
+| **Programmes** | `GET /programs/badges/{slug}`, `GET /programs/recognition` |
+| **Session** | `GET /session` (introspection de session basée sur les cookies) |
+
+Les paramètres de chemin tels que `{idOrHandle}` acceptent soit un ID numérique soit un handle public là où c'est précisé dans la spécification.
+
+## SDK TypeScript
+
+Pour les intégrations Node.js, vous pouvez utiliser le client officiel au lieu d'appels `fetch` écrits à la main. Voir [SDK TypeScript](/fr/web-api/sdk/).
+
+## Réponses d'erreur
+
+Codes d'erreur courants :
+
+| Code | HTTP | Signification |
+|------|------|---------|
+| `UNAUTHORIZED` | 401 | Identifiants manquants ou invalides sur une route protégée |
+| `FORBIDDEN` | 403 | Authentification valide mais permission insuffisante |
+| `NOT_FOUND` | 404 | La ressource n'existe pas |
+| `RATE_LIMITED` | 429 | Limite de débit dépassée |
+| `VALIDATION_ERROR` | 400 | Paramètres de requête ou de chemin invalides |
+
+## Outils interactifs
+
+- [API Playground](https://trucklinemp.com/developer/playground) : envoyez des requêtes depuis le navigateur (utilise `/api/v1` en même origine).
+- [Swagger UI](/fr/web-api/public-api/doc) : parcourez le schéma complet de manière interactive, directement dans la documentation.
+
+## Guides associés
+
+- [Vue d'ensemble de la plateforme développeur](/fr/web-api/overview/)
+- [Applications OAuth](/fr/web-api/oauth-apps/) (connexion utilisateur, non requis pour les endpoints de lecture publique)
+- [Webhooks](/fr/web-api/webhooks/) (notifications push d'événements)
+- [Clés API et secrets exposés](/fr/web-api/leaked-secrets/) (remédiation si une clé est exposée)

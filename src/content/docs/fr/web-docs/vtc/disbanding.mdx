@@ -1,0 +1,71 @@
+---
+title: Dissoudre une VTC
+description: Dissolvez définitivement votre Virtual Trucking Company et comprenez ce qui arrive aux membres et aux données.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Dissoudre supprime définitivement votre VTC de TrucklineMP. Seul le **propriétaire de la VTC** peut la dissoudre. Cette action est irréversible.
+
+## Avant de dissoudre
+
+Envisagez des alternatives :
+
+- Transférer la propriété à un membre de confiance ([Gestion des membres](/fr/web-docs/vtc/member-management/))
+- Régler la visibilité sur **privé** et fermer le recrutement ([Visibilité](/fr/web-docs/vtc/visibility/))
+- Mettre les opérations en pause tout en conservant la VTC pour un retour futur
+
+La dissolution est appropriée lorsque l'entreprise ferme définitivement.
+
+---
+
+## Comment dissoudre
+
+1. Ouvrez le panneau **Manage** de votre VTC
+2. Allez dans **General Settings** (`/vtc/@handle/manage/settings`)
+3. Faites défiler jusqu'à la zone de danger
+4. Choisissez **Delete VTC**
+5. Confirmez lorsque demandé (vous devrez saisir le nom de la VTC)
+
+Seul le propriétaire voit cette option.
+
+---
+
+## Ce qui se passe
+
+Lorsqu'une VTC est dissoute :
+
+- Le profil de la VTC et le panneau de gestion sont supprimés
+- Tous les membres perdent leur appartenance à cette VTC
+- Les actualités, événements et données de recrutement liés à la VTC sont supprimés ou archivés selon la politique de la plateforme
+- La vérification du serveur Discord pour cette VTC est révoquée
+- Les liens d'invitation actifs cessent de fonctionner
+- Le handle peut redevenir disponible après une période de gel (non garanti)
+
+Les membres ne sont **pas** supprimés de TrucklineMP. Ils n'appartiennent simplement plus à la VTC dissoute.
+
+---
+
+## Discord et annonces
+
+Si vous avez lié un serveur Discord :
+
+- `/vtc` et `/verify-server` indiqueront que le serveur est délié
+- Les webhooks d'annonces cessent de se déclencher pour cette VTC
+- Déliez manuellement sur Discord si vous voulez une rupture nette avant la dissolution
+
+Voir [Vérification Discord](/fr/web-docs/vtc/discord-verification/).
+
+---
+
+## Dissolution par le staff
+
+Le staff de la plateforme peut dissoudre les VTC qui enfreignent les règles. Les actions du staff sont enregistrées séparément. Si votre VTC a été supprimée par le staff, contactez le [Support](/fr/web-docs/account/support-tickets/) pour toute question.
+
+---
+
+## Guides associés
+
+- [Gestion des membres](/fr/web-docs/vtc/member-management/) - transférer la propriété à la place
+- [Annonces VTC](/fr/web-docs/vtc/announcements/) - la dissolution peut déclencher des événements de webhook
+- [Créer une VTC](/fr/web-docs/vtc/creating/) - repartir de zéro après une dissolution

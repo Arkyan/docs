@@ -1,0 +1,37 @@
+---
+title: Activité des membres VTC
+description: Suivez l'activité des membres dans votre VTC ou VBC - statuts d'activité, politique d'inactivité, et demandes de congé sur TrucklineMP.
+version: 1.0.0
+lastUpdated: 2026-09-17
+---
+
+La page Member Activity de votre panneau de gestion d'entreprise montre à quel point chaque membre est actif et permet au staff de gérer la politique d'inactivité et les demandes de congé. Ouvrez-la depuis la barre latérale (`/vtc/@handle/manage/member-activity`).
+
+L'accès nécessite la permission `management.members.view_activity`. Les propriétaires y ont toujours accès.
+
+## Statuts d'activité
+
+Chaque membre a un statut d'activité basé sur sa participation récente :
+
+| Statut | Signification |
+|--------|-------------|
+| Active | A participé récemment |
+| At risk | Inactif depuis un moment et proche du seuil d'inactivité |
+| Inactive | Inactif depuis plus longtemps que la période autorisée |
+| On leave | Couvert par une demande de congé approuvée |
+| Exempt | Exempté des exigences d'activité |
+
+La page affiche le nombre de jours depuis la dernière activité de chaque membre et combien d'événements il a rejoints pendant la période d'examen.
+
+## Politique d'inactivité
+
+Le staff peut définir le nombre maximum de jours d'inactivité autorisés avant qu'un membre ne soit marqué comme inactif. Les membres marqués inactifs peuvent être retirés de l'entreprise ou se voir accorder une demande de congé pour protéger leur adhésion.
+
+## Demandes de congé
+
+Les membres peuvent demander un congé s'ils ne peuvent pas participer pendant un certain temps. Le staff examine les demandes en attente et les approuve ou les rejette. Un congé approuvé protège le membre de la politique d'inactivité jusqu'à la fin du congé.
+
+## Guides associés
+
+- [Gestion des membres](/fr/web-docs/vtc/member-management/) - gérer la liste des membres
+- [Journal d'activité](/fr/web-docs/vtc/activity-log/) - la piste d'audit des actions de gestion

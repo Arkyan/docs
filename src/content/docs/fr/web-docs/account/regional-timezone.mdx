@@ -1,0 +1,68 @@
+---
+title: Région et fuseau horaire
+description: Définissez votre fuseau horaire pour que les dates et heures s'affichent correctement sur TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+TrucklineMP utilise votre préférence de fuseau horaire pour afficher les dates et heures locales sur les événements, les notifications et autres contenus sensibles au temps.
+
+## Accéder aux paramètres régionaux
+
+1. Cliquez sur votre avatar dans le coin supérieur droit
+2. Sélectionnez **Settings**
+3. Ouvrez l'onglet **Regional**
+4. Ou allez sur `trucklinemp.com/user/me/settings?tab=regional`
+
+---
+
+## Choisir un fuseau horaire
+
+Sélectionnez le fuseau horaire IANA correspondant à l'endroit où vous vivez ou où vous prévoyez vos convois. Exemples :
+
+- `Europe/London`
+- `America/New_York`
+- `Europe/Berlin`
+
+Les changements sont enregistrés lorsque vous confirmez. Les heures relatives (par exemple « il y a 2 heures ») se mettent à jour au prochain chargement de la page.
+
+---
+
+## Ce qui utilise votre fuseau horaire
+
+| Fonctionnalité | Effet |
+|---------|--------|
+| **Events** | Les heures de début et de fin sont affichées selon votre décalage local |
+| **Notifications** | Les horodatages dans la fenêtre déroulante de la cloche |
+| **Profile activity** | Affichage localisé lorsque c'est pris en charge |
+| **Forum** | Affichage de la date/heure lorsque le forum utilise la préférence de votre compte |
+
+Certains outils de VTC (comme les **heures de silence** des annonces) utilisent un fuseau horaire configuré sur le webhook, pas votre paramètre personnel. Voir [Annonces VTC](/fr/web-docs/vtc/announcements/).
+
+---
+
+## Bonnes pratiques
+
+- Choisissez le fuseau horaire où vous planifiez réellement vos événements, pas forcément votre emplacement physique si vous menez des convois dans une autre région
+- Mettez à jour votre fuseau horaire lorsque vous déménagez ou changez votre horaire de jeu principal
+- Les créateurs d'événements doivent toujours saisir des heures exactes basées sur l'UTC dans l'éditeur d'événement ; les spectateurs voient des heures locales converties
+
+---
+
+## Dépannage
+
+### Les heures semblent décalées d'une heure
+
+Les changements d'heure d'été sont gérés par les fuseaux IANA. Resélectionnez votre fuseau horaire si vous avez récemment voyagé.
+
+### L'événement affiche une heure différente de celle de Discord
+
+Les messages Discord et les pages d'événements TrucklineMP peuvent utiliser des règles d'affichage différentes. Faites confiance à la page d'événement sur trucklinemp.com pour les heures officielles de RSVP.
+
+---
+
+## Guides associés
+
+- [Événements VTC](/fr/web-docs/vtc/events/)
+- [Notifications](/fr/web-docs/account/notifications/)
+- [Paramètres du profil](/fr/web-docs/account/profile-settings/)

@@ -1,0 +1,200 @@
+---
+title: Sécurité du compte
+description: Protégez votre compte TrucklineMP avec l'authentification à deux facteurs, la gestion des sessions, le mode développeur et les paramètres de confidentialité.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Gérez la sécurité de votre compte, vos sessions actives et vos paramètres de confidentialité pour garder votre compte en sécurité.
+
+## Accéder aux paramètres de sécurité
+
+1. Cliquez sur votre avatar dans le coin supérieur droit
+2. Sélectionnez **Settings**
+3. Sélectionnez l'onglet **Security**
+4. Ou accédez directement à `trucklinemp.com/user/me/settings?tab=security`
+
+---
+
+## Compte connecté (Steam)
+
+Votre compte Steam est lié de façon permanente à votre compte TrucklineMP.
+
+- **Statut :** Ne peut pas être déconnecté
+- **Objectif :** Vérification d'identité principale
+- **Steam ID :** Affiché dans cette section
+
+Cette connexion est requise pour la vérification du compte et ne peut pas être modifiée.
+
+---
+
+## Authentification à deux facteurs (2FA)
+
+Ajoutez une couche de sécurité supplémentaire à votre compte.
+
+### Activer la 2FA
+
+1. Cliquez sur **Enable 2FA**
+2. Un code QR est généré
+3. Scannez le code QR avec votre application d'authentification :
+   - Google Authenticator
+   - Authy
+   - Microsoft Authenticator
+   - Toute application compatible TOTP
+4. Ou saisissez manuellement la clé secrète affichée sous le code QR
+5. Cliquez sur **Continue to Verification**
+6. Entrez le code à 6 chiffres de votre application
+7. Cliquez sur **Verify & Enable**
+8. **Enregistrez vos codes de secours** - ils ne seront plus jamais affichés
+
+### Codes de secours
+
+Lorsque vous activez la 2FA, vous recevez **10 codes de secours** :
+- Chaque code ne peut être utilisé **qu'une seule fois**
+- Utilisez-les si vous perdez l'accès à votre application d'authentification
+- Conservez-les dans un endroit sûr (gestionnaire de mots de passe, copie imprimée)
+- Vous pouvez copier tous les codes en une seule fois
+
+### Désactiver la 2FA
+
+1. Cliquez sur **Disable 2FA**
+2. Entrez votre code d'authentification **ou** un code de secours
+3. Cliquez sur **Disable 2FA**
+4. La 2FA est maintenant retirée de votre compte
+
+**Avertissement :** Désactiver la 2FA rend votre compte moins sécurisé.
+
+### Si vous perdez votre application d'authentification
+
+1. Utilisez un code de secours pour vous connecter
+2. Une fois connecté, allez dans les paramètres de sécurité
+3. Désactivez la 2FA à l'aide du code de secours
+4. Réactivez la 2FA avec une nouvelle application d'authentification
+
+**Sans codes de secours :** Contactez le support via Discord avec une preuve d'identité.
+
+---
+
+## Mode développeur
+
+Activez la console développeur pour accéder à des outils professionnels.
+
+### Ce que vous obtenez
+- Créer des projets API
+- Gérer les identifiants API
+- Accéder à la documentation développeur
+- Créer des intégrations avec TrucklineMP
+
+### Activer le mode développeur
+1. Cliquez sur **Activate** dans la section Developer Mode
+2. Lisez la boîte de dialogue de confirmation
+3. Cliquez sur **Confirm Activation**
+4. Le mode développeur est maintenant actif
+
+**Avertissement :** Cette action est permanente et irréversible.
+
+### Accéder à la console
+- Une fois activé, cliquez sur **Open Console** pour accéder aux outils développeur
+- Ou accédez directement à `trucklinemp.com/developer`
+
+---
+
+## Sessions actives
+
+Consultez et gérez tous les appareils actuellement connectés à votre compte.
+
+### Informations de session
+Chaque session affiche :
+- **Browser** - Chrome, Firefox, Safari, Edge
+- **Operating System** - Windows, macOS, Linux, Android, iOS
+- **IP Address** - L'IP d'origine de la session
+- **Start Date** - Date de création de la session
+- **Current badge** - Marque votre session actuelle
+
+### Révoquer une session
+1. Trouvez la session que vous souhaitez révoquer
+2. Cliquez sur **Revoke** à côté de celle-ci
+3. La session est immédiatement déconnectée
+4. L'appareil devra se reconnecter
+
+### Se déconnecter de toutes les autres sessions
+1. Cliquez sur **Sign out all other sessions** en haut
+2. Toutes les sessions sauf votre session actuelle sont révoquées
+3. Utile si vous suspectez un accès non autorisé
+
+---
+
+## Paramètres de confidentialité
+
+### Masquer les configurations externes
+- Lorsque cette option est activée, vos configurations Truckline Utils ne sont visibles que par vous et les administrateurs
+- Les autres utilisateurs ne peuvent pas voir vos configurations sur votre profil
+- Cochez la case pour activer ou désactiver cette option
+
+---
+
+## Documents légaux
+
+Consultez le statut d'acceptation des documents légaux :
+- Conditions d'utilisation
+- Politique de confidentialité
+- Autres accords requis
+
+Les documents en attente sont listés et nécessitent une acceptation pour continuer à utiliser certaines fonctionnalités.
+
+---
+
+## Accusés de réception des documents de l'équipe
+
+Si vous êtes membre de l'équipe, consultez les documents que vous avez accusé réception :
+- Titre et version du document
+- Date d'acceptation
+
+---
+
+## Bonnes pratiques de sécurité
+
+### Essentiel
+- **Activez la 2FA** - L'étape de sécurité la plus importante
+- **Enregistrez vos codes de secours** - Conservez-les dans un gestionnaire de mots de passe
+- **Vérifiez régulièrement vos sessions** - Révoquez tout ce que vous ne reconnaissez pas
+- **Utilisez un mot de passe fort** - Unique à TrucklineMP
+
+### Recommandé
+- Déconnectez-vous sur les appareils partagés
+- Vérifiez régulièrement les applications autorisées
+- Gardez vos comptes connectés à jour
+- Signalez immédiatement toute activité suspecte
+
+---
+
+## Dépannage
+
+### « Je ne peux pas activer la 2FA »
+- Assurez-vous que votre application d'authentification prend en charge le TOTP
+- Vérifiez que l'heure de votre appareil est synchronisée
+- Essayez une autre application d'authentification
+
+### « J'ai perdu mes codes de secours »
+- Si vous êtes toujours connecté, désactivez la 2FA puis réactivez-la
+- Si vous êtes bloqué, contactez le support via Discord
+- Fournissez une preuve d'identité pour la récupération du compte
+
+### « Je vois une session que je ne reconnais pas »
+- Révoquez immédiatement la session
+- Changez votre mot de passe si possible
+- Activez la 2FA si ce n'est pas déjà fait
+- Contactez le support si vous suspectez un accès non autorisé
+
+### « Je ne peux pas me connecter avec la 2FA »
+- Vérifiez que l'heure de votre application d'authentification est correcte
+- Essayez un code de secours
+- Si rien ne fonctionne, contactez le support
+
+---
+
+## Guides associés
+
+- [Paramètres du profil](/fr/web-docs/account/profile-settings/) - Gérez votre profil public
+- [Connexions](/fr/web-docs/account/connections/) - Liez des comptes externes
+- [Suppression du compte](/fr/web-docs/account/deletion/) - Supprimez votre compte

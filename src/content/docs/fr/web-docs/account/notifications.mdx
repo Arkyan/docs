@@ -1,0 +1,85 @@
+---
+title: Notifications
+description: Utilisez la cloche de notification pour voir les alertes de la plateforme, marquer des éléments comme lus et comprendre la remise des messages privés Discord.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+TrucklineMP envoie des notifications dans l'application pour toute activité qui vous concerne : mises à jour de VTC, recrutement, événements, avis de modération, et bien plus.
+
+## Cloche de notification
+
+Les utilisateurs connectés voient une **icône de cloche** dans l'en-tête du site.
+
+- Un badge indique le nombre de notifications non lues
+- Cliquez sur la cloche pour ouvrir la liste déroulante
+- Cliquez sur une notification pour ouvrir la page associée (lorsqu'un lien est disponible)
+- Marquez des éléments individuels comme lus ou videz la liste depuis la fenêtre déroulante
+
+Il n'existe pas encore de centre de notifications en pleine page séparé. La cloche est l'interface principale.
+
+---
+
+## Ce que vous pourriez recevoir
+
+Par exemple :
+
+- Candidature à un VTC acceptée ou refusée
+- Nouvelle candidature de recrutement (pour le personnel du VTC)
+- Rappels d'événements ou changements de RSVP
+- Annonces de la plateforme
+- Avis de modération ou de compte (le cas échéant)
+
+Les types exacts dépendent de vos rôles et de votre activité.
+
+---
+
+## Remise par message privé Discord
+
+Si votre **compte Discord est lié** dans [Connexions](/fr/web-docs/account/connections/), le bot Discord de TrucklineMP peut délivrer la même notification sous forme de **message privé** sur Discord.
+
+Prérequis :
+
+- Discord connecté à `trucklinemp.com/user/me/settings?tab=connections`
+- Votre compte Discord autorise les messages privés des membres du serveur / du bot TrucklineMP
+- Le type de notification est éligible au relais Discord
+
+La remise par message privé est une copie de confort. Vérifiez toujours la cloche du site pour la liste faisant foi.
+
+Voir [Notifications Discord](/fr/web-docs/discord-bot/notifications/) pour le dépannage des messages privés.
+
+---
+
+## Application mobile
+
+L'application mobile TrucklineMP dispose de ses propres API de notification. Les notifications push mobiles sont distinctes de la cloche du site mais peuvent afficher des éléments similaires.
+
+---
+
+## Confidentialité
+
+Les notifications sont privées à votre compte. Les autres utilisateurs ne peuvent pas voir votre liste de notifications.
+
+---
+
+## Dépannage
+
+### La cloche affiche un compteur mais la liste est vide
+
+Actualisez la page. Si le problème persiste, déconnectez-vous puis reconnectez-vous.
+
+### Je ne reçois pas de messages privés Discord
+
+Vérifiez que Discord est bien lié, que les messages privés sont ouverts et que vous n'êtes pas bloqué par le bot. Voir [Notifications Discord](/fr/web-docs/discord-bot/notifications/).
+
+### Alertes de recrutement manquantes
+
+Vous devez disposer des bonnes permissions de personnel de VTC et le recrutement doit être activé pour votre VTC.
+
+---
+
+## Guides associés
+
+- [Notifications Discord](/fr/web-docs/discord-bot/notifications/)
+- [Connexions](/fr/web-docs/account/connections/)
+- [Recrutement VTC](/fr/web-docs/vtc/recruitment/)

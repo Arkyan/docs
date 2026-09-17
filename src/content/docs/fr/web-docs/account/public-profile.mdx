@@ -1,0 +1,105 @@
+---
+title: Profil public
+description: Comprenez les onglets, badges, activités de votre profil public TrucklineMP, et ce que les autres peuvent voir.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Votre profil public est la façon dont les autres conducteurs vous voient sur TrucklineMP. Il combine identité, adhésion à un VTC, activité communautaire et informations de réputation.
+
+## Ouvrir un profil
+
+- Votre profil : cliquez sur votre avatar, ou allez sur `trucklinemp.com/user/me` (redirige vers votre identifiant ou l'URL de votre WebID)
+- Un autre utilisateur : `trucklinemp.com/@handle` ou `/user/{webId}`
+- Depuis l'[annuaire des utilisateurs](/fr/web-docs/account/user-directory/)
+
+---
+
+## En-tête du profil
+
+L'en-tête affiche :
+
+- L'avatar et le nom affiché
+- L'identifiant (`@username`)
+- Le WebID
+- Les badges de l'équipe ou de programmes
+- Une bannière de ban ou de suspension active (le cas échéant)
+- Le statut en direct **Twitch** ou **YouTube** lorsqu'il est connecté et visible
+- Des actions rapides (signaler l'utilisateur, pour les visiteurs connectés)
+
+---
+
+## Onglets du profil
+
+Les onglets varient selon le compte. Sections courantes :
+
+### Overview
+
+Statistiques résumées, rôles, badges et points forts.
+
+### VTC
+
+Adhésion actuelle au VTC, rôle et lien vers le profil de l'entreprise. Les utilisateurs n'appartenant à aucun VTC affichent un état vide.
+
+### Activity
+
+Flux d'activité récente sur la plateforme (messages, participation et signaux similaires lorsqu'ils sont disponibles).
+
+### Forum
+
+Résumé de la participation au forum avec des liens vers le contenu de [forum.trucklinemp.com](https://forum.trucklinemp.com) lorsque le module forum est activé.
+
+### Configs
+
+Configurations externes de camions que vous avez choisi de partager (masquées lorsque vous activez **masquer les configurations externes** dans les paramètres).
+
+### Record
+
+Historique des bans et de la modération visible selon les règles de réputation. Vous pourriez voir davantage sur votre propre profil que les inconnus. Voir [Bans et appels](/fr/web-docs/account/bans-appeals/).
+
+---
+
+## Ce que vous contrôlez
+
+Modifiable dans [Paramètres du profil](/fr/web-docs/account/profile-settings/) :
+
+- Nom affiché et identifiant
+- Avatar (téléversement ou URL)
+- Liens sociaux (TikTok, X, etc.)
+- Bascules de visibilité YouTube et Twitch
+
+Modifiable dans [Connexions](/fr/web-docs/account/connections/) :
+
+- Fournisseurs OAuth liés (Steam, Discord, Google, etc.)
+
+---
+
+## Badges et programmes
+
+Des badges de reconnaissance (par exemple pour une contribution ou une récompense de programme) apparaissent lorsque l'équipe ou des programmes automatisés les attribuent. Vous ne pouvez pas vous auto-attribuer de badges officiels.
+
+---
+
+## Signalement
+
+Les utilisateurs connectés peuvent signaler un profil pour un examen de modération. Les signalements créent un [ticket de support](/fr/web-docs/account/support-tickets/). Fournissez des détails factuels.
+
+---
+
+## API
+
+Les données de profil public sont disponibles pour les intégrations :
+
+```
+GET https://api.trucklinemp.com/users/{handleOrId}
+```
+
+Le scope OAuth `profile` renvoie un sous-ensemble de données pour les applications autorisées. Voir [Applications OAuth](/fr/web-api/oauth-apps/).
+
+---
+
+## Guides associés
+
+- [Paramètres du profil](/fr/web-docs/account/profile-settings/)
+- [Annuaire des utilisateurs](/fr/web-docs/account/user-directory/)
+- [Forum](/fr/web-docs/account/forum/)

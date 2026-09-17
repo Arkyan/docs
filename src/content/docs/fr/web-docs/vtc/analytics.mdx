@@ -1,0 +1,75 @@
+---
+title: Statistiques VTC et VBC
+description: Suivez la croissance des membres, l'entonnoir de candidatures, la participation aux événements et l'engagement des actualités pour votre VTC ou VBC.
+version: 1.0.0
+lastUpdated: 2026-09-17
+---
+
+L'onglet **Analytics** de votre panneau de gestion donne au staff un aperçu rapide de la tendance de votre entreprise sur les 90 derniers jours - sans export de tableur nécessaire.
+
+## Accéder aux statistiques
+
+1. Ouvrez le panneau **Manage** de votre VTC ou VBC
+2. Sélectionnez **Analytics** dans la barre latérale
+3. Ou accédez directement à `/vtc/@handle/manage/analytics` (ou `/vbc/@handle/manage/analytics`)
+
+L'onglet n'apparaît que pour le staff dont le rôle dispose de la permission `analytics.view`. Consultez [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/) pour l'accorder.
+
+---
+
+## Ce qui est affiché
+
+Tous les graphiques couvrent une fenêtre glissante de **90 jours**.
+
+### Croissance des membres
+
+Membres arrivés et membres partis, par jour. Utile pour repérer les campagnes de recrutement ou un taux de départ inhabituel.
+
+### Candidatures
+
+Deux chiffres suivis séparément selon la date à laquelle ils se sont réellement produits :
+
+- **Soumises** - comptabilisées le jour du dépôt de la candidature
+- **Acceptées / Rejetées** - comptabilisées le jour où le staff les a examinées, pas le jour de la soumission
+
+Cela signifie qu'une candidature soumise un jour et acceptée quelques jours plus tard apparaît correctement aux deux dates, au lieu de tout regrouper au jour de la soumission.
+
+### Participation aux événements
+
+Membres marqués **Présent** pour chaque événement tenu pendant la fenêtre, afin que vous puissiez comparer la fréquentation entre événements.
+
+### Engagement des actualités
+
+Réactions et commentaires sur les publications d'actualités VTC, par jour - un signal rapide pour savoir quelles annonces touchent réellement les membres.
+
+---
+
+## Permissions
+
+Les statistiques ont leur propre identifiant de permission, distinct de l'accès général à la gestion :
+
+| Permission | Ce qu'elle accorde |
+|------------|-----------------|
+| `analytics.view` | Voir l'onglet Analytics et ses graphiques |
+
+Accordez-la à tout rôle qui doit voir les métriques au niveau de l'entreprise - par exemple Management ou un rôle Staff dédié - depuis l'onglet **Permissions** dans [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/).
+
+---
+
+## Dépannage
+
+### « Je ne vois pas d'onglet Analytics »
+
+Votre rôle ne dispose pas encore de la permission `analytics.view`. Demandez à un propriétaire ou un administrateur de l'accorder.
+
+### « Un graphique semble vide »
+
+Les graphiques ne s'affichent qu'une fois qu'il existe au moins un point de donnée dans les 90 derniers jours pour cette métrique (par exemple, aucune candidature soumise signifie un graphique Applications vide).
+
+---
+
+## Guides associés
+
+- [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/) - accorder la permission `analytics.view`
+- [Journal d'activité](/fr/web-docs/vtc/activity-log/) - un flux brut et non agrégé des actions du staff
+- [Recrutement](/fr/web-docs/vtc/recruitment/) - d'où viennent les candidatures
