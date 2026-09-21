@@ -1,0 +1,247 @@
+---
+title: Recrutamento da VTC
+description: Configura formulários de recrutamento, perguntas de candidatura e gere como os utilizadores se candidatam para aderir à tua VTC no TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+Configura como os utilizadores se candidatam para aderir à tua VTC. Podes usar o sistema de candidaturas incorporado do TrucklineMP ou redirecionar para um formulário externo.
+
+## Aceder às Definições de Recrutamento
+
+1. Navega até ao painel de gestão da tua VTC
+2. Seleciona **Recruitment** na barra lateral
+3. Verás as opções para o método de candidatura e a configuração do formulário
+
+---
+
+## Métodos de Candidatura
+
+Escolhe como os candidatos se candidatarão à tua VTC:
+
+### Formulário Truckline (Interno)
+- Usa o sistema de candidaturas incorporado
+- Cria perguntas personalizadas
+- Gere candidaturas diretamente no TrucklineMP
+- Os candidatos veem o teu formulário na página da tua VTC
+- Recebes notificações de novas candidaturas
+
+**Recomendado para:** A maioria das VTCs, especialmente as que querem gerir tudo num só sítio.
+
+### Ligação Externa
+- Redireciona os candidatos para um formulário externo
+- Suporta Google Forms, Typeform ou qualquer formulário web
+- Os candidatos veem uma caixa de diálogo de confirmação antes de serem redirecionados
+- Geres as candidaturas fora do TrucklineMP
+
+**Recomendado para:** VTCs com sistemas de candidatura já existentes ou requisitos complexos.
+
+---
+
+## Configurar Formulários Internos
+
+### Detalhes do Formulário
+
+**Título do Formulário**
+- O título mostrado aos candidatos
+- Predefinição: "Apply to [VTC Name]"
+- Torna-o claro e convidativo
+- Máximo de 200 caracteres
+
+**Introdução / Instruções**
+- Texto com suporte para Markdown mostrado no topo do formulário
+- Explica o processo de candidatura
+- Inclui requisitos ou expectativas
+- Adiciona informações de contacto para dúvidas
+- Máximo de 5000 caracteres
+
+### Criar Perguntas
+
+Clica em **Add Question** para criar uma nova pergunta.
+
+#### Tipos de Pergunta
+
+**Resposta Curta**
+- Campo de texto de uma linha
+- Boa para: nome, idade, nível de experiência
+- Os candidatos inserem respostas breves
+
+**Parágrafo**
+- Área de texto de várias linhas
+- Boa para: explicações detalhadas, textos mais longos
+- Os candidatos podem escrever respostas mais longas
+
+**Lista Suspensa**
+- Selecionar a partir de opções predefinidas
+- Boa para: escolha múltipla com muitas opções
+- Os candidatos selecionam uma opção de uma lista
+
+**Escolha Múltipla (Rádio)**
+- Botões de rádio com opções predefinidas
+- Bom para: perguntas de Sim/Não, escolhas simples
+- Os candidatos selecionam uma opção
+
+#### Definições da Pergunta
+
+**Texto da Pergunta**
+- A pergunta mostrada aos candidatos
+- Máximo de 1000 caracteres
+- Torna as perguntas claras e específicas
+
+**Obrigatória**
+- Marca esta caixa para tornar a pergunta obrigatória
+- Os candidatos têm de responder às perguntas obrigatórias
+- Desmarca para tornar opcional
+
+**Opções (apenas Lista Suspensa/Rádio)**
+- Adiciona opções para perguntas de lista suspensa e rádio
+- Clica em **Add Option** para adicionar mais
+- Clica no ícone de lixo para remover uma opção
+- Máximo de 500 caracteres por opção
+
+### Gerir Perguntas
+
+**Reordenar**
+- As perguntas aparecem pela ordem em que as adicionas
+- Remove e volta a adicionar para alterar a ordem
+
+**Editar**
+- Clica numa pergunta para a editar
+- As alterações só são guardadas quando guardares o formulário completo
+
+**Eliminar**
+- Clica no ícone de lixo no cartão da pergunta
+- A pergunta é removida imediatamente
+- Isto não pode ser anulado
+
+---
+
+## Configurar Ligações Externas
+
+1. Seleciona **External Link** como método de candidatura
+2. Introduz o URL completo do teu formulário externo
+3. O URL tem de começar por `https://`
+4. Guarda as alterações
+
+**O que os candidatos veem:**
+- Um botão para se candidatarem
+- Uma caixa de diálogo de confirmação a avisar que estão a sair do TrucklineMP
+- O formulário externo abre num novo separador
+
+---
+
+## Guardar a Tua Configuração
+
+- Clica em **Save Configuration** em baixo à direita
+- Todas as alterações são guardadas em conjunto
+- Verás uma notificação de sucesso
+- As alterações têm efeito imediato
+
+---
+
+## Gerir Candidaturas
+
+### Ver Candidaturas
+- As candidaturas aparecem no painel de gestão da tua VTC
+- Vê a informação e as respostas do candidato
+- Cada candidatura mostra o seu estado (pendente, aceite, rejeitada, ou à espera do candidato)
+
+### Analisar Candidaturas
+- Lê todas as respostas com atenção
+- Verifica os perfis dos candidatos quanto à atividade
+- Usa notas da equipa para acompanhar o teu processo de análise
+
+### Aceitar Candidaturas
+- Clica em **Accept** numa candidatura
+- O candidato é notificado
+- É adicionado à tua VTC como membro com o cargo de membro predefinido
+- Podes alterar o cargo depois a partir da Gestão de Membros
+
+### Rejeitar Candidaturas
+- Clica em **Reject** numa candidatura
+- Opcionalmente, fornece um motivo
+- O candidato é notificado
+- Pode candidatar-se novamente no futuro
+
+---
+
+## Lista Negra de Recrutamento
+
+Impede utilizadores específicos de se candidatarem à tua VTC.
+
+### Adicionar à Lista Negra
+1. Vai a **Blacklist** na barra lateral
+2. Clica em **Add to Blacklist**
+3. Pesquisa o utilizador pelo nome de utilizador
+4. Seleciona o utilizador nos resultados
+5. Introduz um motivo
+6. Clica em **Add to Blacklist**
+
+### Remover da Lista Negra
+- Clica no ícone de lixo junto a um utilizador na lista negra
+- O utilizador pode candidatar-se novamente de imediato
+
+### Notas sobre a Lista Negra
+- Os utilizadores na lista negra não podem submeter candidaturas
+- O motivo é visível para a gestão da VTC
+- As entradas mostram quem as adicionou e quando
+
+---
+
+## Boas Práticas
+
+### Design do Formulário
+- Mantém os formulários concisos mas completos
+- Faz apenas perguntas relevantes
+- Usa campos obrigatórios para informação essencial
+- Fornece instruções claras
+
+### Ideias de Perguntas
+- Porque queres aderir à nossa VTC?
+- Há quanto tempo jogas?
+- Tens microfone para comboios?
+- Qual é a tua experiência com outras VTCs?
+- Estás familiarizado com as nossas regras?
+
+### Formulários Externos
+- Usa URLs claros e permanentes
+- Testa o formulário tu próprio antes de o publicar
+- Garante que o formulário é compatível com dispositivos móveis
+- Fornece informação de contacto para suporte
+
+### Análise de Candidaturas
+- Responde às candidaturas prontamente
+- Fornece feedback ao rejeitar
+- Usa notas da equipa para acompanhar as tuas decisões
+- Sê consistente na tua avaliação
+
+---
+
+## Resolução de Problemas
+
+### "Os candidatos não conseguem ver o meu formulário"
+- Garante que o recrutamento está ativado nas Definições Gerais
+- Verifica se o teu formulário está guardado
+- Confirma que o formulário tem pelo menos uma pergunta
+
+### "A minha ligação externa não está a funcionar"
+- Garante que o URL começa por `https://`
+- Testa a ligação tu próprio
+- Verifica se o formulário está acessível publicamente
+
+### "Não consigo guardar o meu formulário"
+- Garante que todos os campos obrigatórios estão preenchidos
+- Verifica se o texto da pergunta não está vazio
+- Confirma que tens permissão para gerir o recrutamento
+
+### "Um candidato não está a aparecer"
+- Verifica se submeteu a candidatura
+- Confirma se cumpre os teus requisitos
+- Atualiza a página
+
+---
+
+## Guias Relacionados
+
+- [Definições Gerais da VTC](/pt/web-docs/vtc/general-settings/) - Configurar requisitos de recrutamento
+- [Gestão de Membros da VTC](/pt/web-docs/vtc/member-management/) - Gerir novos membros

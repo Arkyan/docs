@@ -1,0 +1,68 @@
+---
+title: Região e Fuso Horário
+description: Define o teu fuso horário para que as datas e horas sejam apresentadas corretamente em todo o TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+O TrucklineMP usa a tua preferência de fuso horário para mostrar datas e horas locais em eventos, notificações e outros conteúdos sensíveis ao tempo.
+
+## Aceder às definições regionais
+
+1. Clica no teu avatar no canto superior direito
+2. Seleciona **Definições**
+3. Abre o separador **Regional**
+4. Ou vai a `trucklinemp.com/user/me/settings?tab=regional`
+
+---
+
+## Escolher um fuso horário
+
+Seleciona o fuso horário IANA que corresponde ao sítio onde vives ou onde planeias comboios. Exemplos:
+
+- `Europe/London`
+- `America/New_York`
+- `Europe/Berlin`
+
+As alterações são guardadas quando confirmas. Os tempos relativos (por exemplo, "há 2 horas") atualizam-se no próximo carregamento da página.
+
+---
+
+## O que usa o teu fuso horário
+
+| Funcionalidade | Efeito |
+|---------|--------|
+| **Eventos** | Horas de início e de fim mostradas no teu desvio horário local |
+| **Notificações** | Carimbos temporais no popover do sino |
+| **Atividade do perfil** | Apresentação localizada, quando suportado |
+| **Fórum** | Renderização de data e hora quando o fórum usa a preferência da tua conta |
+
+Algumas ferramentas de VTC (como as **horas de silêncio** dos anúncios) usam um fuso horário configurado no webhook, e não a tua definição pessoal. Consulta [Anúncios de VTC](/pt/web-docs/vtc/announcements/).
+
+---
+
+## Boas práticas
+
+- Escolhe o fuso horário em que realmente agendas eventos, e não necessariamente a tua localização física, se lideras comboios noutra região
+- Atualiza o teu fuso horário quando te mudas ou alteras o teu horário principal de jogo
+- Os criadores de eventos devem continuar a introduzir horas exatas baseadas em UTC no editor de eventos; os visitantes veem as horas locais convertidas
+
+---
+
+## Resolução de problemas
+
+### As horas parecem erradas por uma hora
+
+As mudanças de horário de verão são geridas pelos fusos IANA. Volta a selecionar o teu fuso horário se viajaste recentemente.
+
+### O evento continua a mostrar uma hora diferente da do Discord
+
+As mensagens do Discord e as páginas de eventos do TrucklineMP podem usar regras de apresentação diferentes. Confia na página do evento em trucklinemp.com para as horas oficiais de RSVP.
+
+---
+
+## Guias relacionados
+
+- [Eventos de VTC](/pt/web-docs/vtc/events/)
+- [Notificações](/pt/web-docs/account/notifications/)
+- [Definições de Perfil](/pt/web-docs/account/profile-settings/)

@@ -1,0 +1,157 @@
+---
+title: Webhooks
+description: Subscreve eventos da plataforma TrucklineMP, verifica assinaturas HMAC e gere tentativas automáticas de reenvio.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+Os Webhooks enviam notificações de eventos para o teu endpoint HTTP quando algo muda na TrucklineMP. Configura-os na [Consola de Programador](https://trucklinemp.com/developer/webhooks).
+
+Os Webhooks complementam a Public API. Usa a API para consultar ou obter dados sob demanda. Usa Webhooks quando o teu serviço deve reagir imediatamente a alterações na plataforma.
+
+## Criar um webhook
+
+1. Abre **Webhooks** na Consola de Programador.
+2. Clica em **Criar Webhook**.
+3. Introduz um nome, o URL do endpoint HTTPS, e seleciona os eventos que queres.
+4. Copia o **segredo de assinatura** quando for mostrado. Precisas dele para verificar as entregas.
+
+Cada webhook pertence à tua conta de programador. Podes criar múltiplos endpoints para diferentes ambientes (staging, produção).
+
+## Formato de entrega
+
+A TrucklineMP envia um `POST` HTTP com um corpo JSON:
+
+```json
+{
+  "event": "vtc.member_joined",
+  "event_id": "550e8400-e29b-41d4-a716-446655440000",
+  "timestamp": "2026-06-30T12:00:00.000Z",
+  "data": {
+    "vtcId": 42,
+    "userId": "user_abc",
+    "role": "Driver"
+  }
+}
+```
+
+### Cabeçalhos do pedido
+
+| Cabeçalho | Descrição |
+|--------|-------------|
+| `Content-Type` | `application/json` |
+| `X-TrucklineMP-Signature` | Assinatura HMAC-SHA256 (`sha256=<hex>`) |
+| `X-TrucklineMP-Event` | Tipo de evento (por exemplo `vtc.member_joined`) |
+| `X-TrucklineMP-Delivery` | ID de entrega único (corresponde a `event_id`) |
+
+Também podes anexar cabeçalhos personalizados nas definições do webhook. Nomes de cabeçalhos sensíveis (`Authorization`, `Cookie`, e semelhantes) são removidos dos registos de entrega.
+
+## Verificar assinaturas
+
+Calcula a assinatura esperada sobre o **corpo bruto do pedido (raw body)** usando o teu segredo de webhook:
+
+```
+expected = "sha256=" + HMAC_SHA256(secret, raw_body)
+```
+
+Compara `expected` com o cabeçalho `X-TrucklineMP-Signature` usando uma comparação de tempo constante. Rejeita pedidos com assinaturas inválidas antes de processar a carga útil (payload).
+
+Exemplo (Node.js):
+
+```javascript
+import { createHmac, timingSafeEqual } from "crypto";
+
+function verifySignature(rawBody, signatureHeader, secret) {
+  const expected = "sha256=" + createHmac("sha256", secret).update(rawBody).digest("hex");
+  if (!signatureHeader || signatureHeader.length !== expected.length) return false;
+  return timingSafeEqual(Buffer.from(signatureHeader), Buffer.from(expected));
+}
+```
+
+## Tentativas de reenvio
+
+As entregas falhadas são reenviadas automaticamente. Atrasos de reenvio predefinidos:
+
+| Tentativa | Atraso após falha |
+|---------|---------------------|
+| 1 | 30 segundos |
+| 2 | 2 minutos |
+| 3 | 10 minutos |
+
+Uma entrega é bem-sucedida quando o teu endpoint devolve HTTP `2xx`. Redirecionamentos (`3xx`) são tratados como falhas. Os timeouts têm predefinição de 30 segundos por tentativa.
+
+O histórico e o estado de entrega são visíveis na consola. Usa **Send Test** para acionar um evento `webhook.test` contra o teu endpoint.
+
+## Catálogo de eventos
+
+Subscreve apenas os eventos de que a tua integração precisa.
+
+### Utilizadores
+
+| Evento | Descrição |
+|-------|-------------|
+| `user.updated` | O perfil de um utilizador foi atualizado |
+| `user.banned` | Um utilizador foi banido |
+| `user.unbanned` | O banimento de um utilizador foi removido |
+
+### VTCs
+
+| Evento | Descrição |
+|-------|-------------|
+| `vtc.created` | Foi criada uma nova VTC |
+| `vtc.member_joined` | Um utilizador aderiu a uma VTC |
+| `vtc.member_left` | Um utilizador saiu de uma VTC |
+| `vtc.updated` | Os detalhes da VTC foram atualizados |
+
+### Eventos
+
+| Evento | Descrição |
+|-------|-------------|
+| `event.created` | Foi publicado um novo evento |
+| `event.updated` | Um evento foi atualizado |
+| `event.cancelled` | Um evento foi cancelado |
+| `event.rsvp` | Um utilizador confirmou presença (RSVP) num evento |
+
+### Moderação
+
+| Evento | Descrição |
+|-------|-------------|
+| `ban.issued` | Foi emitido um banimento |
+| `ban.appealed` | Foi apresentado um recurso de banimento |
+| `ban.appeal_resolved` | Um recurso de banimento foi resolvido |
+
+### API (a nível de conta)
+
+| Evento | Descrição |
+|-------|-------------|
+| `api.rate_limit_hit` | Um dos teus tokens de API atingiu o limite de taxa |
+| `api.token_revoked` | Um token de API foi revogado |
+
+### Teste
+
+| Evento | Descrição |
+|-------|-------------|
+| `webhook.test` | Entrega de teste manual a partir da consola |
+
+Os campos exatos da carga útil variam consoante o evento. Trata `data` como o objeto específico do evento e ignora campos desconhecidos para garantir compatibilidade futura.
+
+## Requisitos do endpoint
+
+- Usa **HTTPS** em produção.
+- Responde com `2xx` rapidamente. Delega trabalho pesado a uma fila em segundo plano.
+- Só devolvas `2xx` depois de teres aceitado a carga útil. A TrucklineMP não reenviará entregas bem-sucedidas.
+- Não sigas redirecionamentos do lado do recetor. Respostas de redirecionamento fazem a entrega falhar.
+
+URLs de rede privada e destinos inseguros são bloqueados pela plataforma.
+
+## Webhooks de anúncio de VTC (funcionalidade separada)
+
+Os proprietários de VTC podem configurar **webhooks de anúncio do Discord** a partir do painel de gestão da sua VTC. Esses webhooks publicam embeds formatados no Discord quando ocorrem eventos da VTC (adesões de membros, candidaturas, e semelhantes).
+
+Os webhooks da Consola de Programador são diferentes. São endpoints HTTP a nível de conta para o teu código de integração. Ver [Anúncios de VTC](/pt/web-docs/vtc/announcements/) para a funcionalidade focada no Discord.
+
+## Guias relacionados
+
+- [Visão Geral da Plataforma de Programador](/pt/web-api/overview/)
+- [Public API](/pt/web-api/public-api/)
+- [OAuth Apps](/pt/web-api/oauth-apps/)

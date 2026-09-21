@@ -1,0 +1,72 @@
+---
+title: Diretório de Utilizadores
+description: Pesquisa e explora perfis de utilizadores do TrucklineMP a partir do diretório público.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+O diretório de utilizadores ajuda-te a encontrar condutores por nome, handle ou afiliação a uma VTC.
+
+## Aceder ao diretório
+
+Abre [trucklinemp.com/users](https://trucklinemp.com/users).
+
+Podes explorar sem iniciar sessão. Alguns detalhes de perfil requerem autenticação ou uma relação de amizade.
+
+---
+
+## Pesquisa e filtros
+
+Usa a barra de pesquisa para restringir os resultados:
+
+- Correspondência parcial por **nome ou handle**
+- Cada resultado mostra a VTC atual do utilizador (se existir), quando disponível
+- Paginação para conjuntos de resultados grandes
+
+Não existem controlos de filtro separados (como filtrar por VTC) - a pesquisa é feita apenas por nome ou handle.
+
+Clica num utilizador para abrir o seu [perfil público](/pt/web-docs/account/public-profile/).
+
+---
+
+## URLs de perfil
+
+Os utilizadores estão acessíveis em:
+
+- `trucklinemp.com/@handle` (preferido quando existe um handle definido)
+- `trucklinemp.com/user/{webId}` (alternativa com o WebID numérico)
+
+Os handles são únicos e escolhidos nas [Definições de Perfil](/pt/web-docs/account/profile-settings/).
+
+---
+
+## Privacidade
+
+Os utilizadores controlam o que aparece no seu perfil (avatar, ligações sociais, contas de streaming associadas). Utilizadores banidos podem mostrar um aviso de estado. As notas exclusivas da equipa nunca são públicas.
+
+---
+
+## Denunciar utilizadores
+
+Se encontrares violações das políticas, abre o perfil do utilizador e usa **Denunciar utilizador** para submeter um [ticket de suporte](/pt/web-docs/account/support-tickets/). Não assedies utilizadores por mensagens diretas nem no Discord.
+
+---
+
+## Acesso à API
+
+Os integradores podem pesquisar utilizadores através da API Pública:
+
+```
+GET https://api.trucklinemp.com/users/search
+GET https://api.trucklinemp.com/users/{handleOrId}
+```
+
+Consulta [API Pública](/pt/web-api/public-api/).
+
+---
+
+## Guias relacionados
+
+- [Perfil Público](/pt/web-docs/account/public-profile/)
+- [Definições de Perfil](/pt/web-docs/account/profile-settings/)
+- [Banimentos e Recursos](/pt/web-docs/account/bans-appeals/)

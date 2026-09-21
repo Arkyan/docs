@@ -1,0 +1,68 @@
+---
+title: Notificações do Discord
+description: Recebe as notificações do site TrucklineMP como mensagens diretas no Discord quando a tua conta está ligada.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+Quando a tua conta de Discord está ligada à TrucklineMP, o **bot de Discord da TrucklineMP** pode reencaminhar-te certas notificações do site como **DMs do Discord**.
+
+Isto é separado dos webhooks de [Anúncios da VTC](/pt/web-docs/vtc/announcements/) (esses publicam em canais no servidor **da tua** VTC). As notificações do Discord são DMs pessoais enviadas pelo bot da plataforma.
+
+---
+
+## Requisitos
+
+1. **Discord ligado** em [Connections](/pt/web-docs/account/connections/) em trucklinemp.com
+2. **DMs permitidas** de TrucklineMP / membros do servidor nas tuas definições de privacidade do Discord
+3. O **tipo de notificação** tem de ser elegível para reencaminhamento no Discord (nem todos os itens do sino são espelhados)
+
+---
+
+## Como funciona
+
+1. Acontece algo na TrucklineMP (atualização de candidatura, aviso de evento, etc.)
+2. É criada uma entrada na tua lista de notificações (sino do site)
+3. O bot recolhe a notificação e envia uma DM em embed com um link de volta ao site
+4. A notificação é marcada como enviada ao Discord, para evitar duplicados
+
+Se estiveres offline, o bot recupera notificações recentes não enviadas quando volta a estar operacional.
+
+---
+
+## Como são as DMs
+
+As DMs usam embeds com:
+
+- Título e descrição curtos
+- Link para a página relevante em trucklinemp.com
+- Identidade visual da TrucklineMP
+
+São informativas. Responder às DMs não é um canal de suporte. Usa os [Tickets de Suporte](/pt/web-docs/account/support-tickets/) para ajuda da equipa.
+
+---
+
+## Resolução de Problemas
+
+### Sem DMs mas as notificações do sino funcionam
+
+- Confirma que o Discord continua ligado em Settings
+- Abre **User Settings > Privacy & Safety** no Discord e permite DMs
+- Desbloqueia o bot da TrucklineMP, se o tiveres bloqueado anteriormente
+- Volta a ligar o Discord em Connections
+
+### As DMs pararam depois de saíres de um servidor
+
+As DMs de notificação pessoal não exigem que permaneças em nenhum servidor em particular. Se as DMs continuarem a falhar, volta a autorizar a ligação.
+
+### Mensagens duplicadas ou em falta
+
+O bot envia cada notificação uma única vez. Atualiza o sino do site se os números não coincidirem. As DMs em falta podem chegar com um pequeno atraso durante períodos de maior carga.
+
+---
+
+## Guias Relacionados
+
+- [Notificações](/pt/web-docs/account/notifications/) - sino do site
+- [Fluxos de Ligação ao Discord](/pt/web-docs/discord-bot/connection-flows/) - em que a ligação difere dos Linked Roles
+- [Connections](/pt/web-docs/account/connections/)
