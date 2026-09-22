@@ -1,0 +1,141 @@
+---
+title: Public API
+description: "Autenticação, URLs base, limites de taxa e visão geral dos endpoints da Public REST API do TrucklineMP."
+version: 1.3.0
+lastUpdated: 2026-09-21
+---
+
+A Public API do TrucklineMP é uma superfície REST apenas de leitura para integrações de terceiros. Expõe dados do diretório de VTCs, eventos, notícias, pesquisa de usuários, registros de moderação e metadados da plataforma.
+
+Todos os endpoints estão disponíveis sem autenticação. Passar uma chave de API do Console do Desenvolvedor aumenta seus limites de taxa e associa as requisições ao seu projeto.
+
+## Autenticação
+
+Envia a sua chave de API no cabeçalho `Authorization`:
+
+```
+Authorization: Bearer tlmp_api_YOUR_API_KEY
+```
+
+Chaves de API:
+
+- Usam o prefixo `tlmp_api_` (por exemplo `tlmp_api_a1b2c3...`). Chaves mais antigas emitidas com o prefixo legado `tl_` continuam a funcionar.
+- São criadas por projeto no [Console do Desenvolvedor](https://trucklinemp.com/developer).
+- São mostradas **uma vez** na criação. Salve-as em segurança.
+- Fornecem acesso **apenas de leitura** a dados públicos. Não desbloqueiam ações privadas de conta nem operações de escrita.
+- Podem ser revogadas a qualquer momento a partir do console.
+
+Chaves inválidas ou revogadas são ignoradas. O pedido é tratado como anónimo e recebe os limites de taxa anónimos.
+
+Se a sua chave de API for exposta publicamente (por exemplo, enviada a um repositório), roda-a imediatamente - ver [Chaves de API e Segredos Expostos](/pt-br/web-api/leaked-secrets/).
+
+### Cookies de sessão
+
+Alguns endpoints devolvem campos extra quando você está conectado ao trucklinemp.com e envia cookies de sessão com a requisição (por exemplo, campos de VTC exclusivos de membros). Isto é opcional e destinado a uso próprio (first-party). As integrações de terceiros devem depender de chaves de API e OAuth quando aplicável.
+
+## URLs base
+
+| Ambiente | URL Base | Notas |
+|-------------|----------|-------|
+| Produção | `https://api.trucklinemp.com` | Nome de host da Public API |
+| Mesma origem | `https://trucklinemp.com/api/v1` | Usado pelo playground no navegador |
+
+### Importante: não duplicar `/v1`
+
+O nome de host de produção `api.trucklinemp.com` é encaminhado através do nginx. Um pedido a:
+
+```
+https://api.trucklinemp.com/vtcs
+```
+
+é reencaminhado (proxy) para `/api/v1/vtcs` na aplicação. **Não** acrescentes `/v1` ao URL do nome de host.
+
+As requisições na mesma origem usam `/api/v1` diretamente:
+
+```
+https://trucklinemp.com/api/v1/vtcs
+```
+
+### Exemplo de pedido
+
+```bash
+curl "https://api.trucklinemp.com/version"
+
+curl -H "Authorization: Bearer tlmp_api_YOUR_API_KEY" \
+  "https://api.trucklinemp.com/vtcs?limit=10"
+```
+
+## Limites de taxa
+
+Os limites aplicam-se por IP de cliente para tráfego anónimo e por chave de API (e IP) quando existe uma chave válida. Os limites são aplicados numa janela de **1 minuto** e numa janela de **5 minutos**. Exceder qualquer uma delas devolve HTTP `429` com um erro `RATE_LIMITED`.
+
+### Anónimo (sem chave de API)
+
+| Janela | Limite |
+|--------|-------|
+| 1 minuto | 100 requisições |
+| 5 minutos | 400 requisições |
+
+### Níveis de chave de API
+
+| Nível | 1 minuto | 5 minutos |
+|------|----------|-----------|
+| **free** (padrão) | 1.000 | 5.000 |
+| **basic** | 2.500 | 12.000 |
+| **premium** | 5.000 | 25.000 |
+| **unlimited** | 20.000 | 80.000 |
+
+A atribuição de nível é gerenciada pela equipe do TrucklineMP. Entre em contato com o suporte se a sua integração precisar de um nível mais elevado.
+
+### Boas práticas
+
+- Coloca respostas em cache sempre que possível. Muitos endpoints de listagem suportam paginação.
+- Reduz a frequência de requisições em resposta a `429`. Diminui a concorrência antes de tentar novamente.
+- Envia sempre uma chave de API válida em produção. Os limites anónimos destinam-se apenas a testes ligeiros.
+
+## Visão geral dos endpoints
+
+A especificação OpenAPI em [trucklinemp.com/api/v1/openapi.json](https://trucklinemp.com/api/v1/openapi.json) é a fonte de verdade. Principais grupos de recursos:
+
+| Grupo | Exemplos |
+|-------|----------|
+| **Plataforma** | `GET /version`, `GET /status`, `GET /rules`, `GET /partners`, `GET /stats` |
+| **VTCs** | `GET /vtcs`, `GET /vtcs/{idOrHandle}`, `GET /vtcs/{id}/members`, `GET /vtcs/{id}/news`, `GET /vtcs/{id}/events`, `GET /vtcs/{id}/roles` |
+| **Eventos** | `GET /events`, `GET /events/{eventId}`, `GET /events/{eventId}/attendees`, `GET /events/{eventId}/slots` |
+| **Notícias** | `GET /news`, `GET /news/{newsId}` |
+| **Usuários** | `GET /users/search`, `GET /users/{handleOrId}`, `GET /users/steam/{steamId}`, `GET /users/batch`, `GET /users/{id}/bans`, `GET /users/{id}/events` |
+
+Os objetos públicos de usuário incluem um campo `steamId` (string SteamID64, ou `null` se não estiver associado). Também pode resolver um perfil com `GET /users/{steamId}` ou com a rota dedicada `GET /users/steam/{steamId}`.
+| **Banimentos** | `GET /bans`, `GET /bans/{id}` |
+| **Programas** | `GET /programs/badges/{slug}`, `GET /programs/recognition` |
+| **Sessão** | `GET /session` (introspeção de sessão baseada em cookies) |
+
+Parâmetros de caminho como `{idOrHandle}` aceitam um ID numérico ou um handle público, conforme indicado na especificação.
+
+## SDK de TypeScript
+
+Para integrações Node.js, pode usar o cliente oficial em vez de chamadas `fetch` escritas à mão. Ver [TypeScript SDK](/pt-br/web-api/sdk/).
+
+## Respostas de erro
+
+Códigos de erro comuns:
+
+| Código | HTTP | Significado |
+|------|------|---------|
+| `UNAUTHORIZED` | 401 | Credenciais em falta ou inválidas numa rota protegida |
+| `FORBIDDEN` | 403 | Autenticação válida mas permissão insuficiente |
+| `NOT_FOUND` | 404 | O recurso não existe |
+| `RATE_LIMITED` | 429 | Limite de taxa excedido |
+| `VALIDATION_ERROR` | 400 | Parâmetros de query ou caminho inválidos |
+
+## Ferramentas interativas
+
+- [API Playground](https://trucklinemp.com/developer/playground): envia requisições a partir do navegador (use `/api/v1` na mesma origem).
+- [Swagger UI](/pt-br/web-api/public-api/doc): explora o esquema completo de forma interativa, aqui mesmo na documentação.
+
+## Guias relacionados
+
+- [Visão Geral da Plataforma de Desenvolvedor](/pt-br/web-api/overview/)
+- [OAuth Apps](/pt-br/web-api/oauth-apps/) (início de sessão de usuário, não necessário para endpoints públicos de leitura)
+- [Webhooks](/pt-br/web-api/webhooks/) (notificações push de eventos)
+- [Chaves de API e Segredos Expostos](/pt-br/web-api/leaked-secrets/) (correção caso uma chave seja exposta)

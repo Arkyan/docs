@@ -1,0 +1,118 @@
+---
+title: Criar uma VTC ou VBC
+description: "Conheça os requisitos de elegibilidade e saiba como criar uma Virtual Trucking Company (VTC) ou Virtual Bus Company (VBC) no TrucklineMP."
+version: 1.3.0
+lastUpdated: 2026-09-21
+---
+
+Uma Virtual Trucking Company (VTC) ou Virtual Bus Company (VBC) é a casa da sua organização no TrucklineMP. Este guia percorre a elegibilidade, o assistente de criação e o que acontece depois que sua empresa ficar ativa.
+
+## Antes de começar
+
+Você precisa de:
+
+- Uma conta do TrucklineMP com sessão iniciada
+- Permissão para criar uma VTC/VBC (aplicam-se as regras de elegibilidade da plataforma)
+- Não ter já uma empresa do mesmo tipo da qual seja proprietário (uma propriedade de VTC e uma de VBC por conta)
+
+Abra o fluxo de criação em [trucklinemp.com/vtc/create](https://trucklinemp.com/vtc/create) para VTCs, ou [trucklinemp.com/vbc/create](https://trucklinemp.com/vbc/create) para VBCs.
+
+---
+
+## Verificação de elegibilidade
+
+Quando você abre a página de criação, o TrucklineMP executa automaticamente uma verificação de elegibilidade. Se não for elegível, a página explica por quê. Os motivos comuns incluem:
+
+- Já ser proprietário de uma empresa do tipo solicitado (VTC ou VBC)
+- Estado da conta na plataforma ou restrições (nota: não há requisito de idade mínima de conta para criar uma empresa)
+- Funcionalidade desativada pela configuração da plataforma
+
+Não pode avançar enquanto a elegibilidade não for validada.
+
+---
+
+## Assistente de criação
+
+O assistente tem quatro passos: **Identidade**, **História**, **Presença** e **Revisão**.
+
+### Passo 1: Identidade
+
+| Campo | Notas |
+|-------|-------|
+| **Nome da Empresa** | Nome de exibição mostrado em toda a plataforma. Obrigatório. |
+| **Handle** | Identificador único de URL: `trucklinemp.com/vtc/@yourhandle` (para VTCs) ou `trucklinemp.com/vbc/@yourhandle` (para VBCs). 2-15 caracteres, apenas letras minúsculas, números e underscores. Obrigatório. |
+| **Slogan** | Frase curta de destaque (opcional). |
+| **Idioma Principal** | Idioma por padrão da sua empresa. |
+| **Games** | Selecione os simuladores em que a sua empresa atua. É necessário pelo menos um (ETS2 ou ATS). |
+| **Tag no Jogo** | Tag curta usada dentro do jogo, por exemplo `TLP` (opcional). |
+| **Cidade da Sede** | Cidade opcional onde a sua empresa está sediada. |
+| **Logotipo** | Imagem de perfil quadrada. Cole um URL de imagem HTTPS ou carrega um arquivo (JPEG, PNG ou WebP). |
+| **Banner** | Imagem de capa larga. Cole um URL de imagem HTTPS ou carrega um arquivo. |
+
+### Passo 2: História
+
+Escreva a história da sua empresa em Markdown. Obrigatório, até 5.000 caracteres. Aparece no seu perfil público.
+
+### Passo 3: Presença
+
+| Campo | Notas |
+|-------|-------|
+| **Visibilidade** | Pública, não listada ou privada. Consulte [Visibilidade](/pt-br/web-docs/vtc/visibility/). |
+| **Idade Mínima de Conta** | Dias que uma conta do TrucklineMP precisa existir antes de poder candidatar-se. Defina `0` para não haver limite. |
+| **Tempo de Jogo Mínimo** | Horas de jogo exigidas para se candidatar. Defina `0` para não haver limite. |
+| **Recruitment Open** | Se os candidatos podem candidatar-se imediatamente após a criação. |
+| **E-mail de Contato** | Endereço de contato público opcional. |
+| **Redes Sociais** | Site, convite de Discord, Instagram, Facebook e X/Twitter. Precisam ser URLs `https://` completos, se fornecidos. |
+
+### Passo 4: Revisão
+
+Revise uma prévia em tempo real do perfil da sua empresa e depois envie. Após o sucesso, você será redirecionado para o novo perfil da sua empresa.
+
+---
+
+## Configuração por padrão
+
+Quando a sua empresa é criada, o TrucklineMP gera cargos por padrão:
+
+- **Gestão**
+- **Equipe**
+- **Motorista** (ou **Motorista/Coach** dependendo do tipo de empresa (VTC/VBC))
+- **Recruta**
+
+Você se torna o proprietário com permissões totais. Abra **Manage** a partir do perfil da sua empresa para configurar recrutamento, membros e conexão ao Discord.
+
+---
+
+## Depois da criação
+
+Próximos passos recomendados:
+
+1. [Configurações Gerais](/pt-br/web-docs/vtc/general-settings/) - aperfeiçoar branding e redes sociais
+2. [Cargos e Permissões](/pt-br/web-docs/vtc/roles-permissions/) - ajustar a sua hierarquia
+3. [Recrutamento](/pt-br/web-docs/vtc/recruitment/) - abrir candidaturas ou definir um formulário externo
+4. [Verificação de Discord](/pt-br/web-docs/vtc/discord-verification/) - ligar o seu servidor de Discord (opcional)
+
+---
+
+## Resolução de problemas
+
+### "Não elegível para criar uma empresa"
+
+Leia os motivos apresentados na página de criação. Pode já ser proprietário de uma empresa desse tipo (VTC/VBC) ou precisar de resolver um problema de estado de conta.
+
+### O handle não salve
+
+Os handles precisam ter 2-15 caracteres, ser em minúsculas e usar apenas letras, números e underscores. O handle precisa ser único.
+
+### A criação falha nos URLs sociais
+
+Todos os URLs opcionais precisam começar por `https://`. Os links de convite do Discord precisam ser URLs completos, não apenas códigos.
+
+---
+
+## Guias relacionados
+
+- [Diretórios de VTC e VBC](/pt-br/web-docs/vtc/directory/) - como os outros encontram a sua empresa
+- [Visibilidade](/pt-br/web-docs/vtc/visibility/) - modos público, não listado e privado
+- [Recrutamento da Empresa](/pt-br/web-docs/vtc/recruitment/) - como recrutar motoristas ou coaches
+- [Empresas Irmãs](/pt-br/web-docs/vtc/sister-companies/) - liga a sua VTC e VBC entre si

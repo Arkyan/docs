@@ -1,0 +1,340 @@
+---
+title: SDK de TypeScript
+description: "Guia oficial do @trucklinemp/sdk - cliente Public API, modelos tipados, paginação, OAuth, webhooks, erros e configuração."
+version: 2.0.0
+lastUpdated: 2026-09-21
+---
+
+`@trucklinemp/sdk` é o kit de ferramentas oficial em TypeScript e JavaScript para integrações com o TrucklineMP. Cobre:
+
+- Cliente da **Public API** (`Truckline`) com modelos tipados, tentativas de reenvio e utilitários de paginação
+- Auxiliares de **OAuth** (`TrucklineOAuth`, PKCE) para início de sessão de usuário
+- Verificação de assinaturas e handlers de entrega de **Webhooks** (Node.js)
+
+A [especificação OpenAPI](https://trucklinemp.com/api/v1/openapi.json) continua a ser a fonte de verdade para cada campo. O SDK acompanha os recursos mais comuns e, de propósito, mantém uma camada enxuta.
+
+| | |
+|---|---|
+| Pacote | `@trucklinemp/sdk` |
+| Versão | 0.2.x |
+| Registro | [npmjs.com](https://www.npmjs.com/package/@trucklinemp/sdk) |
+| Repositório | [github.com/trucklinemp/sdk](https://github.com/trucklinemp/sdk) |
+| Licença | MIT |
+| Runtime | Node.js 18+ (`fetch` global); compatível com navegador para o cliente HTTP |
+
+## Instalação
+
+```bash
+npm install @trucklinemp/sdk
+```
+
+### Pontos de entrada
+
+| Importação | Conteúdo |
+|--------|----------|
+| `@trucklinemp/sdk` | Cliente completo, modelos, erros; OAuth + webhooks reexportados |
+| `@trucklinemp/sdk/oauth` | Apenas OAuth / PKCE |
+| `@trucklinemp/sdk/webhooks` | Apenas verificação / handler de webhook (use `crypto` do Node) |
+
+Prefere as importações de subcaminho quando quiser uma superfície mais pequena (por exemplo, OAuth num serviço separado).
+
+## Início rápido (Public API)
+
+1. Ative o Modo de Desenvolvedor e crie um projeto no [Console do Desenvolvedor](https://trucklinemp.com/developer).
+2. Crie uma chave de API (`tlmp_api_...`) e salve-a em segurança.
+3. Chama a API:
+
+```ts
+import { Truckline, TrucklineError } from "@trucklinemp/sdk";
+
+const tl = new Truckline({
+  apiKey: process.env.TRUCKLINE_API_KEY,
+});
+
+console.log(tl.version); // SDK version string
+
+const { user } = await tl.users.get("some-handle");
+console.log(user.webId, user.steamId, user.name);
+
+const bySteam = await tl.users.getBySteam("76561198000000000");
+
+try {
+  await tl.vtcs.get("missing-vtc");
+} catch (err) {
+  if (err instanceof TrucklineError) {
+    console.error(err.status, err.code, err.requestId, err.message);
+    if (err.isRateLimited) console.error("retry after", err.retryAfter);
+  }
+}
+```
+
+As chamadas anónimas funcionam em muitas rotas públicas com limites de taxa mais baixos. Envia sempre uma chave em produção.
+
+## Configuração
+
+```ts
+new Truckline({
+  apiKey: "tlmp_api_...",
+  baseUrl: undefined,              // default https://api.trucklinemp.com
+  timeoutMs: 30_000,
+  maxRetries: 1,                   // retries on 429 and 5xx
+  retryOnServerError: true,
+  headers: { "X-App": "my-bot" },
+  userAgent: "my-bot/1.0",         // Node only; default includes SDK version
+  debug: false,
+  onRequest: ({ method, url, attempt }) => {},
+  onResponse: ({ status, requestId, durationMs }) => {},
+  fetch: customFetch,              // optional
+});
+```
+
+### URL base
+
+| Opção | URL Base |
+|--------|--------|
+| Padrão | `https://api.trucklinemp.com` |
+
+**Não** acrescentes um `/v1` extra em `api.trucklinemp.com`. Ver [URLs base da Public API](/pt-br/web-api/public-api/#urls-base).
+
+### Informação de limite de taxa
+
+Depois de um pedido, inspeciona os últimos cabeçalhos de limite de taxa processados:
+
+```ts
+await tl.meta.version();
+console.log(tl.lastRateLimit);
+// { retryAfter, limit, remaining, reset }
+```
+
+## Modelos tipados
+
+O pacote exporta tipos TypeScript para as cargas úteis (payloads) públicas (as formas podem crescer à medida que a API evolui; os campos opcionais mantêm-se opcionais):
+
+- Usuários: `PublicUser`, `PublicUserSearchResult`, `PublicUserBans`, …
+- VTCs / membros: `VtcListItem`, `VtcMember`, `VtcNewsItem`, `VtcRole`
+- Eventos: `PublicEvent`, `PublicEventAttendee`, `PublicEventSlot`
+- Notícias, banimentos, parceiros, selos, servidores de jogo, userinfo OAuth, entrega de webhook
+
+As datas da API são tipadas como strings ISO (`IsoDateString`).
+
+Exemplo:
+
+```ts
+import type { PublicUser } from "@trucklinemp/sdk";
+
+const { user } = await tl.users.get("driver");
+const profile: PublicUser = user;
+```
+
+## Recursos
+
+### Meta / plataforma
+
+```ts
+await tl.meta.version();
+await tl.meta.status();
+await tl.meta.stats();
+await tl.meta.partners();
+await tl.meta.rules();
+await tl.meta.session();
+await tl.meta.recruitmentOpen();
+```
+
+### Usuários
+
+```ts
+await tl.users.search({ q: "alex", page: 1, limit: 20 });
+await tl.users.get("handle-or-id-or-steamId64");
+await tl.users.getBySteam("7656119…");
+await tl.users.resolve("handle");          // returns PublicUser
+await tl.users.batch(["id1", "id2"]);      // auto-chunks at 50
+await tl.users.bans(userId);
+await tl.users.events(userId, { tab: "upcoming" });
+
+for await (const page of tl.users.iterateSearch({ q: "a", limit: 20 })) {
+  console.log(page.length);
+}
+
+const allMatches = await tl.users.searchAll({ q: "a", maxItems: 100 });
+```
+
+Os objetos públicos de usuário incluem **`steamId`** quando a conta está associada.
+
+### VTCs
+
+```ts
+await tl.vtcs.list({ limit: 20, q: "logistics" });
+await tl.vtcs.get("handle-or-id");
+await tl.vtcs.batch([1, 2, 3]);
+await tl.vtcs.members("handle");
+await tl.vtcs.news(vtcId);
+await tl.vtcs.events(vtcId);
+await tl.vtcs.roles(vtcId);
+await tl.vtcs.gallery(vtcId);
+await tl.vtcs.tier(vtcId);
+await tl.vtcs.liveEvents(vtcId);
+await tl.vtcs.upcomingEvents(vtcId);
+
+for await (const members of tl.vtcs.iterateMembers("my-vtc", { limit: 50 })) {
+  for (const m of members) console.log(m.name, m.steamId);
+}
+
+const everyVtc = await tl.vtcs.listAll({ maxPages: 10 });
+```
+
+### Eventos, notícias, banimentos, programas, jogo
+
+```ts
+await tl.events.list();
+await tl.events.get(eventId);
+await tl.events.attendees(eventId);
+await tl.events.slots(eventId);
+
+await tl.news.list();
+await tl.news.get(newsId);
+
+await tl.bans.list({ page: 1, pageSize: 25, q: "cheat" });
+await tl.bans.get(banId);
+for await (const page of tl.bans.iterate({ pageSize: 50 })) { /* … */ }
+
+await tl.programs.badge("bug-hunter");
+await tl.programs.recognition();
+await tl.game.servers();
+```
+
+### Válvula de escape
+
+```ts
+await tl.get("/version");
+await tl.request("GET", "/vtcs", { query: { limit: 5 } });
+await tl.post("/path", { body: { … } }); // if a future write route is documented
+```
+
+## Erros e tentativas de reenvio
+
+As respostas HTTP falhadas lançam `TrucklineError`:
+
+| Campo / flag | Significado |
+|--------------|---------|
+| `status` | Estado HTTP (`0` para rede / timeout / abort) |
+| `code` | Código da API ou do cliente (`NOT_FOUND`, `TIMEOUT`, `ABORTED`, …) |
+| `requestId` | ID de correlação para suporte |
+| `retryAfter` | Segundos de `Retry-After` quando presente |
+| `details` | Carga útil extra da API |
+| `isRateLimited` / `isNotFound` / `isUnauthorized` / `isForbidden` | Auxiliares |
+| `isTimeout` / `isNetworkError` / `isServerError` / `isValidationError` | Auxiliares |
+
+Tentativas de reenvio predefinidas: até `maxRetries` (padrão `1`) em **429** e **5xx**, com jitter. Defina `maxRetries: 0` para desativar. As falhas de rede também são reenviadas quando `maxRetries > 0`.
+
+Tabelas de limites da plataforma: [Limites de taxa](/pt-br/web-api/public-api/#limites-de-taxa).
+
+## OAuth
+
+Use OAuth quando precisar de dados **como um usuário com sessão iniciada** (não apenas com uma chave de API). Fluxo completo do produto: [OAuth Apps](/pt-br/web-api/oauth-apps/).
+
+```ts
+import { TrucklineOAuth, generatePkce } from "@trucklinemp/sdk/oauth";
+
+const oauth = new TrucklineOAuth({
+  clientId: process.env.CLIENT_ID!,
+  clientSecret: process.env.CLIENT_SECRET, // omit for public + PKCE clients
+  redirectUri: "https://myapp.com/callback",
+  // siteUrl: "https://trucklinemp.com",
+});
+
+const pkce = generatePkce();
+const url = oauth.getAuthorizeUrl({
+  scope: ["profile", "vtc:read", "presence:read"],
+  state: "csrf-token",
+  codeChallenge: pkce.codeChallenge,
+});
+
+// After redirect:
+const tokens = await oauth.exchangeCode(code, {
+  codeVerifier: pkce.codeVerifier,
+});
+const me = await oauth.userinfo(tokens.access_token);
+console.log(me.sub, me.steam_id, me.handle);
+
+const refreshed = await oauth.refresh(tokens.refresh_token!);
+await oauth.revoke(tokens.access_token, "access_token");
+```
+
+Regras dos URIs de redirecionamento (localhost / rede local privada / https): [OAuth Apps - URIs de redirecionamento](/pt-br/web-api/oauth-apps/#regras-dos-uris-de-redirecionamento).
+
+O `userinfo` com `profile` inclui `steam_id` quando associado.
+
+## Webhooks (Node.js)
+
+As entregas são assinadas com HMAC-SHA256 sobre o **corpo bruto (raw body)**:
+
+```
+X-TrucklineMP-Signature: sha256=<hex>
+X-TrucklineMP-Event: user.banned
+X-TrucklineMP-Delivery: <id>
+```
+
+```ts
+import {
+  createWebhookHandler,
+  verifyWebhookSignature,
+  WEBHOOK_SIGNATURE_HEADER,
+} from "@trucklinemp/sdk/webhooks";
+
+const handle = createWebhookHandler({
+  secret: process.env.WEBHOOK_SECRET!,
+  onEvent: async (event, meta) => {
+    console.log(meta.type, meta.deliveryId, event);
+  },
+});
+
+// Express: use express.raw() so body is not re-parsed first
+app.post("/hooks/truckline", express.raw({ type: "*/*" }), async (req, res) => {
+  const result = await handle({ rawBody: req.body, headers: req.headers });
+  res.status(result.ok ? 200 : 401).json(result);
+});
+```
+
+Nível baixo:
+
+```ts
+verifyWebhookSignature(rawBody, req.headers[WEBHOOK_SIGNATURE_HEADER], secret);
+```
+
+Catálogo de eventos e tentativas de reenvio: [Webhooks](/pt-br/web-api/webhooks/).
+
+## Exemplos
+
+No repositório do SDK (depois de `npm run build`):
+
+| Arquivo | Objetivo |
+|------|---------|
+| `examples/basic.mjs` | Versão + pesquisa de usuário |
+| `examples/oauth-pkce.mjs` | Imprime o URL de autorização + verifier |
+| `examples/webhook-express.mjs` | Recetor Express mínimo |
+
+## Versionamento
+
+- Os métodos, opções e classe de erro do **SDK** seguem o semver (`Truckline.VERSION` / versão do pacote).
+- Os campos JSON do **servidor** podem evoluir; trata os novos campos opcionais como opcionais.
+- Alterações que quebrem compatibilidade no cliente são lançadas como versões major. Ver o [CHANGELOG](https://github.com/trucklinemp/sdk/blob/main/CHANGELOG.md) do pacote.
+
+## Privacidade
+
+O tráfego de API com a sua chave está sujeito ao mesmo registro e limitação de taxa que o HTTP em bruto. Ver a [Política de Privacidade](https://id.trucklinemp.com/legal/privacy) e as notas de telemetria da [Public API](/pt-br/web-api/public-api/).
+
+## Contribuir
+
+Estrutura do pacote, PRs e adição de métodos: [Contribuir para o SDK de TypeScript](/pt-br/web-api/sdk-contributing/).
+
+## Guias relacionados
+
+| Guia | Tópicos |
+|-------|--------|
+| [Visão Geral da Plataforma](/pt-br/web-api/overview/) | Modo de Desenvolvedor, tipos de integração |
+| [Public API](/pt-br/web-api/public-api/) | Autenticação, URLs base, limites de taxa, mapa de endpoints |
+| [OAuth Apps](/pt-br/web-api/oauth-apps/) | Autorização, tokens, âmbitos, URIs de redirecionamento |
+| [Webhooks](/pt-br/web-api/webhooks/) | Eventos, assinaturas, tentativas de reenvio |
+| [Console do Desenvolvedor](/pt-br/web-api/console/) | Projetos, chaves, playground |
+| [Contribuir para o SDK](/pt-br/web-api/sdk-contributing/) | Configuração local e PRs |
+| [Chaves de API e Segredos Expostos](/pt-br/web-api/leaked-secrets/) | Rotação após exposição |

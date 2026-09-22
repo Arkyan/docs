@@ -1,0 +1,75 @@
+---
+title: Análises de VTC e VBC
+description: "Acompanhe o crescimento de membros, o funil de candidaturas, a participação em eventos e o engajamento com notícias da sua VTC ou VBC."
+version: 1.0.0
+lastUpdated: 2026-09-21
+---
+
+O aba **Analytics** no seu painel de gestão dá à equipe uma leitura rápida sobre a evolução da sua empresa nos últimos 90 dias - sem necessidade de exportar folhas de cálculo.
+
+## Acessar às Análises
+
+1. Abra o painel **Manage** da sua VTC ou VBC
+2. Selecione **Analytics** na barra lateral
+3. Ou acesse diretamente `/vtc/@handle/manage/analytics` (ou `/vbc/@handle/manage/analytics`)
+
+O aba só aparece para a equipe cujo cargo tenha a permissão `analytics.view`. Consulte [Cargos e Permissões](/pt-br/web-docs/vtc/roles-permissions/) para a atribuir.
+
+---
+
+## O que é mostrado
+
+Todos os gráficos cobrem uma janela móvel de **90 dias**.
+
+### Crescimento de Membros
+
+Membros que entraram e membros que saíram, por dia. Útil para identificar campanhas de recrutamento ou quebras de membros fora do normal.
+
+### Candidaturas
+
+Dois valores acompanhados separadamente pela data em que realmente aconteceram:
+
+- **Submetidas** - contadas no dia em que a candidatura foi enviada
+- **Aceitas / Rejeitadas** - contadas no dia em que a equipe as revisou, não no dia do envio
+
+Isso significa que uma candidatura enviada num dia e aceite alguns dias depois aparece corretamente em ambas as datas, em vez de tudo se concentrar no dia do envio.
+
+### Participação em Eventos
+
+Membros marcados como **Vou** em cada evento realizado no período, para que possa comparar a adesão entre eventos.
+
+### Envolvimento com Notícias
+
+Reações e comentários nas publicações de Notícias da VTC, por dia - um sinal rápido de quais anúncios realmente chegam aos membros.
+
+---
+
+## Permissões
+
+As Análises têm o seu próprio identificador de permissão, separado do acesso geral de gestão:
+
+| Permissão | O que concede |
+|------------|-----------------|
+| `analytics.view` | Ver a aba Análises e os seus gráficos |
+
+Conceda essa permissão a qualquer cargo que deva ver métricas da empresa - por exemplo, Management ou um cargo específico da equipe - a partir da aba **Permissions** em [Cargos e Permissões](/pt-br/web-docs/vtc/roles-permissions/).
+
+---
+
+## Resolução de problemas
+
+### "Não vejo uma aba de Análises"
+
+O seu cargo ainda não tem a permissão `analytics.view`. Pede a um proprietário ou administrador para a conceder.
+
+### "Um gráfico parece vazio"
+
+Os gráficos só são apresentados quando existe pelo menos um ponto de dados nos últimos 90 dias para essa métrica (por exemplo, se ainda não houver candidaturas submetidas, o gráfico de Candidaturas aparece vazio).
+
+---
+
+## Guias relacionados
+
+- [Cargos e Permissões](/pt-br/web-docs/vtc/roles-permissions/) - conceder a permissão `analytics.view`
+- [Registro de Atividade](/pt-br/web-docs/vtc/activity-log/) - um fluxo bruto e não agregado das ações da equipe
+- [Recrutamento](/pt-br/web-docs/vtc/recruitment/) - de onde vêm as candidaturas

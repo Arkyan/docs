@@ -1,0 +1,200 @@
+---
+title: Segurança da Conta
+description: "Proteja sua conta do TrucklineMP com autenticação de dois fatores, gerenciamento de sessões, modo de desenvolvedor e configurações de privacidade."
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+Gerencie a segurança da sua conta, as sessões ativas e as configurações de privacidade para manter a sua conta protegida.
+
+## Acessar às Configurações de Segurança
+
+1. Clique no seu avatar no canto superior direito
+2. Selecione **Settings**
+3. Selecione a aba **Security**
+4. Ou acesse `trucklinemp.com/user/me/settings?tab=security`
+
+---
+
+## Conta Ligada (Steam)
+
+A sua conta Steam está permanentemente associada à sua conta do TrucklineMP.
+
+- **Estado:** Não pode ser desligada
+- **Finalidade:** Verificação de identidade principal
+- **Steam ID:** Apresentado nesta seção
+
+Esta conexão é necessária para a verificação da conta e não pode ser alterada.
+
+---
+
+## Autenticação de Dois Fatores (2FA)
+
+Adicione uma camada extra de segurança à sua conta.
+
+### Ativar a 2FA
+
+1. Clique em **Enable 2FA**
+2. É gerado um código QR
+3. Leia o código QR com a seu aplicativo autenticador:
+   - Google Authenticator
+   - Authy
+   - Microsoft Authenticator
+   - Qualquer aplicação compatível com TOTP
+4. Ou informe manualmente a chave secreta mostrada por baixo do código QR
+5. Clique em **Continue to Verification**
+6. Informe o código de 6 dígitos da sua aplicação
+7. Clique em **Verify & Enable**
+8. **Salve os seus códigos de recuperação** - não voltam a ser mostrados
+
+### Códigos de Recuperação
+
+Quando ativas a 2FA, recebe **10 códigos de recuperação**:
+- Cada código pode ser usado **uma vez**
+- Use-os se perder o acesso à seu aplicativo autenticador
+- Salve-os num local seguro (gerenciador de senhas, cópia impressa)
+- Pode copiar todos os códigos de uma só vez
+
+### Desativar a 2FA
+
+1. Clique em **Disable 2FA**
+2. Informe o código da seu aplicativo autenticador **ou** um código de recuperação
+3. Clique em **Disable 2FA**
+4. A 2FA é removida da sua conta
+
+**Aviso:** Desativar a 2FA torna a sua conta menos segura.
+
+### Se Perder a Sua Aplicação de Autenticação
+
+1. Use um código de recuperação para iniciar sessão
+2. Depois de fazer login, acesse as configurações de segurança
+3. Desative a 2FA usando o código de recuperação
+4. Ative novamente a 2FA com um novo aplicativo autenticador
+
+**Sem códigos de recuperação:** Entre em contato com o suporte através do Discord com prova de identidade.
+
+---
+
+## Modo de Desenvolvedor
+
+Ative o Console do Desenvolvedor para acessar a ferramentas profissionais.
+
+### O Que Obténs
+- Criar projetos de API
+- Gerenciar credenciais de API
+- Acessar a documentação para desenvolvedores
+- Construir integrações com o TrucklineMP
+
+### Ativar o Modo de Desenvolvedor
+1. Clique em **Activate** na seção **Developer Mode**
+2. Leia a caixa de diálogo de confirmação
+3. Clique em **Confirm Activation**
+4. O modo de desenvolvedor fica ativo
+
+**Aviso:** Esta ação é permanente e irreversível.
+
+### Acessar o Console
+- Depois de ativado, clique em **Open Console** para acessar as ferramentas de desenvolvedor
+- Ou acesse `trucklinemp.com/developer`
+
+---
+
+## Sessões Ativas
+
+Veja e gerencie todos os dispositivos com sessão iniciada na sua conta.
+
+### Informação da Sessão
+Cada sessão mostra:
+- **Browser** - Chrome, Firefox, Safari, Edge
+- **Sistema Operacional** - Windows, macOS, Linux, Android, iOS
+- **Endereço IP** - O IP a partir do qual a sessão foi criada
+- **Data de Início** - Quando a sessão foi criada
+- **Etiqueta Atual** - Assinala a sua sessão atual
+
+### Revogar uma Sessão
+1. Encontre a sessão que quer revogar
+2. Clique em **Revoke** ao lado dela
+3. A sessão é terminada imediatamente
+4. O dispositivo precisará fazer login novamente
+
+### Encerrar todas as outras sessões
+1. Clique em **Sign out all other sessions** no topo
+2. Todas as sessões, exceto a atual, são revogadas
+3. Útil se você suspeitar de acesso não autorizado
+
+---
+
+## Configurações de Privacidade
+
+### Ocultar Configurações Externas
+- Quando ativada, as suas configurações do Truckline Utils só são visíveis para ti e para os administradores
+- Os outros usuários não conseguem ver as suas configurações no seu perfil
+- Marque ou desmarque a caixa para ativar ou desativar
+
+---
+
+## Documentos Legais
+
+Consulte o estado de aceitação dos documentos legais:
+- Termos de Serviço
+- Política de Privacidade
+- Outros acordos obrigatórios
+
+Os documentos pendentes são listados e precisam ser aceitos para que determinados recursos continuem disponíveis.
+
+---
+
+## Confirmações de Documentos de Staff
+
+Se você fizer parte da equipe, consulte os documentos que aceitou:
+- Título e versão do documento
+- Data de aceitação
+
+---
+
+## Boas Práticas de Segurança
+
+### Essencial
+- **Ative a 2FA** - O passo de segurança mais importante de todos
+- **Salve os códigos de recuperação** - Salve-os num gerenciador de senhas
+- **Revise as sessões regularmente** - Revoga tudo o que não reconheças
+- **Use uma senha forte** - Exclusiva para o TrucklineMP
+
+### Recomendado
+- Saia da conta em dispositivos partilhados
+- Revise periodicamente os aplicativos autorizados
+- Mantenha as suas contas ligadas atualizadas
+- Reporta imediatamente qualquer atividade suspeita
+
+---
+
+## Resolução de problemas
+
+### "Não consigo ativar a 2FA"
+- Garanta que a seu aplicativo autenticador suporta TOTP
+- Verifique se a hora do seu dispositivo está sincronizada
+- Experimente outro aplicativo autenticador
+
+### "Perdi os meus códigos de recuperação"
+- Se ainda estiver conectado, desative a 2FA e ative-a novamente
+- Se perdeu o acesso, entre em contato com o suporte através do Discord
+- Forneça uma prova de identidade para a recuperação da conta
+
+### "Vejo uma sessão que não reconheço"
+- Revoga a sessão imediatamente
+- Altera a sua senha, se possível
+- Ative a 2FA, se ainda não estiver ativada
+- Entre em contato com o suporte se suspeitas de acesso não autorizado
+
+### "Não consigo iniciar sessão com a 2FA"
+- Verifique se a hora da seu aplicativo autenticador está correta
+- Experimenta um código de recuperação
+- Se nada resultar, entre em contato com o suporte
+
+---
+
+## Guias relacionados
+
+- [Configurações de Perfil](/pt-br/web-docs/account/profile-settings/) - Gerencie o seu perfil público
+- [Conexões](/pt-br/web-docs/account/connections/) - Associa contas externas
+- [Exclusão da Conta](/pt-br/web-docs/account/deletion/) - Exclua a sua conta

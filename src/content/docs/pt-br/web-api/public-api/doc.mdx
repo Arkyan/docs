@@ -1,0 +1,20 @@
+---
+title: Referência da Public API
+description: "Referência interativa Swagger UI para a Public REST API do TrucklineMP."
+version: 1.3.0
+lastUpdated: 2026-09-21
+---
+
+import SwaggerUI from '../../../../../components/SwaggerUI.astro';
+
+A especificação completa da Public API do TrucklineMP, apresentada de forma interativa com o Swagger UI. Cada endpoint, parâmetro e esquema de resposta é gerado em tempo real a partir da especificação OpenAPI em [trucklinemp.com/api/v1/openapi.json](https://trucklinemp.com/api/v1/openapi.json).
+
+Use o filtro para encontrar um endpoint, expanda uma seção para ver parâmetros e exemplos, e clique em **Try it out** para enviar requisições reais. Os endpoints públicos de leitura funcionam sem chave de API; adicione uma chave `tlmp_api_...` a partir do [Console do Desenvolvedor](https://trucklinemp.com/developer) para aumentar seus limites de taxa.
+
+<SwaggerUI specUrl="https://trucklinemp.com/api/v1/openapi.json" />
+
+## Mais recursos
+
+- [Public API](/pt-br/web-api/public-api/) - autenticação, URLs base, limites de taxa e visão geral dos endpoints.
+- [API Playground](https://trucklinemp.com/developer/playground) - envia requisições a partir do navegador.
+- [TypeScript SDK](/pt-br/web-api/sdk/) - instala o cliente oficial.
