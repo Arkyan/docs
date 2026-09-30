@@ -11,7 +11,7 @@ import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, resolve, relative, sep } from 'node:path';
 
 const DOCS_DIR = resolve('src/content/docs');
-const LOCALES = ['ru', 'pl', 'de', 'fr', 'ta'];
+const LOCALES = ['ru', 'pl', 'de', 'fr', 'ta', 'tr'];
 
 const errors = [];
 const warnings = [];
