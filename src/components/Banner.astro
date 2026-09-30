@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { LOCALES } from '../lib/locales.mjs';
 
-const LOCALES = ['ru', 'pl', 'de', 'fr', 'ta', 'tr'];
 const DAY_MS = 86400000;
 
 const { entry, locale, id } = Astro.locals.starlightRoute;
@@ -15,8 +15,8 @@ if (locale && LOCALES.includes(locale)) {
 	const baseId = id.split('/').slice(1).join('/');
 	const allDocs = await getCollection('docs');
 	const english = allDocs.find((doc) => doc.id === baseId);
-	const englishDate = english?.data.lastUpdated ? new Date(english.data.lastUpdated) : null;
-	const translationDate = entry.data.lastUpdated ? new Date(entry.data.lastUpdated) : null;
+	const englishDate = english?.data.lastUpdated instanceof Date ? english.data.lastUpdated : null;
+	const translationDate = entry.data.lastUpdated instanceof Date ? entry.data.lastUpdated : null;
 	const englishVersion = english?.data.version;
 	const translationVersion = entry.data.version;
 

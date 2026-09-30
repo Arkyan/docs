@@ -9,9 +9,9 @@
 
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, resolve, relative, sep } from 'node:path';
+import { LOCALES } from '../src/lib/locales.mjs';
 
 const DOCS_DIR = resolve('src/content/docs');
-const LOCALES = ['ru', 'pl', 'de', 'fr', 'ta', 'tr'];
 
 const errors = [];
 const warnings = [];
