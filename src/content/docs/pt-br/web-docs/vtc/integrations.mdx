@@ -1,0 +1,35 @@
+---
+title: Integrações da VTC
+description: "Crie tokens de incorporação e exiba os próximos eventos da sua empresa em sites externos pela área de Integrações da VTC no TrucklineMP."
+version: 1.0.0
+lastUpdated: 2026-09-21
+---
+
+A aba **Integrations** no painel de gerenciamento da empresa cria tokens de incorporação para exibir os próximos eventos num site externo, como o site da sua VTC ou uma página da comunidade associada.
+
+Abra **Manage** e depois **Integrations** na barra lateral (`/vtc/@handle/manage/integrations`). Os membros da equipe com a permissão `events.manage` podem criar e revogar tokens.
+
+## Como funcionam as incorporações
+
+Uma incorporação é um widget iframe que lista os seus próximos eventos. É servido a partir do TrucklineMP e atualiza-se automaticamente à medida que os eventos mudam. Os visitantes não precisam de conta para ver o widget.
+
+## Criar um token de incorporação
+
+1. Abra **Integrations**.
+2. Clique em **Create Token**, dá-lhe um nome e gera-o.
+3. Defina quantos dias de próximos eventos o widget deve incluir.
+4. Copie o excerto de iframe gerado e cole-o na sua página externa.
+
+## Revogar um token
+
+Os tokens podem ser revogados a qualquer momento pela mesma aba. Revogar um token desativa imediatamente todas as incorporações que o utilizam.
+
+## Prévia
+
+O aba de Integrações mostra uma prévia em tempo real do widget enquanto você configura, para que você possa verificar a aparência antes de copiar o código.
+
+## Guias relacionados
+
+- [Eventos da VTC](/pt-br/web-docs/vtc/events/) - os eventos mostrados pela incorporação
+- [Anúncios da VTC](/pt-br/web-docs/vtc/announcements/) - envia atualizações de eventos para o Discord em alternativa
+- [Cargos e Permissões](/pt-br/web-docs/vtc/roles-permissions/) - quem pode criar tokens de incorporação

@@ -11,15 +11,7 @@ export default defineConfig({
   site: "https://docs.trucklinemp.com",
   integrations: [
     starlight({
-      title: {
-        en: "TrucklineMP",
-        pl: "TrucklineMP",
-        de: "TrucklineMP",
-        fr: "TrucklineMP",
-        ru: "TrucklineMP",
-        tr: "TrucklineMP",
-        pt: "TrucklineMP",
-      },
+      title: "TrucklineMP",
       defaultLocale: "root",
       locales: starlightLocales,
       logo: {

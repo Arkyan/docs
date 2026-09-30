@@ -1,0 +1,284 @@
+---
+title: Anúncios da VTC
+description: "Envie notificações configuráveis por webhook do Discord quando ocorrerem ações importantes na sua VTC no TrucklineMP."
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+Os Anúncios da VTC permitem à sua equipe publicar atualizações automáticas no Discord sempre que algo importante acontece na sua VTC. Exemplos incluem um membro a entrar, uma candidatura a ser enviada, ou um evento a ser cancelado.
+
+As mensagens são enviadas através de **webhooks do Discord** que você cria no próprio servidor. Você escolhe quais eventos anunciar e a aparência de cada mensagem.
+
+## Requisitos
+
+- O módulo **Anúncios da VTC** precisa estar ativado para a sua VTC no TrucklineMP.
+- Você precisa de um servidor de Discord onde possa criar webhooks (Configurações do Servidor → Integrações → Webhooks).
+- A equipe que configura anúncios precisa das permissões de VTC corretas (ver [Permissões](#permissões) abaixo).
+
+## Acessar aos Anúncios
+
+1. Abra o perfil da sua VTC e acesse **Manage**.
+2. Selecione **Announcements** na barra lateral de gestão (sob Membros).
+3. Adicione um webhook e depois ative os eventos desejados.
+
+Pode adicionar até **10 webhooks** por VTC. Use vários webhooks quando quiser canais diferentes para tópicos diferentes (por exemplo, um para recrutamento e outro para eventos).
+
+---
+
+## Configurar um Webhook
+
+### Criar um webhook do Discord
+
+1. No Discord, abra o canal pretendido.
+2. Acesse a **Edit Channel → Integrations → Webhooks → New Webhook**.
+3. Copie o URL do webhook. Tem o formato `https://discord.com/api/webhooks/...`.
+
+### Adicioná-lo no TrucklineMP
+
+1. Na página **Announcements**, clique em **Add webhook**.
+2. Dá-lhe um nome claro (por exemplo, `Staff log` ou `Recruitment alerts`).
+3. Cole o URL do webhook do Discord e salve.
+
+Os URLs de webhook são armazenados de forma segura. Após a criação, só é mostrada uma versão mascarada do URL na lista.
+
+---
+
+## Permissões
+
+Atribua estas permissões através de [Cargos e Permissões da VTC](/pt-br/web-docs/vtc/roles-permissions/):
+
+| Permissão | Objetivo |
+| --- | --- |
+| `announcements.manage` | Criar, editar e excluir webhooks; alterar modelos de eventos; exportar configuração |
+| `announcements.view` | Ver webhooks e o registro de entregas |
+| `announcements.test` | Enviar mensagens de teste sem acesso total de gestão |
+
+Conceda **manage** à liderança ou aos cargos de RH. Conceda **view** à equipe que só precisa confirmar se as mensagens estão sendo entregues. **Test** é útil para membros em período de experiência que precisam verificar a configuração sem alterar o ambiente de produção.
+
+---
+
+## Configurar Eventos
+
+Cada webhook tem a sua própria lista de eventos. Expanda um grupo (Membros, Recrutamento, Eventos, etc.) e depois ative ou desative eventos individuais.
+
+### Modelos por padrão
+
+A maioria dos eventos vem com um embed do Discord por padrão sensato. Deixa **Usar modelo de mensagem por padrão** ativado, a menos que queiras controle total.
+
+### Modelos personalizados
+
+Desative o modelo por padrão para editar:
+
+- **Conteúdo da mensagem** (texto simples opcional acima do embed)
+- **Título, descrição, URL, cor e rodapé do embed**
+- Substituições de **nome de usuário e avatar do webhook** apenas para esse evento
+
+Use **variáveis** (listadas na barra lateral da aba de configuração) para inserir dados em tempo real. Exemplo: `**{member.name}** joined {vtc.name}`.
+
+### Ações em massa
+
+- **Tudo ligado / Tudo desligado** no cabeçalho de cada grupo alterna todos os eventos desse grupo.
+- Os padrões **Minimal**, **Detailed staff log** e **Public-friendly** aplicam uma configuração inicial. Detailed ativa todos os eventos; Public-friendly ativa um conjunto menor voltado para os membros.
+
+### Menção de cargo (opcional)
+
+Por evento, pode definir um **ID de cargo a mencionar** (snowflake de cargo do Discord). Quando o evento dispara, a mensagem incluirá `<@&roleId>` para que esse cargo seja notificado.
+
+### Entrega condicional (opcional)
+
+Por evento, pode adicionar condições:
+
+- **Horas silenciosas** com fuso horário, hora de início e hora de fim (os anúncios são ignorados nesse período).
+- **Apenas com recrutamento aberto** (dispara apenas quando o recrutamento está aberto na sua VTC).
+- **Requer cargo** (dispara apenas quando o membro afetado tem um cargo específico da VTC).
+
+---
+
+## Variáveis de Modelo
+
+As variáveis são substituídas quando a mensagem é enviada. As mais comuns:
+
+| Variável | Significado |
+| --- | --- |
+| `{vtc.name}` | Nome de exibição da VTC |
+| `{vtc.handle}` | Handle da VTC (com @) |
+| `{vtc.url}` | URL público do perfil da VTC |
+| `{member.name}` | Nome do membro afetado |
+| `{actor.name}` | Membro da equipe que realizou a ação |
+| `{role.name}` | Nome do cargo |
+| `{application.id}` | ID da candidatura de recrutamento |
+| `{news.title}` | Título da publicação de notícias |
+| `{event.name}` | Nome do evento |
+| `{event.url}` | URL da página do evento |
+| `{reason}` | Texto de motivo ou nota |
+| `{timestamp}` | Hora UTC do evento |
+
+A interface lista todas as variáveis suportadas. Clique numa para a copiar para o seu modelo.
+
+---
+
+## Eventos Suportados
+
+Os eventos estão agrupados na interface de gestão. Todos estão **desativados por padrão**, exceto membro entrou, membro saiu e membro expulso em novos webhooks.
+
+### Membros
+
+- Membro entrou
+- Membro saiu
+- Membro expulso
+- Cargo atribuído a membro
+- Cargo removido de membro
+
+### Recrutamento
+
+- Candidatura enviada
+- Candidatura aceite
+- Candidatura rejeitada
+- Candidatura retirada
+
+### Convites
+
+- Convite criado
+- Convite resgatado
+- Convite revogado
+
+### Notícias
+
+- Notícia publicada
+- Notícia atualizada
+- Notícia eliminada
+
+### Eventos
+
+- Evento criado
+- Evento atualizado
+- Evento cancelado
+- Difusão de evento (mensagem da equipe para participantes)
+- Alteração de RSVP
+- Check-in do evento
+- Participante aprovado (quando é necessária aprovação)
+- Evento auto-cancelado (sem inscrições antes do início)
+- Vaga de depósito solicitada
+- Vaga de depósito decidida (aprovada ou rejeitada)
+
+### Cargos
+
+- Cargo criado
+- Cargo atualizado
+- Cargo eliminado
+
+### Gestão
+
+- Propriedade transferida
+- Entrada de lista negra adicionada
+- Entrada de lista negra removida
+- Configurações atualizadas
+- Recrutamento alternado (aberto ou fechado)
+- VTC dissolvida
+- Servidor de Discord desligado da VTC
+
+### Verificação
+
+- Candidatura de verificação enviada
+- Verificação aprovada
+- Verificação rejeitada
+
+---
+
+## Modos de Entrega
+
+### Instantâneo (por padrão)
+
+Cada evento ativado é enviado para o Discord assim que ocorre. As entregas falhadas são repetidas automaticamente (até três tentativas com espera progressiva).
+
+### Resumo diário
+
+Quando o **resumo diário** está ativado num webhook, os eventos são colocados em fila e combinados numa única publicação de resumo diário, em vez de serem enviados imediatamente. Útil para VTCs com muita atividade que ainda assim querem um canal de equipe sem notificações constantes.
+
+---
+
+## Espelho na App (opcional)
+
+Pode ativar **espelhar na app** num webhook. Quando um anúncio dispara, a equipe com `announcements.view` recebe também uma notificação dentro da aplicação no TrucklineMP. Isto não substitui o Discord; dá à equipe um canal de reserva dentro do site.
+
+---
+
+## Testar, Exportar e Duplicar
+
+- **Send Test** seleciona um evento de exemplo e publica uma mensagem de prévia no Discord. Há um pequeno intervalo entre os testes.
+- **Duplicar** copie a configuração de eventos de um webhook para um novo webhook (desativado por padrão até ativar).
+- **Export** baixa sua configuração de modelos em JSON para cópia de segurança ou para copiar para outra VTC.
+
+Execute sempre um teste depois de alterar modelos ou URLs de webhook.
+
+---
+
+## Registro de Entregas
+
+Abra a aba **Delivery log** para ver os envios recentes do webhook selecionado.
+
+- Filtre por sucesso ou falha, ou por identificador de evento.
+- As linhas falhadas mostram o estado HTTP e o texto de erro devolvido pelo Discord.
+- Use **Reenviar** numa linha falhada para colocar em fila uma nova tentativa de entrega.
+
+Se um webhook falhar repetidamente, pode ser **desativado automaticamente** para proteger o seu canal de URLs quebrados. Reativa-o nas configurações do webhook depois de corrigir o URL do Discord. Aparece um aviso quando isto acontece.
+
+---
+
+## Opções ao Nível do Webhook
+
+Além das configurações por evento, cada webhook suporta:
+
+- **Nome de usuário por padrão** e **avatar por padrão** (usados quando um modelo de evento não os substitui)
+- Interruptor de **Ativado / desativado** para o webhook inteiro
+- **Modo de entrega** (instantâneo ou resumo diário)
+
+---
+
+## Dicas e Boas Práticas
+
+**Use canais separados para audiências separadas.** Um canal público `#announcements` pode só precisar de membro entrou e notícia publicada. Um canal privado `#staff-log` pode usar o padrão Detailed.
+
+**Comece pequeno.** Ative alguns eventos, testa-os e depois expanda. Ativar tudo de uma vez torna difícil identificar modelos mal configurados.
+
+**Mantenha os URLs de webhook em segredo.** Qualquer pessoa com o URL pode publicar no seu canal. Se um URL vazar, exclua o webhook no Discord, crie um novo e atualize a configuração no TrucklineMP.
+
+**Faça corresponder permissões à responsabilidade.** Nem todos os oficiais precisam de `announcements.manage`. As permissões view e test são suficientes para muitos cargos.
+
+**Verifique o registro de entregas após alterações.** Se o Discord devolver 404, o webhook foi eliminado do lado do Discord. Crie um novo webhook e cole o novo URL.
+
+---
+
+## Resolução de Problemas
+
+### Nenhuma mensagem aparece no Discord
+
+- Confirme que o webhook está **ativado** e que o **evento específico** está ativado.
+- Verifique o **Delivery log** para falhas.
+- Verifique se o webhook do Discord ainda existe nas Configurações do Servidor.
+- Confirme que o módulo Anúncios da VTC está ativado para a sua VTC.
+
+### As mensagens pararam depois de terem funcionado
+
+- O webhook pode ter sido **desativado automaticamente** após falhas repetidas. Corrige o URL e reativa.
+- O Discord pode ter removido o webhook. Crie um novo.
+
+### O teste funciona mas os eventos reais não
+
+- O evento pode estar desativado, ou uma **condição** (horas silenciosas, recrutamento aberto, cargo obrigatório) pode estar a bloqueá-lo.
+- O modo de resumo diário coloca as mensagens em fila até o resumo ser executado.
+
+### Nomes errados ou detalhes em falta na mensagem
+
+- Verifique as suas variáveis de modelo. Um erro como `{member.name}` em vez de `{target.name}` altera quem é mostrado.
+- Modelos personalizados que omitem variáveis continuam a funcionar, mas o texto estático não incluirá dados dinâmicos.
+
+---
+
+## Guias Relacionados
+
+- [Cargos e Permissões da VTC](/pt-br/web-docs/vtc/roles-permissions/): atribuir permissões de anúncios a cargos
+- [Gestão de Membros da VTC](/pt-br/web-docs/vtc/member-management/): ações que disparam eventos de membros
+- [Recrutamento da VTC](/pt-br/web-docs/vtc/recruitment/): eventos de candidaturas e alternância de recrutamento
+- [Verificação de Discord da VTC](/pt-br/web-docs/vtc/discord-verification/): separado dos anúncios; liga o seu servidor para exibição no perfil
+- [Configurações Gerais](/pt-br/web-docs/vtc/general-settings/): identidade da VTC e configurações de recrutamento

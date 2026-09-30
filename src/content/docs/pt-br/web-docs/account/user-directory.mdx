@@ -1,0 +1,72 @@
+---
+title: Diretório de Usuários
+description: "Pesquise e explore perfis de usuários do TrucklineMP pelo diretório público."
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+O diretório de usuários ajuda a encontrar motoristas por nome, handle ou afiliação a uma VTC.
+
+## Acessar o diretório
+
+Abra [trucklinemp.com/users](https://trucklinemp.com/users).
+
+Pode explorar sem iniciar sessão. Alguns detalhes de perfil requerem autenticação ou uma relação de amizade.
+
+---
+
+## Pesquisa e filtros
+
+Use a barra de pesquisa para restringir os resultados:
+
+- Correspondência parcial por **nome ou handle**
+- Cada resultado mostra a VTC atual do usuário (se existir), quando disponível
+- Paginação para conjuntos de resultados grandes
+
+Não existem controles de filtro separados (como filtrar por VTC) - a pesquisa é feita apenas por nome ou handle.
+
+Clique num usuário para abrir o seu [perfil público](/pt-br/web-docs/account/public-profile/).
+
+---
+
+## URLs de perfil
+
+Os usuários estão acessíveis em:
+
+- `trucklinemp.com/@handle` (preferido quando existe um handle definido)
+- `trucklinemp.com/user/{webId}` (alternativa com o WebID numérico)
+
+Os handles são únicos e escolhidos nas [Configurações de Perfil](/pt-br/web-docs/account/profile-settings/).
+
+---
+
+## Privacidade
+
+Os usuários controlam o que aparece no seu perfil (avatar, conexões sociais, contas de streaming associadas). Usuários banidos podem mostrar um aviso de estado. As notas exclusivas da equipe nunca são públicas.
+
+---
+
+## Denunciar usuários
+
+Se encontrar violações das políticas, abra o perfil do usuário e use **Report user** para enviar um [ticket de suporte](/pt-br/web-docs/account/support-tickets/). Não assedie usuários por mensagens diretas nem no Discord.
+
+---
+
+## Acesso à API
+
+Os integradores podem pesquisar usuários através da API Pública:
+
+```
+GET https://api.trucklinemp.com/users/search
+GET https://api.trucklinemp.com/users/{handleOrId}
+```
+
+Consulte [API Pública](/pt-br/web-api/public-api/).
+
+---
+
+## Guias relacionados
+
+- [Perfil Público](/pt-br/web-docs/account/public-profile/)
+- [Configurações de Perfil](/pt-br/web-docs/account/profile-settings/)
+- [Banimentos e Recursos](/pt-br/web-docs/account/bans-appeals/)

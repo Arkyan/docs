@@ -1,0 +1,155 @@
+---
+title: Console do Desenvolvedor
+description: "Conheça o Console do Desenvolvedor do TrucklineMP: projetos, chaves, análises, registros de auditoria, cotas e recursos."
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+No [Console do Desenvolvedor](https://trucklinemp.com/developer), você gerencia chaves de API, aplicativos OAuth, webhooks e telemetria de integração.
+
+Ative primeiro o acesso: [Visão Geral da Plataforma de Desenvolvedor](/pt-br/web-api/overview/#antes-de-começar). O Modo de Desenvolvedor é permanente depois de ativado.
+
+---
+
+## Visão geral do console
+
+A barra lateral está agrupada em quatro áreas:
+
+### Geral
+
+| Página | Objetivo |
+|------|---------|
+| **Dashboard** | Cartões de visão geral do projeto, atalhos |
+| **Todos os Projetos** | Listar, pesquisar e criar projetos |
+
+### APIs e Serviços
+
+| Página | Objetivo |
+|------|---------|
+| **Chaves de API** | Criar e revogar chaves `tlmp_api_` por projeto |
+| **Aplicativos OAuth** | Registrar e configurar aplicativos OAuth |
+| **Webhooks** | Receber eventos da plataforma por webhook |
+| **Biblioteca de API** | ReDoc incorporado para `/api/v1/openapi.json` |
+| **Playground** | Enviar requisições de teste a partir do navegador |
+
+### Governança
+
+| Página | Objetivo |
+|------|---------|
+| **Análises** | Volume de requisições, erros, latência, endpoints principais |
+| **Cotas de Uso** | Nível de taxa, uso em pico, sinalizações suspeitas |
+| **Registros de Auditoria** | Registro por pedido com IP, estado, ocorrências de limite de taxa |
+
+### Recursos
+
+| Página | Objetivo |
+|------|---------|
+| **Changelog da API** | Histórico de alterações à API publicado |
+| **Diretório de Aplicações** | Explorar aplicativos OAuth públicas, denunciar abuso |
+
+---
+
+## Projetos
+
+- Máximo de **5 projetos** por conta de desenvolvedor
+- Cada projeto tem as suas próprias chaves de API e Aplicativos OAuth
+- Selecione o projeto ativo no cabeçalho; a seleção persiste no armazenamento do navegador
+- Muitas páginas aceitam `?project={id}` no URL
+
+Crie um projeto antes de gerar chaves ou credenciais OAuth.
+
+---
+
+## Chaves de API
+
+- Prefixo: `tlmp_api_` (chaves mais antigas podem ainda usar o prefixo legado `tl_`)
+- Máximo de **10 chaves ativas** por projeto
+- O segredo é mostrado **uma vez** na criação
+- Acesso apenas de leitura a dados REST públicos, mais limites de taxa mais elevados
+- Revoga imediatamente chaves comprometidas a partir do console
+
+Ver [Public API](/pt-br/web-api/public-api/).
+
+---
+
+## Aplicativos OAuth
+
+- Máximo de **5 Aplicativos OAuth** por projeto
+- Prefixo do Client ID: `tlmp_client_`
+- Aplicações não publicadas requerem **usuários de teste** para autorização
+- A publicação pode requerer revisão pela equipe
+
+Ver [OAuth Apps](/pt-br/web-api/oauth-apps/).
+
+---
+
+## Webhooks
+
+- Máximo de **10 webhooks** por conta de desenvolvedor (associados ao usuário, não por projeto)
+- Apenas endpoints HTTPS
+- Troque os segredos de assinatura pelo console caso sejam comprometidos
+
+Ver [Webhooks](/pt-br/web-api/webhooks/).
+
+---
+
+## Análises e auditoria
+
+As **Análises** resumem o tráfego do projeto selecionado: gráficos cronológicos, taxa de erro, percentis de latência e endpoints ou chaves principais.
+
+Os **Registros de Auditoria** listam requisições individuais com método, caminho, código de status, agente de usuário e indicação de acionamento do limite de taxa. Filtre por período e status. Use esses registros para depurar integrações e investigar falsos positivos de abuso.
+
+As **Cotas** mostram seu nível atual de API (`free`, `basic`, `premium`, `unlimited`), os limites efetivos e qualquer estado anti-abuso. As atualizações de nível são atribuídas pela equipe; entre em contato com o [suporte](/pt-br/web-docs/account/support-tickets/) para necessidades comerciais.
+
+---
+
+## Playground
+
+O playground carrega a especificação OpenAPI em tempo real e permite anexar uma chave de API salva na sessão para experimentar endpoints em `/api/v1` na mesma origem. Útil antes de escrever código cliente.
+
+---
+
+## Diretório de aplicações
+
+Os aplicativos OAuth publicadas aparecem no diretório para descoberta. Os usuários podem pesquisar aplicações e denunciar listagens suspeitas. Mantenha os URLs da política de privacidade e do site atualizados na página **General** do aplicativo OAuth.
+
+---
+
+## Changelog da API
+
+A equipe publica entradas de changelog (funcionalidades, descontinuações, alterações que quebram compatibilidade). Os desenvolvedores podem consultá-las no console. Não há publicação self-service para terceiros.
+
+---
+
+## O que não está no console
+
+Estes recursos **não** são interfaces de integração para terceiros:
+
+| Superfície | Notas |
+|---------|-------|
+| `/api/rpc` | oRPC interno apenas para a interface do site |
+| `/api/v1/mobile/*` | Aplicativo móvel própria |
+| `/api/v1/launcher/*` | Launcher do jogo |
+| Procedimentos de administração | Revisão e alterações de nível apenas pela equipe |
+
+Use a Public API e o OAuth documentados nesta seção da documentação.
+
+---
+
+## Resumo de limites
+
+| Recurso | Limite |
+|----------|-------|
+| Projetos por conta | 5 |
+| Chaves de API por projeto | 10 |
+| Aplicativos OAuth por projeto | 5 |
+| Webhooks por conta | 10 |
+
+---
+
+## Guias relacionados
+
+- [Visão Geral da Plataforma de Desenvolvedor](/pt-br/web-api/overview/)
+- [Public API](/pt-br/web-api/public-api/)
+- [OAuth Apps](/pt-br/web-api/oauth-apps/)
+- [Webhooks](/pt-br/web-api/webhooks/)

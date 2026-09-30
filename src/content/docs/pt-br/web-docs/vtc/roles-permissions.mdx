@@ -1,0 +1,173 @@
+---
+title: Cargos e Permissões da VTC
+description: "Aprenda a criar e gerenciar cargos e permissões da sua VTC no TrucklineMP."
+version: 1.3.0
+lastUpdated: 2026-09-21
+---
+
+Os Cargos definem a hierarquia da sua VTC e controlam o que os membros podem fazer. Este guia aborda a criação de cargos, a atribuição de permissões e a gestão da sua estrutura de cargos.
+
+## Acessar a Gestão de Cargos
+
+1. Acesse o painel de gestão da sua VTC
+2. Selecione **Roles** na barra lateral
+3. Você verá todos os cargos existentes e os seus detalhes
+
+---
+
+## Limites de Cargos
+
+| Estado da VTC | Limite de Cargos |
+|-----------|------------|
+| Standard | 20 cargos |
+| Verificado | Ilimitado |
+
+Se atingir o limite, você verá um aviso. Candidate-se ao [estado Verificado](/pt-br/web-docs/vtc-programs/verified/) para desbloquear cargos ilimitados.
+
+---
+
+## Criar Cargos
+
+1. Clique em **Create New Rank** no canto superior direito
+2. Preencha os detalhes do cargo:
+   - **Nome do Cargo** (obrigatório, máximo 50 caracteres)
+   - **Descrição** (opcional)
+   - **Color** (escolha uma cor para o emblema do cargo)
+3. Clique em **Create Role**
+
+O cargo fica agora disponível para atribuir a membros.
+
+---
+
+## Editar Cargos
+
+Clique no ícone de edição em qualquer cartão de cargo para abrir o modal de edição. Pode gerenciar três abas:
+
+### Aba Detalhes
+- **Nome do Cargo** - Altera o nome de exibição
+- **Descrição** - Atualize a descrição do cargo
+- **Cor** - Altera a cor do emblema
+
+As alterações são salvas ao clicar em **Save Changes**.
+
+### Aba Permissões
+Configure o que os membros com este cargo podem fazer. As permissões estão agrupadas por categoria:
+
+**Permissões de Gestão:**
+- `management.vtc.edit` - Editar as configurações da VTC
+- `management.vtc.visibility` - Alterar a visibilidade da VTC e gerenciar convites
+- `management.vtc.appearance` - Personalizar as cores do tema e o layout da VTC
+- `management.members.manage` - Alterar os cargos dos membros
+- `management.members.kick` - Remover membros da VTC
+- `management.members.view_activity` - Ver os registros de atividade dos membros
+- `management.roles.manage` - Criar, editar e excluir cargos
+
+**Outras Permissões:**
+- Categorias adicionais cobrem notícias, recrutamento, eventos, convites, anúncios, lista negra, galeria, parcerias, suporte e análise (`analytics.view`, ver [Análise](/pt-br/web-docs/vtc/analytics/)) - a disponibilidade depende da configuração da sua VTC
+
+Use **Select All** para conceder todas as permissões de uma categoria, ou **Deselect All** para as remover.
+
+### Aba Usuários
+Vê todos os membros que têm este cargo:
+- Vê os nomes dos membros e os WebIDs
+- Remova o cargo de membros individuais
+- Vê quantos membros têm este cargo
+
+---
+
+## Excluir Cargos
+
+1. Clique no ícone de lixo no cartão do cargo
+2. Confirme a exclusão no modal
+3. Os membros com este cargo perdê-lo-ão
+
+**Aviso:** Esta ação não pode ser anulada.
+
+---
+
+## Atribuir Cargos a Membros
+
+Os membros podem ter até **4 cargos** em simultâneo.
+
+### A partir da Página de Membros
+1. Acesse a **Members** na barra lateral
+2. Clique no ícone de edição junto a um membro
+3. Marque ou desmarque os cargos no modal
+4. As alterações são salvas automaticamente
+
+### A partir do Modal de Edição de Cargo
+1. Abra o modal de edição de um cargo
+2. Acesse a aba **Users**
+3. Use a interface para gerenciar quem tem este cargo
+
+---
+
+## Boas Práticas de Hierarquia de Cargos
+
+### Estrutura Sugerenciada
+```
+Owner (built-in, cannot be removed)
+├── Admin
+│   ├── Moderator
+│   │   ├── Senior Driver
+│   │   └── Driver
+```
+
+### Diretrizes de Permissões
+- **Owner** - Controle total (incorporado)
+- **Admin** - Todas as permissões de gestão
+- **Moderator** - Gestão de membros, notícias, eventos
+- **Senior Driver** - Permissões limitadas, cargo de mentoria
+- **Driver** - Sem permissões especiais (cargo padrão)
+
+### Dicas
+- Comece de forma simples e adicione cargos conforme necessário
+- Use cores para distinguir visualmente a hierarquia
+- Escreve descrições claras para cada cargo
+- Revise as permissões regularmente
+- Não compliques demasiado a sua estrutura
+
+---
+
+## Exibição de Cargos
+
+### Nos Perfis de Membro
+- Os cargos aparecem como emblemas coloridos
+- Os membros podem ter até 4 emblemas de cargo visíveis
+- O emblema de proprietário é sempre mostrado para os proprietários de VTC
+
+### Na Lista de Membros
+- Todos os cargos atribuídos são listados para cada membro
+- Os membros sem cargo mostram "Sem Cargo" (exceto proprietários)
+- As cores dos cargos correspondem às cores configuradas
+
+---
+
+## Resolução de Problemas
+
+### "Atingi o limite de cargos"
+- As VTCs Standard estão limitadas a 20 cargos
+- Exclua cargos não utilizados ou candidate-se ao estado Verificado
+- As VTCs Verificadas têm cargos ilimitados
+
+### "Os membros não conseguem ver o painel de gestão"
+- Garanta que têm a permissão `management.vtc.edit`
+- Verifique se a permissão está atribuída ao seu cargo
+- Apenas os proprietários podem acessar a certas configurações
+
+### "Não consigo excluir um cargo"
+- Garanta que nenhum membro tem este cargo, ou reatribui-os primeiro
+- O cargo de proprietário não pode ser eliminado
+- Precisa ter permissão para gerenciar cargos
+
+### "Um membro perdeu o seu cargo"
+- Verifique se o cargo foi eliminado
+- Revise o registro de atividade quanto a alterações de cargos
+- Reatribui o cargo a partir da página de Membros
+
+---
+
+## Guias Relacionados
+
+- [Gestão de Membros da VTC](/pt-br/web-docs/vtc/member-management/) - Gerenciar a lista de membros
+- [Programa VTC Verificado](/pt-br/web-docs/vtc-programs/verified/) - Desbloquear cargos ilimitados

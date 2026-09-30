@@ -1,0 +1,213 @@
+---
+title: Visibilidade da VTC
+description: "Controle quem pode encontrar e visualizar sua VTC no TrucklineMP e entenda os modos público, não listado e privado."
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+O TrucklineMP permite controlar quem pode encontrar e acessar à sua Virtual Trucking Company. Escolha o nível de visibilidade que se adequa ao propósito da sua VTC.
+
+## Níveis de Visibilidade
+
+Todas as VTCs têm uma definição de visibilidade com três opções:
+
+| Visibilidade | Listada no Diretório | Acessível via URL | Quem Pode Ver |
+|-----------|---------------------|-------------------|--------------|
+| **Pública** | Sim | Sim | Todos |
+| **Não Listada** | Não | Sim | Todos com a conexão |
+| **Privada** | Não | Não | Apenas membros e usuários convidados |
+
+### Pública
+
+As VTCs públicas são visíveis para todos no TrucklineMP.
+
+- Aparece no diretório de VTCs em `trucklinemp.com/vtc`
+- Aparece nos resultados de pesquisa
+- Qualquer pessoa pode ver o perfil
+- Qualquer pessoa pode candidatar-se se o recrutamento estiver aberto
+- Melhor para: VTCs estabelecidas que procuram crescer e recrutar publicamente
+
+### Não Listada
+
+As VTCs não listadas estão escondidas dos diretórios mas são acessíveis através de uma conexão direta.
+
+- **Não** aparece no diretório de VTCs
+- **Não** aparece na pesquisa
+- Qualquer pessoa com o URL pode ver o perfil
+- Útil para: testes, lançamentos discretos, ou VTCs que querem crescimento orgânico através de conexões diretas
+
+### Privada
+
+As VTCs privadas estão completamente escondidas e são apenas por convite.
+
+- **Não** aparece no diretório de VTCs
+- **Não** aparece na pesquisa
+- O perfil só é acessível a membros
+- Novos membros precisam entrar por meio de links de convite
+- Melhor para: grupos fechados, equipes internas, ou VTCs que querem controle total sobre a adesão
+
+---
+
+## Como Alterar a Visibilidade
+
+### Durante a Criação da VTC
+
+Ao criar uma nova VTC, selecione a opção de visibilidade no formulário de criação:
+
+1. Acesse a `trucklinemp.com/vtc/create`
+2. Preencha os detalhes da sua VTC
+3. Em **Visibility**, escolha Public, Unlisted ou Private
+4. Completa o processo de criação
+
+### A partir das Configurações da VTC
+
+Para alterar a visibilidade depois da criação:
+
+1. Acesse o painel de gestão da sua VTC
+2. Selecione **General Settings**
+3. Role até a seção **Visibility**
+4. Escolha Public, Unlisted ou Private
+5. Clique em **Save Configuration**
+
+**Nota:** Alterar a visibilidade tem efeito imediato.
+
+---
+
+## Convites para VTCs Privadas
+
+As VTCs privadas exigem convites para que novos membros possam aderir.
+
+### Criar Convites
+
+1. Acesse o painel de gestão da sua VTC
+2. Selecione **Invitations** na barra lateral
+3. Clique em **Create Invite**
+4. Configure as opções do convite:
+   - **Max Uses** - Quantas vezes a conexão pode ser usada (deixa vazio para ilimitado)
+   - **Expires In (hours)** - Quanto tempo a conexão fica ativa (deixe em branco para nunca expirar)
+   - **Target Users (opcional)** - Restringe o convite a usuários específicos
+5. Clique em **Create Invite**
+6. Copie a conexão de convite e compartilhe-a
+
+### Formato da Conexão de Convite
+
+```
+https://trucklinemp.com/vtc/invite/YOUR_CODE
+```
+
+### Gerenciar Convites
+
+A página de Convites mostra todos os seus convites ativos e usados:
+
+| Estado | Significado |
+|--------|-------------|
+| **Ativo** | A conexão ainda pode ser usada |
+| **Revogado** | Desativado manualmente pela gestão |
+| **Aceite** | Um usuário aderiu usando esta conexão |
+| **Recusado** | Um usuário recusou o convite |
+| **Expirado** | Passou a data de expiração ou atingiu o número máximo de usos |
+
+### Revogar Convites
+
+Clique em **Revoke** junto a qualquer convite ativo para o desativar imediatamente. As conexões revogadas deixam de poder ser usadas.
+
+### Convites Direcionados
+
+Os convites direcionados estão restritos a um ou mais usuários específicos do TrucklineMP:
+- Apenas o usuário visado pode aceitar o convite
+- Precisa ter sessão iniciada com a conta correta
+- Útil para recrutar motoristas específicos
+
+---
+
+## Visibilidade vs. Pesquisável
+
+A visibilidade controla quem pode ver a sua VTC. A opção `searchable` controla se a sua VTC aparece nas listagens do diretório e nos resultados de pesquisa.
+
+- **Pública + Pesquisável** - Aparece em todos os lugares (padrão)
+- **Pública + Não Pesquisável** - Pode ser vista se tiver o URL, mas não é listada
+- **Não Listada** - Automaticamente não pesquisável
+- **Privada** - Automaticamente não pesquisável
+
+Na maioria dos casos, basta usar a configuração de visibilidade.
+
+---
+
+## Quem Pode Ver o Quê
+
+| Ação | Pública | Não Listada | Privada |
+|--------|--------|----------|---------|
+| Ver perfil | Todos | Todos com URL | Apenas membros |
+| Aparecer no diretório | Sim | Não | Não |
+| Pesquisa | Sim | Não | Não |
+| Candidatar-se | Sim (se o recrutamento estiver aberto) | Sim (se o recrutamento estiver aberto) | Não |
+| Aderir por convite | Não | Não | Sim |
+| Ver eventos | Todos | Todos com URL | Apenas membros |
+| Ver notícias | Todos | Todos com URL | Apenas membros |
+
+---
+
+## Substituição pela Equipe
+
+A equipe do TrucklineMP com a permissão `web.vtc.private.access` pode ver VTCs privadas para fins de moderação. Isto não os torna membros da VTC.
+
+---
+
+## Boas Práticas
+
+### VTCs Públicas
+- Mantenha o seu perfil completo e profissional
+- Ative o recrutamento quando estiver ativamente à procura de membros
+- Responda às candidaturas prontamente
+- Use a visibilidade pública quando estiver pronto para crescer
+
+### VTCs Não Listadas
+- Compartilhe o seu URL em comunidades específicas
+- Use para lançamentos discretos antes de tornar a VTC pública
+- Mantenha as configurações de recrutamento adequadas ao seu público
+
+### VTCs Privadas
+- Crie convites direcionados para usuários específicos
+- Defina tempos de expiração razoáveis por segurança
+- Monitoriza convites ativos e revoga os que não são usados
+- Use o número máximo de usos para controlar o alcance de uma conexão
+
+### Mudar de Visibilidade
+
+**Pública → Privada:** Os membros existentes continuam a ser membros. Os novos membros precisam ser convidados.
+
+**Privada → Pública:** Qualquer pessoa pode agora encontrar e ver a sua VTC. Garanta que o seu perfil está pronto.
+
+**Não Listada → Pública:** A sua VTC acessa aparecer nos diretórios e na pesquisa.
+
+---
+
+## Resolução de Problemas
+
+### "A minha VTC não aparece no diretório"
+- Verifique se a visibilidade está definida como **Public**
+- Confirme se o recrutamento está ativado, caso espere aparecer nos filtros de recrutamento
+- Aguarda alguns minutos para as caches atualizarem
+
+### "As pessoas não conseguem aderir à minha VTC privada"
+- Garanta que criou um convite ativo
+- Verifique se o convite não expirou ou atingiu o número máximo de usos
+- Para convites direcionados, confirme que o usuário tem sessão iniciada com a conta correta
+
+### "Minha VTC não listada está aparecendo na pesquisa"
+- As VTCs não listadas não devem aparecer na pesquisa
+- Se aparecer, verifique se a visibilidade não está definida como Public
+- Entre em contato com o suporte se o problema persistir
+
+### "Não consigo acessar a uma VTC privada para a qual fui convidado"
+- Confirme que tem sessão iniciada
+- Verifique se a conexão de convite não expirou
+- Para convites direcionados, use a conta para a qual o convite foi enviado
+
+---
+
+## Guias Relacionados
+
+- [Configurações Gerais da VTC](/pt-br/web-docs/vtc/general-settings/) - Configurar as configurações principais da VTC
+- [Gestão de Membros da VTC](/pt-br/web-docs/vtc/member-management/) - Gerenciar os seus membros
+- [Recrutamento da VTC](/pt-br/web-docs/vtc/recruitment/) - Configurar formulários de candidatura

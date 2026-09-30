@@ -1,0 +1,409 @@
+---
+title: Contribuindo com Traduções
+description: "Guia completo para contribuir com traduções da documentação do TrucklineMP: estrutura de arquivos, padrões de qualidade e processo de envio."
+version: 1.3.0
+lastUpdated: 2026-09-21
+---
+
+Obrigado pelo seu interesse em traduzir a documentação do TrucklineMP! Este guia explica como contribuir com traduções, quais padrões esperamos e como enviar seu trabalho.
+
+## Por que traduzir?
+
+O TrucklineMP é uma comunidade global. Traduzir nossa documentação ajuda jogadores e gerentes de VTC do mundo todo a entender como usar a plataforma no seu idioma nativo. Boas traduções tornam a plataforma mais acessível e acolhedora.
+
+## Junte-se à Comunidade de Colaboradores
+
+Quer contribuir ou tem dúvidas sobre tradução? Junte-se ao nosso servidor do Discord dedicado a colaboradores:
+
+[https://discord.gg/jsuGrx4Rbv](https://discord.gg/jsuGrx4Rbv)
+
+Este é o lugar para se conectar com outros tradutores, fazer perguntas e coordenar o trabalho na documentação.
+
+## Versionamento de Documentos
+
+Cada página de documentação tem dois campos no frontmatter:
+
+```yaml
+---
+title: Example Page
+description: ...
+version: 1.2.0
+lastUpdated: 2026-07-09
+---
+```
+
+- **`version`** identifica a revisão de conteúdo da página. Quando a página em inglês muda de forma significativa, sua versão é atualizada.
+- **`lastUpdated`** é a data em que o arquivo foi editado pela última vez.
+
+Ao traduzir ou atualizar uma tradução, **copie a `version` da página atual em inglês** e defina `lastUpdated` para a data de hoje. Uma tradução cuja versão corresponda à página em inglês aparece como **Atual** na página de [Status das Traduções](/pt-br/web-docs/contribute/translation-status/); uma discrepância aparece como **Desatualizada** e mostra um aviso na página traduzida. Ambos os campos são obrigatórios - a verificação de CI irá falhar um pull request que os omita.
+
+## Idiomas Atualmente Suportados
+
+| Locale | Idioma | Estado |
+|--------|----------|--------|
+| `en` | English | Idioma de origem, sempre completo |
+| `ru` | Русский (Russian) | Traduções da comunidade aceitas, em grande parte completas |
+| `de` | Deutsch (German) | Traduções da comunidade aceitas |
+| `ta` | தமிழ் (Tamil) | Traduções da comunidade aceitas |
+| `tr` | Türkçe (Turkish) | Traduções da comunidade aceitas |
+| `pl` | Polski (Polish) | Traduções da comunidade aceitas |
+| `fr` | Français (French) | Traduções da comunidade aceitas |
+
+Consulte a página de [Status das Traduções](/pt-br/web-docs/contribute/translation-status/) para o estado atual de cada locale. Você não está limitado aos idiomas acima — pode traduzir a documentação para **qualquer idioma** em que seja fluente. Se o seu idioma não estiver listado, siga a seção "Adicionar um Novo Idioma" abaixo e entre em contato com a equipe para que possamos adicionar o locale.
+
+---
+
+## Como Funcionam as Traduções
+
+A documentação do TrucklineMP é construída com [Astro Starlight](https://starlight.astro.build/), que tem suporte integrado para internacionalização (i18n).
+
+### Estrutura de Arquivos
+
+As traduções ficam em pastas específicas por locale sob `src/content/docs/`. O conteúdo está organizado em módulos (`web-docs/`, `web-api/`, `game-docs/`, `game-sdk/`), cada um traduzido da mesma forma:
+
+```
+src/content/docs/
+├── index.mdx                     # English homepage
+├── web-docs/
+│   ├── vtc-programs/
+│   │   ├── verified.mdx          # English guide
+│   │   └── ...
+│   └── ...
+└── pl/                           # Polish locale folder
+    ├── index.mdx                 # Polish homepage
+    └── web-docs/
+        ├── vtc-programs/
+        │   ├── verified.mdx      # Polish translation
+        │   └── ...
+        └── ...
+```
+
+### Estrutura de URLs
+
+- Inglês: `https://docs.trucklinemp.com/web-docs/vtc-programs/verified/`
+- Russo: `https://docs.trucklinemp.com/ru/web-docs/vtc-programs/verified/`
+- Alemão: `https://docs.trucklinemp.com/de/web-docs/vtc-programs/verified/`
+- Tâmil: `https://docs.trucklinemp.com/ta/web-docs/vtc-programs/verified/`
+- Turco: `https://docs.trucklinemp.com/tr/web-docs/vtc-programs/verified/`
+- Polonês: `https://docs.trucklinemp.com/pl/web-docs/vtc-programs/verified/`
+- Francês: `https://docs.trucklinemp.com/fr/web-docs/vtc-programs/verified/`
+
+O seletor de idioma no canto superior direito permite que os usuários alternem entre os idiomas disponíveis.
+
+---
+
+## O que pode ser traduzido?
+
+### 1. Conteúdo dos Guias
+
+Todos os arquivos `.mdx` sob `src/content/docs/web-docs/`, `web-api/`, `game-docs/` e `game-sdk/` podem ser traduzidos. Cada guia em inglês deve ter um arquivo correspondente na pasta do locale de destino.
+
+### 2. Página Inicial
+
+A página splash `index.mdx` também deve ser traduzida para receber os usuários no seu idioma.
+
+### 3. Rótulos da barra lateral
+
+Os rótulos da barra lateral são configurados por módulo em `astro.config.mjs` (através de `starlightSidebarTopics`) e suportam traduções:
+
+```js
+starlightSidebarTopics([
+  {
+    label: 'Web Docs',
+    link: 'web-docs/vtc/creating',
+    items: [
+      {
+        label: 'VTC Programs',
+        items: [
+          {
+            slug: 'web-docs/vtc-programs/verified',
+            label: 'Verified VTC Program',
+            translations: {
+              pl: 'Zweryfikowany Program VTC',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  // ... Web API, Game Docs, Game SDK
+])
+```
+
+Ao traduzir, adicione o rótulo do seu idioma ao objeto `translations`.
+
+### 4. Rótulos da interface
+
+Alguns rótulos da interface do Starlight (como "On this page", "Edit page", "Search") são gerenciados pelo sistema de tradução integrado do Starlight. Se um idioma não for totalmente suportado pelo Starlight, podemos adicionar traduções de interface personalizadas na configuração.
+
+---
+
+## Antes de Começar
+
+### Requisitos
+- Uma conta GitHub
+- Compreensão básica de Markdown e MDX
+- Fluência em inglês e no idioma de destino
+- Familiaridade com a terminologia do TrucklineMP (VTC, comboio, etc.)
+
+### Ferramentas recomendadas
+- Um bom editor de texto (VS Code, Cursor etc.)
+- Uma extensão para pré-visualização de Markdown
+- Git instalado localmente (ou use a interface web do GitHub)
+
+---
+
+## Processo de Tradução
+
+### Passo 1: Faça um fork do repositório
+
+1. Acesse o [repositório de documentação no GitHub](https://github.com/TrucklineMP/docs)
+2. Clique em **Fork** no canto superior direito
+3. Clone seu fork localmente ou trabalhe pela interface web do GitHub
+
+### Passo 2: Configure o Projeto (Opcional)
+
+Para visualizar suas traduções, abra um pull request e use o deploy automático de prévia gerado para sua branch. Um link para a prévia aparece no pull request assim que a compilação terminar.
+
+### Passo 3: Escolha um Guia para Traduzir
+
+Verifique o status atual das traduções e escolha um guia que ainda não tenha sido traduzido ou que precise de atualização. Os guias prioritários incluem:
+
+1. Programa de VTCs Verificadas
+2. Programa de VTCs Parceiras
+3. Configurações gerais da VTC
+4. Configurações do perfil
+5. Segurança da conta
+
+### Passo 4: Crie o Arquivo Traduzido
+
+1. Encontre o arquivo de origem em inglês (por exemplo, `src/content/docs/web-docs/vtc-programs/verified.mdx`)
+2. Crie o arquivo correspondente na pasta do locale de destino (por exemplo, `src/content/docs/pl/web-docs/vtc-programs/verified.mdx`)
+3. Copie o frontmatter e traduza o conteúdo
+
+### Passo 5: Preserve a estrutura do frontmatter
+
+O frontmatter deve manter a mesma estrutura. Traduza apenas os valores:
+
+```mdx
+---
+title: Verified VTC Program Rules
+description: Complete guide to the Truckline Verified VTC Program - how to apply, requirements, and rules for maintaining verified status.
+---
+```
+
+Exemplo em polonês:
+
+```mdx
+---
+title: Zasady Programu Zweryfikowanych VTC
+description: Pełny przewodnik po Programie Zweryfikowanych VTC Truckline - jak aplikować, wymagania i zasady utrzymania statusu zweryfikowanego.
+---
+```
+
+### Passo 6: Traduza os rótulos da barra lateral
+
+Abra `astro.config.mjs` e adicione traduções para os guias que traduziu:
+
+```js
+{
+  slug: 'web-docs/vtc-programs/verified',
+  label: 'Verified VTC Program',
+  translations: {
+    pl: 'Zweryfikowany Program VTC',
+  },
+},
+```
+
+### Passo 7: Visualize seu trabalho
+
+Abra o link do deploy de prévia a partir do seu pull request e acesse a página traduzida, por exemplo `/pl/web-docs/vtc-programs/verified/`.
+
+Verifique se:
+- Todo o conteúdo está traduzido
+- Os links funcionam corretamente
+- A formatação está preservada
+- As imagens são exibidas corretamente
+- Os rótulos da barra lateral estão traduzidos
+
+### Passo 8: Envie um Pull Request
+
+1. Confirme suas alterações com uma mensagem clara:
+   ```
+   docs(pl): translate verified VTC program guide
+   ```
+2. Faça push para o seu fork
+3. Abra um pull request para o branch `main` do repositório original
+4. Descreva o que traduziu e quaisquer notas para os revisores
+
+---
+
+## Padrões de Tradução
+
+### Precisão
+- Traduza o significado, não palavra por palavra
+- Preserve a precisão técnica
+- Mantenha a formatação, os links e a estrutura idênticos à origem
+
+### Tom
+- Mantenha o tom original (profissional, mas acessível)
+- Use linguagem inclusiva
+- Evite expressões excessivamente informais, exceto quando usadas no texto original
+
+### Terminologia
+
+Use traduções consistentes para os termos-chave do TrucklineMP. Em caso de dúvida, mantenha o termo em inglês entre parênteses no primeiro uso:
+
+| English | Polish Suggestion |
+|---------|-------------------|
+| Virtual Trucking Company (VTC) | Wirtualna Firma Transportowa (VTC) |
+| Verified | Zweryfikowany |
+| Partnered | Partnerski |
+| Member | Członek |
+| Role | Rola |
+| Recruitment | Rekrutacja |
+| Profile | Profil |
+| Two-Factor Authentication | Uwierzytelnianie Dwuskładnikowe |
+
+### Código e URLs
+**Não** traduza:
+- URLs
+- Caminhos de arquivos
+- Trechos de código
+- Endereços de email
+- Links de convite do Discord
+- Nomes de parâmetros técnicos
+
+### Links
+- Os links internos devem apontar para a versão traduzida quando disponível
+- Exemplo: `/web-docs/vtc-programs/verified/` → `/pl/web-docs/vtc-programs/verified/`
+- Os links externos devem permanecer inalterados
+
+### Imagens
+- Não traduza os nomes dos arquivos de imagem
+- O texto alternativo deve ser traduzido
+- Se uma captura de tela contiver texto, considere fornecer uma versão localizada
+
+---
+
+## Lista de Verificação de Qualidade
+
+Antes de enviar sua tradução, verifique:
+
+- [ ] O frontmatter está preservado e traduzido
+- [ ] Todos os títulos estão traduzidos
+- [ ] Todo o texto do corpo está traduzido
+- [ ] Os links apontam para o locale correto
+- [ ] Os blocos de código e URLs estão inalterados
+- [ ] Os rótulos da barra lateral estão atualizados em `astro.config.mjs`
+- [ ] A página é renderizada corretamente na prévia do pull request
+- [ ] Não há formatação quebrada nem erros de Markdown
+- [ ] A terminologia é consistente ao longo do texto
+
+---
+
+## Atualizando traduções
+
+Quando a fonte em inglês é atualizada, as traduções podem ficar desatualizadas. Ajude a mantê-las atualizadas:
+
+1. Verifique a fonte em inglês em busca de alterações
+2. Aplique as mesmas alterações aos arquivos traduzidos
+3. Atualize o frontmatter, se necessário
+4. Envie um pull request com uma descrição clara
+
+---
+
+## Adicionando um novo idioma
+
+Você pode traduzir a documentação para qualquer idioma. Se seu idioma ainda não for suportado, você pode adicioná-lo.
+
+### Passos
+
+1. **Entre em contato com a equipe** no Discord para informar que você está trabalhando em um novo idioma
+2. A equipe adicionará o locale a `astro.config.mjs`
+3. Crie a pasta do locale sob `src/content/docs/` (por exemplo, `de/` para alemão)
+4. Traduza os guias principais
+5. Envie um pull request
+
+Não existe um requisito rígido sobre quantos guias traduzir antes de adicionar um novo idioma, mas recomendamos começar com pelo menos:
+
+- Página inicial (`index.mdx`)
+- Programa VTC Verificado
+- Programa VTC Parceiro
+- Configurações Gerais da VTC
+- Configurações do Perfil
+
+### Configuração de locale
+
+Novos locales são adicionados em `astro.config.mjs`:
+
+```js
+locales: {
+  root: {
+    label: 'English',
+    lang: 'en',
+  },
+  pl: {
+    label: 'Polski',
+    lang: 'pl',
+  },
+  de: {
+    label: 'Deutsch',
+    lang: 'de',
+  },
+  fr: {
+    label: 'Français',
+    lang: 'fr',
+  },
+  ru: {
+    label: 'Русский',
+    lang: 'ru',
+  },
+  ta: {
+    label: 'தமிழ்',
+    lang: 'ta',
+  },
+  tr: {
+    label: 'Türkçe',
+    lang: 'tr',
+  },
+},
+```
+
+Certifique-se de usar o [código de idioma BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) correto para o seu locale.
+
+---
+
+## Erros comuns
+
+### Traduzir URLs
+Não `/pl/przewodniki/zweryfikowany-program-vtc/`
+Sim `/pl/web-docs/vtc-programs/verified/`
+
+### Esquecer o frontmatter
+Não: faltar `title` ou `description`
+Sim: frontmatter completo no idioma de destino
+
+### Terminologia inconsistente
+Não: usar "weryfikacja" em um lugar e "zweryfikowanie" em outro
+Sim: termo consistente em todo o texto
+
+### Quebrar o Markdown
+Não: remover `#` dos títulos ou quebrar tabelas
+Sim: preservar toda a formatação Markdown
+
+---
+
+## Como obter ajuda
+
+Se tiver dúvidas sobre tradução:
+
+- **Discord:** [https://discord.gg/trucklinemp](https://discord.gg/trucklinemp)
+- **Issues do GitHub:** Abra uma issue no repositório de documentação
+- **Discussão no Pull Request:** Comente nos PRs existentes para obter feedback
+
+---
+
+## Reconhecimento
+
+Tradutores e contribuidores são creditados na página de [Contribuidores](/pt-br/web-docs/contribute/contributors/). Obrigado por ajudar a tornar o TrucklineMP acessível a todos!

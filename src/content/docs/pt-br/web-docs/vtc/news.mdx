@@ -1,0 +1,84 @@
+---
+title: Notícias da VTC
+description: "Publique notícias no perfil da sua VTC, fixe anúncios e gerencie o feed de notícias da sua VTC."
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+As Notícias da VTC permitem à sua empresa publicar atualizações no seu perfil TrucklineMP. As publicações aparecem no feed de notícias da sua VTC e podem surgir na API global de notícias para leitores públicos.
+
+## Acessar a gestão de notícias
+
+1. Abra o painel **Manage** da sua VTC
+2. Selecione **News** na barra lateral (`/vtc/@handle/manage/news`)
+3. Crie, edita ou exclua publicações a partir do painel de notícias
+
+Você precisa de permissões de **notícias** no seu cargo da VTC (por exemplo, `news.create`, `news.edit`, `news.delete`). Os proprietários têm acesso total.
+
+---
+
+## Criar uma publicação
+
+Clique em **New Post** e fornece:
+
+| Campo | Notas |
+|-------|-------|
+| **Title** | Título mostrado nos feeds e na página da publicação |
+| **Conteúdo** | Corpo em Markdown |
+| **Imagem de capa** | Banner HTTPS opcional para a publicação |
+| **Fixado** | Mantenha esta publicação no topo do seu feed |
+
+Salve para publicar imediatamente. As edições atualizam a publicação em direto.
+
+---
+
+## Visibilidade pública
+
+As publicações publicadas aparecem em:
+
+- Na aba de notícias do perfil da sua VTC
+- Páginas individuais de publicação em `/vtc/@handle/post/{postId}`
+- Na API Pública em `GET /vtcs/{id}/news` e `GET /news/{newsId}`
+
+As regras de visibilidade de VTCs não listadas ou privadas continuam a aplicar-se a quem pode acessar ao seu perfil.
+
+---
+
+## Fixar publicações
+
+Fixe anúncios importantes (campanhas de recrutamento, alterações de políticas, lembretes de eventos) para se manterem acima de publicações mais antigas. Recomenda-se fixar apenas uma ou poucas publicações para o feed se manter legível.
+
+---
+
+## Excluir publicações
+
+A exclusão é permanente. A equipe com permissão de exclusão pode remover publicações a partir do painel de gestão. Considere editar em vez de excluir ao corrigir pequenos erros.
+
+---
+
+## Integração com Anúncios
+
+Se você usar webhooks do Discord dos [Anúncios da VTC](/pt-br/web-docs/vtc/announcements/), os eventos de notícias (publicado, atualizado) podem desencadear mensagens automáticas no Discord usando templates com marcadores como `{news.title}`.
+
+---
+
+## Moderação pela equipe
+
+A equipe da plataforma pode moderar notícias da VTC que violem as regras. Os proprietários de VTC veem o estado de moderação no painel de gestão quando aplicável.
+
+---
+
+## Boas práticas
+
+- Use títulos claros para os membros percorrerem o feed rapidamente
+- Fixe apenas o que é atualmente importante
+- Faça conexão a [eventos](/pt-br/web-docs/vtc/events/) ou páginas de recrutamento quando relevante
+- Mantenha as imagens em URLs HTTPS que controlas
+
+---
+
+## Guias relacionados
+
+- [Anúncios da VTC](/pt-br/web-docs/vtc/announcements/)
+- [Configurações Gerais](/pt-br/web-docs/vtc/general-settings/)
+- [API Pública](/pt-br/web-api/public-api/) - endpoints de notícias

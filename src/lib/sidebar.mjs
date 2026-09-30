@@ -12,7 +12,8 @@ export const sidebarTopics = [
   {
     label: {
       en: "Web Docs",
-      pt: "Documentação Web",
+      "pt-PT": "Documentação Web",
+      "pt-BR": "Documentação Web",
       ru: "Веб-документация",
       fr: "Documentation Web",
     },
@@ -22,7 +23,8 @@ export const sidebarTopics = [
       {
         label: "VTC Programs",
         translations: {
-          pt: "Programas VTC",
+          "pt-PT": "Programas VTC",
+          "pt-BR": "Programas VTC",
           ru: "Программы VTC",
           de: "VTC Programme",
           fr: "Programmes VTC",
@@ -33,7 +35,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc-programs/verified",
             label: "Verified VTC Program",
             translations: {
-              pt: "Programa de VTC Verificada",
+              "pt-PT": "Programa de VTC Verificada",
+              "pt-BR": "Programa de VTCs Verificadas",
               pl: "Zweryfikowany Program VTC",
               ru: "Программа верификации VTC",
               de: "Verifizierungsprogramm für VTCs",
@@ -44,7 +47,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc-programs/discord-role",
             label: "Verified VTC Discord Role",
             translations: {
-              pt: "Cargo Discord de VTC Verificada",
+              "pt-PT": "Cargo Discord de VTC Verificada",
+              "pt-BR": "Cargo do Discord para VTCs Verificadas",
               pl: "Rola Discord Zweryfikowanego VTC",
               ru: "Роль Discord верифицированного VTC",
               de: "Verifizierte VTC-Discord-Rolle",
@@ -55,7 +59,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc-programs/partnered",
             label: "Partnered VTC Program",
             translations: {
-              pt: "Programa de VTC Parceira",
+              "pt-PT": "Programa de VTC Parceira",
+              "pt-BR": "Programa de VTCs Parceiras",
               pl: "Partnerski Program VTC",
               ru: "Партнёрская программа VTC",
               de: "Partner-VTC-Programm",
@@ -66,7 +71,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc-programs/livery-guidelines",
             label: "VTC Livery Guidelines",
             translations: {
-              pt: "Diretrizes de Pintura VTC",
+              "pt-PT": "Diretrizes de Pintura VTC",
+              "pt-BR": "Diretrizes de Pintura para VTCs",
               pl: "Wytyczne Malowania VTC",
               ru: "Правила оформления окрасок VTC",
               de: "VTC-Lackierungsrichtlinien",
@@ -78,7 +84,8 @@ export const sidebarTopics = [
       {
         label: "VTC Guides",
         translations: {
-          pt: "Guias de VTC",
+          "pt-PT": "Guias de VTC",
+          "pt-BR": "Guias de VTC",
           ru: "Руководства по VTC",
           fr: "Guides VTC",
         },
@@ -88,7 +95,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/creating",
             label: "Creating a VTC",
             translations: {
-              pt: "Criar uma VTC",
+              "pt-PT": "Criar uma VTC",
+              "pt-BR": "Criar uma VTC",
               ru: "Создание VTC",
               fr: "Créer une VTC",
             },
@@ -97,7 +105,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/directory",
             label: "VTC Directory",
             translations: {
-              pt: "Diretório de VTCs",
+              "pt-PT": "Diretório de VTCs",
+              "pt-BR": "Diretório de VTCs",
               ru: "Каталог VTC",
               fr: "Annuaire VTC",
             },
@@ -106,7 +115,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/general-settings",
             label: "General Settings",
             translations: {
-              pt: "Definições Gerais",
+              "pt-PT": "Definições Gerais",
+              "pt-BR": "Configurações Gerais",
               pl: "Ustawienia Ogólne",
               ru: "Общие настройки",
               de: "Allgemeine VTC-Einstellungen",
@@ -117,7 +127,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/appearance",
             label: "Appearance",
             translations: {
-              pt: "Aparência",
+              "pt-PT": "Aparência",
+              "pt-BR": "Aparência",
               ru: "Оформление",
               fr: "Apparence",
             },
@@ -126,7 +137,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/member-activity",
             label: "Member Activity",
             translations: {
-              pt: "Atividade dos Membros",
+              "pt-PT": "Atividade dos Membros",
+              "pt-BR": "Atividade dos Membros",
               ru: "Активность участников",
               fr: "Activité des membres",
             },
@@ -135,7 +147,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/roles-permissions",
             label: "Roles & Permissions",
             translations: {
-              pt: "Cargos e Permissões",
+              "pt-PT": "Cargos e Permissões",
+              "pt-BR": "Cargos e Permissões",
               pl: "Role i Uprawnienia",
               ru: "Роли и права доступа",
               fr: "Rôles et permissions",
@@ -145,7 +158,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/member-management",
             label: "Member Management",
             translations: {
-              pt: "Gestão de Membros",
+              "pt-PT": "Gestão de Membros",
+              "pt-BR": "Gerenciamento de Membros",
               pl: "Zarządzanie Członkami",
               ru: "Управление участниками",
               fr: "Gestion des membres",
@@ -155,7 +169,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/recruitment",
             label: "Recruitment",
             translations: {
-              pt: "Recrutamento",
+              "pt-PT": "Recrutamento",
+              "pt-BR": "Recrutamento",
               pl: "Rekrutacja",
               ru: "Набор участников",
               fr: "Recrutement",
@@ -165,7 +180,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/events",
             label: "Events",
             translations: {
-              pt: "Eventos",
+              "pt-PT": "Eventos",
+              "pt-BR": "Eventos",
               ru: "Мероприятия",
               fr: "Événements",
             },
@@ -174,7 +190,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/integrations",
             label: "Integrations",
             translations: {
-              pt: "Integrações",
+              "pt-PT": "Integrações",
+              "pt-BR": "Integrações",
               ru: "Интеграции",
               fr: "Intégrations",
             },
@@ -183,7 +200,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/news",
             label: "News",
             translations: {
-              pt: "Notícias",
+              "pt-PT": "Notícias",
+              "pt-BR": "Notícias",
               ru: "Новости",
               fr: "Actualités",
             },
@@ -192,7 +210,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/gallery",
             label: "Gallery",
             translations: {
-              pt: "Galeria",
+              "pt-PT": "Galeria",
+              "pt-BR": "Galeria",
               ru: "Галерея",
               fr: "Galerie",
             },
@@ -201,7 +220,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/announcements",
             label: "Announcements",
             translations: {
-              pt: "Anúncios",
+              "pt-PT": "Anúncios",
+              "pt-BR": "Anúncios",
               pl: "Ogłoszenia",
               ru: "Уведомления",
               fr: "Annonces",
@@ -211,7 +231,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/discord-verification",
             label: "Discord Verification",
             translations: {
-              pt: "Verificação Discord",
+              "pt-PT": "Verificação Discord",
+              "pt-BR": "Verificação do Discord",
               pl: "Weryfikacja Discord",
               ru: "Верификация Discord",
               de: "VTC-Discord-Server-Verifizierung",
@@ -222,7 +243,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/visibility",
             label: "Visibility",
             translations: {
-              pt: "Visibilidade",
+              "pt-PT": "Visibilidade",
+              "pt-BR": "Visibilidade",
               pl: "Widoczność",
               ru: "Видимость",
               fr: "Visibilité",
@@ -232,7 +254,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/sister-companies",
             label: "Sister Companies",
             translations: {
-              pt: "Empresas Irmãs",
+              "pt-PT": "Empresas Irmãs",
+              "pt-BR": "Empresas Irmãs",
               ru: "Родственные компании",
               fr: "Entreprises sœurs",
             },
@@ -241,7 +264,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/partnerships",
             label: "Partnerships",
             translations: {
-              pt: "Parcerias",
+              "pt-PT": "Parcerias",
+              "pt-BR": "Parcerias",
               ru: "Партнёрства",
               fr: "Partenariats",
             },
@@ -250,7 +274,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/activity-log",
             label: "Activity Log",
             translations: {
-              pt: "Registo de Atividade",
+              "pt-PT": "Registo de Atividade",
+              "pt-BR": "Registro de Atividade",
               ru: "Журнал активности",
               fr: "Journal d'activité",
             },
@@ -259,7 +284,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/analytics",
             label: "Analytics",
             translations: {
-              pt: "Análises",
+              "pt-PT": "Análises",
+              "pt-BR": "Análises",
               ru: "Аналитика",
               fr: "Statistiques",
             },
@@ -268,7 +294,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/support-tickets",
             label: "Support Tickets",
             translations: {
-              pt: "Tickets de Suporte",
+              "pt-PT": "Tickets de Suporte",
+              "pt-BR": "Tickets de Suporte",
               ru: "Тикеты поддержки",
               fr: "Tickets de support",
             },
@@ -277,7 +304,8 @@ export const sidebarTopics = [
             slug: "web-docs/vtc/disbanding",
             label: "Disbanding a VTC",
             translations: {
-              pt: "Dissolver uma VTC",
+              "pt-PT": "Dissolver uma VTC",
+              "pt-BR": "Dissolver uma VTC",
               ru: "Расформирование VTC",
               fr: "Dissoudre une VTC",
             },
@@ -287,7 +315,8 @@ export const sidebarTopics = [
       {
         label: "Discord Bot",
         translations: {
-          pt: "Bot Discord",
+          "pt-PT": "Bot Discord",
+          "pt-BR": "Bot do Discord",
           pl: "Bot Discord",
           ru: "Бот Discord",
           fr: "Bot Discord",
@@ -298,7 +327,8 @@ export const sidebarTopics = [
             slug: "web-docs/discord-bot/connection-flows",
             label: "Connection Flows",
             translations: {
-              pt: "Fluxos de Ligação",
+              "pt-PT": "Fluxos de Ligação",
+              "pt-BR": "Fluxos de Conexão",
               ru: "Варианты подключения Discord",
               fr: "Flux de connexion",
             },
@@ -307,7 +337,8 @@ export const sidebarTopics = [
             slug: "web-docs/discord-bot/linked-roles",
             label: "Linked Roles",
             translations: {
-              pt: "Cargos Ligados",
+              "pt-PT": "Cargos Ligados",
+              "pt-BR": "Linked Roles",
               pl: "Połączone Role",
               ru: "Привязанные Роли",
               fr: "Rôles liés",
@@ -317,7 +348,8 @@ export const sidebarTopics = [
             slug: "web-docs/discord-bot/notifications",
             label: "Discord Notifications",
             translations: {
-              pt: "Notificações Discord",
+              "pt-PT": "Notificações Discord",
+              "pt-BR": "Notificações do Discord",
               ru: "Уведомления Discord",
               fr: "Notifications Discord",
             },
@@ -326,7 +358,8 @@ export const sidebarTopics = [
             slug: "web-docs/discord-bot/official-server",
             label: "Official Discord Server",
             translations: {
-              pt: "Servidor Discord Oficial",
+              "pt-PT": "Servidor Discord Oficial",
+              "pt-BR": "Servidor Oficial do Discord",
               ru: "Официальный сервер Discord",
               fr: "Serveur Discord officiel",
             },
@@ -336,7 +369,8 @@ export const sidebarTopics = [
       {
         label: "Account Guides",
         translations: {
-          pt: "Guias de Conta",
+          "pt-PT": "Guias de Conta",
+          "pt-BR": "Guias de Conta",
           ru: "Руководства по учетным записям",
           fr: "Guides de compte",
         },
@@ -346,7 +380,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/profile-settings",
             label: "Profile Settings",
             translations: {
-              pt: "Definições de Perfil",
+              "pt-PT": "Definições de Perfil",
+              "pt-BR": "Configurações de Perfil",
               pl: "Ustawienia Profilu",
               ru: "Настройки профиля",
               de: "Profileinstellungen",
@@ -357,7 +392,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/public-profile",
             label: "Public Profile",
             translations: {
-              pt: "Perfil Público",
+              "pt-PT": "Perfil Público",
+              "pt-BR": "Perfil Público",
               ru: "Публичный профиль",
               fr: "Profil public",
             },
@@ -366,7 +402,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/user-directory",
             label: "User Directory",
             translations: {
-              pt: "Diretório de Utilizadores",
+              "pt-PT": "Diretório de Utilizadores",
+              "pt-BR": "Diretório de Usuários",
               ru: "Каталог пользователей",
               fr: "Annuaire des utilisateurs",
             },
@@ -375,7 +412,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/security",
             label: "Account Security",
             translations: {
-              pt: "Segurança da Conta",
+              "pt-PT": "Segurança da Conta",
+              "pt-BR": "Segurança da Conta",
               pl: "Bezpieczeństwo Konta",
               ru: "Безопасность аккаунта",
               de: "Kontosicherheit",
@@ -386,7 +424,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/connections",
             label: "Connections",
             translations: {
-              pt: "Ligações",
+              "pt-PT": "Ligações",
+              "pt-BR": "Conexões",
               pl: "Połączenia",
               ru: "Подключённые аккаунты",
               fr: "Connexions",
@@ -396,7 +435,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/regional-timezone",
             label: "Regional & Timezone",
             translations: {
-              pt: "Região e Fuso Horário",
+              "pt-PT": "Região e Fuso Horário",
+              "pt-BR": "Região e Fuso Horário",
               ru: "Регион и часовой пояс",
               fr: "Région et fuseau horaire",
             },
@@ -405,7 +445,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/notifications",
             label: "Notifications",
             translations: {
-              pt: "Notificações",
+              "pt-PT": "Notificações",
+              "pt-BR": "Notificações",
               ru: "Уведомления",
               fr: "Notifications",
             },
@@ -414,7 +455,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/appearance-preferences",
             label: "Appearance & Preferences",
             translations: {
-              pt: "Aparência e Preferências",
+              "pt-PT": "Aparência e Preferências",
+              "pt-BR": "Aparência e Preferências",
               pl: "Wygląd i Preferencje",
               ru: "Внешний вид и предпочтения",
               fr: "Apparence et préférences",
@@ -424,7 +466,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/onboarding",
             label: "Onboarding Tour",
             translations: {
-              pt: "Tour de Boas-vindas",
+              "pt-PT": "Tour de Boas-vindas",
+              "pt-BR": "Tour de Boas-vindas",
               ru: "Ознакомительный тур",
               fr: "Visite guidée",
             },
@@ -433,7 +476,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/supporter",
             label: "Supporter & Premium",
             translations: {
-              pt: "Apoiante e Premium",
+              "pt-PT": "Apoiante e Premium",
+              "pt-BR": "Supporter e Premium",
               ru: "Спонсор и Премиум",
               fr: "Supporter et Premium",
             },
@@ -442,7 +486,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/forum",
             label: "Forum",
             translations: {
-              pt: "Fórum",
+              "pt-PT": "Fórum",
+              "pt-BR": "Fórum",
               ru: "Форум",
               fr: "Forum",
             },
@@ -451,7 +496,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/support-tickets",
             label: "Support Tickets",
             translations: {
-              pt: "Tickets de Suporte",
+              "pt-PT": "Tickets de Suporte",
+              "pt-BR": "Tickets de Suporte",
               ru: "Тикеты поддержки",
               fr: "Tickets de support",
             },
@@ -460,7 +506,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/bans-appeals",
             label: "Bans & Appeals",
             translations: {
-              pt: "Banimentos e Recursos",
+              "pt-PT": "Banimentos e Recursos",
+              "pt-BR": "Banimentos e Recursos",
               ru: "Баны и апелляции",
               fr: "Bans et appels",
             },
@@ -469,7 +516,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/standing-licence",
             label: "Standing & Driver Licence",
             translations: {
-              pt: "Reputação e Carta de Condução",
+              "pt-PT": "Reputação e Carta de Condução",
+              "pt-BR": "Status e Carteira de Motorista",
               ru: "Репутация и водительские права",
               fr: "Réputation et permis de conduite",
             },
@@ -478,7 +526,8 @@ export const sidebarTopics = [
             slug: "web-docs/account/deletion",
             label: "Account Deletion",
             translations: {
-              pt: "Eliminação de Conta",
+              "pt-PT": "Eliminação de Conta",
+              "pt-BR": "Exclusão da Conta",
               pl: "Usunięcie Konta",
               ru: "Удаление аккаунта",
               fr: "Suppression du compte",
@@ -489,7 +538,8 @@ export const sidebarTopics = [
       {
         label: "Platform Guides",
         translations: {
-          pt: "Guias da Plataforma",
+          "pt-PT": "Guias da Plataforma",
+          "pt-BR": "Guias da Plataforma",
           ru: "Руководства по платформе",
           fr: "Guides de la plateforme",
         },
@@ -499,7 +549,8 @@ export const sidebarTopics = [
             slug: "web-docs/platform/news",
             label: "Platform News",
             translations: {
-              pt: "Notícias da Plataforma",
+              "pt-PT": "Notícias da Plataforma",
+              "pt-BR": "Notícias da Plataforma",
               ru: "Новости платформы",
               fr: "Actualités de la plateforme",
             },
@@ -508,7 +559,8 @@ export const sidebarTopics = [
             slug: "web-docs/platform/polls",
             label: "Community Polls",
             translations: {
-              pt: "Sondagens da Comunidade",
+              "pt-PT": "Sondagens da Comunidade",
+              "pt-BR": "Enquetes da Comunidade",
               ru: "Опросы сообщества",
               fr: "Sondages communautaires",
             },
@@ -517,7 +569,8 @@ export const sidebarTopics = [
             slug: "web-docs/platform/programs",
             label: "Programs & Recognition",
             translations: {
-              pt: "Programas e Reconhecimento",
+              "pt-PT": "Programas e Reconhecimento",
+              "pt-BR": "Programas e Reconhecimento",
               ru: "Программы и признание",
               fr: "Programmes et reconnaissance",
             },
@@ -526,7 +579,8 @@ export const sidebarTopics = [
             slug: "web-docs/platform/changelog-status",
             label: "Status & Changelog",
             translations: {
-              pt: "Estado e Registo de Alterações",
+              "pt-PT": "Estado e Registo de Alterações",
+              "pt-BR": "Status e Changelog",
               ru: "Статус и список изменений",
               fr: "Statut et journal des modifications",
             },
@@ -536,7 +590,8 @@ export const sidebarTopics = [
       {
         label: "Contribute",
         translations: {
-          pt: "Contribuir",
+          "pt-PT": "Contribuir",
+          "pt-BR": "Contribuir",
           ru: "Внесите вклад",
           fr: "Contribuer",
         },
@@ -546,7 +601,8 @@ export const sidebarTopics = [
             slug: "web-docs/contribute/contributors",
             label: "Contributors",
             translations: {
-              pt: "Contribuidores",
+              "pt-PT": "Contribuidores",
+              "pt-BR": "Colaboradores",
               pl: "Współtwórcy",
               ru: "Участники",
               fr: "Contributeurs",
@@ -556,7 +612,8 @@ export const sidebarTopics = [
             slug: "web-docs/contribute/contributing",
             label: "Translate Documentation",
             translations: {
-              pt: "Traduzir a Documentação",
+              "pt-PT": "Traduzir a Documentação",
+              "pt-BR": "Traduzir a Documentação",
               pl: "Tłumacz Dokumentację",
               ru: "Перевод документации",
               fr: "Traduire la documentation",
@@ -566,7 +623,8 @@ export const sidebarTopics = [
             slug: "web-docs/contribute/translation-status",
             label: "Translation Status",
             translations: {
-              pt: "Estado das Traduções",
+              "pt-PT": "Estado das Traduções",
+              "pt-BR": "Status das Traduções",
               ru: "Статус перевода",
               fr: "Statut des traductions",
             },
@@ -578,7 +636,8 @@ export const sidebarTopics = [
   {
     label: {
       en: "Web API",
-      pt: "API Web",
+      "pt-PT": "API Web",
+      "pt-BR": "API Web",
       ru: "Веб API",
       fr: "API Web",
     },
@@ -588,7 +647,8 @@ export const sidebarTopics = [
       {
         label: "Getting Started",
         translations: {
-          pt: "Primeiros Passos",
+          "pt-PT": "Primeiros Passos",
+          "pt-BR": "Primeiros Passos",
           ru: "Начало работы",
           fr: "Démarrage",
         },
@@ -598,7 +658,8 @@ export const sidebarTopics = [
             slug: "web-api/overview",
             label: "Platform Overview",
             translations: {
-              pt: "Visão Geral da Plataforma",
+              "pt-PT": "Visão Geral da Plataforma",
+              "pt-BR": "Visão Geral da Plataforma",
               ru: "Обзор платформы",
               fr: "Vue d'ensemble de la plateforme",
             },
@@ -607,7 +668,8 @@ export const sidebarTopics = [
             slug: "web-api/console",
             label: "Developer Console",
             translations: {
-              pt: "Consola de Programador",
+              "pt-PT": "Consola de Programador",
+              "pt-BR": "Console do Desenvolvedor",
               ru: "Консоль разработчика",
               fr: "Console développeur",
             },
@@ -617,7 +679,8 @@ export const sidebarTopics = [
       {
         label: "Public API",
         translations: {
-          pt: "API Pública",
+          "pt-PT": "API Pública",
+          "pt-BR": "API Pública",
           ru: "Публичный API",
           fr: "API publique",
         },
@@ -627,7 +690,8 @@ export const sidebarTopics = [
             slug: "web-api/public-api",
             label: "Public API",
             translations: {
-              pt: "API Pública",
+              "pt-PT": "API Pública",
+              "pt-BR": "API Pública",
               ru: "Публичный API",
               fr: "API publique",
             },
@@ -636,7 +700,8 @@ export const sidebarTopics = [
             slug: "web-api/public-api/doc",
             label: "Doc",
             translations: {
-              pt: "Referência",
+              "pt-PT": "Referência",
+              "pt-BR": "Referência",
               ru: "Справочник",
               fr: "Référence",
             },
@@ -645,7 +710,8 @@ export const sidebarTopics = [
             slug: "web-api/leaked-secrets",
             label: "Leaked API Keys & Secrets",
             translations: {
-              pt: "Fuga de Chaves de API e Segredos",
+              "pt-PT": "Fuga de Chaves de API e Segredos",
+              "pt-BR": "Chaves de API e Segredos Expostos",
               ru: "Утечка API-ключей и секретов",
               fr: "Clés API et secrets exposés",
             },
@@ -655,7 +721,8 @@ export const sidebarTopics = [
       {
         label: "TypeScript SDK",
         translations: {
-          pt: "SDK TypeScript",
+          "pt-PT": "SDK TypeScript",
+          "pt-BR": "SDK TypeScript",
           ru: "TypeScript SDK",
           fr: "SDK TypeScript",
         },
@@ -665,7 +732,8 @@ export const sidebarTopics = [
             slug: "web-api/sdk",
             label: "TypeScript SDK",
             translations: {
-              pt: "SDK TypeScript",
+              "pt-PT": "SDK TypeScript",
+              "pt-BR": "SDK TypeScript",
               ru: "TypeScript SDK",
               fr: "SDK TypeScript",
             },
@@ -674,7 +742,8 @@ export const sidebarTopics = [
             slug: "web-api/sdk-contributing",
             label: "Contributing to the SDK",
             translations: {
-              pt: "Contribuir para o SDK",
+              "pt-PT": "Contribuir para o SDK",
+              "pt-BR": "Contribuir para o SDK",
               ru: "Вклад в SDK",
               fr: "Contribuer au SDK",
             },
@@ -683,7 +752,8 @@ export const sidebarTopics = [
             slug: "web-api/i18n-translations",
             label: "i18n & Translations",
             translations: {
-              pt: "i18n e Traduções",
+              "pt-PT": "i18n e Traduções",
+              "pt-BR": "i18n e Traduções",
               ru: "Локализация и переводы",
               fr: "i18n et traductions",
             },
@@ -693,7 +763,8 @@ export const sidebarTopics = [
       {
         label: "Integrations",
         translations: {
-          pt: "Integrações",
+          "pt-PT": "Integrações",
+          "pt-BR": "Integrações",
           ru: "Интеграции",
           fr: "Intégrations",
         },
@@ -703,7 +774,8 @@ export const sidebarTopics = [
             slug: "web-api/oauth-apps",
             label: "OAuth Apps",
             translations: {
-              pt: "Aplicações OAuth",
+              "pt-PT": "Aplicações OAuth",
+              "pt-BR": "Aplicativos OAuth",
               ru: "Приложения OAuth",
               fr: "Applications OAuth",
             },
@@ -712,7 +784,8 @@ export const sidebarTopics = [
             slug: "web-api/webhooks",
             label: "Webhooks",
             translations: {
-              pt: "Webhooks",
+              "pt-PT": "Webhooks",
+              "pt-BR": "Webhooks",
               ru: "Вебхуки",
               fr: "Webhooks",
             },
@@ -725,7 +798,8 @@ export const sidebarTopics = [
     label: {
       en: "Game Docs",
       fr: "Documentation du jeu",
-      pt: "Documentação do Jogo",
+      "pt-PT": "Documentação do Jogo",
+      "pt-BR": "Documentação do Jogo",
     },
     link: "game-docs",
     icon: "seti:asm",
@@ -734,7 +808,8 @@ export const sidebarTopics = [
         label: "Game Docs",
         translations: {
           fr: "Documentation du jeu",
-          pt: "Documentação do Jogo",
+          "pt-PT": "Documentação do Jogo",
+          "pt-BR": "Documentação do Jogo",
         },
         collapsed: false,
         items: [
@@ -743,7 +818,8 @@ export const sidebarTopics = [
             label: "Overview",
             translations: {
               fr: "Vue d'ensemble",
-              pt: "Visão Geral",
+              "pt-PT": "Visão Geral",
+              "pt-BR": "Visão Geral",
             },
           },
         ],
@@ -754,7 +830,8 @@ export const sidebarTopics = [
     label: {
       en: "Game SDK",
       fr: "SDK du jeu",
-      pt: "SDK do Jogo",
+      "pt-PT": "SDK do Jogo",
+      "pt-BR": "SDK do Jogo",
     },
     link: "game-sdk",
     icon: "puzzle",
@@ -763,7 +840,8 @@ export const sidebarTopics = [
         label: "Game SDK",
         translations: {
           fr: "SDK du jeu",
-          pt: "SDK do Jogo",
+          "pt-PT": "SDK do Jogo",
+          "pt-BR": "SDK do Jogo",
         },
         collapsed: false,
         items: [
@@ -772,7 +850,8 @@ export const sidebarTopics = [
             label: "Overview",
             translations: {
               fr: "Vue d'ensemble",
-              pt: "Visão Geral",
+              "pt-PT": "Visão Geral",
+              "pt-BR": "Visão Geral",
             },
           },
         ],

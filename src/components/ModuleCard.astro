@@ -9,9 +9,23 @@ interface Props {
 	href: string;
 	status?: 'available' | 'soon';
 	tag: string;
+	statusLabels?: {
+		available: string;
+		soon: string;
+	};
+	ctaLabel?: string;
 }
 
-const { title, description, icon, href, status = 'available', tag } = Astro.props;
+const {
+	title,
+	description,
+	icon,
+	href,
+	status = 'available',
+	tag,
+	statusLabels = { available: 'Available', soon: 'Coming soon' },
+	ctaLabel = 'Explore',
+} = Astro.props;
 ---
 
 <a class="module-card" data-status={status} href={href}>
@@ -19,7 +33,7 @@ const { title, description, icon, href, status = 'available', tag } = Astro.prop
 		<span class="module-icon">
 			<Icon name={icon} size="1.5rem" />
 		</span>
-		<span class="module-status">{status === 'soon' ? 'Coming soon' : 'Available'}</span>
+		<span class="module-status">{status === 'soon' ? statusLabels.soon : statusLabels.available}</span>
 	</div>
 
 	<p class="module-tag">{tag}</p>
@@ -27,7 +41,7 @@ const { title, description, icon, href, status = 'available', tag } = Astro.prop
 	<p class="module-description">{description}</p>
 
 	<span class="module-cta">
-		Explore
+		{ctaLabel}
 		<Icon name="right-arrow" size="1rem" />
 	</span>
 </a>

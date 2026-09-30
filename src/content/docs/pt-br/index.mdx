@@ -1,0 +1,73 @@
+---
+title: Documentação TrucklineMP
+description: "Documentação oficial do TrucklineMP — guias web, SDK web e, em breve, documentação e SDK do jogo."
+version: 1.3.0
+lastUpdated: 2026-09-21
+template: splash
+hero:
+  tagline: A plataforma multiplayer criada para a comunidade de simulação de caminhões e ônibus.
+  image:
+    file: ../../../assets/truckline_large_no_shadow.svg
+    alt: TrucklineMP
+---
+
+import ModuleGrid from '../../../components/ModuleGrid.astro';
+import ModuleCard from '../../../components/ModuleCard.astro';
+import ContributorAvatars from '../../../components/ContributorAvatars.astro';
+
+<div class="home-statement-section">
+	<p class="home-eyebrow">Centro de Documentação</p>
+	<p class="home-statement-text">
+		Escolha um módulo abaixo para começar. Cada um tem sua própria documentação, para você encontrar rapidamente o conteúdo de que precisa.
+	</p>
+</div>
+
+<ModuleGrid>
+	<ModuleCard
+		title="Documentação Web"
+		tag="Plataforma"
+		icon="open-book"
+		status="available"
+		statusLabels={{ available: 'Disponível', soon: 'Em breve' }}
+		ctaLabel="Explorar"
+		href="/pt-br/web-docs/vtc/creating/"
+		description="Guias para gerenciar sua VTC ou VBC: recrutamento, eventos, integração com o Discord e gerenciamento de contas."
+	/>
+	<ModuleCard
+		title="API Web"
+		tag="Desenvolvedores"
+		icon="setting"
+		status="available"
+		statusLabels={{ available: 'Disponível', soon: 'Em breve' }}
+		ctaLabel="Explorar"
+		href="/pt-br/web-api/overview/"
+		description="Integre-se ao TrucklineMP com a API pública, o SDK TypeScript, aplicativos OAuth e webhooks."
+	/>
+	<ModuleCard
+		title="Documentação do Jogo"
+		tag="No Jogo"
+		icon="rocket"
+		status="soon"
+		statusLabels={{ available: 'Disponível', soon: 'Em breve' }}
+		ctaLabel="Explorar"
+		href="/pt-br/game-docs/"
+		description="Documentação para o mod companheiro do TrucklineMP dentro do jogo."
+	/>
+	<ModuleCard
+		title="SDK do Jogo"
+		tag="Desenvolvedores"
+		icon="puzzle"
+		status="soon"
+		statusLabels={{ available: 'Disponível', soon: 'Em breve' }}
+		ctaLabel="Explorar"
+		href="/pt-br/game-sdk/"
+		description="Crie ferramentas e mods para a integração do TrucklineMP com o jogo."
+	/>
+</ModuleGrid>
+
+<ContributorAvatars
+	heading="Feito com a sua ajuda"
+	subheading="O TrucklineMP é movido pela paixão e por uma comunidade ativa."
+	caption="Alguns colaboradores da nossa documentação de código aberto."
+	emptyState="Nenhum colaborador do GitHub encontrado."
+/>
