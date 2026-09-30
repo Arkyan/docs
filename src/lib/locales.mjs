@@ -14,6 +14,7 @@ export const translationLocales = {
 	fr: { label: 'Français', lang: 'fr', englishName: 'French' },
 	ta: { label: 'தமிழ்', lang: 'ta', englishName: 'Tamil' },
 	tr: { label: 'Türkçe', lang: 'tr', englishName: 'Turkish' },
+	pt: { label: 'Português', lang: 'pt', englishName: 'Portuguese' },
 };
 
 /** Locale codes of every translation (English is the root locale, not listed). */

@@ -1,0 +1,60 @@
+---
+title: Documentação TrucklineMP
+description: Documentação oficial da TrucklineMP - documentação web, SDK web e (brevemente) documentação e SDK do jogo.
+version: 1.3.0
+lastUpdated: 2026-09-21
+template: splash
+hero:
+  tagline: A plataforma multijogador criada para a comunidade de trucking e coach virtual.
+  image:
+    file: ../../../assets/truckline_large_no_shadow.svg
+    alt: TrucklineMP
+---
+
+import ModuleGrid from '../../../components/ModuleGrid.astro';
+import ModuleCard from '../../../components/ModuleCard.astro';
+import ContributorAvatars from '../../../components/ContributorAvatars.astro';
+
+<div class="home-statement-section">
+	<p class="home-eyebrow">Centro de Documentação</p>
+	<p class="home-statement-text">
+		Escolhe um módulo abaixo para começar. Cada um tem a sua própria documentação, mantendo-te sempre no sítio certo.
+	</p>
+</div>
+
+<ModuleGrid>
+	<ModuleCard
+		title="Web Docs"
+		tag="Plataforma"
+		icon="open-book"
+		status="available"
+		href="/pt/web-docs/vtc/creating/"
+		description="Guias para geres a tua VTC ou VBC - recrutamento, eventos, integração com Discord e gestão de contas."
+	/>
+	<ModuleCard
+		title="Web API"
+		tag="Programadores"
+		icon="setting"
+		status="available"
+		href="/pt/web-api/overview/"
+		description="Integra-te com a TrucklineMP - a API pública, o SDK TypeScript, aplicações OAuth e webhooks."
+	/>
+	<ModuleCard
+		title="Game Docs"
+		tag="No Jogo"
+		icon="rocket"
+		status="soon"
+		href="/pt/game-docs/"
+		description="Documentação para o mod companheiro da TrucklineMP dentro do jogo."
+	/>
+	<ModuleCard
+		title="Game SDK"
+		tag="Programadores"
+		icon="puzzle"
+		status="soon"
+		href="/pt/game-sdk/"
+		description="Cria ferramentas e mods sobre a integração de jogo da TrucklineMP."
+	/>
+</ModuleGrid>
+
+<ContributorAvatars />

@@ -1,0 +1,30 @@
+---
+title: Estado das Traduções
+description: Estado atual das traduções da documentação em todos os idiomas.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+import TranslationStatusTable from '../../../../../components/TranslationStatusTable.astro';
+
+Esta página mostra quais as páginas de documentação traduzidas e o quão atualizada está cada tradução. Cada célula mostra a versão do documento e a data da sua última atualização. Um estado verde significa que a tradução corresponde à versão em inglês. Laranja significa que está atrasada. Vermelho significa que ainda não foi traduzida.
+
+<TranslationStatusTable />
+
+## Legenda
+
+- **Atual** - A tradução tem a mesma versão que a página em inglês
+- **Desatualizada** - A tradução tem uma versão mais antiga do que a página em inglês (ou, se não estiver definida nenhuma versão, está mais de 1 dia atrasada por data)
+- **Em Falta** - Ainda não existe tradução para este idioma
+
+Quando uma página em inglês sofre alterações significativas, a sua `version` é atualizada. Os tradutores atualizam a tradução e definem a sua `version` para corresponder - é isso que a volta a marcar como atual.
+
+## Como Ajudar
+
+Se reparares numa tradução desatualizada ou quiseres contribuir com uma nova tradução, por favor:
+
+1. Consulta o guia [Contribuir com Traduções](/pt/web-docs/contribute/contributing/)
+2. Cria um pull request no GitHub com a tua tradução
+3. Segue a estrutura de ficheiros e os padrões de qualidade descritos no guia
+
+Obrigado por ajudares a manter a nossa documentação acessível em vários idiomas!

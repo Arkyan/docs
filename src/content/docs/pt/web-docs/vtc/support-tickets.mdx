@@ -1,0 +1,76 @@
+---
+title: Tickets de Suporte da VTC
+description: Permite que os membros contactem diretamente a equipa da tua VTC ou VBC, e gere os tickets recebidos a partir do painel de gestão.
+version: 1.0.0
+lastUpdated: 2026-09-21
+---
+
+O Suporte da VTC dá aos teus membros uma linha direta com a equipa - separado do [sistema de suporte próprio do TrucklineMP](/pt/web-docs/account/support-tickets/), que é para questões ao nível da plataforma.
+
+## Para membros: submeter um ticket
+
+1. Vai ao perfil da tua VTC ou VBC
+2. Abre `/vtc/@handle/support` (ou `/vbc/@handle/support`)
+3. Escolhe uma categoria, escreve um assunto e uma mensagem, e submete
+
+A equipa é notificada e pode responder diretamente na conversa do ticket.
+
+---
+
+## Para a equipa: gerir tickets
+
+1. Abre o teu painel **Manage**
+2. Seleciona **Support**
+
+### Separador Tickets
+
+- Filtra por estado (**Open**, **In Progress**, **Waiting on User**, **Resolved**, **Closed**), categoria, prioridade, atribuição, ou pesquisa
+- Reivindica tickets não atribuídos ou filtra por **Assigned to me**
+- Responde, altera o estado e define a prioridade a partir da conversa do ticket
+
+As métricas rápidas mostram tickets em aberto, tickets à espera do utilizador, tickets atribuídos a ti, tickets não atribuídos e a classificação média de satisfação.
+
+### Separador Settings
+
+A equipa com a permissão **Support Settings** pode configurar:
+
+- **Categorias** - categorias de tickets personalizadas com cores
+- **Templates de respostas pré-definidas** - respostas reutilizáveis para perguntas comuns
+
+---
+
+## Permissões
+
+| Permissão | O que concede |
+|------------|-----------------|
+| `support.view` | Ver tickets |
+| `support.reply` | Responder a tickets |
+| `support.assign` | Atribuir tickets à equipa |
+| `support.close` | Resolver e fechar tickets |
+| `support.manage` | Controlo total do fluxo de tickets |
+| `support.settings` | Configurar categorias e templates |
+
+Atribui estas permissões a partir do separador **Permissions** em [Cargos e Permissões](/pt/web-docs/vtc/roles-permissions/). O suporte também tem de estar ativado para a tua empresa antes de o separador aparecer aos membros.
+
+---
+
+## Resolução de Problemas
+
+### "Os membros não encontram a página de suporte"
+
+Confirma que o Suporte da VTC está ativado para a tua empresa, e partilha a ligação direta: `/vtc/@handle/support`.
+
+### "Não vejo o separador Support em Manage"
+
+Precisas de pelo menos `support.view` (ou `management.vtc.edit`, que concede sempre acesso).
+
+### "Não consigo editar categorias ou templates"
+
+Editar a configuração requer `support.settings`, que é independente das permissões de tratamento de tickets.
+
+---
+
+## Guias relacionados
+
+- [Tickets de Suporte (TrucklineMP)](/pt/web-docs/account/support-tickets/) - suporte ao nível da plataforma, não específico da VTC
+- [Cargos e Permissões](/pt/web-docs/vtc/roles-permissions/)

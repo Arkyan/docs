@@ -1,0 +1,231 @@
+---
+title: Aplicações OAuth
+description: Cria Aplicações OAuth, autoriza utilizadores, configura PKCE, gere utilizadores de teste e publica aplicações na TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+As Aplicações OAuth permitem que os utilizadores iniciem sessão na tua aplicação com a sua conta TrucklineMP. Após a autorização, a tua aplicação recebe tokens de acesso com o âmbito das permissões que solicitaste.
+
+O OAuth é independente das chaves da Public API. Usa OAuth quando precisares de agir em nome de um utilizador com sessão iniciada. Usa chaves de API para leituras do lado do servidor de dados públicos da plataforma.
+
+## Criar uma aplicação
+
+1. Ativa o [Modo de Programador](/pt/web-api/overview/#antes-de-começares) e abre a [Consola de Programador](https://trucklinemp.com/developer).
+2. Vai a **Aplicações OAuth** e clica em **Criar Aplicação**.
+3. Preenche o nome, descrição, ícone, website e URLs legais da aplicação.
+4. Na página **OAuth**, define os **URIs de redirecionamento** (um por linha) e seleciona os **âmbitos** (scopes).
+5. Guarda as alterações. Copia o **segredo de cliente** quando for mostrado. Não pode ser recuperado mais tarde.
+
+### Regras dos URIs de redirecionamento
+
+- É exigida **correspondência exata** no momento da autorização e do token (incluindo caminho, porta e barra final).
+- Hosts públicos com **https://** são permitidos.
+- **http://** só é permitido para hosts de desenvolvimento local: `localhost`, `*.localhost`, `127.x.x.x`, intervalos de rede local privados (`10/8`, `172.16/12`, `192.168/16`), e `host.docker.internal`.
+- **Esquemas de aplicação personalizados** são permitidos para clientes nativos (por exemplo, `myapp://callback`).
+- Fragmentos (`#...`) e credenciais incorporadas (`user:pass@`) são rejeitados.
+
+### Tipos de aplicação
+
+| Tipo | Segredo de cliente | Utilização típica |
+|------|---------------|-------------|
+| **confidential** (predefinição) | Obrigatório no endpoint de token | Aplicações web e backends do lado do servidor |
+| **public** | Não usado | Aplicações móveis e SPAs que usam PKCE |
+
+Os clientes públicos autenticam-se no endpoint de token sem enviar `client_secret_post`. Os clientes confidenciais têm de enviar `client_secret`.
+
+## Endpoints OAuth
+
+Documento de descoberta (OAuth 2.0 Authorization Server Metadata):
+
+```
+GET https://trucklinemp.com/.well-known/oauth-authorization-server
+```
+
+| Endpoint | URL |
+|----------|-----|
+| Autorização | `https://trucklinemp.com/oauth/authorize` |
+| Token | `https://trucklinemp.com/api/oauth/token` |
+| Revogação | `https://trucklinemp.com/api/oauth/revoke` |
+| Userinfo | `https://trucklinemp.com/api/oauth/userinfo` |
+
+Tipo de resposta suportado: `code` (fluxo de código de autorização).
+
+Tipos de grant suportados: `authorization_code`, `refresh_token`.
+
+Método PKCE suportado: `S256`.
+
+## Âmbitos (Scopes)
+
+| Âmbito | Acesso |
+|-------|--------|
+| `profile` | Nome de utilizador, avatar e perfil público (obrigatório) |
+| `vtc:read` | Adesão a VTC, funções (roles) e detalhes da VTC |
+| `events:read` | Reservado para futuros campos de userinfo (ainda não devolvido) |
+| `bans:read` | Reservado para futuros campos de userinfo (ainda não devolvido) |
+
+Solicita apenas os âmbitos de que a tua aplicação precisa. Os utilizadores veem a lista completa no ecrã de consentimento.
+
+`events:read` e `bans:read` já podem ser solicitados hoje, mas ainda não adicionam campos ao userinfo. Usa os endpoints de banimento da Public API para dados públicos de banimento em vez disso.
+
+## Fluxo de autorização
+
+### 1. Redireciona o utilizador para autorização
+
+Constrói um URL (ou usa a **ligação de instalação** na visão geral da tua aplicação):
+
+```
+https://trucklinemp.com/oauth/authorize
+  ?client_id=tlmp_client_...
+  &response_type=code
+  &redirect_uri=https://your-app.com/callback
+  &scope=profile vtc:read
+  &state=RANDOM_CSRF_TOKEN
+```
+
+Se a tua aplicação requer PKCE, inclui também:
+
+```
+&code_challenge=CHALLENGE
+&code_challenge_method=S256
+```
+
+Gera o challenge a partir de um `code_verifier` usando SHA-256 e codificação base64url.
+
+### 2. O utilizador consente
+
+O utilizador inicia sessão (se necessário) e aprova os âmbitos solicitados. A TrucklineMP redireciona de volta para o teu `redirect_uri` com `code` e `state`.
+
+Verifica se `state` corresponde ao que enviaste para prevenir ataques CSRF.
+
+### 3. Troca o código por tokens
+
+```bash
+curl -X POST "https://trucklinemp.com/api/oauth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=authorization_code" \
+  -d "client_id=tlmp_client_..." \
+  -d "client_secret=tlmp_secret_..." \
+  -d "code=AUTHORIZATION_CODE" \
+  -d "redirect_uri=https://your-app.com/callback" \
+  -d "code_verifier=VERIFIER_IF_PKCE"
+```
+
+A resposta inclui `access_token` (`tlmp_...`) e, opcionalmente, `refresh_token` (`tlmpr_...`).
+
+### 4. Chama o userinfo
+
+```bash
+curl -H "Authorization: Bearer tlmp_ACCESS_TOKEN" \
+  "https://trucklinemp.com/api/oauth/userinfo"
+```
+
+## Resposta do userinfo
+
+Os campos dependem dos âmbitos concedidos ao token de acesso. O sujeito (subject) é sempre incluído.
+
+### Sempre devolvido
+
+| Campo | Tipo | Descrição |
+|-------|------|-------------|
+| `sub` | string | ID de utilizador da TrucklineMP |
+| `web_id` | string | WebID público |
+
+### Com o âmbito `profile`
+
+| Campo | Tipo | Descrição |
+|-------|------|-------------|
+| `name` | string | Nome de exibição |
+| `picture` | string | URL do avatar |
+| `handle` | string | `@handle` público (pode ser null) |
+| `steam_id` | string \| null | SteamID64 associado |
+
+### Com o âmbito `vtc:read`
+
+| Campo | Tipo | Descrição |
+|-------|------|-------------|
+| `vtc_memberships` | array | Objetos com `vtcId`, `vtcName`, `role`, `isOwner`, `joinedAt` |
+
+### Exemplo
+
+```json
+{
+  "sub": "user_abc123",
+  "web_id": "10042",
+  "name": "Driver Name",
+  "picture": "https://cdn.example/avatar.webp",
+  "handle": "drivername",
+  "vtc_memberships": [
+    {
+      "vtcId": 7,
+      "vtcName": "Example Logistics",
+      "role": "Driver",
+      "isOwner": false,
+      "joinedAt": "2026-01-15T10:00:00.000Z"
+    }
+  ]
+}
+```
+
+Tokens inválidos ou expirados devolvem HTTP `401` com `{ "error": "invalid_token" }`.
+
+## PKCE
+
+O PKCE protege clientes públicos que não podem armazenar um segredo de cliente. Ativa **Exigir PKCE** nas definições de segurança da tua aplicação para rejeitar pedidos de autorização sem um challenge válido.
+
+Quando o PKCE é obrigatório:
+
+1. Gera um `code_verifier` (string base64url aleatória).
+2. Calcula `code_challenge = BASE64URL(SHA256(code_verifier))`.
+3. Envia `code_challenge` e `code_challenge_method=S256` no pedido de autorização.
+4. Envia `code_verifier` no pedido de token.
+
+## Modo de teste e utilizadores de teste
+
+As novas aplicações de terceiros começam **não publicadas**. Enquanto não publicadas:
+
+- Apenas o **proprietário da aplicação** e os **utilizadores de teste** podem concluir a autorização.
+- Todos os outros veem uma mensagem a indicar que a aplicação está em modo de teste.
+
+Adiciona utilizadores de teste na página **Geral** das definições da tua aplicação. Pesquisa utilizadores da TrucklineMP por nome ou handle. A lista de utilizadores de teste também pode incluir endereços de email que correspondam à conta que autoriza.
+
+Isto permite-te desenvolver e testar sem expor a aplicação a todos os utilizadores da TrucklineMP.
+
+## Publicação
+
+Quando a tua aplicação estiver pronta para o público:
+
+1. Completa a **verificação de domínio** para o teu website e URIs de redirecionamento (obrigatório para configurações sensíveis).
+2. Abre a página **Publicação** nas definições da tua aplicação.
+3. Clica em **Verificar / Publicar Aplicação** para submeter à revisão da equipa, quando necessário.
+4. Após aprovação, usa **Publicar Aplicação** para a disponibilizar a todos os utilizadores.
+
+As aplicações publicadas podem voltar a ser **despublicadas** na mesma página. Despublicar devolve a aplicação às restrições do modo de teste.
+
+A equipa pode rejeitar uma aplicação com notas a explicar o que corrigir. Responde ao feedback e volta a submeter.
+
+## Formatos de token
+
+| Item | Prefixo / formato |
+|------|-----------------|
+| Client ID | `tlmp_client_...` |
+| Segredo de cliente | `tlmp_secret_...` |
+| Token de acesso | `tlmp_...` |
+| Token de atualização | `tlmpr_...` |
+
+Roda o segredo de cliente a partir da página de segurança se este for comprometido. Os tokens existentes podem ser invalidados dependendo das tuas definições de rotação.
+
+## Lista de verificação de segurança
+
+- Usa URIs de redirecionamento HTTPS em produção.
+- Valida sempre o parâmetro `state`.
+- Usa PKCE para clientes públicos e aplicações baseadas em navegador.
+- Guarda segredos de cliente e tokens de atualização apenas do lado do servidor.
+- Solicita o mínimo de âmbitos necessário.
+
+## Guias relacionados
+
+- [Visão Geral da Plataforma de Programador](/pt/web-api/overview/)
+- [Consola de Programador](/pt/web-api/console/)
+- [Public API](/pt/web-api/public-api/)
+- [Webhooks](/pt/web-api/webhooks/)
