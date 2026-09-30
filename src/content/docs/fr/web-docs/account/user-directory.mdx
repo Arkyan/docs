@@ -1,0 +1,72 @@
+---
+title: Annuaire des utilisateurs
+description: Recherchez et parcourez les profils d'utilisateurs TrucklineMP depuis l'annuaire public.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+L'annuaire des utilisateurs vous aide à trouver des conducteurs par nom, identifiant ou affiliation à un VTC.
+
+## Accéder à l'annuaire
+
+Ouvrez [trucklinemp.com/users](https://trucklinemp.com/users).
+
+Vous pouvez parcourir l'annuaire sans vous connecter. Certains détails de profil nécessitent une authentification ou un contexte d'amitié.
+
+---
+
+## Recherche et filtres
+
+Utilisez la barre de recherche pour affiner les résultats :
+
+- Correspondance partielle sur le **nom ou l'identifiant**
+- Chaque résultat affiche le VTC actuel de l'utilisateur (le cas échéant) lorsqu'il est disponible
+- Pagination pour les grands ensembles de résultats
+
+Il n'existe pas de contrôles de filtrage séparés (comme un filtre par VTC) - la recherche se fait uniquement par nom ou identifiant.
+
+Cliquez sur un utilisateur pour ouvrir son [profil public](/fr/web-docs/account/public-profile/).
+
+---
+
+## URL de profil
+
+Les utilisateurs sont accessibles à :
+
+- `trucklinemp.com/@handle` (préféré lorsqu'un identifiant est défini)
+- `trucklinemp.com/user/{webId}` (repli sur le WebID numérique)
+
+Les identifiants sont uniques et choisis dans les [Paramètres du profil](/fr/web-docs/account/profile-settings/).
+
+---
+
+## Confidentialité
+
+Les utilisateurs contrôlent ce qui apparaît sur leur profil (avatar, liens sociaux, comptes de streaming connectés). Les utilisateurs bannis peuvent afficher une bannière de statut. Les notes réservées à l'équipe ne sont jamais publiques.
+
+---
+
+## Signaler des utilisateurs
+
+Si vous constatez des infractions à la politique, ouvrez leur profil et utilisez **Report user** pour déposer un [ticket de support](/fr/web-docs/account/support-tickets/). Ne harcelez pas les utilisateurs en messages privés ou sur Discord.
+
+---
+
+## Accès à l'API
+
+Les intégrateurs peuvent rechercher des utilisateurs via l'API publique :
+
+```
+GET https://api.trucklinemp.com/users/search
+GET https://api.trucklinemp.com/users/{handleOrId}
+```
+
+Voir [API publique](/fr/web-api/public-api/).
+
+---
+
+## Guides associés
+
+- [Profil public](/fr/web-docs/account/public-profile/)
+- [Paramètres du profil](/fr/web-docs/account/profile-settings/)
+- [Bans et appels](/fr/web-docs/account/bans-appeals/)

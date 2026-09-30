@@ -1,0 +1,194 @@
+---
+title: Rôles liés Discord
+description: Ajoutez le bot TrucklineMP et configurez les Rôles liés pour que les membres puissent vérifier leur compte TrucklineMP et obtenir des rôles sur le serveur.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Les Rôles liés (Linked Roles) sont une fonctionnalité de Discord. Les administrateurs de serveur associent des règles de vérification à un rôle. Les membres **s'inscrivent volontairement** à ce rôle en connectant leur compte TrucklineMP. Discord vérifie les règles et accorde le rôle s'ils remplissent les conditions.
+
+Cela fonctionne sur n'importe quel serveur Discord. Ce n'est pas limité aux VTC.
+
+TrucklineMP propose deux vérifications que les administrateurs peuvent exiger :
+
+| Vérification | Signification |
+|-------|---------|
+| **Account linked** | Le membre a un compte TrucklineMP connecté via le flux de Rôles liés |
+| **TrucklineMP staff** | Le membre fait partie du staff de la plateforme TrucklineMP |
+
+---
+
+## Avant de commencer
+
+### Administrateurs de serveur
+
+- **Manage Roles** (ou Administrateur) sur le serveur
+- Le [bot TrucklineMP](https://discord.com/discovery/applications/1467506804727746854) installé sur votre serveur. Les Rôles liés TrucklineMP utilisent le bot comme connexion d'application. Le bot doit être présent avant que **TrucklineMP** n'apparaisse lors de l'ajout d'une exigence.
+
+### Membres
+
+- Un compte TrucklineMP sur [trucklinemp.com](https://trucklinemp.com)
+- L'accès au menu du serveur sur ordinateur pour effectuer la première connexion (voir [Obtenir un rôle](#obtenir-un-rôle-membres))
+
+---
+
+## Étape 1 : Ajouter le bot TrucklineMP
+
+1. Ouvrez [TrucklineMP sur Discord](https://discord.com/discovery/applications/1467506804727746854).
+2. Cliquez sur **Add to Server**.
+3. Choisissez votre serveur et approuvez les permissions.
+4. Terminez l'installation.
+
+Le bot active les exigences de Rôles liés et les commandes slash telles que `/profile`. Ajouter le bot ne crée aucun rôle par lui-même.
+
+---
+
+## Étape 2 : Créer un Rôle lié (administrateurs)
+
+Les Rôles liés se configurent sur un **rôle**, pas via un assistant de Rôles liés séparé.
+
+1. Ouvrez **Server Settings**.
+2. Allez dans **Roles**.
+3. Cliquez sur **Create Role**, ou sélectionnez un rôle existant que vous souhaitez restreindre.
+4. Nommez le rôle et définissez une couleur si vous le souhaitez. Cliquez sur **Save Changes**.
+5. Ouvrez l'onglet **Links** en haut de l'éditeur de rôle.
+6. Cliquez sur **Add requirement**.
+7. Sous **Apps**, sélectionnez **TrucklineMP**.
+8. Ajoutez les vérifications souhaitées (par exemple **Account linked** égal **Yes**).
+9. Cliquez sur **Save Changes**.
+
+Pour ajouter plus d'une vérification sur le même rôle, ajoutez une autre exigence. Discord exige que le membre remplisse **toutes** les exigences de ce rôle.
+
+### Exemples de rôles
+
+**Membre vérifié**
+
+- Nom du rôle : `Verified` (ou votre choix)
+- Exigence Links : **Account linked** = **Yes**
+
+**Réservé au staff de la plateforme**
+
+- Nom du rôle : `TrucklineMP Staff`
+- Exigence Links : **TrucklineMP staff** = **Yes**
+
+Vous pouvez ajouter des exigences à un rôle existant plutôt que d'en créer un nouveau. Ouvrez le rôle, allez dans **Links**, et ajoutez-y une exigence TrucklineMP.
+
+---
+
+## Étape 3 : Restreindre les canaux (facultatif)
+
+Pour exiger un Rôle lié avant que les membres puissent voir ou envoyer des messages dans un canal :
+
+1. Ouvrez **Channel Settings** pour le canal.
+2. Allez dans **Permissions**.
+3. Sous **Add members or roles**, ajoutez le Rôle lié que vous avez créé.
+4. Enregistrez.
+
+Les membres qui tentent d'accéder à ce canal seront invités à connecter TrucklineMP et à s'inscrire au rôle s'ils ne l'ont pas déjà fait.
+
+---
+
+## Obtenir un rôle (membres)
+
+Les Rôles liés ne sont **pas** attribués automatiquement. Même si un membre a déjà un compte TrucklineMP, il doit s'inscrire volontairement au sein du serveur.
+
+### Option A : Menu du serveur
+
+1. Cliquez sur le **nom de votre serveur** en haut à gauche du client.
+2. Sélectionnez **Linked Roles**.
+3. Cliquez sur le rôle souhaité.
+4. Passez en revue les exigences affichées.
+5. Cliquez pour connecter **TrucklineMP**.
+6. Connectez-vous à TrucklineMP si demandé, puis approuvez la connexion sur l'écran d'autorisation de Discord.
+7. Revenez sur Discord. Si vous remplissez les conditions, le rôle est accordé.
+
+### Option B : Canal restreint
+
+1. Ouvrez un canal nécessitant un Rôle lié.
+2. Suivez l'invite à l'écran pour vérifier votre compte et obtenir le rôle.
+3. Terminez le flux de connexion TrucklineMP lorsque demandé.
+
+Une fois le rôle obtenu, vous conservez l'accès aux canaux restreints de ce serveur, sauf si un administrateur modifie les exigences ou si vous supprimez la connexion.
+
+---
+
+## Comment fonctionne la connexion TrucklineMP
+
+Quand un membre se connecte via un Rôle lié :
+
+1. Discord ouvre la page d'autorisation de TrucklineMP.
+2. Le membre se connecte à TrucklineMP (s'il ne l'est pas déjà).
+3. TrucklineMP envoie des métadonnées de connexion à Discord (compte lié, statut de staff, et nom d'affichage).
+4. Discord évalue ces données par rapport aux exigences **Links** du rôle.
+
+Ceci est distinct de **Settings → Connections** sur trucklinemp.com. Cette page sert à la récupération de compte et à la liaison de profil. Les Rôles liés utilisent toujours le flux de connexion intégré au serveur, lancé depuis **Linked Roles** dans le menu du serveur ou depuis un canal restreint.
+
+Si TrucklineMP signale que le compte Discord ne correspond pas à une liaison existante sur le site, le membre doit utiliser le même compte Discord partout ou mettre à jour d'abord ses connexions TrucklineMP.
+
+Le statut de staff est lu depuis TrucklineMP. Quand il change sur le site, Discord peut rafraîchir les métadonnées de connexion pour les membres déjà connectés.
+
+---
+
+## Commandes du bot
+
+Une fois le bot installé, ces commandes slash sont disponibles :
+
+| Commande | Description |
+|---------|-------------|
+| `/profile [user]` | Voir le profil TrucklineMP d'un membre s'il a terminé la connexion via un Rôle lié |
+| `/about` | Informations sur TrucklineMP |
+
+Si `/profile` indique qu'un utilisateur n'a pas lié son compte, c'est qu'il n'a pas terminé le flux d'inscription au Rôle lié sur ce serveur.
+
+Les propriétaires de VTC peuvent aussi utiliser `/verify-server` et `/vtc` après avoir [vérifié le serveur sur TrucklineMP](/fr/web-docs/vtc/discord-verification/). Ces commandes n'ont aucun rapport avec la configuration des Rôles liés.
+
+Les propriétaires de VTC Vérifiées peuvent demander un rôle distinct **Verified VTC Manager/Owner** sur le Discord principal de TrucklineMP après avoir obtenu le Rôle lié **Verified**. Voir [Rôle Discord VTC Vérifiée](/fr/web-docs/vtc-programs/discord-role/).
+
+---
+
+## Points importants
+
+- **Inscription volontaire uniquement.** Les membres éligibles ne reçoivent pas le rôle tant qu'ils ne l'ont pas obtenu via **Linked Roles** ou un canal restreint.
+- **Par serveur.** Se connecter sur un serveur n'accorde pas les Rôles liés sur un autre. Chaque serveur a ses propres rôles et exigences.
+- **Visibilité pour les administrateurs.** Les membres qui remplissent les conditions mais ne se sont pas inscrits peuvent ne pas apparaître dans la liste des membres du rôle avant de l'avoir obtenu.
+- **Modifications des exigences.** Si vous modifiez les exigences **Links** d'un rôle, l'accès aux canaux restreints est mis à jour immédiatement pour les membres qui ne remplissent plus les conditions.
+- **Ordinateur pour la première obtention.** L'aide Discord aux membres indique que s'inscrire via un canal restreint peut nécessiter l'application de bureau la première fois. Ensuite, le mobile fonctionne généralement pour les canaux auxquels vous avez déjà accès.
+
+---
+
+## Dépannage
+
+### TrucklineMP n'apparaît pas lors de l'ajout d'une exigence
+
+- Confirmez que le bot TrucklineMP est installé sur le serveur.
+- Actualisez **Server Settings → Roles → Links** après avoir installé le bot.
+- Assurez-vous d'avoir **Manage Roles** ou Administrateur.
+
+### Un membre remplit les conditions mais n'a pas le rôle
+
+- Il doit s'inscrire via **nom du serveur → Linked Roles** ou via un canal restreint.
+- Connecter Discord sous **Settings → Connections** sur trucklinemp.com n'accorde pas les Rôles liés.
+
+### Un membre a perdu l'accès après une déconnexion
+
+- Supprimer la connexion TrucklineMP révoque l'éligibilité au Rôle lié. Il doit se reconnecter via **Linked Roles**.
+
+### Le rôle staff ne s'est pas mis à jour
+
+- Demandez au membre d'ouvrir **Linked Roles** sur le serveur et de reconnecter TrucklineMP, ou attendez que Discord rafraîchisse les métadonnées de connexion.
+
+---
+
+## Bonnes pratiques
+
+- Créez un simple rôle **Verified** avec **Account linked** avant d'ouvrir des canaux réservés aux membres.
+- Restreignez les canaux sensibles avec ce Rôle lié plutôt que d'attribuer le rôle manuellement.
+- Épinglez une courte note dans `#rules` ou `#welcome` indiquant aux membres d'utiliser **nom du serveur → Linked Roles**.
+- Gardez le bot TrucklineMP sur le serveur pour que les exigences et `/profile` continuent de fonctionner.
+
+---
+
+## Guides associés
+
+- [Connections](/fr/web-docs/account/connections/) - Lier Discord et d'autres comptes sur TrucklineMP
+- [Vérification Discord VTC](/fr/web-docs/vtc/discord-verification/) - Facultatif : afficher le serveur Discord de votre VTC sur votre profil TrucklineMP

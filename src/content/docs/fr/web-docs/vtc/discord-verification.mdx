@@ -1,0 +1,195 @@
+---
+title: Vérification Discord VTC
+description: Liez et vérifiez le serveur Discord de votre VTC pour l'afficher sur votre profil public sur TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Liez le serveur Discord de votre VTC à TrucklineMP pour l'afficher sur votre profil public et instaurer la confiance auprès des membres potentiels.
+
+## Accéder aux paramètres Discord
+
+1. Accédez au panneau de gestion de votre VTC
+2. Sélectionnez **General Settings** dans la barre latérale
+3. Faites défiler jusqu'à la section **Discord Server**
+
+---
+
+## Pourquoi vérifier votre Discord ?
+
+- **Instaurer la confiance** - Montrez aux candidats que votre Discord est légitime
+- **Augmenter l'engagement** - Facilitez la recherche de votre serveur par les membres
+- **Apparence professionnelle** - Affiché de façon visible sur votre profil VTC
+- **Construction de communauté** - Connectez vos communautés TrucklineMP et Discord
+
+---
+
+## Processus de vérification
+
+### Étape 1 : Générer un jeton
+1. Cliquez sur **Generate Verification Token**
+2. Un jeton unique est créé pour votre VTC
+3. Le jeton s'affiche à l'écran
+4. Copiez le jeton avec le bouton de copie
+
+### Étape 2 : Inviter le bot
+1. Cliquez sur le lien **Invite the TrucklineMP bot**
+2. Sélectionnez votre serveur Discord dans le menu déroulant
+3. Accordez au bot les permissions nécessaires
+4. Terminez l'invitation
+
+**Permissions du bot requises :**
+- Lire les messages / Voir les salons
+- Envoyer des messages
+- Utiliser les commandes slash
+
+### Étape 3 : Vérifier le serveur
+1. Allez sur n'importe quel salon de votre serveur Discord
+2. Tapez la commande : `/verify-server <TOKEN>`
+3. Remplacez `<TOKEN>` par votre jeton réel
+4. Le bot confirmera la vérification
+5. Votre serveur est désormais lié
+
+### Étape 4 : Confirmation
+- Retournez sur TrucklineMP
+- La page détectera automatiquement la vérification
+- Vous verrez une notification de succès
+- Votre serveur Discord s'affiche désormais sur votre profil VTC
+
+---
+
+## Informations sur le jeton
+
+### Expiration du jeton
+- Les jetons expirent après **15 minutes**
+- Si votre jeton expire, générez-en un nouveau
+- Chaque VTC ne peut avoir qu'un seul jeton actif à la fois
+
+### Sécurité du jeton
+- Les jetons sont propres à votre VTC
+- Ne partagez pas les jetons publiquement
+- Générez un nouveau jeton s'il est compromis
+
+---
+
+## Visibilité du serveur
+
+Contrôlez qui peut voir votre serveur Discord lié sur votre profil VTC.
+
+### Options de visibilité
+
+**Only You**
+- Seul le propriétaire de la VTC peut voir le serveur Discord
+- Caché des membres et du public
+- Utile pendant la configuration ou si le serveur est privé
+
+**VTC Members**
+- Visible par tous les membres de votre VTC
+- Caché du public
+- Adapté aux communautés réservées aux membres
+
+**Everyone**
+- Visible sur votre profil VTC public
+- N'importe qui peut voir votre serveur Discord
+- Recommandé pour le recrutement public
+
+### Modifier la visibilité
+1. Allez dans la section Discord Server
+2. Cliquez sur l'option de visibilité souhaitée
+3. Le changement est enregistré automatiquement
+4. Vous verrez une notification de succès
+
+---
+
+## Gérer votre serveur lié
+
+### Voir le statut du serveur
+- Voir le nom de votre serveur lié
+- Vérifier le statut de vérification (Vérifié/Non vérifié)
+- Voir le paramètre de visibilité actuel
+
+### Générer un nouveau jeton
+- Cliquez sur **Generate New Token**
+- L'ancien jeton est invalidé
+- Utilisez le nouveau jeton pour re-vérifier si nécessaire
+
+### Délier votre serveur
+1. Cliquez sur **Unlink Server**
+2. Confirmez l'action
+3. Votre serveur Discord est retiré de votre profil
+4. Vous pourrez lier un serveur différent plus tard
+
+---
+
+## Dépannage
+
+### « Le bot ne répond pas à ma commande »
+- Assurez-vous que le bot a la permission de lire les messages dans le salon
+- Vérifiez que vous utilisez le bon jeton
+- Vérifiez que le bot est présent sur votre serveur
+- Essayez un autre salon
+
+### « Mon jeton a expiré »
+- Les jetons expirent après 15 minutes
+- Générez un nouveau jeton
+- Utilisez le nouveau jeton immédiatement
+
+### « La vérification ne s'affiche pas sur mon profil »
+- Actualisez la page
+- Vérifiez que la vérification s'est bien terminée
+- Assurez-vous que la visibilité est réglée sur « Everyone » ou « VTC Members »
+
+### « Je veux lier un serveur différent »
+- Déliez d'abord votre serveur actuel
+- Générez un nouveau jeton
+- Suivez le processus de vérification pour le nouveau serveur
+
+### « Le bot n'a pas la permission »
+- Allez dans les paramètres de votre serveur Discord
+- Accédez à Rôles
+- Assurez-vous que le bot TrucklineMP a les permissions requises
+- Réessayez la commande
+
+---
+
+## Bonnes pratiques
+
+### Configuration du serveur
+- Utilisez un lien d'invitation permanent
+- Mettez en place des salons et des règles clairs
+- Ayez des modérateurs prêts à accueillir les nouveaux membres
+- Gardez votre serveur actif et engageant
+
+### Visibilité
+- Réglez la visibilité sur « Everyone » pour le recrutement public
+- Utilisez « VTC Members » pour les communautés réservées aux membres
+- Utilisez « Only You » pendant la configuration initiale
+
+### Maintenance
+- Vérifiez régulièrement votre serveur Discord
+- Répondez rapidement aux questions des membres
+- Gardez votre serveur organisé
+- Mettez à jour votre profil VTC quand Discord change
+
+---
+
+## Prérequis
+
+Pour vérifier votre serveur Discord, vous avez besoin de :
+- La permission **Gérer le serveur** dans le serveur Discord
+- Des **permissions de gestion** dans votre VTC sur TrucklineMP
+- Un serveur Discord conforme aux règles de Discord
+
+---
+
+## Étapes suivantes
+
+Une fois votre serveur vérifié, configurez les [Rôles liés Discord](/fr/web-docs/discord-bot/linked-roles/) afin que les membres puissent connecter leur compte TrucklineMP et recevoir des rôles automatiquement.
+
+---
+
+## Guides associés
+
+- [Rôles liés Discord](/fr/web-docs/discord-bot/linked-roles/) - Configurer des rôles automatiques pour les membres et le staff
+- [Paramètres généraux VTC](/fr/web-docs/vtc/general-settings/) - Configurer les autres paramètres VTC
+- [Programme VTC Vérifié](/fr/web-docs/vtc-programs/verified/) - Postuler à la vérification VTC
