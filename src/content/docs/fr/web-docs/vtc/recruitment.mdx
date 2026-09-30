@@ -1,0 +1,247 @@
+---
+title: Recrutement VTC
+description: Configurez les formulaires de recrutement, les questions de candidature, et gérez comment les utilisateurs postulent pour rejoindre votre VTC sur TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Configurez comment les utilisateurs postulent pour rejoindre votre VTC. Vous pouvez utiliser le système de candidature intégré de TrucklineMP ou rediriger vers un formulaire externe.
+
+## Accéder aux paramètres de recrutement
+
+1. Accédez au panneau de gestion de votre VTC
+2. Sélectionnez **Recruitment** dans la barre latérale
+3. Vous verrez des options pour la méthode de candidature et la configuration du formulaire
+
+---
+
+## Méthodes de candidature
+
+Choisissez comment les candidats postuleront à votre VTC :
+
+### Formulaire Truckline (interne)
+- Utilisez le système de candidature intégré
+- Créez des questions personnalisées
+- Gérez les candidatures directement sur TrucklineMP
+- Les candidats voient votre formulaire sur la page de votre VTC
+- Vous recevez des notifications pour les nouvelles candidatures
+
+**Recommandé pour :** la plupart des VTC, notamment celles qui veulent tout gérer au même endroit.
+
+### Lien externe
+- Redirige les candidats vers un formulaire externe
+- Prend en charge Google Forms, Typeform, ou tout formulaire web
+- Les candidats voient une boîte de dialogue de confirmation avant d'être redirigés
+- Vous gérez les candidatures en dehors de TrucklineMP
+
+**Recommandé pour :** les VTC disposant déjà d'un système de candidature ou ayant des besoins complexes.
+
+---
+
+## Configurer les formulaires internes
+
+### Détails du formulaire
+
+**Form Title**
+- Le titre affiché aux candidats
+- Par défaut : « Apply to [VTC Name] »
+- Rendez-le clair et accueillant
+- Maximum 200 caractères
+
+**Introduction / Instructions**
+- Texte pris en charge en Markdown affiché en haut du formulaire
+- Expliquez le processus de candidature
+- Incluez les exigences ou attentes
+- Ajoutez des informations de contact pour les questions
+- Maximum 5 000 caractères
+
+### Créer des questions
+
+Cliquez sur **Add Question** pour créer une nouvelle question.
+
+#### Types de question
+
+**Short Answer**
+- Champ de texte sur une seule ligne
+- Utile pour : nom, âge, niveau d'expérience
+- Les candidats saisissent des réponses brèves
+
+**Paragraph**
+- Zone de texte multi-ligne
+- Utile pour : explications détaillées, rédactions
+- Les candidats peuvent écrire des réponses plus longues
+
+**Dropdown**
+- Sélection parmi des options prédéfinies
+- Utile pour : choix multiples avec de nombreuses options
+- Les candidats sélectionnent une option dans une liste
+
+**Multiple Choice (Radio)**
+- Boutons radio avec options prédéfinies
+- Utile pour : questions oui/non, choix simples
+- Les candidats sélectionnent une option
+
+#### Paramètres de question
+
+**Question Text**
+- La question affichée aux candidats
+- Maximum 1 000 caractères
+- Rendez les questions claires et précises
+
+**Required**
+- Cochez cette case pour rendre la question obligatoire
+- Les candidats doivent répondre aux questions obligatoires
+- Décochez pour la rendre facultative
+
+**Options (Dropdown/Radio uniquement)**
+- Ajoutez des options pour les questions dropdown et radio
+- Cliquez sur **Add Option** pour en ajouter davantage
+- Cliquez sur l'icône de corbeille pour retirer une option
+- Maximum 500 caractères par option
+
+### Gérer les questions
+
+**Réordonner**
+- Les questions apparaissent dans l'ordre où vous les ajoutez
+- Retirez et rajoutez pour changer l'ordre
+
+**Modifier**
+- Cliquez sur une question pour la modifier
+- Les modifications ne sont pas enregistrées tant que vous n'avez pas enregistré tout le formulaire
+
+**Supprimer**
+- Cliquez sur l'icône de corbeille sur une carte de question
+- La question est retirée immédiatement
+- Cette action est irréversible
+
+---
+
+## Configurer les liens externes
+
+1. Sélectionnez **External Link** comme méthode de candidature
+2. Saisissez l'URL complète de votre formulaire externe
+3. L'URL doit commencer par `https://`
+4. Enregistrez vos modifications
+
+**Ce que voient les candidats :**
+- Un bouton pour postuler
+- Une boîte de dialogue de confirmation les avertissant qu'ils quittent TrucklineMP
+- Le formulaire externe s'ouvre dans un nouvel onglet
+
+---
+
+## Enregistrer votre configuration
+
+- Cliquez sur **Save Configuration** en bas à droite
+- Toutes les modifications sont enregistrées ensemble
+- Une notification de succès s'affiche
+- Les modifications prennent effet immédiatement
+
+---
+
+## Gérer les candidatures
+
+### Consulter les candidatures
+- Les candidatures apparaissent dans le panneau de gestion de votre VTC
+- Voir les informations et réponses du candidat
+- Chaque candidature affiche son statut (en attente, acceptée, rejetée, ou en attente du candidat)
+
+### Examiner les candidatures
+- Lisez attentivement toutes les réponses
+- Vérifiez l'activité des profils des candidats
+- Utilisez les notes de staff pour suivre votre processus d'examen
+
+### Accepter des candidatures
+- Cliquez sur **Accept** sur une candidature
+- Le candidat est notifié
+- Il est ajouté à votre VTC en tant que membre avec le rôle de membre par défaut
+- Vous pouvez modifier son rôle ensuite depuis la Gestion des membres
+
+### Rejeter des candidatures
+- Cliquez sur **Reject** sur une candidature
+- Indiquez éventuellement une raison
+- Le candidat est notifié
+- Il peut postuler à nouveau à l'avenir
+
+---
+
+## Liste noire de recrutement
+
+Empêchez des utilisateurs spécifiques de postuler à votre VTC.
+
+### Ajouter à la liste noire
+1. Allez dans **Blacklist** dans la barre latérale
+2. Cliquez sur **Add to Blacklist**
+3. Recherchez l'utilisateur par nom d'utilisateur
+4. Sélectionnez l'utilisateur dans les résultats
+5. Saisissez une raison
+6. Cliquez sur **Add to Blacklist**
+
+### Retirer de la liste noire
+- Cliquez sur l'icône de corbeille à côté d'un utilisateur sur liste noire
+- L'utilisateur peut postuler à nouveau immédiatement
+
+### Notes sur la liste noire
+- Les utilisateurs sur liste noire ne peuvent pas soumettre de candidatures
+- La raison est visible par la gestion de la VTC
+- Les entrées indiquent qui les a ajoutées et quand
+
+---
+
+## Bonnes pratiques
+
+### Conception du formulaire
+- Gardez les formulaires concis mais complets
+- Posez uniquement des questions pertinentes
+- Utilisez des champs obligatoires pour les informations essentielles
+- Fournissez des instructions claires
+
+### Idées de questions
+- Pourquoi voulez-vous rejoindre notre VTC ?
+- Depuis combien de temps jouez-vous ?
+- Avez-vous un microphone pour les convois ?
+- Quelle est votre expérience avec d'autres VTC ?
+- Connaissez-vous nos règles ?
+
+### Formulaires externes
+- Utilisez des URL claires et permanentes
+- Testez le formulaire vous-même avant de le publier
+- Assurez-vous que le formulaire est adapté aux mobiles
+- Fournissez des informations de contact pour le support
+
+### Examen des candidatures
+- Répondez rapidement aux candidatures
+- Fournissez un retour lors d'un rejet
+- Utilisez les notes de staff pour suivre vos décisions
+- Soyez cohérent dans votre évaluation
+
+---
+
+## Dépannage
+
+### « Les candidats ne voient pas mon formulaire »
+- Assurez-vous que le recrutement est activé dans General Settings
+- Vérifiez que votre formulaire est enregistré
+- Vérifiez que le formulaire a au moins une question
+
+### « Mon lien externe ne fonctionne pas »
+- Assurez-vous que l'URL commence par `https://`
+- Testez le lien vous-même
+- Vérifiez que le formulaire est accessible publiquement
+
+### « Je ne peux pas enregistrer mon formulaire »
+- Assurez-vous que tous les champs obligatoires sont remplis
+- Vérifiez que le texte des questions n'est pas vide
+- Vérifiez que vous avez la permission de gérer le recrutement
+
+### « Un candidat n'apparaît pas »
+- Vérifiez s'il a soumis sa candidature
+- Vérifiez qu'il remplit vos exigences
+- Actualisez la page
+
+---
+
+## Guides associés
+
+- [Paramètres généraux VTC](/fr/web-docs/vtc/general-settings/) - Configurer les exigences de recrutement
+- [Gestion des membres VTC](/fr/web-docs/vtc/member-management/) - Gérer les nouveaux membres

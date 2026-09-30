@@ -1,0 +1,84 @@
+---
+title: Actualités VTC
+description: Publiez des actualités sur le profil de votre VTC, épinglez des annonces, et gérez votre fil d'actualités VTC.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Les Actualités VTC permettent à votre entreprise de publier des mises à jour sur votre profil TrucklineMP. Les publications apparaissent dans votre fil d'actualités VTC et peuvent apparaître sur l'API publique d'actualités pour les lecteurs publics.
+
+## Accéder à la gestion des actualités
+
+1. Ouvrez le panneau **Manage** de votre VTC
+2. Sélectionnez **News** dans la barre latérale (`/vtc/@handle/manage/news`)
+3. Créez, modifiez, ou supprimez des publications depuis le tableau de bord des actualités
+
+Vous avez besoin des permissions **news** sur votre rôle VTC (par exemple `news.create`, `news.edit`, `news.delete`). Les propriétaires ont un accès complet.
+
+---
+
+## Créer une publication
+
+Cliquez sur **New Post** et renseignez :
+
+| Champ | Remarques |
+|-------|-------|
+| **Title** | Titre affiché dans les fils et sur la page de la publication |
+| **Content** | Corps en Markdown |
+| **Cover image** | Bannière HTTPS optionnelle pour la publication |
+| **Pinned** | Garde cette publication en haut de votre fil |
+
+Enregistrez pour publier immédiatement. Les modifications mettent à jour la publication en direct.
+
+---
+
+## Visibilité publique
+
+Les publications publiées apparaissent sur :
+
+- L'onglet actualités de votre profil VTC
+- Les pages de publication individuelles à `/vtc/@handle/post/{postId}`
+- L'API publique via `GET /vtcs/{id}/news` et `GET /news/{newsId}`
+
+Les règles de visibilité des VTC non répertoriées ou privées s'appliquent toujours pour déterminer qui peut accéder à votre profil.
+
+---
+
+## Épingler des publications
+
+Épinglez les annonces importantes (campagnes de recrutement, changements de politique, rappels d'événements) afin qu'elles restent au-dessus des publications plus anciennes. Il est recommandé de n'épingler qu'une ou quelques publications pour que le fil reste lisible.
+
+---
+
+## Supprimer des publications
+
+La suppression est permanente. Le staff disposant de la permission de suppression peut retirer des publications depuis le panneau de gestion. Envisagez de modifier plutôt que de supprimer pour corriger des erreurs mineures.
+
+---
+
+## Intégration avec les annonces
+
+Si vous utilisez les webhooks [Annonces VTC](/fr/web-docs/vtc/announcements/) Discord, les événements d'actualités (publication, mise à jour) peuvent déclencher des messages Discord automatiques via des modèles avec des espaces réservés comme `{news.title}`.
+
+---
+
+## Modération par le staff
+
+Le staff de la plateforme peut modérer les actualités VTC qui enfreignent les règles. Les propriétaires de VTC voient le statut de modération dans le panneau de gestion le cas échéant.
+
+---
+
+## Bonnes pratiques
+
+- Utilisez des titres clairs pour que les membres puissent parcourir le fil rapidement
+- N'épinglez que ce qui est actuellement important
+- Renvoyez vers les [événements](/fr/web-docs/vtc/events/) ou les pages de recrutement quand c'est pertinent
+- Gardez les images sur des URL HTTPS que vous contrôlez
+
+---
+
+## Guides associés
+
+- [Annonces VTC](/fr/web-docs/vtc/announcements/)
+- [Paramètres généraux](/fr/web-docs/vtc/general-settings/)
+- [API publique](/fr/web-api/public-api/) - points de terminaison des actualités

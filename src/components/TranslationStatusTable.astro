@@ -1,12 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
+import { LOCALES, translationLocales } from '../lib/locales.mjs';
 
-const LOCALES = ['ru', 'pl', 'de', 'fr', 'ta', 'tr'];
 const DAY_MS = 86400000;
+
+type Entry = { date: Date | null; version: string | null };
+type Row = { baseId: string; title: string; entries: Record<string, Entry> };
 
 const allDocs = await getCollection('docs');
 
-const docMap = new Map();
+const docMap = new Map<string, Row>();
 
 for (const doc of allDocs) {
 	// Entry ids look like "web-docs/vtc/creating" or "ru/web-docs/vtc/creating"
@@ -14,31 +17,32 @@ for (const doc of allDocs) {
 	const locale = LOCALES.includes(firstSegment) ? firstSegment : 'root';
 	const baseId = locale === 'root' ? doc.id : doc.id.split('/').slice(1).join('/');
 
-	if (!docMap.has(baseId)) {
-		docMap.set(baseId, { baseId, title: doc.data.title, entries: {} });
+	let row = docMap.get(baseId);
+	if (!row) {
+		row = { baseId, title: doc.data.title, entries: {} };
+		docMap.set(baseId, row);
 	}
-	const row = docMap.get(baseId);
 	if (locale === 'root') row.title = doc.data.title;
 	row.entries[locale] = {
-		date: doc.data.lastUpdated ? new Date(doc.data.lastUpdated) : null,
+		date: doc.data.lastUpdated instanceof Date ? doc.data.lastUpdated : null,
 		version: doc.data.version ?? null,
 	};
 }
 
 const rows = [...docMap.values()].sort((a, b) => a.title.localeCompare(b.title));
 
-function formatDate(date) {
+function formatDate(date: Date) {
 	return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-function cellLabel(entry) {
+function cellLabel(entry: Entry) {
 	if (entry.version && entry.date) return `v${entry.version} · ${formatDate(entry.date)}`;
 	if (entry.version) return `v${entry.version}`;
 	if (entry.date) return formatDate(entry.date);
 	return 'n/a';
 }
 
-function getStatus(english, translation) {
+function getStatus(english: Entry | null, translation: Entry | null) {
 	if (!translation) {
 		return { state: 'missing', label: 'Missing' };
 	}
@@ -63,12 +67,9 @@ function getStatus(english, translation) {
 			<tr>
 				<th>Page</th>
 				<th title="English">EN</th>
-				<th title="Russian">RU</th>
-				<th title="Polish">PL</th>
-				<th title="German">DE</th>
-				<th title="French">FR</th>
-				<th title="Tamil">TA</th>
-				<th title="Turkish">TR</th>
+				{LOCALES.map((locale) => (
+					<th title={translationLocales[locale].englishName}>{locale.toUpperCase()}</th>
+				))}
 			</tr>
 		</thead>
 		<tbody>

@@ -1,0 +1,189 @@
+---
+title: Contribuer au SDK TypeScript
+description: Comment contribuer à @trucklinemp/sdk - installation locale, structure du package, ajout d'endpoints, standards de PR, et releases.
+version: 1.1.0
+lastUpdated: 2026-09-17
+---
+
+Merci de contribuer à l'amélioration de `@trucklinemp/sdk`, le kit officiel TypeScript et JavaScript pour l'[API publique](/fr/web-api/public-api/) de TrucklineMP, OAuth, et les webhooks.
+
+Ce guide s'adresse aux personnes qui souhaitent modifier le **package SDK lui-même** (nouvelles méthodes, corrections de bugs, types, documentation dans le dépôt). Si vous avez seulement besoin d'**utiliser** le SDK dans une application, voir [SDK TypeScript](/fr/web-api/sdk/) à la place.
+
+| | |
+|---|---|
+| Package | `@trucklinemp/sdk` |
+| Source | [github.com/trucklinemp/sdk](https://github.com/trucklinemp/sdk) |
+| npm | [npmjs.com/package/@trucklinemp/sdk](https://www.npmjs.com/package/@trucklinemp/sdk) |
+| Licence | MIT |
+
+## Avant de commencer
+
+1. Ouvrez une [issue](https://github.com/trucklinemp/sdk/issues) pour les changements plus importants afin que les mainteneurs puissent s'aligner sur la conception.
+2. Consultez la [spécification OpenAPI](https://trucklinemp.com/api/v1/openapi.json) et le [guide de l'API publique](/fr/web-api/public-api/) pour le véritable contrat HTTP. Le SDK est un client léger - il devrait refléter les routes publiques, pas en inventer de privées.
+3. Préférez des pull requests petites et ciblées plutôt que de grandes réécritures.
+
+## Prérequis
+
+- **Node.js 18+** (le client s'appuie sur `fetch` global)
+- npm (fourni avec Node)
+- Un compte GitHub et un fork de [trucklinemp/sdk](https://github.com/trucklinemp/sdk)
+
+Optionnel pour des vérifications d'intégration manuelles :
+
+- Une clé API de la [Console développeur](https://trucklinemp.com/developer) TrucklineMP
+
+## Cloner et installer
+
+```bash
+git clone https://github.com/YOUR_USER/sdk.git
+cd sdk
+npm install
+```
+
+Si vous travaillez depuis la structure du monorepo Truckline, le package se trouve sous `sdk/` avec les mêmes scripts.
+
+## Scripts
+
+| Commande | Objectif |
+|---------|---------|
+| `npm run build` | Bundle avec tsup → `dist/` (entrées main + `oauth` + `webhooks`) |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm test` | Tests unitaires Vitest |
+| `npm run prepublishOnly` | typecheck + test + build (mainteneurs) |
+
+Exécutez toujours ceci avant d'ouvrir une PR :
+
+```bash
+npm run typecheck
+npm test
+npm run build
+```
+
+## Structure du package
+
+```
+sdk/
+├── src/
+│   ├── index.ts           # Exports principaux
+│   ├── oauth-entry.ts     # @trucklinemp/sdk/oauth
+│   ├── webhooks-entry.ts  # @trucklinemp/sdk/webhooks
+│   ├── client.ts          # Classe Truckline
+│   ├── http.ts            # fetch, réessais, hooks
+│   ├── resources.ts       # vtcs, users, events, …
+│   ├── models.ts          # Types de réponse publics
+│   ├── oauth.ts           # TrucklineOAuth + PKCE
+│   ├── webhooks.ts        # HMAC + handlers (Node crypto)
+│   ├── pagination.ts
+│   ├── batch.ts
+│   ├── errors.ts
+│   ├── types.ts
+│   └── version.ts
+├── tests/
+├── examples/
+├── dist/
+├── package.json
+└── …
+```
+
+### Règles de conception
+
+- **Wrappers légers** au-dessus des chemins HTTP. Préférez `this.http.get("/users/…")` à un mapping lourd.
+- **Encodez les segments de chemin** avec `encodeURIComponent`.
+- **Passez les objets de requête** via `withOpts` pour que `RequestOptions` reste cohérent.
+- **Les types vivent dans `models.ts`** - gardez-les alignés avec l'API publique / OpenAPI.
+- **La crypto des webhooks reste dans `webhooks.ts`** (Node uniquement). Préférez `@trucklinemp/sdk/webhooks` pour les handlers serveur.
+- **OAuth vit dans `oauth.ts`** et l'export du sous-chemin `/oauth`.
+- Les changements majeurs sur les noms de méthodes / options suivent semver ; les champs de réponse optionnels peuvent évoluer sans bump majeur.
+
+## Ajouter une méthode d'API publique
+
+Exemple : l'API ajoute `GET /users/steam/{steamId}`.
+
+1. Confirmez le chemin et les paramètres dans OpenAPI / le routeur public de l'application web.
+2. Ajoutez une méthode sur la bonne ressource dans `src/resources.ts` :
+
+```ts
+// UsersResource
+getBySteam(steamId: string, options?: RequestOptions) {
+  return this.http.get(
+    `/users/steam/${encodeURIComponent(steamId)}`,
+    options,
+  );
+}
+```
+
+3. Si vous introduisez une **nouvelle classe de ressource**, construisez-la sur `Truckline` dans `src/client.ts` et exportez tout nouveau type depuis `src/index.ts` uniquement si les appelants en ont besoin.
+4. Mettez à jour la page de documentation consommateur ([SDK TypeScript](/fr/web-api/sdk/)) lorsque le changement est visible pour l'utilisateur.
+5. `npm run build && npm run typecheck`.
+
+### Échappatoire
+
+Si une route est rare ou encore en évolution, les appelants peuvent utiliser :
+
+```ts
+await tl.get("/path");
+await tl.request("GET", "/path", { query: { … } });
+```
+
+Préférez une méthode nommée une fois que la route est stable et couramment utilisée.
+
+## Test de fumée local contre l'API
+
+```ts
+import { Truckline } from "trucklinemp-sdk"; // ou importez depuis src/index.ts de votre checkout local
+
+const tl = new Truckline({
+  apiKey: process.env.TRUCKLINE_API_KEY,
+});
+
+console.log(await tl.meta.version());
+```
+
+Ne commitez **pas** de clés API. Utilisez uniquement des variables d'environnement.
+
+## Pull requests
+
+1. Forkez et créez une branche depuis `main` / `master` (correspondant à la branche par défaut du dépôt).
+2. Gardez le diff limité à une seule préoccupation.
+3. Décrivez **ce qui** a changé et **pourquoi**, et liez toute issue API / documentation.
+4. Confirmez que `npm run build` et `npm run typecheck` passent.
+5. Mettez à jour le README ou la documentation lorsque le comportement est visible pour l'utilisateur.
+
+### Style de commit (suggéré)
+
+```
+feat(sdk): add users.getBySteam
+fix(sdk): encode path ids on news.get
+docs(sdk): document webhook raw-body requirement
+chore(sdk): bump version to 0.1.2
+```
+
+## Releases (mainteneurs)
+
+La publication est couverte dans le `PUBLISH.md` du dépôt. Résumé :
+
+1. Incrémentez `version` dans `package.json` (`npm version patch|minor|major`).
+2. Poussez vers la branche par défaut (ou exécutez le workflow de publication).
+3. La CI build, typecheck, et publie sur le registre npm **public** lorsque la version est nouvelle.
+
+Les contributeurs n'ont pas besoin de droits de publication npm. Les mainteneurs réalisent les releases après revue.
+
+## Ce que nous ne recherchons pas
+
+- Des wrappers autour d'endpoints web **privés**, admin, ou réservés aux cookies
+- Le regroupement d'utilitaires sans rapport qui alourdissent le package
+- Des types stricts et générés pour chaque champ OpenAPI à chaque release (l'outillage optionnel est acceptable si discuté au préalable)
+- Des secrets, clés, ou tokens personnels dans le dépôt
+
+## Liens associés
+
+| Ressource | Lien |
+|----------|------|
+| Utiliser le SDK | [SDK TypeScript](/fr/web-api/sdk/) |
+| API publique | [API publique](/fr/web-api/public-api/) |
+| Webhooks | [Webhooks](/fr/web-api/webhooks/) |
+| Console développeur | [trucklinemp.com/developer](https://trucklinemp.com/developer) |
+| OpenAPI | [openapi.json](https://trucklinemp.com/api/v1/openapi.json) |
+| Traductions de la documentation | [Contribuer aux traductions](/fr/web-docs/contribute/contributing/) |
+
+Les questions sur les API de la plateforme (pas seulement le package SDK) sont les bienvenues via le support ou les canaux développeurs listés sur trucklinemp.com.

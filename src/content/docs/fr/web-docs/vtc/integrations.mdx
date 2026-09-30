@@ -1,0 +1,35 @@
+---
+title: Intégrations VTC
+description: Créez des jetons d'intégration et intégrez les événements à venir de votre entreprise sur des sites externes avec l'onglet Intégrations VTC sur TrucklineMP.
+version: 1.0.0
+lastUpdated: 2026-09-17
+---
+
+L'onglet Integrations de votre panneau de gestion d'entreprise crée des jetons d'intégration pour afficher vos événements à venir sur un site externe, comme le propre site web de votre VTC ou une page communautaire liée.
+
+Ouvrez **Manage** puis **Integrations** dans la barre latérale (`/vtc/@handle/manage/integrations`). Le staff disposant de la permission `events.manage` peut créer et révoquer des jetons.
+
+## Comment fonctionnent les intégrations
+
+Une intégration est un widget iframe qui liste vos événements à venir. Il est servi depuis TrucklineMP et se met à jour automatiquement à mesure que les événements changent. Les visiteurs n'ont pas besoin de compte pour voir le widget.
+
+## Créer un jeton d'intégration
+
+1. Ouvrez **Integrations**.
+2. Cliquez sur **Create Token**, donnez-lui un nom, et générez-le.
+3. Définissez combien de jours d'événements à venir le widget doit inclure.
+4. Copiez l'extrait iframe généré et collez-le dans votre page externe.
+
+## Révoquer un jeton
+
+Les jetons peuvent être révoqués à tout moment depuis le même onglet. Révoquer un jeton désactive immédiatement toutes les intégrations qui l'utilisent.
+
+## Aperçu
+
+L'onglet Integrations affiche un aperçu en direct du widget pendant que vous le configurez, afin que vous puissiez vérifier son apparence avant de copier l'extrait.
+
+## Guides associés
+
+- [Événements VTC](/fr/web-docs/vtc/events/) - les événements affichés par l'intégration
+- [Annonces VTC](/fr/web-docs/vtc/announcements/) - envoyer les mises à jour d'événements vers Discord à la place
+- [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/) - qui peut créer des jetons d'intégration

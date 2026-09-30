@@ -1,0 +1,157 @@
+---
+title: Webhooks
+description: Abonnez-vous aux événements de la plateforme TrucklineMP, vérifiez les signatures HMAC, et gérez les réessais automatiques.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Les webhooks envoient des notifications d'événements vers votre endpoint HTTP lorsque quelque chose change sur TrucklineMP. Configurez-les dans la [Console développeur](https://trucklinemp.com/developer/webhooks).
+
+Les webhooks complètent l'API publique. Utilisez l'API pour interroger ou récupérer des données à la demande. Utilisez les webhooks lorsque votre service doit réagir immédiatement aux changements de la plateforme.
+
+## Créer un webhook
+
+1. Ouvrez **Webhooks** dans la Console développeur.
+2. Cliquez sur **Create Webhook**.
+3. Entrez un nom, une URL d'endpoint HTTPS, et sélectionnez les événements souhaités.
+4. Copiez le **secret de signature** lorsqu'il est affiché. Vous en avez besoin pour vérifier les livraisons.
+
+Chaque webhook appartient à votre compte développeur. Vous pouvez créer plusieurs endpoints pour différents environnements (staging, production).
+
+## Format de livraison
+
+TrucklineMP envoie une requête HTTP `POST` avec un corps JSON :
+
+```json
+{
+  "event": "vtc.member_joined",
+  "event_id": "550e8400-e29b-41d4-a716-446655440000",
+  "timestamp": "2026-06-30T12:00:00.000Z",
+  "data": {
+    "vtcId": 42,
+    "userId": "user_abc",
+    "role": "Driver"
+  }
+}
+```
+
+### En-têtes de requête
+
+| En-tête | Description |
+|--------|-------------|
+| `Content-Type` | `application/json` |
+| `X-TrucklineMP-Signature` | Signature HMAC-SHA256 (`sha256=<hex>`) |
+| `X-TrucklineMP-Event` | Type d'événement (par exemple `vtc.member_joined`) |
+| `X-TrucklineMP-Delivery` | ID de livraison unique (correspond à `event_id`) |
+
+Vous pouvez aussi attacher des en-têtes personnalisés dans les paramètres du webhook. Les noms d'en-têtes sensibles (`Authorization`, `Cookie`, et similaires) sont retirés des journaux de livraison.
+
+## Vérifier les signatures
+
+Calculez la signature attendue sur le **corps brut de la requête** en utilisant votre secret de webhook :
+
+```
+expected = "sha256=" + HMAC_SHA256(secret, raw_body)
+```
+
+Comparez `expected` à l'en-tête `X-TrucklineMP-Signature` en utilisant une comparaison à temps constant. Rejetez les requêtes avec des signatures invalides avant de traiter le payload.
+
+Exemple (Node.js) :
+
+```javascript
+import { createHmac, timingSafeEqual } from "crypto";
+
+function verifySignature(rawBody, signatureHeader, secret) {
+  const expected = "sha256=" + createHmac("sha256", secret).update(rawBody).digest("hex");
+  if (!signatureHeader || signatureHeader.length !== expected.length) return false;
+  return timingSafeEqual(Buffer.from(signatureHeader), Buffer.from(expected));
+}
+```
+
+## Réessais
+
+Les livraisons échouées sont réessayées automatiquement. Délais de réessai par défaut :
+
+| Tentative | Délai après échec |
+|---------|---------------------|
+| 1 | 30 secondes |
+| 2 | 2 minutes |
+| 3 | 10 minutes |
+
+Une livraison réussit lorsque votre endpoint retourne un HTTP `2xx`. Les redirections (`3xx`) sont traitées comme des échecs. Les timeouts sont par défaut de 30 secondes par tentative.
+
+L'historique et le statut des livraisons sont visibles dans la console. Utilisez **Send Test** pour déclencher un événement `webhook.test` sur votre endpoint.
+
+## Catalogue d'événements
+
+Abonnez-vous uniquement aux événements dont votre intégration a besoin.
+
+### Utilisateurs
+
+| Événement | Description |
+|-------|-------------|
+| `user.updated` | Le profil d'un utilisateur a été mis à jour |
+| `user.banned` | Un utilisateur a été banni |
+| `user.unbanned` | Le bannissement d'un utilisateur a été retiré |
+
+### VTC
+
+| Événement | Description |
+|-------|-------------|
+| `vtc.created` | Une nouvelle VTC a été créée |
+| `vtc.member_joined` | Un utilisateur a rejoint une VTC |
+| `vtc.member_left` | Un utilisateur a quitté une VTC |
+| `vtc.updated` | Les détails d'une VTC ont été mis à jour |
+
+### Événements
+
+| Événement | Description |
+|-------|-------------|
+| `event.created` | Un nouvel événement a été publié |
+| `event.updated` | Un événement a été mis à jour |
+| `event.cancelled` | Un événement a été annulé |
+| `event.rsvp` | Un utilisateur a fait un RSVP à un événement |
+
+### Modération
+
+| Événement | Description |
+|-------|-------------|
+| `ban.issued` | Un bannissement a été émis |
+| `ban.appealed` | Un appel de bannissement a été déposé |
+| `ban.appeal_resolved` | Un appel de bannissement a été résolu |
+
+### API (niveau compte)
+
+| Événement | Description |
+|-------|-------------|
+| `api.rate_limit_hit` | Un de vos tokens API a atteint sa limite de débit |
+| `api.token_revoked` | Un token API a été révoqué |
+
+### Test
+
+| Événement | Description |
+|-------|-------------|
+| `webhook.test` | Livraison de test manuelle depuis la console |
+
+Les champs exacts du payload varient selon l'événement. Traitez `data` comme l'objet spécifique à l'événement et ignorez les champs inconnus pour la compatibilité ascendante.
+
+## Exigences de l'endpoint
+
+- Utilisez **HTTPS** en production.
+- Répondez avec `2xx` rapidement. Déchargez le travail lourd vers une file d'attente en arrière-plan.
+- Ne retournez `2xx` qu'après avoir accepté le payload. TrucklineMP ne réessaiera pas les livraisons réussies.
+- Ne suivez pas les redirections côté récepteur. Les réponses de redirection font échouer la livraison.
+
+Les URL de réseau privé et les destinations non sûres sont bloquées par la plateforme.
+
+## Webhooks d'annonce VTC (fonctionnalité séparée)
+
+Les propriétaires de VTC peuvent configurer des **webhooks d'annonce Discord** depuis leur panneau de gestion de VTC. Ces webhooks publient des embeds formatés sur Discord lorsque des événements VTC se produisent (arrivées de membres, candidatures, et similaires).
+
+Les webhooks de la Console développeur sont différents. Ce sont des endpoints HTTP au niveau du compte pour votre code d'intégration. Voir [Annonces VTC](/fr/web-docs/vtc/announcements/) pour la fonctionnalité orientée Discord.
+
+## Guides associés
+
+- [Vue d'ensemble de la plateforme développeur](/fr/web-api/overview/)
+- [API publique](/fr/web-api/public-api/)
+- [Applications OAuth](/fr/web-api/oauth-apps/)

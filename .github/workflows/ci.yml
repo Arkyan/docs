@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '22.14.0'
+          node-version-file: .nvmrc
 
       - name: Validate content (paths, frontmatter, orphans)
         run: node scripts/validate-docs.mjs
@@ -31,12 +31,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '22.14.0'
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install dependencies
@@ -48,12 +48,12 @@ jobs:
       - name: Check output
         run: |
           test -f dist/index.html || { echo "dist/index.html missing"; exit 1; }
-          test -f dist/guides/translation-status/index.html || { echo "translation status page missing"; exit 1; }
+          test -f dist/web-docs/contribute/translation-status/index.html || { echo "translation status page missing"; exit 1; }
           echo "Built $(find dist -name 'index.html' | wc -l) pages"
 
       - name: Upload build artifact
         if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: site-dist
           path: dist/
