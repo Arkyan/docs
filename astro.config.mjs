@@ -2,9 +2,11 @@
 import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import { defineConfig } from "astro/config";
+import { starlightLocales } from "./src/lib/locales.mjs";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://docs.trucklinemp.com",
   integrations: [
     starlight({
       title: {
@@ -16,36 +18,7 @@ export default defineConfig({
         tr: "TrucklineMP",
       },
       defaultLocale: "root",
-      locales: {
-        root: {
-          label: "English",
-          lang: "en",
-        },
-        pl: {
-          label: "Polski",
-          lang: "pl",
-        },
-        de: {
-          label: "Deutsch",
-          lang: "de",
-        },
-        fr: {
-          label: "Français",
-          lang: "fr",
-        },
-        ru: {
-          label: "Русский",
-          lang: "ru",
-        },
-        ta: {
-          label: "தமிழ்",
-          lang: "ta",
-        },
-        tr: {
-          label: "Türkçe",
-          lang: "tr",
-        },
-      },
+      locales: starlightLocales,
       logo: {
         src: "./src/assets/truckline_large_no_shadow.svg",
         alt: "TrucklineMP",
@@ -73,14 +46,14 @@ export default defineConfig({
       components: {
         SiteTitle: "./src/components/SiteTitle.astro",
         Footer: "./src/components/Footer.astro",
-        SidebarSublist: "./src/components/SidebarSublist.astro",
+        Sidebar: "./src/components/Sidebar.astro",
         Banner: "./src/components/Banner.astro",
       },
       plugins: [
         starlightSidebarTopics([
           {
-            label: "Web Docs",
-            translations: {
+            label: {
+              en: "Web Docs",
               ru: "Веб-документация",
             },
             link: "web-docs/vtc/creating",
@@ -529,8 +502,8 @@ export default defineConfig({
             ],
           },
           {
-            label: "Web API",
-            translations: {
+            label: {
+              en: "Web API",
               ru: "Веб API",
             },
             link: "web-api/overview",
