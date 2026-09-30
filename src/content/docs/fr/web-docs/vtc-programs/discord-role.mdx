@@ -1,0 +1,167 @@
+---
+title: Rôle Discord VTC Vérifiée
+description: Comment les propriétaires de VTC Vérifiées demandent le rôle Verified VTC Manager/Owner sur le serveur Discord principal de TrucklineMP, désignent un manager, et conservent le rôle en règle.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+Les propriétaires de VTC Vérifiées peuvent demander un rôle spécial sur le **serveur Discord principal de TrucklineMP** : **Verified VTC Manager/Owner**. Ce rôle est destiné à la direction des VTC sur le serveur officiel de la communauté. Il est distinct du serveur Discord propre à votre VTC et de la [Vérification Discord VTC](/fr/web-docs/vtc/discord-verification/) sur votre profil.
+
+Le système est entièrement automatisé. Les demandes sont vérifiées par rapport à votre compte TrucklineMP et à vos permissions dans la VTC. Aucune validation manuelle par le personnel n'est requise pour une demande valide.
+
+---
+
+## Ce que vous obtenez
+
+- Le rôle **Verified VTC Manager/Owner** sur le Discord principal de TrucklineMP
+- La reconnaissance en tant que direction d'une [VTC Vérifiée](/fr/web-docs/vtc-programs/verified/)
+- Jusqu'à **deux** détenteurs du rôle par VTC :
+  - Le **propriétaire de la VTC** (emplacement obligatoire)
+  - **Un manager facultatif** de votre VTC
+
+---
+
+## Prérequis
+
+Avant de demander le rôle, assurez-vous que tout ce qui suit est vrai.
+
+### Pour le propriétaire de la VTC (vous)
+
+| Prérequis | Détails |
+|-------------|---------|
+| **VTC Vérifiée** | Votre VTC doit avoir un statut approuvé dans le [Programme des VTC Vérifiées](/fr/web-docs/vtc-programs/verified/) sur TrucklineMP |
+| **Propriété** | Vous devez être le propriétaire de la VTC. Seul le propriétaire peut soumettre la demande |
+| **Discord lié** | Votre compte TrucklineMP doit être lié au compte Discord que vous utilisez sur le serveur principal |
+| **Rôle lié Vérifié** | Vous devez avoir le [Rôle lié](/fr/web-docs/discord-bot/linked-roles/) **Verified** sur le serveur Discord principal |
+| **Membre du serveur principal** | Vous devez être membre du Discord officiel de TrucklineMP |
+
+### Pour le manager facultatif
+
+Si vous désignez une seconde personne, elle doit également :
+
+- Être **membre** de votre VTC sur TrucklineMP
+- Occuper un poste de **management** dans cette VTC (le rôle disposant des permissions de gestion de la VTC)
+- Avoir son compte TrucklineMP **lié à Discord**
+- Avoir le Rôle lié **Verified** sur le serveur Discord principal
+- Ne pas déjà détenir ce rôle pour une autre VTC
+
+Vous ne pouvez pas vous désigner vous-même deux fois. L'emplacement du propriétaire et celui du manager sont distincts.
+
+---
+
+## Comment demander le rôle
+
+Les demandes se font sur le Discord principal de TrucklineMP dans le canal dédié **Verified VTC role** (publié par Modbot).
+
+1. Rejoignez le [serveur Discord officiel de TrucklineMP](/fr/web-docs/discord-bot/official-server/).
+2. Complétez la procédure des [Rôles liés Discord](/fr/web-docs/discord-bot/linked-roles/) et obtenez le rôle **Verified** (**nom du serveur → Linked Roles**).
+3. Ouvrez le canal de demande de rôle Verified VTC.
+4. Cliquez sur **Request Role** sur le message du panneau.
+5. Dans le formulaire :
+   - Laissez le champ manager **vide** pour n'accorder le rôle qu'à vous-même, ou
+   - Saisissez l'**ID utilisateur Discord** d'un manager de VTC que vous souhaitez désigner (ID numérique, pas un nom d'affichage).
+6. Soumettez le formulaire. Vous recevez une réponse éphémère avec le résultat.
+
+Si les deux emplacements sont accordés, vous et le manager désigné recevez le rôle en quelques secondes.
+
+### Désigner un manager plus tard ou changer de manager
+
+Soumettez une nouvelle demande avec un ID utilisateur Discord de manager différent. Le système remplace l'emplacement de manager actuel s'il est déjà occupé. Votre emplacement de propriétaire est mis à jour à chaque demande.
+
+### Limite de fréquence
+
+Vous pouvez soumettre une demande par minute et par compte Discord.
+
+---
+
+## Consulter le statut sur TrucklineMP
+
+Les propriétaires de VTC peuvent voir qui détient le rôle depuis le site :
+
+1. Ouvrez la **Console de gestion** de votre VTC.
+2. Allez dans **Paramètres**.
+3. Faites défiler jusqu'à **Rôle Discord principal**.
+
+Cette section affiche :
+
+- Si votre VTC est vérifiée
+- Qui détient les emplacements **propriétaire** et **manager** (si assignés)
+- Un lien vers le canal de demande sur Discord (si configuré)
+
+Seul le propriétaire de la VTC peut consulter cette section.
+
+---
+
+## Quand le rôle est retiré automatiquement
+
+Le rôle est surveillé. Il est retiré immédiatement dès la perte d'éligibilité. Vous ne conservez pas le rôle Discord une fois que votre VTC ou votre poste ne remplit plus les conditions.
+
+Motifs courants de retrait :
+
+| Événement | Ce qui se produit |
+|-------|----------------|
+| La VTC perd le statut **vérifié** | Toutes les attributions pour cette VTC sont révoquées |
+| La VTC est **dissoute** | Toutes les attributions pour cette VTC sont révoquées |
+| **Transfert de propriété** | L'attribution de l'ancien propriétaire est révoquée. Le nouveau propriétaire doit refaire une demande |
+| Membre **retiré** de la VTC | L'attribution de ce membre est révoquée |
+| Le manager **perd ses permissions de management** | L'attribution de ce manager est révoquée |
+| **Discord délié** de TrucklineMP | Toutes les attributions de cet utilisateur sont révoquées |
+| Le Rôle lié **Verified** est retiré sur Discord | L'attribution est révoquée lors de la prochaine vérification d'éligibilité |
+
+Il n'y a pas de période de grâce après la révocation de la vérification. Prévoyez de refaire une demande uniquement après que votre VTC soit à nouveau vérifiée et que vous remplissiez toujours toutes les conditions.
+
+---
+
+## Dépannage
+
+### « Vous devez posséder une VTC vérifiée »
+
+Votre VTC n'a pas de statut actif dans le Programme des VTC Vérifiées, ou vous n'êtes pas le propriétaire. Vérifiez le **Statut de vérification** dans votre panneau de gestion.
+
+### « Vous devez avoir le rôle lié Verified »
+
+Obtenez le rôle **Verified** via **nom du serveur → Linked Roles** sur le Discord principal. Le simple fait de connecter Discord sous **Paramètres → Connexions** sur trucklinemp.com ne satisfait pas cette exigence.
+
+### « L'utilisateur désigné doit occuper un poste de management dans la VTC »
+
+La personne que vous avez indiquée n'est pas un membre de la VTC disposant des permissions de gestion. Attribuez-lui d'abord le rôle **Management** (ou des permissions équivalentes) dans votre VTC.
+
+### « Le manager désigné doit avoir le rôle lié Verified »
+
+Votre manager doit compléter l'adhésion au Rôle lié sur le serveur principal avant que vous ne puissiez le désigner.
+
+### « Cet utilisateur détient déjà le rôle pour une autre VTC »
+
+Chaque personne ne peut détenir ce rôle que pour une seule VTC à la fois.
+
+### « Vous possédez plusieurs VTC vérifiées »
+
+Le processus automatisé prend en charge une seule VTC vérifiée par propriétaire. Contactez le personnel de Truckline si vous avez besoin d'aide pour un cas particulier.
+
+### Rôle manquant après une demande réussie
+
+- Confirmez que vous êtes sur le serveur Discord **principal** de TrucklineMP, et non sur un serveur staff ou bêta.
+- Attendez quelques secondes et vérifiez à nouveau vos rôles.
+- Si le problème persiste, ouvrez un [ticket de support](/fr/web-docs/account/support-tickets/) avec le nom de votre VTC et votre nom d'utilisateur Discord.
+
+---
+
+## Différence avec les autres fonctionnalités Discord
+
+| Fonctionnalité | Objectif |
+|---------|---------|
+| [Rôles liés Discord](/fr/web-docs/discord-bot/linked-roles/) | Rôle **Verified** facultatif pour tout membre ayant un compte TrucklineMP lié |
+| [Vérification Discord VTC](/fr/web-docs/vtc/discord-verification/) | Lier **le serveur Discord de votre VTC** au profil TrucklineMP de votre VTC |
+| **Verified VTC Manager/Owner** (ce guide) | Rôle de direction sur le Discord **principal** de TrucklineMP pour les propriétaires de VTC vérifiées et un manager |
+
+Vous avez besoin du Rôle lié **Verified** avant de pouvoir demander le rôle Verified VTC Manager/Owner.
+
+---
+
+## Guides associés
+
+- [Programme des VTC Vérifiées](/fr/web-docs/vtc-programs/verified/)
+- [Rôles liés Discord](/fr/web-docs/discord-bot/linked-roles/)
+- [Serveur Discord officiel](/fr/web-docs/discord-bot/official-server/)
+- [Paramètres généraux de la VTC](/fr/web-docs/vtc/general-settings/)
+- [Rôles et permissions VTC](/fr/web-docs/vtc/roles-permissions/)

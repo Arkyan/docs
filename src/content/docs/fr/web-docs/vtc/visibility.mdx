@@ -1,0 +1,213 @@
+---
+title: Visibilité VTC
+description: Contrôlez qui peut trouver et voir votre VTC sur TrucklineMP - visibilité publique, non répertoriée, et privée expliquée.
+version: 1.2.0
+lastUpdated: 2026-09-17
+---
+
+TrucklineMP vous permet de contrôler qui peut trouver et accéder à votre Virtual Trucking Company. Choisissez le niveau de visibilité qui convient à l'objectif de votre VTC.
+
+## Niveaux de visibilité
+
+Chaque VTC dispose d'un paramètre de visibilité avec trois options :
+
+| Visibilité | Listée dans l'annuaire | Accessible via URL | Qui peut voir |
+|-----------|---------------------|-------------------|--------------|
+| **Public** | Oui | Oui | Tout le monde |
+| **Unlisted** | Non | Oui | Tous ceux qui ont le lien |
+| **Private** | Non | Non | Membres et utilisateurs invités uniquement |
+
+### Public
+
+Les VTC publiques sont visibles par tous sur TrucklineMP.
+
+- Apparaît dans l'annuaire VTC sur `trucklinemp.com/vtc`
+- Apparaît dans les résultats de recherche
+- N'importe qui peut voir le profil
+- N'importe qui peut postuler si le recrutement est ouvert
+- Idéal pour : les VTC établies cherchant à grandir et recruter publiquement
+
+### Unlisted
+
+Les VTC non répertoriées sont masquées des annuaires mais accessibles avec un lien direct.
+
+- N'apparaît **pas** dans l'annuaire VTC
+- N'apparaît **pas** dans la recherche
+- Quiconque possède l'URL peut voir le profil
+- Utile pour : les tests, les lancements en douceur, ou les VTC qui veulent une croissance organique via des liens directs
+
+### Private
+
+Les VTC privées sont entièrement masquées et uniquement accessibles sur invitation.
+
+- N'apparaît **pas** dans l'annuaire VTC
+- N'apparaît **pas** dans la recherche
+- Le profil n'est accessible qu'aux membres
+- Les nouveaux membres doivent rejoindre via des liens d'invitation
+- Idéal pour : les groupes fermés, les équipes internes, ou les VTC qui veulent un contrôle total sur l'adhésion
+
+---
+
+## Comment changer la visibilité
+
+### Pendant la création de la VTC
+
+Lors de la création d'une nouvelle VTC, sélectionnez l'option de visibilité dans le formulaire de création :
+
+1. Allez sur `trucklinemp.com/vtc/create`
+2. Renseignez les détails de votre VTC
+3. Sous **Visibility**, choisissez Public, Unlisted, ou Private
+4. Terminez le processus de création
+
+### Depuis les paramètres de la VTC
+
+Pour changer la visibilité après la création :
+
+1. Accédez au panneau de gestion de votre VTC
+2. Sélectionnez **General Settings**
+3. Faites défiler jusqu'à la section **Visibility**
+4. Choisissez Public, Unlisted, ou Private
+5. Cliquez sur **Save Configuration**
+
+**Remarque :** le changement de visibilité prend effet immédiatement.
+
+---
+
+## Invitations pour les VTC privées
+
+Les VTC privées nécessitent des invitations pour que de nouveaux membres puissent rejoindre.
+
+### Créer des invitations
+
+1. Accédez au panneau de gestion de votre VTC
+2. Sélectionnez **Invitations** dans la barre latérale
+3. Cliquez sur **Create Invite**
+4. Configurez les options d'invitation :
+   - **Max Uses** - combien de fois le lien peut être utilisé (laissez vide pour illimité)
+   - **Expires In (hours)** - combien de temps le lien reste actif (laissez vide pour jamais)
+   - **Target Users (optional)** - restreindre l'invitation à des utilisateurs spécifiques
+5. Cliquez sur **Create Invite**
+6. Copiez le lien d'invitation et partagez-le
+
+### Format du lien d'invitation
+
+```
+https://trucklinemp.com/vtc/invite/YOUR_CODE
+```
+
+### Gérer les invitations
+
+La page Invitations affiche toutes vos invitations actives et utilisées :
+
+| Statut | Signification |
+|--------|-------------|
+| **Active** | Le lien peut encore être utilisé |
+| **Revoked** | Désactivé manuellement par la gestion |
+| **Accepted** | Un utilisateur a rejoint via ce lien |
+| **Declined** | Un utilisateur a décliné l'invitation |
+| **Expired** | Date d'expiration dépassée ou nombre maximum d'utilisations atteint |
+
+### Révoquer des invitations
+
+Cliquez sur **Revoke** à côté de n'importe quelle invitation active pour la désactiver immédiatement. Les liens révoqués ne peuvent plus être utilisés.
+
+### Invitations ciblées
+
+Les invitations ciblées sont restreintes à un ou plusieurs utilisateurs TrucklineMP spécifiques :
+- Seul un utilisateur ciblé peut accepter l'invitation
+- Il doit être connecté avec le bon compte
+- Utile pour recruter des chauffeurs spécifiques
+
+---
+
+## Visibilité vs Recherchable
+
+La visibilité contrôle qui peut voir votre VTC. Le drapeau `searchable` contrôle si votre VTC apparaît dans les listes d'annuaire et les résultats de recherche.
+
+- **Public + Searchable** - apparaît partout (par défaut)
+- **Public + Not Searchable** - peut être vue si vous avez l'URL, mais non répertoriée
+- **Unlisted** - automatiquement non recherchable
+- **Private** - automatiquement non recherchable
+
+Dans la plupart des cas, vous n'avez besoin d'utiliser que le paramètre de visibilité.
+
+---
+
+## Qui peut voir quoi
+
+| Action | Public | Unlisted | Private |
+|--------|--------|----------|---------|
+| Voir le profil | N'importe qui | N'importe qui avec l'URL | Membres uniquement |
+| Apparaître dans l'annuaire | Oui | Non | Non |
+| Recherche | Oui | Non | Non |
+| Postuler | Oui (si recrutement ouvert) | Oui (si recrutement ouvert) | Non |
+| Rejoindre via invitation | Non | Non | Oui |
+| Voir les événements | N'importe qui | N'importe qui avec l'URL | Membres uniquement |
+| Voir les actualités | N'importe qui | N'importe qui avec l'URL | Membres uniquement |
+
+---
+
+## Dérogation du staff
+
+Le staff de TrucklineMP disposant de la permission `web.vtc.private.access` peut voir les VTC privées à des fins de modération. Cela ne les rend pas membres de la VTC.
+
+---
+
+## Bonnes pratiques
+
+### VTC publiques
+- Gardez votre profil complet et professionnel
+- Activez le recrutement quand vous recherchez activement des membres
+- Répondez rapidement aux candidatures
+- Utilisez la visibilité publique une fois prêt à grandir
+
+### VTC non répertoriées
+- Partagez votre URL dans des communautés ciblées
+- Utilisez ce mode pour un lancement en douceur avant de passer en public
+- Gardez les paramètres de recrutement adaptés à votre audience
+
+### VTC privées
+- Créez des invitations ciblées pour des utilisateurs spécifiques
+- Fixez des durées d'expiration raisonnables pour la sécurité
+- Surveillez les invitations actives et révoquez celles qui ne sont pas utilisées
+- Utilisez le nombre maximum d'utilisations pour contrôler la diffusion d'un lien
+
+### Changer de visibilité
+
+**Public → Private :** les membres existants restent membres. Les nouveaux membres doivent être invités.
+
+**Private → Public :** n'importe qui peut désormais trouver et voir votre VTC. Assurez-vous que votre profil est prêt.
+
+**Unlisted → Public :** votre VTC apparaîtra dans les annuaires et la recherche.
+
+---
+
+## Dépannage
+
+### « Ma VTC n'apparaît pas dans l'annuaire »
+- Vérifiez que la visibilité est réglée sur **Public**
+- Vérifiez que le recrutement est activé si vous vous attendez à apparaître dans les filtres de recrutement
+- Attendez quelques minutes pour la mise à jour des caches
+
+### « Les gens ne peuvent pas rejoindre ma VTC privée »
+- Assurez-vous d'avoir créé une invitation active
+- Vérifiez que l'invitation n'a pas expiré ou atteint son nombre maximum d'utilisations
+- Pour les invitations ciblées, confirmez que l'utilisateur est connecté avec le bon compte
+
+### « Ma VTC non répertoriée apparaît dans la recherche »
+- Les VTC non répertoriées ne devraient pas apparaître dans la recherche
+- Si c'est le cas, vérifiez que la visibilité n'est pas réglée sur Public
+- Contactez le support si le problème persiste
+
+### « Je ne peux pas accéder à une VTC privée à laquelle j'ai été invité »
+- Assurez-vous d'être connecté
+- Vérifiez que le lien d'invitation n'a pas expiré
+- Pour les invitations ciblées, utilisez le compte auquel l'invitation a été envoyée
+
+---
+
+## Guides associés
+
+- [Paramètres généraux VTC](/fr/web-docs/vtc/general-settings/) - Configurer les paramètres essentiels de la VTC
+- [Gestion des membres VTC](/fr/web-docs/vtc/member-management/) - Gérer vos membres
+- [Recrutement VTC](/fr/web-docs/vtc/recruitment/) - Configurer les formulaires de candidature

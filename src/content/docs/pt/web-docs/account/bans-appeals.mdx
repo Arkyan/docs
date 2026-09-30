@@ -1,0 +1,112 @@
+---
+title: Banimentos e Recursos
+description: Compreende os registos públicos de banimento, verifica a tua situação e submete recursos de banimento no TrucklineMP.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+O TrucklineMP publica determinados registos de moderação e disponibiliza um caminho de recurso quando discordas de um banimento ou suspensão.
+
+## Lista pública de banimentos
+
+Visita [trucklinemp.com/bans](https://trucklinemp.com/bans) para consultar os registos públicos de banimento.
+
+Cada registo pode mostrar:
+
+- Categoria da infração (higienizada por privacidade)
+- Âmbito (plataforma, jogo, comunicação)
+- Datas de início e fim para ações temporárias
+- Se o banimento está ativo ou expirado
+
+As páginas individuais de banimento estão em `/bans/{id}`.
+
+Nem todas as notas internas de moderação aparecem publicamente. Os detalhes sensíveis mantêm-se nas ferramentas da equipa.
+
+---
+
+## O teu perfil e a tua situação
+
+No teu [perfil público](/pt/web-docs/account/public-profile/):
+
+- Aparece um aviso de banimento ativo quando estás atualmente banido ou suspenso
+- O separador **Registo** pode listar o teu histórico de banimentos quando as regras de visibilidade o permitem
+
+Os outros utilizadores só veem o que a política permite.
+
+---
+
+## Elegibilidade para recurso
+
+Nem todos os banimentos podem ser recorridos imediatamente. Os fatores incluem:
+
+- Tipo e gravidade do banimento
+- Tempo de espera desde o último recurso
+- Se o banimento é permanente por política
+
+O sistema de suporte verifica a elegibilidade quando inicias um recurso. Se não fores elegível, o formulário explica porquê e quando podes tentar novamente.
+
+---
+
+## Submeter um recurso
+
+1. Inicia sessão na conta que recebeu o banimento
+2. Abre [trucklinemp.com/support?lane=appeal](https://trucklinemp.com/support?lane=appeal)
+3. Preenche o formulário de recurso com a tua explicação honesta
+4. Aguarda a revisão da equipa na conversa do ticket
+
+Os recursos **não** são um chat instantâneo com moderadores. A equipa lê o teu ticket e responde quando a revisão estiver concluída.
+
+### O formulário não é um tribunal
+
+Não nos importamos com falso profissionalismo. Não perdes pontos por escrever de forma informal. Perdes pontos por mentir.
+
+O formulário pergunta duas coisas diretamente:
+
+- **A culpa foi, de alguma forma, tua?** Escolhe Sim, Não, ou Depende. Responde com honestidade, não com a resposta que achas que a equipa quer ouvir.
+- **Porque é que aconteceu.** Explica por palavras tuas. Não é preciso um texto formal, apenas conta-nos diretamente o que aconteceu.
+
+Não finjas arrependimento. Se genuinamente achas que não foste tu, diz isso. Se sabes que foste tu, assume. A equipa consegue distinguir uma explicação real de um pedido de desculpas ensaiado, e a honestidade é revista mais depressa de qualquer forma.
+
+### O que incluir
+
+- O que achas que estava incorreto na decisão, se houver algo
+- Qualquer contexto que a equipa possa ter perdido
+- Links de prova (capturas de ecrã, marcas temporais) quando relevante
+- Um tom direto e honesto. Hostilidade e mentiras óbvias prolongam a revisão, a delicadeza não é obrigatória
+
+---
+
+## Depois de uma decisão
+
+- **Aceite**: As restrições são levantadas conforme as instruções da equipa. Poderás precisar de terminar e iniciar sessão novamente.
+- **Rejeitado**: O ticket mostra o resultado. Pode aplicar-se um tempo de espera antes de outro recurso.
+- **Retirado**: Tu (ou a equipa em teu nome) retiraram o recurso antes de ser tomada uma decisão.
+
+---
+
+## Banimentos no Discord
+
+A moderação no Discord no **servidor oficial do TrucklineMP** está ligada à situação na plataforma em muitos casos. Problemas exclusivos do Discord em **servidores de VTC** são geridos pelos administradores dessa VTC, não pela equipa do TrucklineMP.
+
+Recorre de banimentos da plataforma através do sistema de suporte do site, não enviando mensagens diretas a moderadores no Discord.
+
+---
+
+## Visibilidade na API
+
+Ferramentas de terceiros podem ler dados públicos de banimento através de:
+
+```
+GET https://api.trucklinemp.com/bans
+GET https://api.trucklinemp.com/bans/{id}
+```
+
+O âmbito OAuth `bans:read` está definido para uso futuro no userinfo, mas **não** é devolvido no userinfo atualmente. Consulta [Aplicações OAuth](/pt/web-api/oauth-apps/#resposta-do-userinfo).
+
+---
+
+## Guias relacionados
+
+- [Tickets de Suporte](/pt/web-docs/account/support-tickets/)
+- [Perfil Público](/pt/web-docs/account/public-profile/)
+- [Servidor Oficial do Discord](/pt/web-docs/discord-bot/official-server/)

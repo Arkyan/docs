@@ -1,0 +1,76 @@
+---
+title: Tickets de support VTC
+description: Permettez aux membres de contacter directement le staff de votre VTC ou VBC, et gérez les tickets entrants depuis le panneau de gestion.
+version: 1.0.0
+lastUpdated: 2026-09-17
+---
+
+Le support VTC donne à vos membres une ligne directe vers le staff - distinct du [système de support propre à TrucklineMP](/fr/web-docs/account/support-tickets/), qui est destiné aux problèmes au niveau de la plateforme.
+
+## Pour les membres : soumettre un ticket
+
+1. Allez sur le profil de votre VTC ou VBC
+2. Ouvrez `/vtc/@handle/support` (ou `/vbc/@handle/support`)
+3. Choisissez une catégorie, rédigez un sujet et un message, et soumettez
+
+Le staff est notifié et peut répondre directement dans le fil du ticket.
+
+---
+
+## Pour le staff : gérer les tickets
+
+1. Ouvrez votre panneau **Manage**
+2. Sélectionnez **Support**
+
+### Onglet Tickets
+
+- Filtrez par statut (**Open**, **In Progress**, **Waiting on User**, **Resolved**, **Closed**), catégorie, priorité, attribution, ou recherche
+- Prenez en charge des tickets non attribués ou filtrez sur **Assigned to me**
+- Répondez, modifiez le statut, et définissez la priorité depuis le fil du ticket
+
+Des métriques en un coup d'œil montrent les tickets ouverts, les tickets en attente de l'utilisateur, les tickets qui vous sont attribués, les tickets non attribués, et la note de satisfaction moyenne.
+
+### Onglet Settings
+
+Le staff disposant de la permission **Support Settings** peut configurer :
+
+- **Categories** - catégories de tickets personnalisées avec des couleurs
+- **Canned reply templates** - réponses réutilisables pour les questions courantes
+
+---
+
+## Permissions
+
+| Permission | Ce qu'elle accorde |
+|------------|-----------------|
+| `support.view` | Voir les tickets |
+| `support.reply` | Répondre aux tickets |
+| `support.assign` | Attribuer des tickets au staff |
+| `support.close` | Résoudre et fermer des tickets |
+| `support.manage` | Contrôle total du flux de traitement des tickets |
+| `support.settings` | Configurer les catégories et les modèles |
+
+Attribuez ces permissions depuis l'onglet **Permissions** dans [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/). Le support doit également être activé pour votre entreprise avant que l'onglet n'apparaisse aux membres.
+
+---
+
+## Dépannage
+
+### « Les membres ne trouvent pas la page de support »
+
+Confirmez que le support VTC est activé pour votre entreprise, et partagez le lien direct : `/vtc/@handle/support`.
+
+### « Je ne vois pas l'onglet Support dans Manage »
+
+Vous avez besoin d'au moins `support.view` (ou `management.vtc.edit`, qui accorde toujours l'accès).
+
+### « Je ne peux pas modifier les catégories ou les modèles »
+
+Modifier la configuration nécessite `support.settings`, distinct des permissions de traitement des tickets.
+
+---
+
+## Guides associés
+
+- [Tickets de support (TrucklineMP)](/fr/web-docs/account/support-tickets/) - support au niveau de la plateforme, pas spécifique à la VTC
+- [Rôles et permissions](/fr/web-docs/vtc/roles-permissions/)

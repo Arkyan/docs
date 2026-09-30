@@ -1,0 +1,103 @@
+---
+title: Diretórios de VTC e VBC
+description: Explora, pesquisa e filtra Virtual Trucking Companies (VTC) e Virtual Bus Companies (VBC) na TrucklineMP.
+version: 1.3.0
+lastUpdated: 2026-09-21
+---
+
+A TrucklineMP tem diretórios separados para Virtual Trucking Companies (VTCs) e Virtual Bus Companies (VBCs), para ajudar condutores e operadores de coaches a descobrir organizações. Navega por todas as listagens públicas, filtra pelo que te interessa e abre o perfil de uma empresa para te candidatares ou saberes mais.
+
+## Aceder aos diretórios
+
+- **Diretório de VTC**: Abre [trucklinemp.com/vtc](https://trucklinemp.com/vtc).
+- **Diretório de VBC**: Abre [trucklinemp.com/vbc](https://trucklinemp.com/vbc).
+
+Só as empresas **públicas** aparecem nestes diretórios. As empresas não listadas e privadas ficam ocultas da navegação, a menos que tenhas um link direto ou convite.
+
+---
+
+## Pesquisa e filtros
+
+Usa a barra de ferramentas para restringir os resultados:
+
+| Filtro | Objetivo |
+|--------|---------|
+| **Pesquisa** | Corresponde ao nome, descrição ou tag no jogo da empresa |
+| **Estado** | Mostrar apenas empresas validadas, verificadas, oficiais, parceiras ou a recrutar |
+| **Idioma** | Filtro de idioma principal |
+| **Jogo** | Mostrar empresas para ETS2 ou ATS |
+| **Tag** | Corresponde à tag no jogo da empresa |
+| **Número de membros** | Número mínimo ou máximo de membros |
+
+### Opções de ordenação
+
+- Mais recentes primeiro
+- Mais membros
+- Mais ativas
+- Nome (A-Z)
+
+Os resultados atualizam-se à medida que alteras os filtros. A paginação carrega mais empresas quando disponíveis.
+
+---
+
+## Cartões de empresa
+
+Cada cartão mostra:
+
+- Pré-visualização do logótipo e banner
+- Nome e handle da empresa (`@handle`)
+- Excerto do slogan ou descrição curta
+- Emblemas (verificada, oficial, parceira, recrutamento aberto)
+- Número de membros
+- Idioma principal
+
+Clica num cartão para abrir o perfil completo da empresa.
+
+---
+
+## Visão geral do perfil da empresa
+
+A partir de um perfil podes:
+
+- Ler a descrição completa e as regras
+- Ver os próximos eventos e notícias
+- Ver a pré-visualização de membros e abrir a lista completa
+- Candidatar-te se o recrutamento estiver aberto
+- Entrar através de convite, se tiveres um código
+- Ver a ligação a um servidor de Discord verificado, quando configurada
+
+Os URLs de perfil usam handles: `trucklinemp.com/vtc/@handle` (VTC) ou `trucklinemp.com/vbc/@handle` (VBC).
+
+---
+
+## Para proprietários de empresas
+
+Para melhorar a descoberta:
+
+1. Define a visibilidade como **pública** em [Definições Gerais](/pt/web-docs/vtc/general-settings/)
+2. Mantém o recrutamento aberto se estiveres a contratar
+3. Candidata-te ao estatuto [Verificado](/pt/web-docs/vtc-programs/verified/) ou [Parceiro](/pt/web-docs/vtc-programs/partnered/) quando fores elegível
+4. Publica [notícias](/pt/web-docs/vtc/news/) e [eventos](/pt/web-docs/vtc/events/) para manteres o perfil ativo
+
+As empresas não listadas são acessíveis por link direto, mas não aparecem nos resultados de navegação do diretório.
+
+---
+
+## Acesso via API
+
+Ferramentas de terceiros podem listar empresas através da API Pública:
+
+```
+GET https://api.trucklinemp.com/vtcs
+```
+
+Consulta [API Pública](/pt/web-api/public-api/) para autenticação e paginação.
+
+---
+
+## Guias relacionados
+
+- [Criar uma VTC ou VBC](/pt/web-docs/vtc/creating/)
+- [Visibilidade](/pt/web-docs/vtc/visibility/)
+- [Recrutamento da Empresa](/pt/web-docs/vtc/recruitment/)
+- [Empresas Irmãs](/pt/web-docs/vtc/sister-companies/)

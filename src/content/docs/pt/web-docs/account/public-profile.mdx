@@ -1,0 +1,105 @@
+---
+title: Perfil Público
+description: Compreende os separadores, distintivos e atividade do teu perfil público do TrucklineMP, e o que os outros podem ver.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+O teu perfil público é a forma como os outros condutores te veem no TrucklineMP. Combina identidade, associação a VTC, atividade na comunidade e informação de reputação.
+
+## Abrir um perfil
+
+- O teu perfil: clica no teu avatar ou vai a `trucklinemp.com/user/me` (redireciona para o URL do teu handle ou WebID)
+- Outro utilizador: `trucklinemp.com/@handle` ou `/user/{webId}`
+- A partir do [diretório de utilizadores](/pt/web-docs/account/user-directory/)
+
+---
+
+## Cabeçalho do perfil
+
+O cabeçalho mostra:
+
+- Avatar e nome de exibição
+- Handle (`@username`)
+- WebID
+- Distintivos de staff ou de programas
+- Faixa de banimento ou suspensão ativa (quando aplicável)
+- Estado em direto no **Twitch** ou **YouTube**, quando ligado e visível
+- Ações rápidas (reportar utilizador, para visitantes com sessão iniciada)
+
+---
+
+## Separadores do perfil
+
+Os separadores variam consoante a conta. Secções comuns:
+
+### Visão Geral
+
+Resumo de estatísticas, cargos, distintivos e destaques.
+
+### VTC
+
+Associação atual a uma VTC, cargo e ligação para o perfil da empresa. Os utilizadores sem VTC veem um estado vazio.
+
+### Atividade
+
+Feed de atividade recente na plataforma (publicações, participação e sinais semelhantes, quando disponíveis).
+
+### Fórum
+
+Resumo da participação no fórum, com ligações para conteúdo em [forum.trucklinemp.com](https://forum.trucklinemp.com) quando o módulo do fórum está ativado.
+
+### Configurações
+
+Configurações externas de camião que escolheste partilhar (ocultas quando ativas **ocultar configurações externas** nas definições).
+
+### Registo
+
+Histórico de banimentos e moderação visível segundo as regras de reputação. Podes ver mais no teu próprio perfil do que os desconhecidos veem. Consulta [Banimentos e Recursos](/pt/web-docs/account/bans-appeals/).
+
+---
+
+## O que controlas
+
+Edita em [Definições de Perfil](/pt/web-docs/account/profile-settings/):
+
+- Nome de exibição e handle
+- Avatar (carregamento ou URL)
+- Ligações sociais (TikTok, X, etc.)
+- Interruptores de visibilidade do YouTube e do Twitch
+
+Edita em [Ligações](/pt/web-docs/account/connections/):
+
+- Fornecedores OAuth associados (Steam, Discord, Google, etc.)
+
+---
+
+## Distintivos e programas
+
+Os distintivos de reconhecimento (por exemplo, de contribuidor ou prémios de programas) aparecem quando o staff ou programas automáticos os atribuem. Não podes atribuir distintivos oficiais a ti próprio.
+
+---
+
+## Reportar
+
+Os utilizadores com sessão iniciada podem reportar um perfil para revisão pela moderação. Os reportes criam um [ticket de suporte](/pt/web-docs/account/support-tickets/). Fornece detalhes factuais.
+
+---
+
+## API
+
+Os dados do perfil público estão disponíveis para integrações:
+
+```
+GET https://api.trucklinemp.com/users/{handleOrId}
+```
+
+O scope OAuth `profile` devolve um subconjunto para aplicações autorizadas. Consulta [Aplicações OAuth](/pt/web-api/oauth-apps/).
+
+---
+
+## Guias relacionados
+
+- [Definições de Perfil](/pt/web-docs/account/profile-settings/)
+- [Diretório de Utilizadores](/pt/web-docs/account/user-directory/)
+- [Fórum](/pt/web-docs/account/forum/)

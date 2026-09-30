@@ -1,0 +1,134 @@
+---
+title: Fluxos de Ligação ao Discord
+description: "Percebe como a TrucklineMP se liga ao Discord: ligação de conta, Linked Roles, verificação de servidor de VTC e o cargo Verified VTC do servidor principal."
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+A TrucklineMP usa o Discord de várias formas. Resolvem problemas diferentes e **não** se substituem umas às outras.
+
+| Fluxo | Onde | Objetivo |
+|------|-------|---------|
+| **Ligação de conta** | Definições do Site | Identidade, recuperação, DMs de notificação |
+| **Linked Roles** | Servidor de Discord | Cargos por adesão, condicionados a regras da TrucklineMP |
+| **Verificação de servidor de VTC** | Discord `/verify-server` | Provar que um servidor pertence à tua VTC no site |
+| **Cargo Verified VTC** | Discord principal da TrucklineMP | Cargo de liderança para proprietários de VTCs verificadas |
+
+---
+
+## 1. Ligação de conta (Definições)
+
+**Caminho:** trucklinemp.com → Settings → **Connections** → Connect Discord
+
+**Usa para:**
+
+- Ligar o Discord à tua identidade na TrucklineMP
+- Opções de recuperação de conta
+- [DMs de notificação do Discord](/pt/web-docs/discord-bot/notifications/)
+
+**Não faz:**
+
+- Conceder Linked Roles num servidor de Discord
+- Verificar um servidor de VTC no teu perfil
+- Adicionar cargos automaticamente em qualquer sítio
+
+Podes desligar e voltar a ligar a partir de Connections, salvo restrições impostas pela equipa.
+
+---
+
+## 2. Linked Roles (servidor de Discord)
+
+**Caminho:** Discord → Menu do servidor → **Linked Roles** → ligar TrucklineMP
+
+**Usa para:**
+
+- Administradores de servidor que exigem que os membros provem que têm conta na TrucklineMP
+- Verificação opcional de **staff da TrucklineMP** para canais exclusivos de staff
+- Condicionar canais a um cargo verificado
+
+**Não faz:**
+
+- Substituir a ligação de Connections do site para DMs (embora deva ser usada a mesma conta de Discord)
+- Mostrar um selo de VTC em trucklinemp.com
+- Executar `/verify-server` para propriedade de VTC
+
+Os membros têm de **aderir voluntariamente** em cada servidor. Os cargos não são atribuídos silenciosamente.
+
+Configuração completa: [Linked Roles](/pt/web-docs/discord-bot/linked-roles/)
+
+---
+
+## 3. Verificação de servidor de VTC
+
+**Caminho:** VTC Manage → General Settings → gerar token → Discord `/verify-server`
+
+**Usa para:**
+
+- Mostrar o Discord oficial da tua VTC no teu perfil da TrucklineMP
+- Executar `/vtc` nesse servidor para mostrar informações da empresa
+- Provar a propriedade do servidor a visitantes no site
+
+**Requer:**
+
+- Proprietário da VTC ou staff com permissão de definições de Discord
+- Bot da TrucklineMP instalado no servidor
+- Permissão de Administrador no Discord para executar `/verify-server`
+
+**Não faz:**
+
+- Configurar Linked Roles (faz isso em separado nas definições de cargos do Discord)
+- Ligar as contas pessoais dos membros, a menos que também usem Linked Roles ou Connections
+
+Configuração completa: [Verificação de Discord da VTC](/pt/web-docs/vtc/discord-verification/)
+
+---
+
+## 4. Cargo Verified VTC (servidor principal)
+
+**Caminho:** Discord principal da TrucklineMP → canal do cargo Verified VTC → **Request Role**
+
+**Usa para:**
+
+- Proprietários de VTCs verificadas (e um gestor opcional) que querem um cargo de liderança no Discord **oficial** da TrucklineMP
+- Reconhecimento separado do servidor de Discord da tua própria VTC
+
+**Requer:**
+
+- Estatuto do [Verified VTC Program](/pt/web-docs/vtc-programs/verified/)
+- O cargo ligado **Verified** [Linked Role](/pt/web-docs/discord-bot/linked-roles/) no servidor principal
+- O proprietário da VTC submete o pedido através do Modbot (ID de Discord do gestor opcional)
+
+**Não faz:**
+
+- Verificar o servidor de Discord da tua VTC no teu perfil (usa o fluxo 3)
+- Substituir Linked Roles em servidores da comunidade
+
+Configuração completa: [Cargo de Discord para VTCs Verificadas](/pt/web-docs/vtc-programs/discord-role/)
+
+---
+
+## Guia de decisão rápida
+
+| Eu quero... | Usa |
+|--------------|-----|
+| Receber alertas do site por DM no Discord | [Connections](/pt/web-docs/account/connections/) |
+| Exigir que os membros se verifiquem antes do chat #members | [Linked Roles](/pt/web-docs/discord-bot/linked-roles/) |
+| Mostrar o nosso Discord da VTC no nosso perfil | [Verificação de Discord da VTC](/pt/web-docs/vtc/discord-verification/) |
+| Obter o cargo de liderança no Discord principal da TrucklineMP | [Cargo de Discord para VTCs Verificadas](/pt/web-docs/vtc-programs/discord-role/) |
+| Publicar alertas de recrutamento num canal | Webhooks de [Anúncios da VTC](/pt/web-docs/vtc/announcements/) |
+
+---
+
+## A mesma conta de Discord em todo o lado
+
+Usa uma única conta de Discord para Connections, Linked Roles e verificação. Contas trocadas causam erros de "not linked" em `/profile` e falhas na verificação de cargos.
+
+---
+
+## Guias Relacionados
+
+- [Linked Roles](/pt/web-docs/discord-bot/linked-roles/)
+- [Verificação de Discord da VTC](/pt/web-docs/vtc/discord-verification/)
+- [Notificações do Discord](/pt/web-docs/discord-bot/notifications/)
+- [Cargo de Discord para VTCs Verificadas](/pt/web-docs/vtc-programs/discord-role/)
+- [Servidor Oficial de Discord](/pt/web-docs/discord-bot/official-server/)

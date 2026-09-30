@@ -1,0 +1,149 @@
+---
+title: Eventos da VTC
+description: Cria comboios e eventos, gere RSVPs, vagas, presenças, widgets incorporáveis e o calendário global de eventos na TrucklineMP.
+version: 1.3.0
+lastUpdated: 2026-09-21
+---
+
+Os eventos da TrucklineMP permitem às VTCs agendar comboios, gerir RSVPs, atribuir vagas e acompanhar presenças. Os utilizadores com sessão iniciada podem descobrir eventos no calendário global; os visitantes podem ver os eventos de uma empresa no seu perfil público.
+
+## Onde vivem os eventos
+
+| Localização | URL | Quem vê |
+|----------|-----|-------------|
+| **Calendário global** | [trucklinemp.com/events](https://trucklinemp.com/events) | Utilizadores com sessão iniciada (os eventos públicos são visíveis no perfil de cada VTC para visitantes) |
+| **Perfil da VTC** | secção de eventos em `/vtc/@handle` | Visitantes no teu perfil |
+| **Gestão da VTC** | `/vtc/@handle/manage/events` | Equipa com permissões de eventos |
+
+---
+
+## Criar um evento (equipa da VTC)
+
+1. Abre o painel **Gerir** da tua VTC
+2. Vai a **Eventos**
+3. Clica em **Criar Evento** (ou usa `/vtc/@handle/manage/events/create`)
+4. Preenche os detalhes do evento e publica
+
+Os campos típicos incluem:
+
+- **Título e descrição**
+- **Hora de início e fim**
+- **Servidor** (servidor de jogo ou realm)
+- Localizações de **partida e chegada**
+- **Categoria** (por exemplo comboio, corrida, encontro)
+- **Imagem de banner** (URL HTTPS)
+- **Máximo de participantes** (limite de capacidade opcional)
+- **Visibilidade** (quem pode ver e fazer RSVP)
+
+A equipa precisa das permissões de **eventos** apropriadas no seu cargo de VTC. Consulta [Cargos e Permissões](/pt/web-docs/vtc/roles-permissions/).
+
+---
+
+## RSVPs e presenças
+
+Os membros e utilizadores elegíveis podem fazer RSVP a partir da página do evento.
+
+### Estados de RSVP
+
+| Estado | Significado |
+|--------|-------------|
+| **Vou** | Presença confirmada |
+| **Talvez** | Interessado mas não comprometido |
+| **Não vou** | Recusado |
+
+Quando o **máximo de participantes** está definido e a lista de "Vou" está cheia, novos RSVPs de "Vou" são marcados automaticamente como lista de espera até haver uma vaga disponível.
+
+### Check-in
+
+Os gestores de eventos podem fazer o check-in dos participantes na hora do evento. O auto check-in pode estar disponível consoante as definições do evento.
+
+### Fluxo de aprovação
+
+Alguns eventos exigem que a equipa aprove os RSVPs antes de um utilizador ser marcado como "Vou".
+
+---
+
+## Vagas de evento
+
+As vagas permitem atribuir cargos ou posições dentro de um evento (por exemplo camião líder, cauda, fotógrafo).
+
+Os gestores com permissões de vagas podem:
+
+- Criar vagas com etiquetas e cargos
+- Definir o máximo de ocupantes por vaga
+- Atribuir membros participantes às vagas
+- Reordenar vagas
+
+Só utilizadores que estejam a participar no evento podem ser atribuídos a vagas.
+
+---
+
+## Coanfitriões e eventos multi-VTC
+
+Os eventos podem envolver várias VTCs. As VTCs coanfitriãs aparecem na página do evento. O acompanhamento de presença ao nível da VTC regista quais as empresas a participar.
+
+---
+
+## Gerir um evento ativo
+
+A equipa com permissões **events.manage** (ou equivalente) pode:
+
+- Editar os detalhes do evento antes do início
+- Cancelar o evento (notifica os participantes)
+- Difundir uma mensagem para os RSVPs
+- Ver e exportar a lista de participantes
+- Gerir banimentos de evento (bloquear utilizadores específicos deste evento)
+- Adicionar notas internas de membro para a equipa do evento
+
+Os eventos cancelados permanecem visíveis com um estado de cancelado onde configurado.
+
+---
+
+## Página global de eventos
+
+[trucklinemp.com/events](https://trucklinemp.com/events) lista os próximos eventos em toda a plataforma para utilizadores com sessão iniciada. Os visitantes sem sessão iniciada são redirecionados para a página de login; ainda assim conseguem ver os próximos eventos de uma empresa no seu perfil público ou através do widget de eventos ao vivo.
+
+Os utilizadores autenticados também podem criar eventos a partir do fluxo global, quando permitido.
+
+---
+
+## Incorporar os teus eventos
+
+Podes incorporar os teus próximos eventos num site externo com um widget iframe. Os tokens de incorporação são geridos a partir do separador **Integrações** (`/vtc/@handle/manage/integrations`). Consulta [Integrações da VTC](/pt/web-docs/vtc/integrations/).
+
+---
+
+## Integração com Anúncios
+
+Quando os webhooks de [Anúncios da VTC](/pt/web-docs/vtc/announcements/) estão configurados, as alterações no ciclo de vida do evento (criado, atualizado, cancelado, RSVP) podem ser publicadas automaticamente no teu servidor de Discord.
+
+---
+
+## Referência de permissões
+
+As permissões de VTC relacionadas com eventos estão agrupadas em **events** no editor de cargos. Os identificadores comuns incluem criar eventos, gerir presenças, gerir vagas e ver dados de eventos exclusivos da equipa. Os proprietários têm sempre acesso total.
+
+---
+
+## Resolução de problemas
+
+### "Não consigo criar um evento"
+
+Confirma que o teu cargo inclui a permissão de criação de eventos e que o módulo da plataforma **Eventos da VTC** está ativado.
+
+### RSVP preso em lista de espera
+
+O evento pode estar na capacidade máxima. Um gestor pode libertar uma vaga de "Vou" ou aumentar o máximo de participantes.
+
+### Evento não aparece no calendário global
+
+Verifica as definições de visibilidade do evento. Eventos privados ou exclusivos da VTC podem não aparecer publicamente.
+
+---
+
+## Guias relacionados
+
+- [Anúncios da VTC](/pt/web-docs/vtc/announcements/) - alertas por webhook do Discord para alterações de eventos
+- [Integrações da VTC](/pt/web-docs/vtc/integrations/) - incorporar os teus eventos em sites externos
+- [Cargos e Permissões](/pt/web-docs/vtc/roles-permissions/) - permissões de eventos e incorporação
+- [API Pública](/pt/web-api/public-api/) - `GET /events` para integrações

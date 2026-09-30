@@ -2,13 +2,13 @@
 
 Official documentation for TrucklineMP, the multiplayer platform for the trucking community.
 
-This site contains guides, rules, features overview, and FAQs for players. Documentation is available in multiple languages including English, Polish, German, French, Russian and Portuguese.
+This site contains guides, rules, features overview, and FAQs for players. Documentation is available in multiple languages including English, Polish, German, French, Russian and Portuguese (Portugal and Brazil).
 
 ## Contributing
 
-To contribute translations or improve the documentation, see the [Contributing guide](https://docs.trucklinemp.com/guides/contribute/contributing/).
+To contribute translations or improve the documentation, see the [Contributing guide](https://docs.trucklinemp.com/web-docs/contribute/contributing/).
 
-Community contributors are credited on the [Contributors page](https://docs.trucklinemp.com/guides/contribute/contributors/).
+Community contributors are credited on the [Contributors page](https://docs.trucklinemp.com/web-docs/contribute/contributors/).
 
 Join the contributors Discord server: [https://discord.gg/jsuGrx4Rbv](https://discord.gg/jsuGrx4Rbv)
 
@@ -19,6 +19,7 @@ Join the contributors Discord server: [https://discord.gg/jsuGrx4Rbv](https://di
 - [German](https://docs.trucklinemp.com/de)
 - [French](https://docs.trucklinemp.com/fr)
 - [Russian](https://docs.trucklinemp.com/ru)
+- [Portuguese (Portugal)](https://docs.trucklinemp.com/pt)
 - [Portuguese (Brazil)](https://docs.trucklinemp.com/pt-br)
 
 ## License

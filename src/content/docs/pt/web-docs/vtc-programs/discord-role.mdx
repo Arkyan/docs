@@ -1,0 +1,167 @@
+---
+title: Cargo de Discord para VTCs Verificadas
+description: Como os proprietários de VTCs verificadas pedem o cargo Verified VTC Manager/Owner no Discord principal da TrucklineMP, nomeiam um gestor e mantêm o cargo em bom estado.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+Os proprietários de VTCs verificadas podem pedir um cargo especial no **Discord principal da TrucklineMP**: **Verified VTC Manager/Owner**. Este cargo destina-se à liderança da VTC no servidor oficial da comunidade. É separado do servidor de Discord da tua própria VTC e da [Verificação de Discord da VTC](/pt/web-docs/vtc/discord-verification/) no teu perfil.
+
+O sistema é totalmente automatizado. Os pedidos são verificados face à tua conta da TrucklineMP e às permissões da VTC. Não é necessária aprovação manual da equipa para um pedido válido.
+
+---
+
+## O que recebes
+
+- O cargo **Verified VTC Manager/Owner** no Discord principal da TrucklineMP
+- Reconhecimento como liderança de uma [VTC Verificada](/pt/web-docs/vtc-programs/verified/)
+- Até **dois** titulares do cargo por VTC:
+  - O **proprietário da VTC** (lugar obrigatório)
+  - **Um gestor opcional** da tua VTC
+
+---
+
+## Requisitos
+
+Antes de pedires o cargo, garante que tudo o que se segue é verdadeiro.
+
+### Para o proprietário da VTC (tu)
+
+| Requisito | Detalhes |
+|-------------|---------|
+| **VTC Verificada** | A tua VTC tem de ter o estatuto do [Verified VTC Program](/pt/web-docs/vtc-programs/verified/) aprovado na TrucklineMP |
+| **Propriedade** | Tens de ser o proprietário da VTC. Só o proprietário pode submeter o pedido |
+| **Discord ligado** | A tua conta da TrucklineMP tem de estar ligada à conta de Discord que usas no servidor principal |
+| **Cargo ligado Verificado** | Tens de ter o cargo ligado **Verified** [Linked Role](/pt/web-docs/discord-bot/linked-roles/) no servidor de Discord principal |
+| **Membro do servidor principal** | Tens de ser membro do Discord oficial da TrucklineMP |
+
+### Para o gestor opcional
+
+Se nomeares uma segunda pessoa, esta também tem de:
+
+- Ser **membro** da tua VTC na TrucklineMP
+- Ocupar um cargo de **Gestão** nessa VTC (o cargo com permissões de gestão da VTC)
+- Ter a conta da TrucklineMP **ligada ao Discord**
+- Ter o cargo ligado **Verified** no servidor de Discord principal
+- Não deter já este cargo para outra VTC
+
+Não podes nomear-te a ti próprio duas vezes. O lugar de proprietário e o de gestor são separados.
+
+---
+
+## Como pedir o cargo
+
+Os pedidos são feitos no Discord principal da TrucklineMP, no canal dedicado **Verified VTC role** (publicado pelo Modbot).
+
+1. Entra no [servidor oficial de Discord da TrucklineMP](/pt/web-docs/discord-bot/official-server/).
+2. Completa o fluxo de [Discord Linked Roles](/pt/web-docs/discord-bot/linked-roles/) e reclama o cargo **Verified** (**nome do servidor → Linked Roles**).
+3. Abre o canal de pedido do cargo Verified VTC.
+4. Clica em **Request Role** na mensagem do painel.
+5. No formulário:
+   - Deixa o campo do gestor **vazio** para conceder o cargo apenas a ti, ou
+   - Introduz o **Discord user ID** de um gestor da VTC que queiras nomear (ID numérico, não um nome de apresentação).
+6. Submete o formulário. Recebes uma resposta efémera com o resultado.
+
+Se ambos os lugares forem concedidos, tu e o gestor nomeado recebem o cargo em poucos segundos.
+
+### Nomear um gestor mais tarde ou mudar de gestor
+
+Submete um novo pedido com um Discord user ID de gestor diferente. O sistema substitui o lugar de gestor atual se já estiver preenchido. O teu lugar de proprietário é atualizado a cada pedido.
+
+### Limite de frequência
+
+Podes submeter um pedido por minuto por conta de Discord.
+
+---
+
+## Ver o estado na TrucklineMP
+
+Os proprietários de VTCs podem ver quem detém o cargo a partir do site:
+
+1. Abre a **Management Console** da tua VTC.
+2. Vai a **Settings**.
+3. Desce até **Main Discord Role**.
+
+Esta secção mostra:
+
+- Se a tua VTC está verificada
+- Quem detém os lugares de **proprietário** e **gestor** (se atribuídos)
+- Um link para o canal de pedido no Discord (quando configurado)
+
+Só o proprietário da VTC pode ver esta secção.
+
+---
+
+## Quando o cargo é removido automaticamente
+
+O cargo é monitorizado. É removido de imediato quando a elegibilidade se perde. Não mantens o cargo de Discord depois de a tua VTC ou posição deixar de qualificar.
+
+Motivos comuns para remoção:
+
+| Evento | O que acontece |
+|-------|----------------|
+| A VTC perde o estatuto **verificado** | Todas as concessões dessa VTC são revogadas |
+| A VTC é **dissolvida** | Todas as concessões dessa VTC são revogadas |
+| **Transferência de propriedade** | A concessão do antigo proprietário é revogada. O novo proprietário tem de pedir novamente |
+| Membro **removido** da VTC | A concessão desse membro é revogada |
+| Gestor **perde as permissões de gestão** | A concessão desse gestor é revogada |
+| **Discord desligado** da TrucklineMP | Todas as concessões desse utilizador são revogadas |
+| Cargo ligado **Verified** removido no Discord | A concessão é revogada na próxima verificação de elegibilidade |
+
+Não há período de carência depois de a verificação ser revogada. Só volta a pedir depois de a tua VTC estar verificada novamente e continuares a cumprir todos os requisitos.
+
+---
+
+## Resolução de Problemas
+
+### "You must own a verified VTC"
+
+A tua VTC não tem o estatuto de Verified Program ativo, ou não és o proprietário. Verifica **Verified Status** no teu painel de gestão.
+
+### "You need the Verified linked role"
+
+Reclama o cargo **Verified** através de **nome do servidor → Linked Roles** no Discord principal. Ligar o Discord em trucklinemp.com **Settings → Connections** por si só não satisfaz este requisito.
+
+### "The nominated user must have a VTC Management position"
+
+A pessoa que introduziste não é membro da VTC com permissões de gestão. Atribui-lhe primeiro o cargo **Management** (ou permissões equivalentes) na tua VTC.
+
+### "The nominated manager must have the Verified linked role"
+
+O teu gestor tem de completar a adesão ao Linked Role no servidor principal antes de o nomeares.
+
+### "This user already holds the role for another VTC"
+
+Cada pessoa só pode deter este cargo para uma VTC de cada vez.
+
+### "You own multiple verified VTCs"
+
+O fluxo automatizado suporta uma VTC verificada por proprietário. Contacta a equipa da Truckline se precisares de ajuda para um caso particular.
+
+### Cargo em falta após um pedido bem-sucedido
+
+- Confirma que estás no servidor **principal** da TrucklineMP, e não num servidor de staff ou beta.
+- Espera alguns segundos e verifica os teus cargos de novo.
+- Se continuar a falhar, abre um [ticket de suporte](/pt/web-docs/account/support-tickets/) com o nome da tua VTC e o teu nome de utilizador de Discord.
+
+---
+
+## Em que difere de outras funcionalidades de Discord
+
+| Funcionalidade | Objetivo |
+|---------|---------|
+| [Discord Linked Roles](/pt/web-docs/discord-bot/linked-roles/) | Cargo **Verified** por adesão, para qualquer membro com conta da TrucklineMP ligada |
+| [Verificação de Discord da VTC](/pt/web-docs/vtc/discord-verification/) | Liga **o servidor de Discord da tua VTC** ao teu perfil de VTC na TrucklineMP |
+| **Verified VTC Manager/Owner** (este guia) | Cargo de liderança no Discord **principal** da TrucklineMP para proprietários de VTCs verificadas e um gestor |
+
+Precisas do cargo ligado **Verified** antes de poderes pedir o cargo Verified VTC Manager/Owner.
+
+---
+
+## Guias Relacionados
+
+- [Verified VTC Program](/pt/web-docs/vtc-programs/verified/)
+- [Discord Linked Roles](/pt/web-docs/discord-bot/linked-roles/)
+- [Servidor Oficial de Discord](/pt/web-docs/discord-bot/official-server/)
+- [Definições Gerais da VTC](/pt/web-docs/vtc/general-settings/)
+- [Cargos e Permissões da VTC](/pt/web-docs/vtc/roles-permissions/)

@@ -1,0 +1,194 @@
+---
+title: Linked Roles do Discord
+description: Adiciona o bot da TrucklineMP e configura os Linked Roles para que os membros possam verificar a sua conta da TrucklineMP e aderir a cargos do servidor.
+version: 1.2.0
+lastUpdated: 2026-09-21
+---
+
+Os Linked Roles são uma funcionalidade do Discord. Os administradores de servidor associam regras de verificação a um cargo. Os membros **aderem voluntariamente** a esse cargo ao ligar a sua conta da TrucklineMP. O Discord verifica as regras e concede o cargo se estes qualificarem.
+
+Isto funciona em qualquer servidor de Discord. Não está limitado a VTCs.
+
+A TrucklineMP disponibiliza duas verificações que os administradores podem exigir:
+
+| Verificação | Significado |
+|-------|---------|
+| **Conta ligada** | O membro tem uma conta da TrucklineMP ligada através do fluxo de Linked Role |
+| **Staff da TrucklineMP** | O membro é staff da plataforma TrucklineMP |
+
+---
+
+## Antes de começares
+
+### Administradores de servidor
+
+- **Manage Roles** (ou Administrator) no servidor
+- O [bot da TrucklineMP](https://discord.com/discovery/applications/1467506804727746854) instalado no teu servidor. Os Linked Roles da TrucklineMP usam o bot como ligação de app. O bot tem de estar presente antes de **TrucklineMP** aparecer quando adicionas um requisito.
+
+### Membros
+
+- Uma conta da TrucklineMP em [trucklinemp.com](https://trucklinemp.com)
+- Acesso ao menu do servidor no ambiente de trabalho para completares a primeira ligação (ver [Reclamar um cargo](#reclamar-um-cargo-membros))
+
+---
+
+## Passo 1: Adicionar o bot da TrucklineMP
+
+1. Abre a [TrucklineMP no Discord](https://discord.com/discovery/applications/1467506804727746854).
+2. Clica em **Add to Server**.
+3. Escolhe o teu servidor e aprova as permissões.
+4. Termina a instalação.
+
+O bot ativa os requisitos de Linked Role e comandos de barra como `/profile`. Adicionar o bot não cria nenhum cargo por si só.
+
+---
+
+## Passo 2: Criar um Linked Role (administradores)
+
+Os Linked Roles são configurados num **cargo**, e não a partir de um assistente de Linked Roles separado.
+
+1. Abre **Server Settings**.
+2. Vai a **Roles**.
+3. Clica em **Create Role**, ou seleciona um cargo existente que queiras condicionar.
+4. Dá um nome ao cargo e define uma cor, se quiseres. Clica em **Save Changes**.
+5. Abre o separador **Links** no topo do editor de cargo.
+6. Clica em **Add requirement**.
+7. Em **Apps**, seleciona **TrucklineMP**.
+8. Adiciona as verificações que quiseres (por exemplo, **Account linked** igual a **Yes**).
+9. Clica em **Save Changes**.
+
+Para adicionar mais do que uma verificação ao mesmo cargo, adiciona outro requisito. O Discord exige que o membro cumpra **todos** os requisitos desse cargo.
+
+### Exemplos de cargos
+
+**Membro verificado**
+
+- Nome do cargo: `Verified` (ou o que preferires)
+- Requisito Links: **Account linked** = **Yes**
+
+**Apenas staff da plataforma**
+
+- Nome do cargo: `TrucklineMP Staff`
+- Requisito Links: **TrucklineMP staff** = **Yes**
+
+Podes adicionar requisitos a um cargo existente em vez de criar um novo. Abre o cargo, vai a **Links** e adiciona ali um requisito da TrucklineMP.
+
+---
+
+## Passo 3: Condicionar canais (opcional)
+
+Para exigir um Linked Role antes de os membros poderem ver ou enviar mensagens num canal:
+
+1. Abre **Channel Settings** para o canal.
+2. Vai a **Permissions**.
+3. Em **Add members or roles**, adiciona o Linked Role que criaste.
+4. Guarda.
+
+Os membros que tentarem entrar nesse canal serão convidados a ligar a TrucklineMP e a aderir ao cargo, caso ainda não o tenham feito.
+
+---
+
+## Reclamar um cargo (membros)
+
+Os Linked Roles **não** são atribuídos automaticamente. Mesmo que um membro já tenha uma conta da TrucklineMP, tem de aderir dentro do servidor.
+
+### Opção A: Menu do servidor
+
+1. Clica no **nome do servidor** no canto superior esquerdo do cliente.
+2. Seleciona **Linked Roles**.
+3. Clica no cargo que queres.
+4. Revê os requisitos apresentados.
+5. Clica para ligar a **TrucklineMP**.
+6. Inicia sessão na TrucklineMP se pedido, e depois aprova a ligação no ecrã de autorização do Discord.
+7. Regressa ao Discord. Se cumprires os requisitos, o cargo é concedido.
+
+### Opção B: Canal condicionado
+
+1. Abre um canal que exija um Linked Role.
+2. Segue a indicação no ecrã para verificar e reclamar o cargo.
+3. Completa o fluxo de ligação à TrucklineMP quando pedido.
+
+Depois de teres o cargo uma vez, manténs o acesso a canais condicionados nesse servidor, a menos que um administrador altere os requisitos ou tu removas a ligação.
+
+---
+
+## Como funciona a ligação à TrucklineMP
+
+Quando um membro se liga através de um Linked Role:
+
+1. O Discord abre a página de autorização da TrucklineMP.
+2. O membro inicia sessão na TrucklineMP (se ainda não tiver sessão iniciada).
+3. A TrucklineMP envia metadados de ligação ao Discord (conta ligada, estatuto de staff e nome de apresentação).
+4. O Discord avalia esses dados face aos requisitos **Links** do cargo.
+
+Isto é separado de **Settings → Connections** em trucklinemp.com. Essa página serve para recuperação de conta e ligação de perfil. Os Linked Roles usam sempre o fluxo de ligação dentro do servidor, iniciado em **Linked Roles** no menu do servidor ou a partir de um canal condicionado.
+
+Se a TrucklineMP reportar que a conta de Discord não corresponde a uma ligação existente no site, o membro tem de usar a mesma conta de Discord em todo o lado, ou atualizar primeiro as suas ligações na TrucklineMP.
+
+O estatuto de staff é lido a partir da TrucklineMP. Quando muda no site, o Discord pode atualizar os metadados de ligação para membros que já se tenham ligado.
+
+---
+
+## Comandos do bot
+
+Com o bot instalado, estes comandos de barra ficam disponíveis:
+
+| Comando | Descrição |
+|---------|-------------|
+| `/profile [user]` | Vê o perfil da TrucklineMP de um membro, se este tiver completado a ligação do Linked Role |
+| `/about` | Informações sobre a TrucklineMP |
+
+Se `/profile` indicar que um utilizador não ligou a conta, é porque este não completou o fluxo de adesão ao Linked Role nesse servidor.
+
+Os proprietários de VTCs também podem usar `/verify-server` e `/vtc` depois de [verificarem o servidor na TrucklineMP](/pt/web-docs/vtc/discord-verification/). Esses comandos não estão relacionados com a configuração de Linked Roles.
+
+Os proprietários de VTCs verificadas podem pedir um cargo separado, **Verified VTC Manager/Owner**, no Discord principal da TrucklineMP, depois de reclamarem o Linked Role **Verified**. Ver [Cargo de Discord para VTCs Verificadas](/pt/web-docs/vtc-programs/discord-role/).
+
+---
+
+## Detalhes importantes
+
+- **Apenas por adesão.** Os membros elegíveis não recebem o cargo até o reclamarem através de **Linked Roles** ou de um canal condicionado.
+- **Por servidor.** Ligar-se num servidor não concede Linked Roles noutro. Cada servidor tem os seus próprios cargos e requisitos.
+- **Visibilidade para administradores.** Os membros que qualificam mas não aderiram podem não aparecer na lista de membros do cargo até o reclamarem.
+- **Alterações de requisitos.** Se editares os requisitos **Links** de um cargo, o acesso a canais condicionados é atualizado de imediato para os membros que deixem de cumprir as verificações.
+- **Ambiente de trabalho para a primeira adesão.** As notas de ajuda de membros do Discord indicam que aderir através de um canal condicionado pode exigir a app de ambiente de trabalho na primeira vez. Depois disso, o telemóvel costuma funcionar para canais a que já tens acesso.
+
+---
+
+## Resolução de Problemas
+
+### A TrucklineMP não aparece ao adicionar um requisito
+
+- Confirma que o bot da TrucklineMP está instalado no servidor.
+- Atualiza **Server Settings → Roles → Links** depois de instalar o bot.
+- Confirma que tens **Manage Roles** ou Administrator.
+
+### Um membro cumpre os requisitos mas não tem o cargo
+
+- Tem de aderir através de **nome do servidor → Linked Roles** ou de um canal condicionado.
+- Ligar o Discord em trucklinemp.com **Settings → Connections** não concede Linked Roles.
+
+### Um membro perdeu o acesso depois de se desligar
+
+- Remover a ligação da TrucklineMP revoga a elegibilidade para o Linked Role. Tem de se ligar novamente através de **Linked Roles**.
+
+### O cargo de staff não foi atualizado
+
+- Pede ao membro para abrir **Linked Roles** no servidor e voltar a ligar a TrucklineMP, ou espera que o Discord atualize os metadados de ligação.
+
+---
+
+## Boas Práticas
+
+- Cria um cargo simples **Verified** com **Account linked** antes de abrires canais exclusivos para membros.
+- Condiciona canais sensíveis a esse Linked Role, em vez de atribuíres o cargo manualmente.
+- Fixa uma nota curta em `#rules` ou `#welcome` a indicar aos membros para usarem **nome do servidor → Linked Roles**.
+- Mantém o bot da TrucklineMP no servidor, para que os requisitos e o `/profile` continuem a funcionar.
+
+---
+
+## Guias Relacionados
+
+- [Connections](/pt/web-docs/account/connections/) - Liga o Discord e outras contas na TrucklineMP
+- [Verificação de Discord da VTC](/pt/web-docs/vtc/discord-verification/) - Opcional: mostra o servidor de Discord da tua VTC no teu perfil da TrucklineMP

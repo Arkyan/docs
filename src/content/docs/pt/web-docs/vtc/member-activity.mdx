@@ -1,0 +1,37 @@
+---
+title: Atividade de Membros da VTC
+description: Acompanha a atividade dos membros da tua VTC ou VBC - estados de atividade, política de inatividade e pedidos de ausência no TrucklineMP.
+version: 1.0.0
+lastUpdated: 2026-09-21
+---
+
+A página de Atividade de Membros no painel de gestão da tua empresa mostra o quão ativo cada membro é e permite à equipa gerir a política de inatividade e os pedidos de ausência. Abre-a a partir da barra lateral (`/vtc/@handle/manage/member-activity`).
+
+O acesso requer a permissão `management.members.view_activity`. Os proprietários têm sempre acesso.
+
+## Estados de atividade
+
+Cada membro tem um estado de atividade baseado na sua participação recente:
+
+| Estado | Significado |
+|--------|-------------|
+| Ativo | Participou recentemente |
+| Em risco | Inativo há algum tempo e perto do limite de inatividade |
+| Inativo | Inativo há mais tempo do que o período permitido |
+| Em ausência | Coberto por um pedido de ausência aprovado |
+| Isento | Isento dos requisitos de atividade |
+
+A página mostra os dias desde a última atividade de cada membro e quantos eventos participou no período de análise.
+
+## Política de inatividade
+
+A equipa pode definir o número máximo de dias de inatividade permitidos antes de um membro ser marcado como inativo. Os membros marcados como inativos podem ser removidos da empresa ou receber um pedido de ausência para proteger a sua adesão.
+
+## Pedidos de ausência
+
+Os membros podem pedir uma ausência se não puderem participar durante algum tempo. A equipa analisa os pedidos pendentes e aprova-os ou rejeita-os. Uma ausência aprovada protege o membro da política de inatividade até a ausência terminar.
+
+## Guias relacionados
+
+- [Gestão de Membros](/pt/web-docs/vtc/member-management/) - gerir a lista de membros
+- [Registo de Atividade](/pt/web-docs/vtc/activity-log/) - o registo de auditoria das ações de gestão
