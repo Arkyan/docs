@@ -94,7 +94,7 @@ new Truckline({
 |--------|----------|
 | По умолчанию | `https://api.trucklinemp.com` |
 
-**Не** добавляйте дополнительный `/v1` к `api.trucklinemp.com`. См. [Базовые URL публичного API](/ru/web-api/public-api/#base-urls).
+**Не** добавляйте дополнительный `/v1` к `api.trucklinemp.com`. См. [Базовые URL публичного API](/ru/web-api/public-api/#базовые-url-адреса).
 
 ### Информация о лимитах запросов
 
@@ -226,7 +226,7 @@ await tl.post("/path", { body: { … } }); // если в будущем буд�
 
 Повторные попытки по умолчанию: до `maxRetries` (по умолчанию `1`) при ошибках **429** и **5xx**, с использованием джиттера. Установите `maxRetries: 0`, чтобы отключить. При сбоях сети запросы также повторяются, если `maxRetries > 0`.
 
-Таблицы лимитов платформы: [Лимиты запросов](/ru/web-api/public-api/#rate-limits).
+Таблицы лимитов платформы: [Лимиты запросов](/ru/web-api/public-api/#лимиты-запросов).
 
 ## OAuth
 
@@ -260,7 +260,7 @@ const refreshed = await oauth.refresh(tokens.refresh_token!);
 await oauth.revoke(tokens.access_token, "access_token");
 ```
 
-Правила Redirect URI (localhost / приватная LAN / https): [Приложения OAuth — redirect URIs](/ru/web-api/oauth-apps/#redirect-uri-rules).
+Правила Redirect URI (localhost / приватная LAN / https): [Приложения OAuth — redirect URIs](/ru/web-api/oauth-apps/#правила-для-redirect-uri).
 
 `userinfo` с областью видимости `profile` включает `steam_id`, если аккаунт привязан.
 

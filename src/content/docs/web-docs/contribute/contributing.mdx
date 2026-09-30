@@ -1,8 +1,8 @@
 ---
 title: Contributing Translations
 description: Full guide for contributing translations to the TrucklineMP documentation - file structure, quality standards, and submission process.
-version: 1.3.0
-lastUpdated: 2026-08-20
+version: 1.4.0
+lastUpdated: 2026-09-30
 ---
 
 Thank you for your interest in translating the TrucklineMP documentation! This guide explains how to contribute translations, what standards we expect, and how to submit your work.
@@ -104,12 +104,15 @@ The `index.mdx` splash page should also be translated to welcome users in their 
 
 ### 3. Sidebar Labels
 
-Sidebar labels are configured per module in `astro.config.mjs` (via `starlightSidebarTopics`) and support translations:
+Sidebar labels are configured per module in `src/lib/sidebar.mjs` and support translations:
 
 ```js
-starlightSidebarTopics([
+export const sidebarTopics = [
   {
-    label: 'Web Docs',
+    label: {
+      en: 'Web Docs',
+      pl: 'Dokumentacja Web',
+    },
     link: 'web-docs/vtc/creating',
     items: [
       {
@@ -127,10 +130,10 @@ starlightSidebarTopics([
     ],
   },
   // ... Web API, Game Docs, Game SDK
-])
+]
 ```
 
-When translating, add your language's label to the `translations` object.
+When translating, add your language's label to the `translations` object of each group and page. Top-level topics (Web Docs, Web API, Game Docs, Game SDK) are the exception: their `label` is itself an object with one entry per language, and `translations` does not work on them. The CI rejects unknown language codes and `translations` on a topic.
 
 ### 4. UI Labels
 
@@ -203,7 +206,7 @@ description: Pełny przewodnik po Programie Zweryfikowanych VTC Truckline - jak 
 
 ### Step 6: Translate Sidebar Labels
 
-Open `astro.config.mjs` and add translations for the guides you've translated:
+Open `src/lib/sidebar.mjs` and add translations for the guides you've translated:
 
 ```js
 {
@@ -295,7 +298,8 @@ Before submitting your translation, verify:
 - [ ] All body text is translated
 - [ ] Links point to the correct locale
 - [ ] Code blocks and URLs are unchanged
-- [ ] Sidebar labels are updated in `astro.config.mjs`
+- [ ] Sidebar labels are updated in `src/lib/sidebar.mjs`
+- [ ] Links to headings use the translated heading's anchor (e.g. `#перед-тем-как-начать`, not `#before-you-start`)
 - [ ] The page renders correctly in the pull request preview
 - [ ] No broken formatting or Markdown errors
 - [ ] Terminology is consistent throughout
@@ -320,7 +324,7 @@ You can translate the documentation into any language. If your language isn't cu
 ### Steps
 
 1. **Contact the team** on Discord to let us know you're working on a new language
-2. We'll add the locale to `astro.config.mjs`
+2. We'll add the locale to `src/lib/locales.mjs`
 3. Create the locale folder under `src/content/docs/` (e.g., `de/` for German)
 4. Translate the core guides
 5. Submit a pull request
@@ -335,39 +339,15 @@ There is no strict requirement on how many guides to translate before adding a n
 
 ### Locale Configuration
 
-New locales are added in `astro.config.mjs`:
+New locales are added in `src/lib/locales.mjs`. This one entry registers the language with Starlight, the docs validation, the outdated-translation banner, and the Translation Status page:
 
 ```js
-locales: {
-  root: {
-    label: 'English',
-    lang: 'en',
-  },
-  pl: {
-    label: 'Polski',
-    lang: 'pl',
-  },
-  de: {
-    label: 'Deutsch',
-    lang: 'de',
-  },
-  fr: {
-    label: 'Français',
-    lang: 'fr',
-  },
-  ru: {
-    label: 'Русский',
-    lang: 'ru',
-  },
-  ta: {
-    label: 'தமிழ்',
-    lang: 'ta',
-  },
-  tr: {
-    label: 'Türkçe',
-    lang: 'tr',
-  },
-},
+export const translationLocales = {
+  ru: { label: 'Русский', lang: 'ru', englishName: 'Russian' },
+  pl: { label: 'Polski', lang: 'pl', englishName: 'Polish' },
+  // ...
+  pt: { label: 'Português', lang: 'pt', englishName: 'Portuguese' },
+};
 ```
 
 Make sure to use the correct [BCP 47 language tag](https://en.wikipedia.org/wiki/IETF_language_tag) for your locale.
